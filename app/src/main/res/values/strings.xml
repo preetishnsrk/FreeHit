@@ -6,4 +6,9 @@
     <string name="category_news">News</string>
     <string name="category_social">Social</string>
     <string name="category_stats">Stats</string>
+
+
+    <string name="search_player">Player</string>
+    <string name="search_team">Team</string>
+
 </resources>

@@ -10,9 +10,10 @@
 
     <ImageView
         android:id="@+id/image_view"
-        tools:src="@drawable/before_cookie"
+        tools:src="@drawable/matches"
+        android:paddingTop="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
 
@@ -38,6 +39,7 @@
         android:layout_marginTop="10dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:paddingBottom="20dp"
         android:textStyle="italic"
         android:textAppearance="?android:textAppearanceMedium"
         android:scrollHorizontally="true"
