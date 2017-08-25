@@ -43,7 +43,7 @@ StatsFragment extends Fragment {
         ListView listView = (ListView) rootView.findViewById(R.id.list);
         listView.setAdapter(adapter);
 
-        //ABOVE LINE CREATES NULL POINTER EXCEPTION
+        //ABOVE LINE CREATES NULL POINTER EXCEPTION listView.setAdapter(adapter)
 
         return rootView;
 
