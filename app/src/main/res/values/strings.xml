@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">FreeHit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="category_matches">Matches</string>
+    <string name="category_news">News</string>
+    <string name="category_social">Social</string>
+    <string name="category_stats">Stats</string>
+</resources>
