@@ -28,7 +28,7 @@ StatsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView= inflater.inflate(R.layout.fragment_stats, container, false);
+        View rootView= inflater.inflate(R.layout.stats_item, container, false);
 
         final ArrayList<StatsItem> statsItem=new ArrayList<StatsItem>();
 
@@ -40,7 +40,7 @@ StatsFragment extends Fragment {
 
 
         StatsAdapter adapter = new StatsAdapter(getActivity(), statsItem);
-        ListView listView = (ListView) rootView.findViewById(R.id.list);
+        ListView listView = (ListView) rootView.findViewById(R.id.stats_list);
         listView.setAdapter(adapter);
 
         //ABOVE LINE CREATES NULL POINTER EXCEPTION listView.setAdapter(adapter)

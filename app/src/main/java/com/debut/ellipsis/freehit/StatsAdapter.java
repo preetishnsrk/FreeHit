@@ -23,7 +23,7 @@ public class StatsAdapter extends ArrayAdapter<StatsItem> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.stats_item, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_stats, parent, false);
         }
 
         final StatsItem currentItem = getItem(position);

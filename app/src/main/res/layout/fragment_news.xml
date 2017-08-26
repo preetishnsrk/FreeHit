@@ -67,10 +67,10 @@
             app:indicatorName="BallPulseIndicator"
             android:layout_centerInParent="true"
             app:indicatorColor="#000000"
-        />
+            />
 
 
-</RelativeLayout>
+    </RelativeLayout>
 
 
 </FrameLayout>
