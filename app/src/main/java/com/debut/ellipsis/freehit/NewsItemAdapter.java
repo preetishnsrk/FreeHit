@@ -37,6 +37,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
                     R.layout.fragment_news, parent, false);
         }
 
+
         //Initializing the AVLoadingIndicator
         final AVLoadingIndicatorView loader = (AVLoadingIndicatorView) listItemView.findViewById(R.id.avi);
 

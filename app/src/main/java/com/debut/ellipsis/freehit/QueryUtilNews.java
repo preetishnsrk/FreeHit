@@ -154,7 +154,7 @@ public class QueryUtilNews {
         }
 //        NewsItem news = null;
 
-        // Create an empty ArrayList that we can start adding earthquakes to
+        // Create an empty ArrayList that we can start adding News to
         List<NewsItem> Newss = new ArrayList<>();
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
@@ -171,7 +171,8 @@ public class QueryUtilNews {
 
 
 
-            for (int i = 0; i < 10; i++) {
+            for (int i = 0; i < 10 ; i++) {
+
                 JSONObject currentArticle = articles.getJSONObject(i);
 //                Bitmap bimage = null;
                 String headlines=currentArticle.getString("title");

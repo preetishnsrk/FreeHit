@@ -54,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
                 tab.getIcon().setColorFilter(Color.BLACK, PorterDuff.Mode.SRC_IN);
 
 
