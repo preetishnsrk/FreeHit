@@ -34,9 +34,9 @@ StatsFragment extends Fragment {
 
         statsItem.add(new StatsItem(R.drawable.player,R.string.search_player));
         statsItem.add(new StatsItem(R.drawable.team,R.string.search_team));
-        statsItem.add(new StatsItem(R.drawable.player,R.string.search_team));
-        statsItem.add(new StatsItem(R.drawable.player,R.string.search_player));
-        statsItem.add(new StatsItem(R.drawable.player,R.string.search_team));
+        statsItem.add(new StatsItem(R.drawable.shield,R.string.search_series));
+        statsItem.add(new StatsItem(R.drawable.star,R.string.rankings));
+        statsItem.add(new StatsItem(R.drawable.records,R.string.records));
 
 
         StatsAdapter adapter = new StatsAdapter(getActivity(), statsItem);
