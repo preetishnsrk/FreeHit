@@ -7,9 +7,12 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
+import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -30,7 +34,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
   public  View loadingIndicator;
-    //the webiste url of the api
+    //the website url of the api
     private static final String URL =
             "https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=latest&apiKey=df0d40507d0548308c737ded0b6f8a82";
 
@@ -56,6 +60,26 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
        // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
         /*getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();*/
+
+
+        // Finding a reference to the refresh layout
+        final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refLayout.setRefreshing(true);
+//                LoaderManager loaderManager = getLoaderManager();
+                getLoaderManager().restartLoader(NEWS_LOADER_ID,null,NewsFragment.this);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        refLayout.setRefreshing(false);
+                    }
+                },3000);
+            }
+        });
+
 
 
         //Finding a reference to the AVLoading bar

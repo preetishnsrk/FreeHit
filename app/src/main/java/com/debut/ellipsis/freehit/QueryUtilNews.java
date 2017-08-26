@@ -170,7 +170,7 @@ public class QueryUtilNews {
 
 
 
-            for (int i = 0; i < 20 ; i++) {
+            for (int i = 0; i < articles.length() ; i++) {
                 JSONObject currentArticle = articles.getJSONObject(i);
 //                Bitmap bimage = null;
                 String headlines=currentArticle.getString("title");
