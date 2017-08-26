@@ -1,21 +1,20 @@
 package com.debut.ellipsis.freehit;
 
 
-
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,7 +51,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
         getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();
-        loadingIndicator=fragView.findViewById(R.id.progress_bar);
+
+        //Finding a reference to the AVLoading bar
+        AVLoadingIndicatorView loader = (AVLoadingIndicatorView) fragView.findViewById(R.id.avi);
+
         // Find a reference to the {@link ListView} in the layout
         ListView NewsListView = (ListView) rootView.findViewById(R.id.list);
 
@@ -85,8 +87,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-//            loadingIndicator = rootView.findViewById(R.id.progress_bar);
-            loadingIndicator.setVisibility(View.GONE);
+            loader.hide();
             System.out.println("NOCONN");
             // Update empty state with no connection error message
             mEmptyStateTextView.setText("NO CONNECTION");
@@ -107,8 +108,8 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<List<NewsItem>> loader, List<NewsItem> News) {
-
-            loadingIndicator.setVisibility(View.GONE);
+//        Log.d(this,"Dead");
+//        loadingIndicator.setVisibility(View.GONE);
 //         Set empty state text to display "No News found."
         if(mEmptyStateTextView.getText()==null) {
             mEmptyStateTextView.setText("NEWS NOT FOUND");

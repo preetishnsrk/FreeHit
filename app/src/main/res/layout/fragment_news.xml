@@ -1,5 +1,6 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.debut.ellipsis.freehit.NewsFragment">
@@ -10,9 +11,10 @@
 
     <ImageView
         android:id="@+id/image_view"
-        tools:src="@drawable/before_cookie"
+        tools:src="@drawable/matches"
+        android:paddingTop="50dp"
         android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="200dp"
         android:scaleType="centerCrop"
 
@@ -38,6 +40,7 @@
         android:layout_marginTop="10dp"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"
+        android:paddingBottom="20dp"
         android:textStyle="italic"
         android:textAppearance="?android:textAppearanceMedium"
         android:scrollHorizontally="true"
@@ -55,12 +58,16 @@
             android:layout_centerVertical="true"
             android:textAppearance="?android:textAppearanceMedium" />
 
-        <ProgressBar
-            android:id="@+id/progress_bar"
+        <com.wang.avi.AVLoadingIndicatorView
+            android:id="@+id/avi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/AVLoadingIndicatorView"
+            android:visibility="visible"
+            app:indicatorName="BallPulseIndicator"
             android:layout_centerInParent="true"
-            style="@style/Base.Widget.AppCompat.ProgressBar"/>
+            app:indicatorColor="#000000"
+        />
 
 
 </RelativeLayout>
