@@ -44,8 +44,7 @@
         android:textStyle="italic"
         android:textAppearance="?android:textAppearanceMedium"
         android:scrollHorizontally="true"
-        android:ellipsize="end"
-        android:maxLines="3"
+
         tools:text="Description text of the news article you should read and waste some time . This  is getting to be too long, but I have to write enough text to test the code." />
 
         <TextView
