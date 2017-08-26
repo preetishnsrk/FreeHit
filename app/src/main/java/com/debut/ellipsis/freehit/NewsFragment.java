@@ -49,8 +49,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.item, container, false);
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
-        getLoaderManager().initLoader(0, null, this);
-        getLoaderManager().getLoader(0).startLoading();
+
+       // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
+        /*getLoaderManager().initLoader(0, null, this);
+        getLoaderManager().getLoader(0).startLoading();*/
 
         //Finding a reference to the AVLoading bar
         AVLoadingIndicatorView loader = (AVLoadingIndicatorView) fragView.findViewById(R.id.avi);

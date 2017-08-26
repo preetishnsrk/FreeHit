@@ -21,7 +21,6 @@ import java.util.List;
 
 public class QueryUtilNews {
 
-    public static String urlofimage;
     /**
      * Tag for the log messages
      */
@@ -55,15 +54,15 @@ public class QueryUtilNews {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
         // Extract relevant fields from the JSON response and create an {@link news}s object
-        List<NewsItem> newsItem = extractFeatureFromJson(jsonResponse);
 
         // Return the {@link news}
-        return newsItem;
+        return extractFeatureFromJson(jsonResponse);
     }
 
 
@@ -162,8 +161,8 @@ public class QueryUtilNews {
         // Catch the exception so the app doesn't crash, and print the error message to the logs.
         try {
 
-            // TODO: Parse the response given by the JSON response string string and
-            // build up a list of Earthquake objects with the corresponding data.
+            // TODO: Parse the response given by the JSON response string and
+            // build up a list of News Articles objects with the corresponding data.
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(NewsJSON);
@@ -172,7 +171,6 @@ public class QueryUtilNews {
 
 
             for (int i = 0; i < 10 ; i++) {
-
                 JSONObject currentArticle = articles.getJSONObject(i);
 //                Bitmap bimage = null;
                 String headlines=currentArticle.getString("title");
@@ -193,9 +191,11 @@ public class QueryUtilNews {
 //                Newss.add(news);
 //                news = new NewsItem(headlines,description,bimage);
                 Newss.add(news);
+                Log.e(LOG_TAG, String.valueOf(i));
             }
-
-        } catch (JSONException e) {
+                return Newss;
+            }
+        catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
@@ -203,7 +203,7 @@ public class QueryUtilNews {
         }
 
 
-        // Return the list of earthquakes
+        // Return the list of news Articles
         return Newss;
     }
 }

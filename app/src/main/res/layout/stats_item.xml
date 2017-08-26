@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="50dp"
         tools:background="@drawable/player"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="7dp"
         android:layout_weight="1"
          />
 
