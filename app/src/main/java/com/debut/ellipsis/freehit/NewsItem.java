@@ -9,7 +9,6 @@ public class NewsItem {
 
     private String murl;
 
-//    private Bitmap mimage;
     public NewsItem(String headline,String description,String url)
     {
         mheadline=headline;
