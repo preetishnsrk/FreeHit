@@ -2,8 +2,10 @@ package com.debut.ellipsis.freehit;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
@@ -11,6 +13,7 @@ import android.support.v4.content.Loader;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -54,6 +57,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         /*getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();*/
 
+
         //Finding a reference to the AVLoading bar
         AVLoadingIndicatorView loader = (AVLoadingIndicatorView) fragView.findViewById(R.id.avi);
 
@@ -62,6 +66,28 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
        mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
        NewsListView.setEmptyView(mEmptyStateTextView);
+
+
+
+        NewsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Find the current earthquake that was clicked on
+                NewsItem currentEarthquake = (NewsItem) mAdapter.getItem(position);
+
+                // Convert the String URL into a URI object (to pass into the Intent constructor)
+                Uri earthquakeUri = Uri.parse(currentEarthquake.getMurlofwebsite());
+
+                if(currentEarthquake.getMurlofwebsite()!=null) {
+                    // Create a new intent to view the earthquake URI
+                    Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+
+                    // Send the intent to launch a new activity
+                    startActivity(websiteIntent);
+                }
+            }
+        });
+
 
         // Create a new adapter that takes an empty list of subjects as input
         mAdapter = new NewsItemAdapter(getActivity(), new ArrayList<NewsItem>());

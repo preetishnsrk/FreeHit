@@ -7,13 +7,16 @@ public class NewsItem {
 
     private String mdescription;
 
-    private String murl;
+    private String murlofimage;
 
-    public NewsItem(String headline,String description,String url)
+    private String murlofwebsite;
+
+    public NewsItem(String headline,String description,String urlofimage,String urlofwebsite)
     {
         mheadline=headline;
         mdescription=description;
-        murl=url;
+        murlofimage=urlofimage;
+        murlofwebsite=urlofwebsite;
     }
 
     public String getMheadline()
@@ -26,8 +29,13 @@ public class NewsItem {
         return mdescription;
     }
 
-    public String getMurl()
+    public String getMurlofimage()
     {
-        return murl;
+        return murlofimage;
+    }
+
+    public String getMurlofwebsite()
+    {
+        return  murlofwebsite;
     }
 }

@@ -179,7 +179,9 @@ public class QueryUtilNews {
 
                 String urlofimage=currentArticle.getString("urlToImage");
 
-                NewsItem news=new NewsItem(headlines,description,urlofimage);
+                String urlofwebsite=currentArticle.getString("url");
+
+                NewsItem news=new NewsItem(headlines,description,urlofimage,urlofwebsite);
 //                try {
 //                    InputStream in = new java.net.URL(urlofimage).openStream();
 //                    bimage = BitmapFactory.decodeStream(in);

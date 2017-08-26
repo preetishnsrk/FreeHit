@@ -43,7 +43,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         NewsItem currentnews = (NewsItem) getItem(position);
         System.out.println(currentnews);
-        String imageurl = currentnews.getMurl();
+        String imageurl = currentnews.getMurlofimage();
         TextView studentName = (TextView) listItemView.findViewById(R.id.header_text_view);
         studentName.setText(currentnews.getMheadline());
         TextView subjectTextView = (TextView) listItemView.findViewById(R.id.summary_text_view);
