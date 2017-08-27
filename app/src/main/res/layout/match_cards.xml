@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:tag="cards main container">
 
     <android.support.v7.widget.CardView
@@ -143,11 +142,21 @@
         </LinearLayout>
 
 
-
-
     </android.support.v7.widget.CardView>
 
+    <TextView
+        android:paddingTop="30dp"
+        android:layout_below="@+id/card_view"
+        android:visibility="visible"
+        android:id="@+id/match_preview_summary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:maxLines="10"
+        android:textColor="@android:color/black"
+        android:ellipsize="end"
+        android:textSize="15sp"
+        android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"/>
 
-</LinearLayout>
+</RelativeLayout>
 
 

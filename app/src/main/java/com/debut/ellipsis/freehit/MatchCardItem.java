@@ -28,8 +28,10 @@ public class MatchCardItem {
 
     private int mtempTeamLogo2;
 
+    private String mMatchSummary;
+
     //WHEN MATCH IS IN PROGRESS
-    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy)
+    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -41,10 +43,11 @@ public class MatchCardItem {
         mTeam2Score=Team2Score;
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
+        mMatchSummary=MatchSummary;
     }
 
     //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
-    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult)
+    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String MatchSummary)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -55,11 +58,12 @@ public class MatchCardItem {
         mTeam2Overs=Team2Overs;
         mTeam2Score=Team2Score;
         mMatchStatusResult=MatchStatusResult;
+        mMatchSummary=MatchSummary;
 
     }
 
     //TEMPORARY METHOD
-    public MatchCardItem(String MatchName,String SeriesName,int TempTeamLogo1,String Team1Score,String Team1Overs,int TempTeamLogo2,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy)
+    public MatchCardItem(String MatchName,String SeriesName,int TempTeamLogo1,String Team1Score,String Team1Overs,int TempTeamLogo2,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -71,6 +75,7 @@ public class MatchCardItem {
         mTeam2Score=Team2Score;
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
+        mMatchSummary=MatchSummary;
     }
 
 
@@ -120,5 +125,9 @@ public class MatchCardItem {
 
     public int getMtempTeamLogo2() {
         return mtempTeamLogo2;
+    }
+
+    public String getmMatchSummaryPreview() {
+        return mMatchSummary;
     }
 }

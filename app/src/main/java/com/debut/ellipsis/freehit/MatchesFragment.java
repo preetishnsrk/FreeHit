@@ -32,7 +32,7 @@ public class MatchesFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_matches, container, false);
 
         data = new ArrayList<MatchCardItem>();
-        for (int i = 0; i < MyData.MatchNameArray.length; i++) {
+        for (int i = 0; i < MyData.MatchNameArray.length-1; i++) {
             data.add(new MatchCardItem(
                     MyData.MatchNameArray[i],
                     MyData.SeriesNameArray[i],
@@ -43,7 +43,8 @@ public class MatchesFragment extends Fragment {
                     MyData.Team2ScoreArray[i],
                     MyData.Team2OversArray[i],
                     MyData.MatchStatusResultArray[i],
-                    MyData.TargetLeadBysArray[i]
+                    MyData.TargetLeadBysArray[i],
+                    MyData.MatchSummaryPreview[i]
             ));
         }
 

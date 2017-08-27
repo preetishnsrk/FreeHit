@@ -58,6 +58,9 @@ public class MatchesItemAdapter extends PagerAdapter {
         TextView textViewSeriesTargetLeadBy = (TextView) view.findViewById(R.id.target_leadby);
         textViewSeriesTargetLeadBy.setText(this.dataObjectList.get(position).getmTargetLeadBy());
 
+        TextView textMatchSummaryPreview = (TextView) view.findViewById(R.id.match_preview_summary);
+        textMatchSummaryPreview.setText(this.dataObjectList.get(position).getmMatchSummaryPreview());
+
         container.addView(view);
         return view;
     }

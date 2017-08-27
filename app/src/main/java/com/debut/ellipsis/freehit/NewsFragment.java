@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
-import android.support.v4.app.LoaderManager.LoaderCallbacks;
 import android.support.v4.content.Loader;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
@@ -60,25 +59,6 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
        // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
         /*getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();*/
-
-
-        // Finding a reference to the refresh layout
-        final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
-        refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                refLayout.setRefreshing(true);
-//                LoaderManager loaderManager = getLoaderManager();
-                getLoaderManager().restartLoader(NEWS_LOADER_ID,null,NewsFragment.this);
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-
-                        refLayout.setRefreshing(false);
-                    }
-                },3000);
-            }
-        });
 
 
 
@@ -146,6 +126,25 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             return fragView;
 
         }
+
+        // Finding a reference to the refresh layout
+        final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                refLayout.setRefreshing(true);
+//                LoaderManager loaderManager = getLoaderManager();
+                getLoaderManager().restartLoader(NEWS_LOADER_ID,null,NewsFragment.this);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        refLayout.setRefreshing(false);
+                    }
+                },3000);
+
+            }
+        });
 
         return rootView;
     }
