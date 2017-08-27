@@ -171,7 +171,8 @@ public class QueryUtilMatchCard {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(MatchCardsJSON);
-            JSONObject results=basJsonResponse.getJSONObject("results");
+            JSONObject query=basJsonResponse.getJSONObject("query");
+            JSONObject results=query.getJSONObject("results");
             JSONArray ScoreCards=results.getJSONArray("Scorecard");
 
             for (int i = 0; i < ScoreCards.length() ; i++) {

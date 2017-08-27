@@ -78,12 +78,12 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
-                NewsItem currentEarthquake = (NewsItem) mAdapter.getItem(position);
+                NewsItem currentNewsArticle = (NewsItem) mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri earthquakeUri = Uri.parse(currentEarthquake.getMurlofwebsite());
+                Uri earthquakeUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
 
-                if(currentEarthquake.getMurlofwebsite()!=null) {
+                if(currentNewsArticle.getMurlofwebsite()!=null) {
                     // Create a new intent to view the earthquake URI
                     Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
 
