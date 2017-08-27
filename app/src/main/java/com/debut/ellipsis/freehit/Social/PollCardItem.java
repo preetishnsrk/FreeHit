@@ -7,9 +7,31 @@ package com.debut.ellipsis.freehit.Social;
 public class PollCardItem {
 
     private String pTitle;
-    private String pDescription;
+    private int pId;
     private String pOptions[];
-    private String pValues[];
+    private int pValues[];
 
+    public PollCardItem(String title, int id, String[] options, int[] values) {
+        pTitle = title;
+        pId = id;
+        pOptions = options;
+        pValues = values;
+    }
+
+    public String getpTitle() {
+        return pTitle;
+    }
+
+    public int getpId() {
+        return pId;
+    }
+
+    public String getpOption(int index) {
+        return pOptions[index];
+    }
+
+    public int getpValue(int index) {
+        return pValues[index];
+    }
 
 }

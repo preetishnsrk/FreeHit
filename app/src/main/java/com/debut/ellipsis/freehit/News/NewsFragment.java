@@ -147,7 +147,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
                         refLayout.setRefreshing(false);
                     }
-                },3000);
+                },1000);
 
             }
         });
