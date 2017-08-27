@@ -12,6 +12,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 
+import com.debut.ellipsis.freehit.Matches.MatchesFragment;
+import com.debut.ellipsis.freehit.News.NewsFragment;
+import com.debut.ellipsis.freehit.Social.SocialFragment;
+import com.debut.ellipsis.freehit.Stats.StatsFragment;
 import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;

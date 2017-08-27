@@ -1,6 +1,8 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.Matches;
 
 //TEMPORARY CLASS
+
+import com.debut.ellipsis.freehit.R;
 
 public class MyData {
     static String[] MatchNameArray = {"3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI"};

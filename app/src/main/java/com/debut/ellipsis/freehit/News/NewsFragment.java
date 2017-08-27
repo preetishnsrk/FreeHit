@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.News;
 
 
 import android.content.Context;
@@ -19,6 +19,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.debut.ellipsis.freehit.R;
 import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.ArrayList;

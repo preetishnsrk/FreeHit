@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.News;
 
 
 public class NewsItem {
