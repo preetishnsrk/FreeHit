@@ -10,7 +10,7 @@
         android:id="@+id/card_view"
         xmlns:card_view="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
-        android:layout_height="210dp"
+        android:layout_height="wrap_content"
         card_view:cardBackgroundColor="@color/color_white"
         card_view:cardCornerRadius="10dp"
         card_view:cardElevation="5dp"
@@ -20,38 +20,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/match_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:paddingStart="30dp"
+                android:paddingStart="15dp"
                 android:paddingTop="10dp"
-                tools:text="2nd ODI"/>
+                android:textSize="12sp"
+                tools:text="2nd ODI" />
 
             <TextView
                 android:id="@+id/match_series_separator"
-                android:layout_toRightOf="@+id/match_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
-                android:paddingTop="10dp"
+                android:layout_toRightOf="@+id/match_name"
                 android:paddingStart="5dp"
+                android:paddingTop="10dp"
                 android:text="-"
-                />
+                android:textSize="12sp" />
 
             <TextView
                 android:id="@+id/series_name"
-                android:layout_toRightOf="@+id/match_series_separator"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:layout_toRightOf="@+id/match_series_separator"
                 android:paddingStart="5dp"
                 android:paddingTop="10dp"
+                android:textSize="12sp"
 
-                tools:text="India Tour of SriLanka,5 ODIs,2010"
-                />
+                tools:text="India Tour of SriLanka,5 ODIs,2010" />
         </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -145,17 +145,19 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:paddingTop="30dp"
+        android:paddingTop="40dp"
         android:layout_below="@+id/card_view"
-        android:visibility="visible"
         android:id="@+id/match_preview_summary"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:maxLines="10"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp"
         android:textColor="@android:color/black"
         android:ellipsize="end"
-        android:textSize="15sp"
-        android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"/>
+        android:textSize="13sp"
+        android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
+ />
 
 </RelativeLayout>
 
