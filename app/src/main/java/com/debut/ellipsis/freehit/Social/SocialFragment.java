@@ -2,6 +2,7 @@ package com.debut.ellipsis.freehit.Social;
 
 
 import android.content.Context;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ import com.twitter.sdk.android.tweetui.TweetTimelineRecyclerViewAdapter;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.relex.circleindicator.CircleIndicator;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,6 +48,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
     private String QueryToSearch = "#cricket";
     public TweetTimelineRecyclerViewAdapter adapter;
     public RecyclerView rv;
+    CircleIndicator indicator;
     ViewPager pollsPager;
     public SocialFragment() {
         // Required empty public constructor
@@ -59,6 +63,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
         pollsPager = (ViewPager) socView.findViewById(R.id.poll_pager);
         pollAdapter = new PollItemAdapter(getContext(), new ArrayList<PollCardItem>());
         pollsPager.setAdapter(pollAdapter);
+         indicator = (CircleIndicator)socView.findViewById(R.id.poll_indicator);
         //--------------------- End of Polls Initialization------------------------
 
         //--------------------- Twitter Initialization------------------------
@@ -192,6 +197,10 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
         if (data != null && !data.isEmpty()) {
             pollAdapter = new PollItemAdapter(getContext(),data);
             pollsPager.setAdapter(pollAdapter);
+            indicator.setBackgroundColor(Color.BLACK);
+            indicator.setViewPager(pollsPager);
+
+
         }
     }
 

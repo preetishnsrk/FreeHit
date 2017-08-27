@@ -21,7 +21,6 @@
             android:layout_height="25dp"
             android:layout_below="@id/poll_pager"
             android:layout_centerHorizontal="true"
-
             />
 
 

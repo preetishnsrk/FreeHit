@@ -49,6 +49,7 @@ public class MatchesFragment extends Fragment {
                     MyData.MatchSummaryPreview[i]
             ));
         }
+//        data.add(new MatchCardItem("a","a","A","a","a","a","a","a","a","a"));
 
         ViewPager viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
         MatchesItemAdapter mCustomPagerAdapter = new MatchesItemAdapter(getActivity(),data);

@@ -183,6 +183,10 @@ public class QueryUtilPolls {
 
                 PollCardItem poll=new PollCardItem(title,id,options,values);
                 Polls.add(poll);
+            Polls.add(poll);
+            Polls.add(poll);
+
+
 //                Log.e(LOG_TAG, String.valueOf(j));
             return Polls;
         }
