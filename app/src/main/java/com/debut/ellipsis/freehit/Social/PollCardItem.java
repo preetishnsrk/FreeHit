@@ -1,8 +1,5 @@
 package com.debut.ellipsis.freehit.Social;
 
-/**
- * Created by nikhil on 27/8/17.
- */
 
 public class PollCardItem {
 

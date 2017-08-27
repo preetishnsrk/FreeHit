@@ -5,11 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.view.Window;
 
-/**
- * Created by nikhil on 27/8/17.
- */
 
 public class SplashScreen extends Activity{
 
