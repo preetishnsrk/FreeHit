@@ -244,28 +244,29 @@ public class QueryUtilMatchCard {
                    if(j>=1) {
                        if (matchStatus == null) {
                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, Result, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
-                       MyData.MatchNameArray[k]=MatchName;
-                       MyData.SeriesNameArray[k]=SeriesName;
-                       MyData.Team1ScoreArray[k]=TempTeam1Score;
-                       MyData.Team1OversArray[k]=TempTeam1Overs;
-                       MyData.Team2ScoreArray[k]=Team1score;
-                       MyData.Team2OversArray[k]=Team1Overs;
-                       MyData.MatchStatusResultArray[k]=Result;
-                       MyData.TargetLeadBysArray[k]=LTorTarget;
+
+                           MyData.MatchNameArray.add(MatchName);
+                           MyData.SeriesNameArray.add(SeriesName);
+                           MyData.Team1ScoreArray.add(TempTeam1Score);
+                           MyData.Team1OversArray.add(TempTeam1Overs);
+                           MyData.Team2ScoreArray.add(Team1score);
+                           MyData.Team2OversArray.add(Team1Overs);
+                           MyData.MatchStatusResultArray.add(Result);
+                           MyData.TargetLeadBysArray.add(LTorTarget);
 
 
                        }
                        else {
                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
 
-                           MyData.MatchNameArray[k]=MatchName;
-                           MyData.SeriesNameArray[k]=SeriesName;
-                           MyData.Team1ScoreArray[k]=TempTeam1Score;
-                           MyData.Team1OversArray[k]=TempTeam1Overs;
-                           MyData.Team2ScoreArray[k]=Team1score;
-                           MyData.Team2OversArray[k]=Team1Overs;
-                           MyData.MatchStatusResultArray[k]=matchStatus;
-                           MyData.TargetLeadBysArray[k]=LTorTarget;
+                           MyData.MatchNameArray.add(MatchName);
+                           MyData.SeriesNameArray.add(SeriesName);
+                           MyData.Team1ScoreArray.add(TempTeam1Score);
+                           MyData.Team1OversArray.add(TempTeam1Overs);
+                           MyData.Team2ScoreArray.add(Team1score);
+                           MyData.Team2OversArray.add(Team1Overs);
+                           MyData.MatchStatusResultArray.add(matchStatus);
+                           MyData.TargetLeadBysArray.add(LTorTarget);
 
                        }
                    }

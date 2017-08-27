@@ -3,30 +3,32 @@ package com.debut.ellipsis.freehit.Matches;
 
 import com.debut.ellipsis.freehit.R;
 
+import java.util.ArrayList;
+
 public class MyData {
-    static String[] MatchNameArray = {"3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI", "3rd ODI"};
-    static String[] SeriesNameArray = {"India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010", "India Tour of SriLanka , 5 ODIs , 2010"};
+    static ArrayList<String> MatchNameArray = new ArrayList<String>();
+    static ArrayList<String> SeriesNameArray = new ArrayList<String>();
 
     static Integer[] TempTeam1LogoArray = {R.drawable.matches, R.drawable.matches, R.drawable.matches,
             R.drawable.matches, R.drawable.matches, R.drawable.matches, R.drawable.matches,
             R.drawable.matches, R.drawable.matches, R.drawable.matches, R.drawable.matches};
 
-    static String[] Team1ScoreArray = {"100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3"};
+    static ArrayList<String> Team1ScoreArray = new ArrayList<String>();
 
-    static String[] Team1OversArray = {"20", "20", "20", "20", "20", "20", "20", "20", "20", "20", "20"};
+    static ArrayList<String> Team1OversArray = new ArrayList<String>();
 
 
     static Integer[] TempTeam2LogoArray = {R.drawable.matches, R.drawable.matches, R.drawable.matches,
             R.drawable.matches, R.drawable.matches, R.drawable.matches, R.drawable.matches,
             R.drawable.matches, R.drawable.matches, R.drawable.matches, R.drawable.matches};
 
-    static String[] Team2ScoreArray = {"100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3", "100/3"};
+    static ArrayList<String> Team2ScoreArray = new ArrayList<String>();
 
-    static String[] Team2OversArray = {"20", "20", "20", "20", "20", "20", "20", "20", "20", "20", "20"};
+    static ArrayList<String> Team2OversArray = new ArrayList<String>();
 
-    static String[] MatchStatusResultArray = {"Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets", "Match in progress/ India won by 3 wickets"};
+    static ArrayList<String> MatchStatusResultArray = new ArrayList<String>();
 
-    static String[] TargetLeadBysArray = {"Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100", "Target 189/lead by 100"};
+    static ArrayList<String> TargetLeadBysArray = new ArrayList<String>();
 
     static String[] MatchSummaryPreview = {"Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
     ,"So that's it from us for this game. We hope you enjoyed our coverage. India wrapped things up in time and they would have been pleased that they avenged the loss of 2015. Sri Lanka go back to the drawing board for the umpteenth time in the last few years. They need to raise the bar to stay afloat in the series. We look forward to your company for the 2nd Test starting on August 3, 2017 at Sinhalese Sports Club Ground, Colombo. Action begins at 1000 local (0430 GMT). Until then, it's goodbye and take care!"
