@@ -35,7 +35,7 @@ public class QueryUtilNews {
     }
 
     /**
-     * Query the USGS dataset and return an {@link NewsItem} object to represent a list of earthquakes.
+     * Query the News Dataset and return an {@link NewsItem} object to represent a list of earthquakes.
      */
 
     public static List<NewsItem> fetchNewsData(String requestUrl) {

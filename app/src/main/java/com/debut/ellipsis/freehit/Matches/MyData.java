@@ -1,6 +1,5 @@
 package com.debut.ellipsis.freehit.Matches;
 
-//TEMPORARY CLASS
 
 import com.debut.ellipsis.freehit.R;
 
