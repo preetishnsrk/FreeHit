@@ -172,10 +172,9 @@ public class QueryUtilMatchCard {
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(MatchCardsJSON);
             JSONObject query=basJsonResponse.getJSONObject("query");
-            System.out.println(basJsonResponse);
             JSONObject results=query.getJSONObject("results");
             JSONArray ScoreCards=results.getJSONArray("Scorecard");
-            System.out.print(results);
+
             for (int i = 0; i < ScoreCards.length() ; i++) {
                 JSONObject currentMatch = ScoreCards.getJSONObject(i);
 
@@ -245,6 +244,7 @@ public class QueryUtilMatchCard {
                    if(j>=1) {
                        if (matchStatus == null) {
                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, Result, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
+
                            MyData.MatchNameArray.add(MatchName);
                            MyData.SeriesNameArray.add(SeriesName);
                            MyData.Team1ScoreArray.add(TempTeam1Score);
@@ -253,6 +253,8 @@ public class QueryUtilMatchCard {
                            MyData.Team2OversArray.add(Team1Overs);
                            MyData.MatchStatusResultArray.add(Result);
                            MyData.TargetLeadBysArray.add(LTorTarget);
+
+
                        }
                        else {
                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");

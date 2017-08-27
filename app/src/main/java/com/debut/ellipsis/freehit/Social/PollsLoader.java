@@ -6,9 +6,6 @@ import android.util.Log;
 
 import java.util.List;
 
-/**
- * Created by nikhil on 28/8/17.
- */
 
 public class PollsLoader extends AsyncTaskLoader<List<PollCardItem>> {
     private static final String LOG_TAG = PollsLoader.class.getName();
