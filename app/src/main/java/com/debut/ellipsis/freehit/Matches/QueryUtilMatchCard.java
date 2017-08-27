@@ -176,7 +176,6 @@ public class QueryUtilMatchCard {
 
             for (int i = 0; i < ScoreCards.length() ; i++) {
                 JSONObject currentMatch = ScoreCards.getJSONObject(i);
-//                Bitmap bimage = null;
 
                 JSONObject Series=currentMatch.getJSONObject("series");
 

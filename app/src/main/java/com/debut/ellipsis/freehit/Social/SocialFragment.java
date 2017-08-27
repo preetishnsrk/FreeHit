@@ -38,7 +38,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
     public TabLayout socTabs;
     private PollItemAdapter pollAdapter;
     private static final String URL =
-            "http://www.strawpoll.me/api/v2/polls/1";
+            "http://www.strawpoll.me/api/v2/polls/2";
     public SearchTimeline searchTimeline;
     private static final int POLLS_LOADER_ID = 2;
 
