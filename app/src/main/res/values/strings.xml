@@ -7,7 +7,8 @@
     <string name="category_social">Social</string>
     <string name="category_stats">Stats</string>
 
-
+    <string name="com.twitter.sdk.android.CONSUMER_KEY">IVuwYVqrlivLssHFdqJvXnuyS</string>
+    <string name="com.twitter.sdk.android.CONSUMER_SECRET">t8N8vM2KMCnzHJ71puVfJrOZ9NgjwE8RU5IM3L5VQfF5VfnwNr</string>
     <string name="search_player">Player</string>
     <string name="search_team">Team</string>
     <string name="search_series">Series</string>

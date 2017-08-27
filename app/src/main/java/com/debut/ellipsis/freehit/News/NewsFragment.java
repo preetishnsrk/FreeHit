@@ -135,7 +135,12 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             public void onRefresh() {
                 refLayout.setRefreshing(true);
 //                LoaderManager loaderManager = getLoaderManager();
+                mAdapter.clear();
+                //Below line is purely to test if refresh works.
+                mAdapter.add(new NewsItem("Test","Test","Test","http://via.placeholder.com/350x150"));
+//                mAdapter.clear();
                 getLoaderManager().restartLoader(NEWS_LOADER_ID,null,NewsFragment.this);
+                    mAdapter.notifyDataSetChanged();
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
@@ -170,7 +175,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (News != null && !News.isEmpty()) {
+        if (News != null && !News.isEmpty() && mAdapter.getCount()<=1) {
 
             mAdapter.addAll(News);
         }
