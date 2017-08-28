@@ -54,7 +54,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.item, container, false);
+        final View rootView = inflater.inflate(R.layout.item, container, false);
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
 
        // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
@@ -78,7 +78,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 // Find the current earthquake that was clicked on
-                NewsItem currentNewsArticle = (NewsItem) mAdapter.getItem(position);
+                NewsItem currentNewsArticle = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
@@ -103,10 +103,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
-        ConnectivityManager connMgr = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        final ConnectivityManager connMgr = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
-        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+       final NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         // If there is a network connection, fetch data
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -120,12 +120,8 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            loader.hide();
-            System.out.println("NOCONN");
-            // Update empty state with no connection error message
-            mEmptyStateTextView.setText("NO CONNECTION");
-            return fragView;
-
+          mAdapter.add(new NewsItem("No connection","Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+            return rootView;
         }
 
         // Finding a reference to the refresh layout
@@ -133,24 +129,35 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
+                // Checking if connected or not on refresh
                 refLayout.setRefreshing(true);
+                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
 //                LoaderManager loaderManager = getLoaderManager();
-                mAdapter.clear();
-                //Below line is purely to test if refresh works.
-                mAdapter.add(new NewsItem("Test","Test","Test","http://via.placeholder.com/350x150"));
+                    mAdapter.clear();
 //                mAdapter.clear();
-                getLoaderManager().restartLoader(NEWS_LOADER_ID,null,NewsFragment.this);
+                    getLoaderManager().restartLoader(NEWS_LOADER_ID, null, NewsFragment.this);
                     mAdapter.notifyDataSetChanged();
-                new Handler().postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            refLayout.setRefreshing(false);
+                        }
+                    }, 1000);
 
-                        refLayout.setRefreshing(false);
-                    }
-                },1000);
+                }
+                else {
+                    // Otherwise, display error
+                    // First, hide loading indicator so error message will be visible
+                    mAdapter.clear();
+                    mAdapter.add(new NewsItem("No connection","Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+                    mAdapter.notifyDataSetChanged();
 
+                }
+                refLayout.setRefreshing(false);
             }
-        });
+        }
+        );
 
         return rootView;
     }
@@ -175,7 +182,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (News != null && !News.isEmpty() && mAdapter.getCount()<=1) {
+        if (News != null && !News.isEmpty() && mAdapter.getCount()<1) {
 
             mAdapter.addAll(News);
         }

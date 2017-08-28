@@ -62,64 +62,93 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
 
-                <ImageView
-                    android:id="@+id/team_logo_1"
-                    android:tag="image_tag"
-                    android:layout_alignParentStart="true"
-                    android:layout_width="65dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/matches"/>
-
-                <TextView
-                    android:id="@+id/score_team_1"
-                    android:layout_centerVertical="true"
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    tools:text="100/3"
-                    android:layout_toEndOf="@+id/team_logo_1"/>
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:id="@+id/score_team_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/team_logo_1"
+                        android:textSize="20sp"
 
-                <TextView
-                    android:id="@+id/overs_team_1"
+                        tools:text="100/3" />
+                    <TextView
+                        android:id="@+id/overs_team_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/score_team_1"
+                        android:layout_alignEnd="@id/score_team_1"
+                            android:paddingTop="40dp"
+                        android:textSize="20sp"
+                        tools:text="20" />
+
+                    <ImageView
+                        android:id="@+id/team_logo_1"
+                        android:layout_width="65dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/matches"
+                        android:tag="image_tag" />
+
+                    <TextView
+                        android:id="@+id/shortname_team_1"
+
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignEnd="@id/score_team_1"
+                           android:paddingTop="22dp"
+                        android:textSize="20sp"
+                        tools:text="SN" />
+                </RelativeLayout>
+
+                <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20sp"
-                    android:paddingTop="50dp"
-                    android:paddingStart="15dp"
-                    tools:text="20"
-                    android:layout_centerVertical="true"
-                    android:layout_toEndOf="@+id/team_logo_1" />
+                    android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/team_logo_2"
-                    android:layout_alignParentEnd="true"
-                    android:tag="image_tag"
-                    android:layout_width="65dp"
-                    android:layout_height="100dp"
-                    android:layout_margin="5dp"
-                    android:src="@drawable/matches"/>
+                    <ImageView
+                        android:id="@+id/team_logo_2"
+                        android:layout_width="65dp"
+                        android:layout_height="100dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_margin="5dp"
+                        android:src="@drawable/matches"
+                        android:tag="image_tag" />
 
-                <TextView
-                    android:id="@+id/score_team_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    tools:text="100/3"
-                    android:layout_toStartOf="@+id/team_logo_2"/>
+                    <TextView
+                        android:id="@+id/overs_team_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
 
-                <TextView
-                    android:id="@+id/overs_team_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/score_team_2"
-                    android:layout_centerVertical="true"
-                    android:textSize="20sp"
-                    android:paddingTop="50dp"
-                    android:paddingEnd="15dp"
-                    android:layout_toStartOf="@+id/team_logo_2"
-                    tools:text="20"/>
+                        android:layout_below="@+id/score_team_2"
+                        android:layout_alignStart="@+id/score_team_2"
+                        android:paddingEnd="15dp"
+                    android:paddingTop="40dp"
+                        android:textSize="20sp"
+                        tools:text="20" />
+
+                    <TextView
+                        android:id="@+id/shortname_team_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_alignStart="@id/score_team_2"
+                        android:textSize="20sp"
+                        android:paddingTop="22dp"
+                        tools:text="BAN" />
+
+                    <TextView
+                        android:id="@+id/score_team_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/team_logo_2"
+                        android:textSize="20sp"
+                        tools:text="100/3" />
+                </RelativeLayout>
+
 
             </RelativeLayout>
 

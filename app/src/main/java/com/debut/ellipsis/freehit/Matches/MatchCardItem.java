@@ -10,6 +10,10 @@ public class MatchCardItem {
 
     private String mTeam1LogoURL;
 
+    private String mTeam1SN;
+
+    private String mTeam2SN;
+
     private String mTeam1Score;
 
     private String mTeam1Overs;
@@ -31,7 +35,7 @@ public class MatchCardItem {
     private String mMatchSummary;
 
     //WHEN MATCH IS IN PROGRESS
-    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
+    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary,String Team1SN,String Team2SN)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -41,13 +45,15 @@ public class MatchCardItem {
         mTeam2LogoURL=Team2LogoURL;
         mTeam2Overs=Team2Overs;
         mTeam2Score=Team2Score;
+        mTeam1SN = Team1SN;
+        mTeam2SN = Team2SN;
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
         mMatchSummary=MatchSummary;
     }
 
     //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
-    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String MatchSummary)
+    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score,String Team1Overs,String Team2LogoURL,String Team2Score,String Team2Overs,String MatchStatusResult,String MatchSummary,String Team1SN,String Team2SN)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -56,6 +62,8 @@ public class MatchCardItem {
         mTeam1Overs=Team1Overs;
         mTeam2LogoURL=Team2LogoURL;
         mTeam2Overs=Team2Overs;
+        mTeam1SN = Team1SN;
+        mTeam2SN = Team2SN;
         mTeam2Score=Team2Score;
         mMatchStatusResult=MatchStatusResult;
         mMatchSummary=MatchSummary;
@@ -63,7 +71,7 @@ public class MatchCardItem {
     }
 
     //TEMPORARY METHOD
-    public MatchCardItem(String MatchName,String SeriesName,int TempTeamLogo1,String Team1Score,String Team1Overs,int TempTeamLogo2,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
+    public MatchCardItem(String MatchName,String SeriesName,int TempTeamLogo1,String Team1Score,String Team1Overs,int TempTeamLogo2,String Team2Score,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary,String Team1SN,String Team2SN)
     {
         mMatchName=MatchName;
         mSeriesName=SeriesName;
@@ -72,6 +80,8 @@ public class MatchCardItem {
         mTeam1Overs=Team1Overs;
         mtempTeamLogo2=TempTeamLogo2;
         mTeam2Overs=Team2Overs;
+        mTeam1SN = Team1SN;
+        mTeam2SN = Team2SN;
         mTeam2Score=Team2Score;
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
@@ -130,4 +140,13 @@ public class MatchCardItem {
     public String getmMatchSummaryPreview() {
         return mMatchSummary;
     }
+
+    public String getmTeam1SN() {
+        return mTeam1SN;
+    }
+
+    public String getmTeam2SN() {
+        return mTeam2SN;
+    }
+
 }

@@ -19,6 +19,16 @@ public class NewsItem {
         murlofwebsite=urlofwebsite;
     }
 
+    // Constructor in case of no connection, passing google so app doens't crash (Alternative is to check everytime we pass a item, too much work)
+    public NewsItem(String headline,String description)
+    {
+        mheadline=headline;
+        mdescription=description;
+        murlofwebsite="http://www.google.com";
+
+    }
+
+
     public String getMheadline()
     {
         return mheadline;

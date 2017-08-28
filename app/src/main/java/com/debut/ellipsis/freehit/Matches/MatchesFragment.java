@@ -1,18 +1,19 @@
 package com.debut.ellipsis.freehit.Matches;
 
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.debut.ellipsis.freehit.News.NewsItemAdapter;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
@@ -31,10 +32,12 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
     private static final String URL =
             "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20cricket.scorecard.live.summary&format=json&diagnostics=true&env=store%3A%2F%2F0TxIGQMQbObzvU4Apia0V0&callback=";
 
-    private static final int NEWS_LOADER_ID = 1;
+    private static final int MATCH_LOADER_ID = 3;
 
     private MatchesItemAdapter mAdapter;
     public TextView mEmptyStateTextView;
+    public ViewPager viewPager;
+   public CircleIndicator indicator;
 
     public static final String LOG_TAG = MatchesFragment.class.getSimpleName();
 
@@ -52,43 +55,44 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
 
-        data = new ArrayList<MatchCardItem>();
-        for (int i = 0; i < MyData.MatchNameArray.size()-1; i++) {
-            data.add(new MatchCardItem(
-                    MyData.MatchNameArray.toString(),
-                    MyData.SeriesNameArray.toString(),
-                    MyData.TempTeam1LogoArray[i],
-                    MyData.Team1ScoreArray.toString(),
-                    MyData.Team1OversArray.toString(),
-                    MyData.TempTeam2LogoArray[i],
-                    MyData.Team2ScoreArray.toString(),
-                    MyData.Team2OversArray.toString(),
-                    MyData.MatchStatusResultArray.toString(),
-                    MyData.TargetLeadBysArray.toString(),
-                    MyData.MatchSummaryPreview[i]
-            ));
-        }
+
+
 //        data.add(new MatchCardItem("a","a","A","a","a","a","a","a","a","a"));
+//  // Get a reference to the ConnectivityManager to check state of network connectivity
+        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Get a reference to the LoaderManager, in order to interact with loaders.
+            LoaderManager loaderManager = getLoaderManager();
+
+            // Initialize the loader. Pass in the int ID constant defined above and pass in null for
+            // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
+            // because this activity implements the LoaderCallbacks interface).
+            loaderManager.initLoader(MATCH_LOADER_ID, null, this);
 
 
-
-        for (int i=0;i<MyData.MatchNameArray.size()-1;i++)
-        {
-            System.out.print(MyData.MatchNameArray);
-            Log.i(LOG_TAG,MyData.MatchNameArray.toString());
-            Log.i(LOG_TAG,MyData.SeriesNameArray.toString());
-            Log.i(LOG_TAG,MyData.Team1ScoreArray.toString());
-            Log.i(LOG_TAG,MyData.Team1OversArray.toString());
-            Log.i(LOG_TAG,MyData.Team2ScoreArray.toString());
-            Log.i(LOG_TAG,MyData.Team2OversArray.toString());
-            Log.i(LOG_TAG,MyData.MatchStatusResultArray.toString());
-            Log.i(LOG_TAG,MyData.TargetLeadBysArray.toString());
         }
+//
+//
+//        for (int i=0;i<MyData.MatchNameArray.size()-1;i++)
+//        {
+//            System.out.print(MyData.MatchNameArray);
+//            Log.i(LOG_TAG,MyData.MatchNameArray.toString());
+//            Log.i(LOG_TAG,MyData.SeriesNameArray.toString());
+//            Log.i(LOG_TAG,MyData.Team1ScoreArray.toString());
+//            Log.i(LOG_TAG,MyData.Team1OversArray.toString());
+//            Log.i(LOG_TAG,MyData.Team2ScoreArray.toString());
+//            Log.i(LOG_TAG,MyData.Team2OversArray.toString());
+//            Log.i(LOG_TAG,MyData.MatchStatusResultArray.toString());
+//            Log.i(LOG_TAG,MyData.TargetLeadBysArray.toString());
+//        }
 
-        ViewPager viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
-        MatchesItemAdapter mCustomPagerAdapter = new MatchesItemAdapter(getActivity(),data);
-        viewPager.setAdapter(mCustomPagerAdapter);
-        CircleIndicator indicator = (CircleIndicator)rootView.findViewById(R.id.indicator);
+         viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
+         mAdapter = new MatchesItemAdapter(getActivity(),new ArrayList<MatchCardItem>());
+        viewPager.setAdapter(mAdapter);
+         indicator = (CircleIndicator)rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
         return rootView;
@@ -101,7 +105,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
     }
 
     @Override
-    public void onLoadFinished(Loader<List<MatchCardItem>> loader, List<MatchCardItem> Matchcard) {
+    public void onLoadFinished(Loader<List<MatchCardItem>> loader, List<MatchCardItem> data) {
 //        Log.d(this,"Dead");
 //        loadingIndicator.setVisibility(View.GONE);
 //         Set empty state text to display "No News found."
@@ -109,19 +113,20 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (Matchcard != null && !Matchcard.isEmpty() && mAdapter.getCount()<=1) {
-
+        if (data != null && !data.isEmpty() && mAdapter.getCount()<=1) {
+            mAdapter = new MatchesItemAdapter(getContext(),data);
+            viewPager.setAdapter(mAdapter);
+            indicator.setViewPager(viewPager);
         }
-
     }
 
 
 
     @Override
     public void onLoaderReset(Loader<List<MatchCardItem>> loader) {
-        loader=null;
+
         // Loader reset, so we can clear out our existing data.
-        mAdapter.clear();
+
     }
 
 }

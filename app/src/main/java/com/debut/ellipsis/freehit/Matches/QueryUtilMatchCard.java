@@ -179,9 +179,17 @@ public class QueryUtilMatchCard {
                 JSONObject currentMatch = ScoreCards.getJSONObject(i);
 
                 JSONObject Series=currentMatch.getJSONObject("series");
-
-                JSONObject MatchResult=currentMatch.getJSONObject("result");
-
+                if(currentMatch.get("result") instanceof String) {
+                    String MatchResult = currentMatch.getString("result");
+                }
+                else if(currentMatch.get("result") instanceof JSONObject){
+                    JSONObject MatchResult = currentMatch.getJSONObject("result");
+                    if(MatchResult.length() == 0) {
+                        String matchWinner = MatchResult.getString("winner");
+                        String byRunsOrWickets = MatchResult.getString("by");
+                        String DrawOrInningsWin = MatchResult.getString("how");
+                    }
+                }
                 String SeriesID=Series.getString("series_id");
 
                 String SeriesName=Series.getString("series_name");
@@ -194,39 +202,35 @@ public class QueryUtilMatchCard {
                     JSONObject CurrentTeam1=Teams.getJSONObject(0);
                     String team1ID=CurrentTeam1.getString("i");
                     String ShortTeamName1=CurrentTeam1.getString("sn");
-                    JSONObject logo1=CurrentTeam1.getJSONObject("logo");
-                    String team1Logo=logo1.getString("std");
+                    JSONObject logo1=CurrentTeam1.getJSONObject("flag");
+                    String team1Logo=logo1.getString("roundlarge");
 
                 JSONObject CurrentTeam2=Teams.getJSONObject(1);
                 String team2ID=CurrentTeam2.getString("i");
                 String ShortTeamName2=CurrentTeam2.getString("sn");
-                JSONObject logo2=CurrentTeam1.getJSONObject("logo");
-                String team2Logo=logo2.getString("std");
+                JSONObject logo2=CurrentTeam2.getJSONObject("flag");
+                String team2Logo=logo2.getString("roundlarge");
 
                 JSONArray innings=currentMatch.getJSONArray("past_ings");
 
                //Never used these but let them be for time being
-                JSONObject Innings1=innings.getJSONObject(0);
-                JSONObject Innings2=innings.getJSONObject(1);
-                JSONObject Innings3=innings.getJSONObject(2);
-                JSONObject Innings4=innings.getJSONObject(3);
+//                JSONObject Innings1=innings.getJSONObject(0);
+//                JSONObject Innings2=innings.getJSONObject(1);
+//                JSONObject Innings3=innings.getJSONObject(2);
+//                JSONObject Innings4=innings.getJSONObject(3);
 
 
                 String matchStatus=currentMatch.getString("ms");
 
-                String matchWinner=MatchResult.getString("winner");
-                String byRunsOrWickets=MatchResult.getString("by");
-                String DrawOrInningsWin=MatchResult.getString("how");
-
                 String Result=null;
-                if(matchStatus==null)
-                {
-                    Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
-                }
+//                if(matchStatus==null)
+//                {
+//                    Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
+//                }
 
                 String TempTeam1Score=null,TempTeam1Overs=null;
                 k=0;
-                for(int j=0;j<4;j++) {
+                for(int j=0;j<2;j++) {
                     JSONObject tempinnings = innings.getJSONObject(j);
                     JSONObject CurrentDayOrInnings = tempinnings.getJSONObject("s");
                     String DayorInnings = CurrentDayOrInnings.getString("dm");
@@ -239,11 +243,16 @@ public class QueryUtilMatchCard {
                         Team1Overs = LeadTrailOrTarget.getString("o");
                         Team1score = Team1Runs + "/" + Team1Wickets;
                     }
-
-                    String LTorTarget = LeadTrailOrTarget.getString("tl");
+                    String LTorTarget;
+                    if(LeadTrailOrTarget.has("tl")) {
+                       LTorTarget  = LeadTrailOrTarget.getString("tl");
+                    }
+                    else{
+                        LTorTarget = "-";
+                    }
                    if(j>=1) {
                        if (matchStatus == null) {
-                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, Result, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
+                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, Result, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION",ShortTeamName1,ShortTeamName2);
 
                            MyData.MatchNameArray.add(MatchName);
                            MyData.SeriesNameArray.add(SeriesName);
@@ -257,7 +266,7 @@ public class QueryUtilMatchCard {
 
                        }
                        else {
-                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
+                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION",ShortTeamName1,ShortTeamName2);
 
                            MyData.MatchNameArray.add(MatchName);
                            MyData.SeriesNameArray.add(SeriesName);
