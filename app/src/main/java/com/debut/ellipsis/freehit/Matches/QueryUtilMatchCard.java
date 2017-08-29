@@ -276,6 +276,7 @@ public class QueryUtilMatchCard {
                         MatchCardItem.setTeam1LogoURL();
                         MatchCardItem.setTeam1Score1(Team1score);
                         MatchCardItem.setTeam2Score1(TempTeam1Score);
+                        
                         MatchCardItem.setTeam2LogoURL();
                         MatchCardItem.setTeam2Overs();
                         matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score, TempTeam1Overs, team2Logo, TempTeam1Score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
