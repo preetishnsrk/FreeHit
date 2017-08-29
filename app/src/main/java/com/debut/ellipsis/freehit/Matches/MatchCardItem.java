@@ -16,13 +16,13 @@ public class MatchCardItem {
 
     private static String mTeam1Score1;
 
-    private static String mTeam1Overs;
+    public static String mTeam1Overs;
 
     private static String mTeam2LogoURL;
 
     private static String mTeam2Score1;
 
-    private static String mTeam2Overs;
+    public static String mTeam2Overs;
 
     private static String mMatchStatusResult;
 

@@ -246,7 +246,7 @@ public class QueryUtilMatchCard {
 //                }
 
                 String TempTeam1Score=null,TempTeam1Overs=null;
-                for(int j=0;j<4;j++) {
+                for(int j=0;j<innings.length();j++) {
                     JSONObject tempinnings = innings.getJSONObject(j);
                     JSONObject CurrentDayOrInnings = tempinnings.getJSONObject("s");
                     String DayorInnings = CurrentDayOrInnings.getString("dm");
@@ -274,8 +274,8 @@ public class QueryUtilMatchCard {
 
                             MatchCardItem.setTeam1Overs();
                             MatchCardItem.setTeam1LogoURL();
-                            MatchCardItem.setTeam1Score1(TempTeam1Score);
-                            MatchCardItem.setTeam2Score1(Team1score);
+                            MatchCardItem.setTeam1Score1(Team1score);
+                            MatchCardItem.setTeam2Score1(TempTeam1Score);
                             MatchCardItem.setTeam2LogoURL();
                             MatchCardItem.setTeam2Overs();
                             matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
@@ -304,6 +304,12 @@ public class QueryUtilMatchCard {
                     TempTeam1Overs = Team1Overs;
 
                     Log.e(LOG_TAG, String.valueOf(j));
+                }
+
+                if(ScoreCards.length()>1)
+                {
+                    MatchCardItem.mTeam1Overs=null;
+                    MatchCardItem.mTeam2Overs=null;
                 }
 
                 MatchCards.add(matchCard);
