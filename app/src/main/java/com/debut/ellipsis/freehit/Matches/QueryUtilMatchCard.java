@@ -212,11 +212,11 @@ public class QueryUtilMatchCard {
                 JSONArray Teams=currentMatch.getJSONArray("teams");
 
 
-                    JSONObject CurrentTeam1=Teams.getJSONObject(0);
-                    String team1ID=CurrentTeam1.getString("i");
-                    ShortTeamName1=CurrentTeam1.getString("sn");
-                    JSONObject logo1=CurrentTeam1.getJSONObject("flag");
-                    team1Logo=logo1.getString("roundlarge");
+                JSONObject CurrentTeam1=Teams.getJSONObject(0);
+                String team1ID=CurrentTeam1.getString("i");
+                ShortTeamName1=CurrentTeam1.getString("sn");
+                JSONObject logo1=CurrentTeam1.getJSONObject("flag");
+                team1Logo=logo1.getString("roundlarge");
 
                 JSONObject CurrentTeam2=Teams.getJSONObject(1);
                 String team2ID=CurrentTeam2.getString("i");
@@ -229,7 +229,7 @@ public class QueryUtilMatchCard {
 
                 JSONArray innings=currentMatch.getJSONArray("past_ings");
 
-               //Never used these but let them be for time being
+                //Never used these but let them be for time being
 //                JSONObject Innings1=innings.getJSONObject(0);
 //                JSONObject Innings2=innings.getJSONObject(1);
 //                JSONObject Innings3=innings.getJSONObject(2);
@@ -255,14 +255,14 @@ public class QueryUtilMatchCard {
                     Team1score=null;
                     String Team1Runs=null, Team1Wickets=null;
                     Team1Overs=null;
-                        Team1Runs = LeadTrailOrTarget.getString("r");
-                        Team1Wickets = LeadTrailOrTarget.getString("w");
-                        Team1Overs = LeadTrailOrTarget.getString("o");
-                        Team1score = Team1Runs + "/" + Team1Wickets;
+                    Team1Runs = LeadTrailOrTarget.getString("r");
+                    Team1Wickets = LeadTrailOrTarget.getString("w");
+                    Team1Overs = LeadTrailOrTarget.getString("o");
+                    Team1score = Team1Runs + "/" + Team1Wickets;
 
                     String LTorTarget;
                     if(LeadTrailOrTarget.has("tl")) {
-                       LTorTarget  = LeadTrailOrTarget.getString("tl");
+                        LTorTarget  = LeadTrailOrTarget.getString("tl");
                     }
                     else{
                         LTorTarget = "-";
@@ -272,19 +272,19 @@ public class QueryUtilMatchCard {
 
                     if(CurrentDayOrInnings.getInt("i")==1||CurrentDayOrInnings.getInt("i")==2) {
 
-                            MatchCardItem.setTeam1Overs();
-                            MatchCardItem.setTeam1LogoURL();
-                            MatchCardItem.setTeam1Score1(Team1score);
-                            MatchCardItem.setTeam2Score1(TempTeam1Score);
-                            MatchCardItem.setTeam2LogoURL();
-                            MatchCardItem.setTeam2Overs();
-                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
-                       }
+                        MatchCardItem.setTeam1Overs();
+                        MatchCardItem.setTeam1LogoURL();
+                        MatchCardItem.setTeam1Score1(Team1score);
+                        MatchCardItem.setTeam2Score1(TempTeam1Score);
+                        MatchCardItem.setTeam2LogoURL();
+                        MatchCardItem.setTeam2Overs();
+                        matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score, TempTeam1Overs, team2Logo, TempTeam1Score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
+                    }
 
                     if(CurrentDayOrInnings.getInt("i")==3||CurrentDayOrInnings.getInt("i")==4)
                     {
                         if(CurrentDayOrInnings.getInt("i")==4)
-                        Target="Target is"+LeadTrailOrTarget.getString("tg");
+                            Target="Target is"+LeadTrailOrTarget.getString("tg");
                         if (matchStatus == null) {
                             matchCard = new MatchCardItem(Team1score,TempTeam1Score, Result, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
                             MatchCardItem.setTeam2Score2(TempTeam1Score);
@@ -328,4 +328,3 @@ public class QueryUtilMatchCard {
         return MatchCards;
     }
 }
-
