@@ -229,20 +229,18 @@ public class QueryUtilMatchCard {
 //                }
 
                 String TempTeam1Score=null,TempTeam1Overs=null;
-                k=0;
-                for(int j=0;j<2;j++) {
+                for(int j=0;j<4;j++) {
                     JSONObject tempinnings = innings.getJSONObject(j);
                     JSONObject CurrentDayOrInnings = tempinnings.getJSONObject("s");
                     String DayorInnings = CurrentDayOrInnings.getString("dm");
                     JSONObject LeadTrailOrTarget = CurrentDayOrInnings.getJSONObject("a");
 
                     String Team1score=null, Team1Runs=null, Team1Wickets=null, Team1Overs=null;
-                    if (team1ID != CurrentDayOrInnings.getString("i")) {
                         Team1Runs = LeadTrailOrTarget.getString("r");
                         Team1Wickets = LeadTrailOrTarget.getString("w");
                         Team1Overs = LeadTrailOrTarget.getString("o");
                         Team1score = Team1Runs + "/" + Team1Wickets;
-                    }
+
                     String LTorTarget;
                     if(LeadTrailOrTarget.has("tl")) {
                        LTorTarget  = LeadTrailOrTarget.getString("tl");
@@ -250,43 +248,41 @@ public class QueryUtilMatchCard {
                     else{
                         LTorTarget = "-";
                     }
-                   if(j>=1) {
-                       if (matchStatus == null) {
-                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, Result, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION",ShortTeamName1,ShortTeamName2);
+                    String Target=null;
+                    if(LeadTrailOrTarget.has("tg")){
+                        Target="Target is"+LeadTrailOrTarget.getString("tg");
+                    }
 
-                           MyData.MatchNameArray.add(MatchName);
-                           MyData.SeriesNameArray.add(SeriesName);
-                           MyData.Team1ScoreArray.add(TempTeam1Score);
-                           MyData.Team1OversArray.add(TempTeam1Overs);
-                           MyData.Team2ScoreArray.add(Team1score);
-                           MyData.Team2OversArray.add(Team1Overs);
-                           MyData.MatchStatusResultArray.add(Result);
-                           MyData.TargetLeadBysArray.add(LTorTarget);
+                    if(CurrentDayOrInnings.getInt("i")==1||CurrentDayOrInnings.getInt("i")==2) {
+                        if(innings.length()<=1)
+                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
+                        else
+                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, team2Logo, Team1score, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
+
+                    }
+
+                    if(CurrentDayOrInnings.getInt("i")==3||CurrentDayOrInnings.getInt("i")==4)
+                    {
+                        if (matchStatus == null) {
+                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, team2Logo, Team1score, Result, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
 
 
-                       }
-                       else {
-                           matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, TempTeam1Overs, team2Logo, Team1score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION",ShortTeamName1,ShortTeamName2);
 
-                           MyData.MatchNameArray.add(MatchName);
-                           MyData.SeriesNameArray.add(SeriesName);
-                           MyData.Team1ScoreArray.add(TempTeam1Score);
-                           MyData.Team1OversArray.add(TempTeam1Overs);
-                           MyData.Team2ScoreArray.add(Team1score);
-                           MyData.Team2OversArray.add(Team1Overs);
-                           MyData.MatchStatusResultArray.add(matchStatus);
-                           MyData.TargetLeadBysArray.add(LTorTarget);
+                        }
+                        else {
+                            matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, TempTeam1Score, team2Logo, Team1score, matchStatus, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
 
-                       }
-                   }
+
+
+                        }
+
+
+                    }
                     TempTeam1Score = Team1score;
                     TempTeam1Overs = Team1Overs;
-                    k++;
+
+                    Log.e(LOG_TAG, String.valueOf(j));
                 }
-
-
-
-
 
 //                try {
 //                    InputStream in = new java.net.URL(urlofimage).openStream();
@@ -299,7 +295,7 @@ public class QueryUtilMatchCard {
 //                Newss.add(news);
 //                news = new NewsItem(headlines,description,bimage);
                 MatchCards.add(matchCard);
-                Log.e(LOG_TAG, String.valueOf(i));
+                Log.e("j=", String.valueOf(i));
             }
             return MatchCards;
         }

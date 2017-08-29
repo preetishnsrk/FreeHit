@@ -197,7 +197,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
         if (data != null && !data.isEmpty()) {
             pollAdapter = new PollItemAdapter(getContext(),data);
             pollsPager.setAdapter(pollAdapter);
-            indicator.setBackgroundColor(Color.BLACK);
+            indicator.setBackgroundColor(Color.TRANSPARENT);
             indicator.setViewPager(pollsPager);
 
 

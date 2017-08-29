@@ -54,13 +54,21 @@ public class MatchesItemAdapter extends PagerAdapter {
         imageViewTeam1Logo = (ImageView) view.findViewById(R.id.team_logo_1);
 //        imageViewTeam1Logo.setImageResource(this.dataObjectList.get(position).getMtempTeamLogo1());
         TextView textViewSeriesTeam1Score = (TextView) view.findViewById(R.id.score_team_1);
-        textViewSeriesTeam1Score.setText(this.dataObjectList.get(position).getmTeam1Score());
+        textViewSeriesTeam1Score.setText(this.dataObjectList.get(position).getmTeam1Score1());
+
+        TextView textViewSeriesTeam1Score2 = (TextView) view.findViewById(R.id.score2_team_1);
+        textViewSeriesTeam1Score2.setText(this.dataObjectList.get(position).getmTeam1Score2());
+
         TextView textViewSeriesTeam1Overs = (TextView) view.findViewById(R.id.overs_team_1);
         textViewSeriesTeam1Overs.setText(this.dataObjectList.get(position).getmTeam1Overs());
         imageViewTeam2Logo = (ImageView) view.findViewById(R.id.team_logo_2);
 //        imageViewTeam2Logo.setImageResource(this.dataObjectList.get(position).getMtempTeamLogo2());
         TextView textViewSeriesTeam2Score = (TextView) view.findViewById(R.id.score_team_2);
-        textViewSeriesTeam2Score.setText(this.dataObjectList.get(position).getmTeam2Score());
+        textViewSeriesTeam2Score.setText(this.dataObjectList.get(position).getmTeam2Score1());
+
+        TextView textViewSeriesTeam2Score2 = (TextView) view.findViewById(R.id.score2_team_2);
+        textViewSeriesTeam2Score2.setText(this.dataObjectList.get(position).getmTeam2Score2());
+
         TextView textViewSeriesTeam2Overs = (TextView) view.findViewById(R.id.overs_team_2);
         textViewSeriesTeam2Overs.setText(this.dataObjectList.get(position).getmTeam2Overs());
         TextView textViewMatchStatusResult = (TextView) view.findViewById(R.id.match_status_result);

@@ -74,20 +74,6 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
         }
-//
-//
-//        for (int i=0;i<MyData.MatchNameArray.size()-1;i++)
-//        {
-//            System.out.print(MyData.MatchNameArray);
-//            Log.i(LOG_TAG,MyData.MatchNameArray.toString());
-//            Log.i(LOG_TAG,MyData.SeriesNameArray.toString());
-//            Log.i(LOG_TAG,MyData.Team1ScoreArray.toString());
-//            Log.i(LOG_TAG,MyData.Team1OversArray.toString());
-//            Log.i(LOG_TAG,MyData.Team2ScoreArray.toString());
-//            Log.i(LOG_TAG,MyData.Team2OversArray.toString());
-//            Log.i(LOG_TAG,MyData.MatchStatusResultArray.toString());
-//            Log.i(LOG_TAG,MyData.TargetLeadBysArray.toString());
-//        }
 
          viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
          mAdapter = new MatchesItemAdapter(getActivity(),new ArrayList<MatchCardItem>());
