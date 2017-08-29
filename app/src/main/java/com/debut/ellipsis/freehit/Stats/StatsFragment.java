@@ -25,20 +25,19 @@ StatsFragment extends Fragment {
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView= inflater.inflate(R.layout.stats_item, container, false);
+        View rootView = inflater.inflate(R.layout.stats_item, container, false);
 
-        final ArrayList<StatsItem> statsItem=new ArrayList<StatsItem>();
+        final ArrayList<StatsItem> statsItem = new ArrayList<StatsItem>();
 
-        statsItem.add(new StatsItem(R.drawable.player,R.string.search_player));
-        statsItem.add(new StatsItem(R.drawable.team,R.string.search_team));
-        statsItem.add(new StatsItem(R.drawable.shield,R.string.search_series));
-        statsItem.add(new StatsItem(R.drawable.star,R.string.rankings));
-        statsItem.add(new StatsItem(R.drawable.records,R.string.records));
+        statsItem.add(new StatsItem(R.drawable.player, R.string.search_player));
+        statsItem.add(new StatsItem(R.drawable.team, R.string.search_team));
+        statsItem.add(new StatsItem(R.drawable.shield, R.string.search_series));
+        statsItem.add(new StatsItem(R.drawable.star, R.string.rankings));
+        statsItem.add(new StatsItem(R.drawable.records, R.string.records));
 
 
         StatsAdapter adapter = new StatsAdapter(getActivity(), statsItem);

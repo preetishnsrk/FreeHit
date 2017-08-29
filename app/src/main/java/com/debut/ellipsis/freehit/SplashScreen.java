@@ -7,9 +7,10 @@ import android.os.Handler;
 import android.support.annotation.Nullable;
 
 
-public class SplashScreen extends Activity{
+public class SplashScreen extends Activity {
 
     private static int SPLASH_TIMER = 3000;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -18,11 +19,11 @@ public class SplashScreen extends Activity{
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this,MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, MainActivity.class);
                 startActivity(i);
                 finish();
             }
-        },SPLASH_TIMER);
+        }, SPLASH_TIMER);
 
 
     }

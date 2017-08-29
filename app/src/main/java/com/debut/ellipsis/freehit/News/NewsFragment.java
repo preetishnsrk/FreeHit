@@ -26,14 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-
 /**
  * A simple {@link Fragment} subclass.
  */
 public class NewsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsItem>> {
 
 
-  public  View loadingIndicator;
+    public View loadingIndicator;
     //the website url of the api
     private static final String URL =
             "https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=latest&apiKey=df0d40507d0548308c737ded0b6f8a82";
@@ -49,7 +48,6 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -57,10 +55,9 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         final View rootView = inflater.inflate(R.layout.item, container, false);
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
 
-       // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
+        // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
         /*getLoaderManager().initLoader(0, null, this);
         getLoaderManager().getLoader(0).startLoading();*/
-
 
 
         //Finding a reference to the AVLoading bar
@@ -69,9 +66,8 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // Find a reference to the {@link ListView} in the layout
         ListView NewsListView = (ListView) rootView.findViewById(R.id.list);
 
-       mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
-       NewsListView.setEmptyView(mEmptyStateTextView);
-
+        mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
+        NewsListView.setEmptyView(mEmptyStateTextView);
 
 
         NewsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -83,7 +79,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
                 Uri earthquakeUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
 
-                if(currentNewsArticle.getMurlofwebsite()!=null) {
+                if (currentNewsArticle.getMurlofwebsite() != null) {
                     // Create a new intent to view the earthquake URI
                     Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
 
@@ -103,10 +99,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
-        final ConnectivityManager connMgr = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        final ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
-       final NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+        final NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
 
         // If there is a network connection, fetch data
         if (networkInfo != null && networkInfo.isConnected()) {
@@ -120,43 +116,42 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-          mAdapter.add(new NewsItem("No connection","Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+            mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
             return rootView;
         }
 
         // Finding a reference to the refresh layout
         final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // Checking if connected or not on refresh
-                refLayout.setRefreshing(true);
-                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-                if (networkInfo != null && networkInfo.isConnected()) {
+                                           @Override
+                                           public void onRefresh() {
+                                               // Checking if connected or not on refresh
+                                               refLayout.setRefreshing(true);
+                                               NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+                                               if (networkInfo != null && networkInfo.isConnected()) {
 //                LoaderManager loaderManager = getLoaderManager();
-                    mAdapter.clear();
+                                                   mAdapter.clear();
 //                mAdapter.clear();
-                    getLoaderManager().restartLoader(NEWS_LOADER_ID, null, NewsFragment.this);
-                    mAdapter.notifyDataSetChanged();
-                    new Handler().postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            refLayout.setRefreshing(false);
-                        }
-                    }, 1000);
+                                                   getLoaderManager().restartLoader(NEWS_LOADER_ID, null, NewsFragment.this);
+                                                   mAdapter.notifyDataSetChanged();
+                                                   new Handler().postDelayed(new Runnable() {
+                                                       @Override
+                                                       public void run() {
+                                                           refLayout.setRefreshing(false);
+                                                       }
+                                                   }, 1000);
 
-                }
-                else {
-                    // Otherwise, display error
-                    // First, hide loading indicator so error message will be visible
-                    mAdapter.clear();
-                    mAdapter.add(new NewsItem("No connection","Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
-                    mAdapter.notifyDataSetChanged();
+                                               } else {
+                                                   // Otherwise, display error
+                                                   // First, hide loading indicator so error message will be visible
+                                                   mAdapter.clear();
+                                                   mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+                                                   mAdapter.notifyDataSetChanged();
 
-                }
-                refLayout.setRefreshing(false);
-            }
-        }
+                                               }
+                                               refLayout.setRefreshing(false);
+                                           }
+                                       }
         );
 
         return rootView;
@@ -175,14 +170,14 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 //        Log.d(this,"Dead");
 //        loadingIndicator.setVisibility(View.GONE);
 //         Set empty state text to display "No News found."
-        if(mEmptyStateTextView.getText()==null) {
+        if (mEmptyStateTextView.getText() == null) {
             mEmptyStateTextView.setText("NEWS NOT FOUND");
         }
         //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (News != null && !News.isEmpty() && mAdapter.getCount()<1) {
+        if (News != null && !News.isEmpty() && mAdapter.getCount() < 1) {
 
             mAdapter.addAll(News);
         }
@@ -190,10 +185,9 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
 
-
     @Override
     public void onLoaderReset(Loader<List<NewsItem>> loader) {
-        loader=null;
+        loader = null;
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }

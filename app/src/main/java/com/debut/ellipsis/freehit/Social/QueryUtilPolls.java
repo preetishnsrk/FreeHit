@@ -48,7 +48,7 @@ public class QueryUtilPolls {
 //            e.printStackTrace();
 //        }
 
-        Log.i(LOG_TAG,"TEST: fetchPollData() called");
+        Log.i(LOG_TAG, "TEST: fetchPollData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -56,8 +56,7 @@ public class QueryUtilPolls {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
@@ -169,29 +168,31 @@ public class QueryUtilPolls {
             //create a JSONObject from  the JSON response string
             JSONObject currentArticle = new JSONObject(PollsJSON);
 
-                String title=currentArticle.getString("title");
+            String title = currentArticle.getString("title");
 
-                int id=currentArticle.getInt("id");
+            int id = currentArticle.getInt("id");
 
-                JSONArray Jsonoptions = currentArticle.getJSONArray("options");
-                String [] options = new String[Jsonoptions.length()];
-                for(int j=0;j<Jsonoptions.length();j++){ options[j] = Jsonoptions.getString(j);}
+            JSONArray Jsonoptions = currentArticle.getJSONArray("options");
+            String[] options = new String[Jsonoptions.length()];
+            for (int j = 0; j < Jsonoptions.length(); j++) {
+                options[j] = Jsonoptions.getString(j);
+            }
 
-                JSONArray Jsonvalues = currentArticle.getJSONArray("votes");
-                int[] values = new int[Jsonvalues.length()];
-                for(int j=0;j<Jsonvalues.length();j++){ values[j] = Jsonvalues.getInt(j);}
+            JSONArray Jsonvalues = currentArticle.getJSONArray("votes");
+            int[] values = new int[Jsonvalues.length()];
+            for (int j = 0; j < Jsonvalues.length(); j++) {
+                values[j] = Jsonvalues.getInt(j);
+            }
 
-                PollCardItem poll=new PollCardItem(title,id,options,values);
-                Polls.add(poll);
+            PollCardItem poll = new PollCardItem(title, id, options, values);
+            Polls.add(poll);
             Polls.add(poll);
             Polls.add(poll);
 
 
 //                Log.e(LOG_TAG, String.valueOf(j));
             return Polls;
-        }
-
-            catch (JSONException e) {
+        } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.

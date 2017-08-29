@@ -13,7 +13,6 @@ import com.debut.ellipsis.freehit.R;
 import java.util.ArrayList;
 
 
-
 public class StatsAdapter extends ArrayAdapter<StatsItem> {
 
     public StatsAdapter(Context context, ArrayList<StatsItem> items) {

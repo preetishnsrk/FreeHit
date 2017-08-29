@@ -10,10 +10,12 @@ import java.util.List;
 public class PollsLoader extends AsyncTaskLoader<List<PollCardItem>> {
     private static final String LOG_TAG = PollsLoader.class.getName();
 
-    /** Query URL */
+    /**
+     * Query URL
+     */
     private String mUrl;
 
-    public PollsLoader(Context context, String url){
+    public PollsLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -21,16 +23,16 @@ public class PollsLoader extends AsyncTaskLoader<List<PollCardItem>> {
     @Override
     protected void onStartLoading() {
 
-        Log.i(LOG_TAG,"TEST: onStartLoading() called");
+        Log.i(LOG_TAG, "TEST: onStartLoading() called");
         forceLoad();
     }
 
 
     @Override
     public List<PollCardItem> loadInBackground() {
-        Log.i(LOG_TAG,"TEST: loadInBackground() called");
+        Log.i(LOG_TAG, "TEST: loadInBackground() called");
         if (mUrl == null) {
-            Log.i(LOG_TAG,"NULL");
+            Log.i(LOG_TAG, "NULL");
             return null;
         }
         List<PollCardItem> polls = QueryUtilPolls.fetchPollData(mUrl);

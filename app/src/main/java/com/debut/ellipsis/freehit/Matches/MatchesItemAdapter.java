@@ -27,6 +27,7 @@ public class MatchesItemAdapter extends PagerAdapter {
     public String logo_string2;
     public ImageView imageViewTeam1Logo;
     public ImageView imageViewTeam2Logo;
+
     public MatchesItemAdapter(Context context, List<MatchCardItem> dataObjectList) {
         this.context = context;
         this.layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
@@ -87,8 +88,8 @@ public class MatchesItemAdapter extends PagerAdapter {
         // Initializing Logo URLS
         logo_string1 = this.dataObjectList.get(position).getmTeam1LogoURL();
         logo_string2 = this.dataObjectList.get(position).getmTeam2LogoURL();
-        setImage(logo_string1,imageViewTeam1Logo);
-        setImage(logo_string2,imageViewTeam2Logo);
+        setImage(logo_string1, imageViewTeam1Logo);
+        setImage(logo_string2, imageViewTeam2Logo);
         container.addView(view);
         return view;
     }
@@ -97,10 +98,11 @@ public class MatchesItemAdapter extends PagerAdapter {
     public void destroyItem(ViewGroup container, int position, Object object) {
         container.removeView((View) object);
     }
-    public void setImage(String url, ImageView imageview){
+
+    public void setImage(String url, ImageView imageview) {
         ImageLoader imageLoader = ImageLoader.getInstance();
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
-        imageLoader.displayImage(url, imageview, new ImageLoadingListener(){
+        imageLoader.displayImage(url, imageview, new ImageLoadingListener() {
 
             @Override
             public void onLoadingStarted(String imageUri, View view) {

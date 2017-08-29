@@ -37,7 +37,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
     private MatchesItemAdapter mAdapter;
     public TextView mEmptyStateTextView;
     public ViewPager viewPager;
-   public CircleIndicator indicator;
+    public CircleIndicator indicator;
 
     public static final String LOG_TAG = MatchesFragment.class.getSimpleName();
 
@@ -52,9 +52,6 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_matches, container, false);
         View fragView = inflater.inflate(R.layout.match_cards, container, false);
-
-
-
 
 
 //        data.add(new MatchCardItem("a","a","A","a","a","a","a","a","a","a"));
@@ -75,14 +72,15 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
         }
 
-         viewPager = (ViewPager)rootView.findViewById(R.id.viewpager);
-         mAdapter = new MatchesItemAdapter(getActivity(),new ArrayList<MatchCardItem>());
+        viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+        mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
         viewPager.setAdapter(mAdapter);
-         indicator = (CircleIndicator)rootView.findViewById(R.id.indicator);
+        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
         return rootView;
     }
+
     @Override
     public Loader<List<MatchCardItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
@@ -99,13 +97,12 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (data != null && !data.isEmpty() && mAdapter.getCount()<=1) {
-            mAdapter = new MatchesItemAdapter(getContext(),data);
+        if (data != null && !data.isEmpty() && mAdapter.getCount() <= 1) {
+            mAdapter = new MatchesItemAdapter(getContext(), data);
             viewPager.setAdapter(mAdapter);
             indicator.setViewPager(viewPager);
         }
     }
-
 
 
     @Override

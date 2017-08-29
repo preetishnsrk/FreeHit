@@ -59,7 +59,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
 
         //Straight forward abstract classes, loader is optional
-        imageloader.displayImage(imageurl, imageToShow,options, new ImageLoadingListener() {
+        imageloader.displayImage(imageurl, imageToShow, options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
                 loader.show();
@@ -86,9 +86,6 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
     }
 }
-
-
-
 
 
 //  CODE TO LOAD IMAGES USING ASYNC LOADER, NOT USED ANYMORE
