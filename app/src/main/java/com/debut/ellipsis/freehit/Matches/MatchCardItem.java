@@ -33,9 +33,11 @@ public class MatchCardItem {
 
     private static String mTeam2Score2;
 
+    private static String mDay;
+
 
     //WHEN MATCH IS IN PROGRESS
-    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Score2, String Team1Overs, String Team2LogoURL, String Team2Score1,String Team2Score2, String Team2Overs, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN) {
+    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Score2, String Team1Overs, String Team2LogoURL, String Team2Score1,String Team2Score2, String Team2Overs, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN,String Day) {
         mMatchName = MatchName;
         mSeriesName = SeriesName;
         mTeam1LogoURL = Team1LogoURL;
@@ -51,6 +53,7 @@ public class MatchCardItem {
         mMatchSummary = MatchSummary;
         mTeam1Score2 = Team1Score2;
         mTeam2Score2 = Team2Score2;
+        mDay = Day;
     }
 
    /* //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
@@ -221,6 +224,10 @@ public class MatchCardItem {
 
     public String getmTeam2SN() {
         return mTeam2SN;
+    }
+
+    public String getmDay(){
+        return mDay;
     }
 
 

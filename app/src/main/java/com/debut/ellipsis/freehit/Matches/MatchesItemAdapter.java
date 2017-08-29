@@ -85,6 +85,9 @@ public class MatchesItemAdapter extends PagerAdapter {
         TextView shortName2 = (TextView) view.findViewById(R.id.shortname_team_2);
         shortName2.setText(this.dataObjectList.get(position).getmTeam2SN());
 
+        TextView Day = (TextView) view.findViewById(R.id.day);
+        Day.setText(this.dataObjectList.get(position).getmDay());
+
         // Initializing Logo URLS
         logo_string1 = this.dataObjectList.get(position).getmTeam1LogoURL();
         logo_string2 = this.dataObjectList.get(position).getmTeam2LogoURL();

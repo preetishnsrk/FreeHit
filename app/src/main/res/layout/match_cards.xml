@@ -73,6 +73,8 @@
                         android:layout_centerVertical="true"
                         android:layout_toEndOf="@+id/team_logo_1"
                         android:textSize="20sp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         tools:text="100/3" />
 
                     <TextView
@@ -82,7 +84,7 @@
                         android:layout_alignEnd="@id/score_team_1"
                         android:layout_below="@id/score_team_1"
                         android:paddingTop="40dp"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         tools:text="20" />
 
                     <TextView
@@ -91,6 +93,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/overs_team_1"
                         android:layout_toEndOf="@+id/team_logo_1"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         android:textSize="20sp"
                         tools:text="100/3" />
 
@@ -99,13 +103,14 @@
                         android:layout_width="65dp"
                         android:layout_height="100dp"
                         android:layout_alignParentStart="true"
-                        android:layout_margin="5dp"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="20dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
                     <TextView
                         android:id="@+id/shortname_team_1"
-
+                        android:layout_centerHorizontal="true"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@id/score_team_1"
@@ -125,7 +130,7 @@
                         android:layout_width="65dp"
                         android:layout_height="100dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_margin="5dp"
+                        android:paddingTop="20dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
@@ -137,7 +142,7 @@
                         android:layout_below="@+id/score_team_2"
                         android:paddingEnd="15dp"
                         android:paddingTop="40dp"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         tools:text="20" />
 
                     <TextView
@@ -147,7 +152,7 @@
                         android:layout_alignStart="@id/score_team_2"
                         android:layout_centerHorizontal="true"
                         android:paddingTop="22dp"
-                        android:textSize="20sp"
+                        android:textSize="15sp"
                         tools:text="BAN" />
 
                     <TextView
@@ -156,6 +161,8 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_toStartOf="@+id/team_logo_2"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         android:textSize="20sp"
                         tools:text="100/3" />
 
@@ -165,6 +172,8 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/overs_team_2"
                         android:layout_toStartOf="@+id/team_logo_2"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
                         android:textSize="20sp"
                         tools:text="100/3" />
                 </RelativeLayout>
@@ -177,15 +186,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:textAllCaps="true"
                 tools:text="Match in progress/ India won by 3 wickets" />
 
             <TextView
                 android:id="@+id/target_leadby"
+                android:textAllCaps="true"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:paddingTop="10dp"
                 tools:text="Target 189/lead by 100" />
+
+            <TextView
+                android:id="@+id/day"
+                android:textAllCaps="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:paddingTop="10dp"
+                tools:text="Day 5"/>
 
         </LinearLayout>
 
