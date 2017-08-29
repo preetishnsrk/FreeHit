@@ -178,16 +178,15 @@ public class QueryUtilMatchCard {
             JSONObject basJsonResponse = new JSONObject(MatchCardsJSON);
             JSONObject query = basJsonResponse.getJSONObject("query");
             JSONObject results = query.getJSONObject("results");
-            JSONArray ScoreCards = results.getJSONArray("Scorecard");
 
-            for (int i = 0; i < ScoreCards.length(); i++) {
-                JSONObject currentMatch = ScoreCards.getJSONObject(i);
+            JSONObject scorecards=results.getJSONObject("Scorecard");
 
-                JSONObject Series = currentMatch.getJSONObject("series");
-                if (currentMatch.get("result") instanceof String) {
-                    String MatchResult = currentMatch.getString("result");
-                } else if (currentMatch.get("result") instanceof JSONObject) {
-                    JSONObject MatchResult = currentMatch.getJSONObject("result");
+
+            JSONObject Series = scorecards.getJSONObject("series");
+                if (scorecards.get("result") instanceof String) {
+                    String MatchResult = scorecards.getString("result");
+                } else if (scorecards.get("result") instanceof JSONObject) {
+                    JSONObject MatchResult = scorecards.getJSONObject("result");
                     if (MatchResult.length() == 0) {
                         String matchWinner = MatchResult.getString("winner");
                         String byRunsOrWickets = MatchResult.getString("by");
@@ -198,9 +197,9 @@ public class QueryUtilMatchCard {
 
                 SeriesName = Series.getString("series_name");
 
-                MatchName = currentMatch.getString("mn");
+                MatchName = scorecards.getString("mn");
 
-                JSONArray Teams = currentMatch.getJSONArray("teams");
+                JSONArray Teams = scorecards.getJSONArray("teams");
 
 
                 JSONObject CurrentTeam1 = Teams.getJSONObject(0);
@@ -218,15 +217,15 @@ public class QueryUtilMatchCard {
                 JSONObject logo2 = CurrentTeam2.getJSONObject("flag");
                 team2Logo = logo2.getString("roundlarge");
 
-                JSONArray innings = currentMatch.getJSONArray("past_ings");
+                JSONArray innings = scorecards.getJSONArray("past_ings");
 
-                String matchStatus = currentMatch.getString("ms");
+                String matchStatus = scorecards.getString("ms");
 
                 JSONObject Innings4 = null;
                 JSONObject Innings3 = null;
-                JSONObject Innings2 = null;
-                JSONObject Innings1 = null;
-                if (currentMatch.getJSONArray("past_ings").length() > 1) {
+                JSONObject Innings2;
+                JSONObject Innings1;
+                if (scorecards.getJSONArray("past_ings").length() > 1) {
                     Innings4 = innings.getJSONObject(0);
                     Innings3 = innings.getJSONObject(1);
                     Innings2 = innings.getJSONObject(2);
@@ -244,23 +243,22 @@ public class QueryUtilMatchCard {
 
                 String TempTeam1Score = null, TempTeam1Overs = null;
 
-                if(currentMatch.getJSONArray("past_ings").length() > 1) {
+                if(scorecards.getJSONArray("past_ings").length() > 1) {
                     //For Test Match
                     //4th innings
                     JSONObject CurrentDay = Innings4.getJSONObject("s");
-                    String Day = Innings4.getString("dm");
+                   String Day = CurrentDay.getString("dm");
                     JSONObject LeadTrailOrTarget = CurrentDay.getJSONObject("a");
                     if (LeadTrailOrTarget.getString("i").equals(team1ID)) {
-                        Team1score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w");
+                        Team1score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w")+"*";
                         MatchCardItem.setTeam1Score2(Team1score2);
                     } else {
-                        Team2score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w");
+                        Team2score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w")+"*";
                         MatchCardItem.setTeam2Score2(Team2score2);
                     }
 
                     //3rd innings
                     JSONObject CurrentDay1 = Innings3.getJSONObject("s");
-                    String Day1 = Innings3.getString("dm");
                     JSONObject LeadTrailOrTarget1 = CurrentDay1.getJSONObject("a");
                     if (LeadTrailOrTarget1.getString("i").equals(team1ID)) {
                         Team1score2 = LeadTrailOrTarget1.getString("r") + "/" + LeadTrailOrTarget1.getString("w");
@@ -272,7 +270,6 @@ public class QueryUtilMatchCard {
 
                     //2nd innings
                     JSONObject CurrentDay2 = Innings2.getJSONObject("s");
-                    String Day2 = Innings2.getString("dm");
                     JSONObject LeadTrailOrTarget2 = CurrentDay2.getJSONObject("a");
                     if (LeadTrailOrTarget2.getString("i").equals(team1ID)) {
                         Team1score1 = LeadTrailOrTarget2.getString("r") + "/" + LeadTrailOrTarget2.getString("w");
@@ -284,7 +281,6 @@ public class QueryUtilMatchCard {
 
                     //1st innings
                     JSONObject CurrentDay3 = Innings1.getJSONObject("s");
-                    String Day3 = Innings1.getString("dm");
                     JSONObject LeadTrailOrTarget3 = CurrentDay3.getJSONObject("a");
                     if (LeadTrailOrTarget3.getString("i").equals(team1ID)) {
                         Team1score1 = LeadTrailOrTarget3.getString("r") + "/" + LeadTrailOrTarget3.getString("w");
@@ -301,8 +297,18 @@ public class QueryUtilMatchCard {
                         LTorTarget = "-";
                     }
 
-                    matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score1, Team1score2, Team1Overs, team2Logo, Team2score1, Team2score2, Team2Overs, matchStatus, LTorTarget, "HARDCODED", ShortTeamName1, ShortTeamName2);
-                }
+                    String Target;
+                    if (LeadTrailOrTarget.has("tg")) {
+                        Target = "Target : "+ LeadTrailOrTarget.getString("tg");
+                    } else {
+                        Target = "-";
+                    }
+                    if(LeadTrailOrTarget.has("tg")) {
+                        matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score1, Team1score2, Team1Overs, team2Logo, Team2score1, Team2score2, Team2Overs, matchStatus, Target, "HARDCODED", ShortTeamName1, ShortTeamName2,Day);
+                    }
+                    if (LeadTrailOrTarget.has("tl")) {
+                        matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score1, Team1score2, Team1Overs, team2Logo, Team2score1, Team2score2, Team2Overs, matchStatus, LTorTarget, "HARDCODED", ShortTeamName1, ShortTeamName2,Day);
+                    }
 
                 /* for (int j = 0; j < innings.length(); j++) {
                     JSONObject tempinnings = innings.getJSONObject(j);
