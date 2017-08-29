@@ -38,21 +38,23 @@ public class MatchCardItem {
     //WHEN MATCH IS IN PROGRESS
     public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score1,String Team1Overs,String Team2LogoURL,String Team2Score1,String Team2Overs,String MatchStatusResult,String TargetLeadBy,String MatchSummary,String Team1SN,String Team2SN)
     {
-        mMatchName=MatchName;
-        mSeriesName=SeriesName;
-        mTeam1LogoURL=Team1LogoURL;
-        mTeam1Score1=Team1Score1;
-        mTeam1Overs=Team1Overs;
-        mTeam2LogoURL=Team2LogoURL;
-        mTeam2Overs=Team2Overs;
-        mTeam2Score1=Team2Score1;
+
+        mMatchName = MatchName;
+        mSeriesName = SeriesName;
+        mTeam1LogoURL = Team1LogoURL;
+        mTeam1Score1 = Team1Score1;
+        mTeam1Overs = Team1Overs;
+        mTeam2LogoURL = Team2LogoURL;
+        mTeam2Overs = Team2Overs;
+        mTeam2Score1 = Team2Score1;
         mTeam1SN = Team1SN;
         mTeam2SN = Team2SN;
-        mMatchStatusResult=MatchStatusResult;
-        mTargetLeadBy=TargetLeadBy;
-        mMatchSummary=MatchSummary;
-        mTeam1Score2=getmTeam1Score2();
-        mTeam2Score2=getmTeam2Score2();
+        mMatchStatusResult = MatchStatusResult;
+        mTargetLeadBy = TargetLeadBy;
+        mMatchSummary = MatchSummary;
+        mTeam1Score2 = getmTeam1Score2();
+        mTeam2Score2 = getmTeam2Score2();
+
     }
 
     //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
@@ -76,7 +78,7 @@ public class MatchCardItem {
     }
 
     //For 2nd innings
-    public MatchCardItem(String Team1Score2,String Team2Score2,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
+    public MatchCardItem(String Team1Score2, String Team2Score2, String MatchStatusResult, String TargetLeadBy, String MatchSummary)
     {
         mMatchName=getmMatchName();
         mSeriesName=getmSeriesName();

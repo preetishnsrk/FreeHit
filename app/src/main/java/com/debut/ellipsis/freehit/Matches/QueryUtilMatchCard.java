@@ -23,7 +23,7 @@ import java.util.List;
 
 public class QueryUtilMatchCard {
 
-
+    private static List<MatchCardItem> MatchCards;
     public static String MatchName;
     public static String SeriesName;
     public static String team1Logo;
@@ -172,7 +172,9 @@ public class QueryUtilMatchCard {
 //        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
-        List<MatchCardItem> MatchCards = new ArrayList<>();
+       MatchCards = new ArrayList<MatchCardItem>(){{
+           add(0,new MatchCardItem("a","a","a","a","a","a","a","a","a","a","a","a"));
+       }};
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -276,7 +278,7 @@ public class QueryUtilMatchCard {
                         MatchCardItem.setTeam1LogoURL();
                         MatchCardItem.setTeam1Score1(Team1score);
                         MatchCardItem.setTeam2Score1(TempTeam1Score);
-                        
+
                         MatchCardItem.setTeam2LogoURL();
                         MatchCardItem.setTeam2Overs();
                         matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score, TempTeam1Overs, team2Logo, TempTeam1Score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
@@ -290,6 +292,7 @@ public class QueryUtilMatchCard {
                             matchCard = new MatchCardItem(Team1score,TempTeam1Score, Result, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
                             MatchCardItem.setTeam2Score2(TempTeam1Score);
                             MatchCardItem.setTeam1Score2(Team1score);
+                            MatchCardItem.mTeam1Overs =
 
 
                         }
@@ -297,6 +300,7 @@ public class QueryUtilMatchCard {
                             MatchCardItem.setTeam2Score2(TempTeam1Score);
                             MatchCardItem.setTeam1Score2(Team1score);
                             matchCard = new MatchCardItem(Team1score,TempTeam1Score, matchStatus, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
+
                         }
 
 
@@ -309,13 +313,19 @@ public class QueryUtilMatchCard {
 
                 if(ScoreCards.length()>1)
                 {
-                    MatchCardItem.mTeam1Overs=null;
-                    MatchCardItem.mTeam2Overs=null;
+                    MatchCardItem.mTeam1Overs =null;
+                    MatchCardItem.mTeam2Overs =null;
                 }
 
+                System.out.println(matchCard.getmTeam1Overs());
+                System.out.println(matchCard.getmMatchName());
+                System.out.println(matchCard.getmSeriesName());
+                System.out.println(matchCard.getmTeam1SN());
                 MatchCards.add(matchCard);
-            }
-            return MatchCards;
+                }
+
+
+//            return MatchCards;
         }
         catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
