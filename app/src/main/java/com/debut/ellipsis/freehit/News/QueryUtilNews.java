@@ -46,7 +46,7 @@ public class QueryUtilNews {
 //            e.printStackTrace();
 //        }
 
-        Log.i(LOG_TAG,"TEST: fetchNewsData() called");
+        Log.i(LOG_TAG, "TEST: fetchNewsData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -54,8 +54,7 @@ public class QueryUtilNews {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
@@ -166,22 +165,21 @@ public class QueryUtilNews {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(NewsJSON);
-            JSONArray articles=basJsonResponse.getJSONArray("articles");
+            JSONArray articles = basJsonResponse.getJSONArray("articles");
 
 
-
-            for (int i = 0; i < articles.length() ; i++) {
+            for (int i = 0; i < articles.length(); i++) {
                 JSONObject currentArticle = articles.getJSONObject(i);
 //                Bitmap bimage = null;
-                String headlines=currentArticle.getString("title");
+                String headlines = currentArticle.getString("title");
 
-                String description=currentArticle.getString("description");
+                String description = currentArticle.getString("description");
 
-                String urlofimage=currentArticle.getString("urlToImage");
+                String urlofimage = currentArticle.getString("urlToImage");
 
-                String urlofwebsite=currentArticle.getString("url");
+                String urlofwebsite = currentArticle.getString("url");
 
-                NewsItem news=new NewsItem(headlines,description,urlofimage,urlofwebsite);
+                NewsItem news = new NewsItem(headlines, description, urlofimage, urlofwebsite);
 //                try {
 //                    InputStream in = new java.net.URL(urlofimage).openStream();
 //                    bimage = BitmapFactory.decodeStream(in);
@@ -195,9 +193,8 @@ public class QueryUtilNews {
                 Newss.add(news);
                 Log.e(LOG_TAG, String.valueOf(i));
             }
-                return Newss;
-            }
-        catch (JSONException e) {
+            return Newss;
+        } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.

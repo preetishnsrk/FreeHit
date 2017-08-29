@@ -42,22 +42,21 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-    //  If we have to define custom configuration, uncomment next line and don't forget to add onsumer Key and Secret Key.
-    //TwitterConfig config = new TwitterConfig.Builder(this).logger(new DefaultLogger(Log.DEBUG)).twitterAuthConfig(new TwitterAuthConfig("FREEHIT_CONSUMER_KEY","FREEHIT_CONSUMER_SECRET")).debug(true).build();
+        //  If we have to define custom configuration, uncomment next line and don't forget to add onsumer Key and Secret Key.
+        //TwitterConfig config = new TwitterConfig.Builder(this).logger(new DefaultLogger(Log.DEBUG)).twitterAuthConfig(new TwitterAuthConfig("FREEHIT_CONSUMER_KEY","FREEHIT_CONSUMER_SECRET")).debug(true).build();
 
-     // Initializing Twitter Kit
+        // Initializing Twitter Kit
         Twitter.initialize(this);
 
 
         // Initializing the ImageLoader, any changes to configuration here is global
         ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(this)
-                .memoryCache(new LRULimitedMemoryCache(2*1024*1024)).
-                build();
+                .memoryCache(new LRULimitedMemoryCache(2 * 1024 * 1024)).
+                        build();
         ImageLoader.getInstance().init(config);
        /* toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
-
 
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);

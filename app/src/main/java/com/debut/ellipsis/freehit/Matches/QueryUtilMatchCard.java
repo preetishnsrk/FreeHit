@@ -4,8 +4,6 @@ package com.debut.ellipsis.freehit.Matches;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.debut.ellipsis.freehit.News.QueryUtilNews;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -23,17 +21,20 @@ import java.util.List;
 
 public class QueryUtilMatchCard {
 
-    private static List<MatchCardItem> MatchCards;
+
     public static String MatchName;
     public static String SeriesName;
     public static String team1Logo;
     public static String ShortTeamName1;
     public static String team2Logo;
     public static String ShortTeamName2;
-    public static String Team1score;
-    public static String Team2score;
+    public static String Team1score1;
     public static String Team1Overs;
     public static String Team2Overs;
+    public static String Team1score2;
+    public static String Team2score1;
+    public static String Team2score2;
+
 
     /**
      * Tag for the log messages
@@ -41,7 +42,7 @@ public class QueryUtilMatchCard {
     public static final String LOG_TAG = QueryUtilMatchCard.class.getSimpleName();
 
     /**
-     * Create a private constructor because no one should ever create a {@link QueryUtilNews} object.
+     * Create a private constructor because no one should ever create a {@link QueryUtilMatchCard} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
@@ -49,18 +50,12 @@ public class QueryUtilMatchCard {
     }
 
     /**
-     * Query the USGS dataset and return an {@link MatchCardItem} object to represent a list of earthquakes.
+     * Query the MatchesAPI dataset and return an {@link MatchCardItem} object to represent a list of Live/Ongoing Matches.
      */
 
-    public static List<MatchCardItem> fetchNewsData(String requestUrl) {
-        //Adding delay in fetching the data from the server so that the progressBar is displayed for 0.5 seconds
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
+    public static List<MatchCardItem> fetchLiveMatchData(String requestUrl) {
 
-        Log.i(LOG_TAG,"TEST: fetchNewsData() called");
+        Log.i(LOG_TAG, "TEST: fetchNewsData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -68,14 +63,13 @@ public class QueryUtilMatchCard {
         String jsonResponse = null;
         try {
             jsonResponse = makeHttpRequest(url);
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
         // Extract relevant fields from the JSON response and create an {@link news}s object
 
-        // Return the {@link news}
+        // Return the {@link Matches}
         return extractFeatureFromJson(jsonResponse);
     }
 
@@ -161,9 +155,7 @@ public class QueryUtilMatchCard {
      */
     public static List<MatchCardItem> extractFeatureFromJson(String MatchCardsJSON) {
 
-        MatchCardItem matchCard=null;
-        MatchCardItem matchCard1=null;
-        int k=0;
+        MatchCardItem matchCard = null;
 
         //if the JSON string is empty or null then return early
         if (TextUtils.isEmpty(MatchCardsJSON)) {
@@ -172,9 +164,7 @@ public class QueryUtilMatchCard {
 //        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
-       MatchCards = new ArrayList<MatchCardItem>(){{
-           add(0,new MatchCardItem("a","a","a","a","a","a","a","a","a","a","a","a"));
-       }};
+        List<MatchCardItem> MatchCards = new ArrayList<>();
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -186,93 +176,158 @@ public class QueryUtilMatchCard {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(MatchCardsJSON);
-            JSONObject query=basJsonResponse.getJSONObject("query");
-            JSONObject results=query.getJSONObject("results");
-            JSONArray ScoreCards=results.getJSONArray("Scorecard");
+            JSONObject query = basJsonResponse.getJSONObject("query");
+            JSONObject results = query.getJSONObject("results");
+            JSONArray ScoreCards = results.getJSONArray("Scorecard");
 
-            for (int i = 0; i < ScoreCards.length() ; i++) {
+            for (int i = 0; i < ScoreCards.length(); i++) {
                 JSONObject currentMatch = ScoreCards.getJSONObject(i);
 
-                JSONObject Series=currentMatch.getJSONObject("series");
-                if(currentMatch.get("result") instanceof String) {
+                JSONObject Series = currentMatch.getJSONObject("series");
+                if (currentMatch.get("result") instanceof String) {
                     String MatchResult = currentMatch.getString("result");
-                }
-                else if(currentMatch.get("result") instanceof JSONObject){
+                } else if (currentMatch.get("result") instanceof JSONObject) {
                     JSONObject MatchResult = currentMatch.getJSONObject("result");
-                    if(MatchResult.length() == 0) {
+                    if (MatchResult.length() == 0) {
                         String matchWinner = MatchResult.getString("winner");
                         String byRunsOrWickets = MatchResult.getString("by");
                         String DrawOrInningsWin = MatchResult.getString("how");
                     }
                 }
-                String SeriesID=Series.getString("series_id");
+                String SeriesID = Series.getString("series_id");
 
-                SeriesName=Series.getString("series_name");
+                SeriesName = Series.getString("series_name");
 
-                MatchName=currentMatch.getString("mn");
+                MatchName = currentMatch.getString("mn");
 
-                JSONArray Teams=currentMatch.getJSONArray("teams");
+                JSONArray Teams = currentMatch.getJSONArray("teams");
 
 
-                JSONObject CurrentTeam1=Teams.getJSONObject(0);
-                String team1ID=CurrentTeam1.getString("i");
-                ShortTeamName1=CurrentTeam1.getString("sn");
-                JSONObject logo1=CurrentTeam1.getJSONObject("flag");
-                team1Logo=logo1.getString("roundlarge");
+                JSONObject CurrentTeam1 = Teams.getJSONObject(0);
+                String team1ID = CurrentTeam1.getString("i");
+                ShortTeamName1 = CurrentTeam1.getString("sn");
+                JSONObject logo1 = CurrentTeam1.getJSONObject("flag");
+                team1Logo = logo1.getString("roundlarge");
 
-                JSONObject CurrentTeam2=Teams.getJSONObject(1);
-                String team2ID=CurrentTeam2.getString("i");
-                ShortTeamName2=CurrentTeam2.getString("sn");
+                JSONObject CurrentTeam2 = Teams.getJSONObject(1);
+                String team2ID = CurrentTeam2.getString("i");
+                ShortTeamName2 = CurrentTeam2.getString("sn");
                 MatchCardItem.setTeam1SN();
                 MatchCardItem.setTeam2SN();
 
-                JSONObject logo2=CurrentTeam2.getJSONObject("flag");
-                team2Logo=logo2.getString("roundlarge");
+                JSONObject logo2 = CurrentTeam2.getJSONObject("flag");
+                team2Logo = logo2.getString("roundlarge");
 
-                JSONArray innings=currentMatch.getJSONArray("past_ings");
+                JSONArray innings = currentMatch.getJSONArray("past_ings");
 
-                //Never used these but let them be for time being
-//                JSONObject Innings1=innings.getJSONObject(0);
-//                JSONObject Innings2=innings.getJSONObject(1);
-//                JSONObject Innings3=innings.getJSONObject(2);
-//                JSONObject Innings4=innings.getJSONObject(3);
+                String matchStatus = currentMatch.getString("ms");
 
+                JSONObject Innings4 = null;
+                JSONObject Innings3 = null;
+                JSONObject Innings2 = null;
+                JSONObject Innings1 = null;
+                if (currentMatch.getJSONArray("past_ings").length() > 1) {
+                    Innings4 = innings.getJSONObject(0);
+                    Innings3 = innings.getJSONObject(1);
+                    Innings2 = innings.getJSONObject(2);
+                    Innings1 = innings.getJSONObject(3);
+                } else {
+                    Innings2 = innings.getJSONObject(0);
+                    Innings1 = innings.getJSONObject(1);
+                }
 
-                String matchStatus=currentMatch.getString("ms");
+                String Result = null;
+                /*if(matchStatus==null)
+               {
+                    Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
+                }*/
 
+                String TempTeam1Score = null, TempTeam1Overs = null;
 
-                String Result=null;
-//                if(matchStatus==null)
-//                {
-//                    Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
-//                }
+                if(currentMatch.getJSONArray("past_ings").length() > 1) {
+                    //For Test Match
+                    //4th innings
+                    JSONObject CurrentDay = Innings4.getJSONObject("s");
+                    String Day = Innings4.getString("dm");
+                    JSONObject LeadTrailOrTarget = CurrentDay.getJSONObject("a");
+                    if (LeadTrailOrTarget.getString("i").equals(team1ID)) {
+                        Team1score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w");
+                        MatchCardItem.setTeam1Score2(Team1score2);
+                    } else {
+                        Team2score2 = LeadTrailOrTarget.getString("r") + "/" + LeadTrailOrTarget.getString("w");
+                        MatchCardItem.setTeam2Score2(Team2score2);
+                    }
 
-                String TempTeam1Score=null,TempTeam1Overs=null;
-                for(int j=0;j<innings.length();j++) {
+                    //3rd innings
+                    JSONObject CurrentDay1 = Innings3.getJSONObject("s");
+                    String Day1 = Innings3.getString("dm");
+                    JSONObject LeadTrailOrTarget1 = CurrentDay1.getJSONObject("a");
+                    if (LeadTrailOrTarget1.getString("i").equals(team1ID)) {
+                        Team1score2 = LeadTrailOrTarget1.getString("r") + "/" + LeadTrailOrTarget1.getString("w");
+                        MatchCardItem.setTeam1Score2(Team1score2);
+                    } else {
+                        Team2score2 = LeadTrailOrTarget1.getString("r") + "/" + LeadTrailOrTarget1.getString("w");
+                        MatchCardItem.setTeam2Score2(Team2score2);
+                    }
+
+                    //2nd innings
+                    JSONObject CurrentDay2 = Innings2.getJSONObject("s");
+                    String Day2 = Innings2.getString("dm");
+                    JSONObject LeadTrailOrTarget2 = CurrentDay2.getJSONObject("a");
+                    if (LeadTrailOrTarget2.getString("i").equals(team1ID)) {
+                        Team1score1 = LeadTrailOrTarget2.getString("r") + "/" + LeadTrailOrTarget2.getString("w");
+                        MatchCardItem.setTeam1Score2(Team1score1);
+                    } else {
+                        Team2score1 = LeadTrailOrTarget2.getString("r") + "/" + LeadTrailOrTarget2.getString("w");
+                        MatchCardItem.setTeam2Score2(Team2score1);
+                    }
+
+                    //1st innings
+                    JSONObject CurrentDay3 = Innings1.getJSONObject("s");
+                    String Day3 = Innings1.getString("dm");
+                    JSONObject LeadTrailOrTarget3 = CurrentDay3.getJSONObject("a");
+                    if (LeadTrailOrTarget3.getString("i").equals(team1ID)) {
+                        Team1score1 = LeadTrailOrTarget3.getString("r") + "/" + LeadTrailOrTarget3.getString("w");
+                        MatchCardItem.setTeam1Score2(Team1score1);
+                    } else  {
+                        Team2score1 = LeadTrailOrTarget3.getString("r") + "/" + LeadTrailOrTarget3.getString("w");
+                        MatchCardItem.setTeam2Score2(Team2score1);
+                    }
+
+                    String LTorTarget;
+                    if (LeadTrailOrTarget.has("tl")) {
+                        LTorTarget = LeadTrailOrTarget.getString("tl");
+                    } else {
+                        LTorTarget = "-";
+                    }
+
+                    matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score1, Team1score2, Team1Overs, team2Logo, Team2score1, Team2score2, Team2Overs, matchStatus, LTorTarget, "HARDCODED", ShortTeamName1, ShortTeamName2);
+                }
+
+                /* for (int j = 0; j < innings.length(); j++) {
                     JSONObject tempinnings = innings.getJSONObject(j);
                     JSONObject CurrentDayOrInnings = tempinnings.getJSONObject("s");
                     String DayorInnings = CurrentDayOrInnings.getString("dm");
                     JSONObject LeadTrailOrTarget = CurrentDayOrInnings.getJSONObject("a");
 
-                    Team1score=null;
-                    String Team1Runs=null, Team1Wickets=null;
-                    Team1Overs=null;
+                    Team1score = null;
+                    String Team1Runs = null, Team1Wickets = null;
+                    Team1Overs = null;
                     Team1Runs = LeadTrailOrTarget.getString("r");
                     Team1Wickets = LeadTrailOrTarget.getString("w");
                     Team1Overs = LeadTrailOrTarget.getString("o");
                     Team1score = Team1Runs + "/" + Team1Wickets;
 
                     String LTorTarget;
-                    if(LeadTrailOrTarget.has("tl")) {
-                        LTorTarget  = LeadTrailOrTarget.getString("tl");
-                    }
-                    else{
+                    if (LeadTrailOrTarget.has("tl")) {
+                        LTorTarget = LeadTrailOrTarget.getString("tl");
+                    } else {
                         LTorTarget = "-";
                     }
 
-                    String Target=null;
+                    String Target = null;
 
-                    if(CurrentDayOrInnings.getInt("i")==1||CurrentDayOrInnings.getInt("i")==2) {
+                    if (CurrentDayOrInnings.getInt("i") == 1 || CurrentDayOrInnings.getInt("i") == 2) {
 
                         MatchCardItem.setTeam1Overs();
                         MatchCardItem.setTeam1LogoURL();
@@ -284,23 +339,19 @@ public class QueryUtilMatchCard {
                         matchCard = new MatchCardItem(MatchName, SeriesName, team1Logo, Team1score, TempTeam1Overs, team2Logo, TempTeam1Score, Team1Overs, matchStatus, LTorTarget, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION", ShortTeamName1, ShortTeamName2);
                     }
 
-                    if(CurrentDayOrInnings.getInt("i")==3||CurrentDayOrInnings.getInt("i")==4)
-                    {
-                        if(CurrentDayOrInnings.getInt("i")==4)
-                            Target="Target is"+LeadTrailOrTarget.getString("tg");
+                    if (CurrentDayOrInnings.getInt("i") == 3 || CurrentDayOrInnings.getInt("i") == 4) {
+                        if (CurrentDayOrInnings.getInt("i") == 4)
+                            Target = "Target is" + LeadTrailOrTarget.getString("tg");
                         if (matchStatus == null) {
-                            matchCard = new MatchCardItem(Team1score,TempTeam1Score, Result, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
+                            matchCard = new MatchCardItem(Team1score, TempTeam1Score, Result, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
                             MatchCardItem.setTeam2Score2(TempTeam1Score);
                             MatchCardItem.setTeam1Score2(Team1score);
-                            MatchCardItem.mTeam1Overs =
 
 
-                        }
-                        else {
+                        } else {
                             MatchCardItem.setTeam2Score2(TempTeam1Score);
                             MatchCardItem.setTeam1Score2(Team1score);
-                            matchCard = new MatchCardItem(Team1score,TempTeam1Score, matchStatus, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
-
+                            matchCard = new MatchCardItem(Team1score, TempTeam1Score, matchStatus, Target, "HARCODED FOR NOW CAUSE NO PREVIEW OR DESCRIPTION");
                         }
 
 
@@ -311,23 +362,15 @@ public class QueryUtilMatchCard {
                     Log.e(LOG_TAG, String.valueOf(j));
                 }
 
-                if(ScoreCards.length()>1)
-                {
-                    MatchCardItem.mTeam1Overs =null;
-                    MatchCardItem.mTeam2Overs =null;
-                }
+                if (ScoreCards.length() > 1) {
+                    MatchCardItem.mTeam1Overs = null;
+                    MatchCardItem.mTeam2Overs = null;
+                }*/
 
-                System.out.println(matchCard.getmTeam1Overs());
-                System.out.println(matchCard.getmMatchName());
-                System.out.println(matchCard.getmSeriesName());
-                System.out.println(matchCard.getmTeam1SN());
-                MatchCards.add(matchCard);
-                }
-
-
-//            return MatchCards;
-        }
-        catch (JSONException e) {
+                        MatchCards.add(matchCard);
+            }
+            return MatchCards;
+        } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
@@ -335,7 +378,7 @@ public class QueryUtilMatchCard {
         }
 
 
-        // Return the list of news Articles
+        // Return the list of OngoingMatches
         return MatchCards;
     }
 }

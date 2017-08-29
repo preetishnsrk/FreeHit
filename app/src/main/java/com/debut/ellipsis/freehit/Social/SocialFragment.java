@@ -50,6 +50,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
     public RecyclerView rv;
     CircleIndicator indicator;
     ViewPager pollsPager;
+
     public SocialFragment() {
         // Required empty public constructor
     }
@@ -63,7 +64,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
         pollsPager = (ViewPager) socView.findViewById(R.id.poll_pager);
         pollAdapter = new PollItemAdapter(getContext(), new ArrayList<PollCardItem>());
         pollsPager.setAdapter(pollAdapter);
-         indicator = (CircleIndicator)socView.findViewById(R.id.poll_indicator);
+        indicator = (CircleIndicator) socView.findViewById(R.id.poll_indicator);
         //--------------------- End of Polls Initialization------------------------
 
         //--------------------- Twitter Initialization------------------------
@@ -167,7 +168,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
 
-        // Function to add tabs, maintaining consistancy in program.
+    // Function to add tabs, maintaining consistancy in program.
 
     private void setupTabs() {
         socTabs.addTab(socTabs.newTab().setText("TOP"));
@@ -183,7 +184,6 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
     }
 
 
-
     //--------------------- Polls Loader------------------------
     @Override
     public Loader<List<PollCardItem>> onCreateLoader(int id, Bundle args) {
@@ -195,7 +195,7 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
 
 
         if (data != null && !data.isEmpty()) {
-            pollAdapter = new PollItemAdapter(getContext(),data);
+            pollAdapter = new PollItemAdapter(getContext(), data);
             pollsPager.setAdapter(pollAdapter);
             indicator.setBackgroundColor(Color.TRANSPARENT);
             indicator.setViewPager(pollsPager);

@@ -1,7 +1,6 @@
 package com.debut.ellipsis.freehit.Stats;
 
 
-
 public class StatsItem {
 
     private int mStatsIcon;
@@ -9,21 +8,17 @@ public class StatsItem {
     private int mStatsName;
 
 
-
-    public StatsItem(int StatsIcon,int StatsName)
-    {
-        mStatsIcon=StatsIcon;
-        mStatsName=StatsName;
+    public StatsItem(int StatsIcon, int StatsName) {
+        mStatsIcon = StatsIcon;
+        mStatsName = StatsName;
 
     }
 
-    public int getmStatsIcon()
-    {
+    public int getmStatsIcon() {
         return mStatsIcon;
     }
 
-    public int getmStatsName()
-    {
+    public int getmStatsName() {
         return mStatsName;
     }
 
