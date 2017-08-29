@@ -4,39 +4,35 @@ package com.debut.ellipsis.freehit.Matches;
 
 public class MatchCardItem {
 
-    private String mMatchName;
+    private static String mMatchName;
 
-    private String mSeriesName;
+    private static String mSeriesName;
 
-    private String mTeam1LogoURL;
+    private static String mTeam1LogoURL;
 
-    private String mTeam1SN;
+    private static String mTeam1SN;
 
-    private String mTeam2SN;
+    private static String mTeam2SN;
 
-    private String mTeam1Score1;
+    private static String mTeam1Score1;
 
-    private String mTeam1Overs;
+    private static String mTeam1Overs;
 
-    private String mTeam2LogoURL;
+    private static String mTeam2LogoURL;
 
-    private String mTeam2Score1;
+    private static String mTeam2Score1;
 
-    private String mTeam2Overs;
+    private static String mTeam2Overs;
 
-    private String mMatchStatusResult;
+    private static String mMatchStatusResult;
 
-    private String mTargetLeadBy;
+    private static String mTargetLeadBy;
 
-    private int mtempTeamLogo1;
+    private static String mMatchSummary;
 
-    private int mtempTeamLogo2;
+    private static String mTeam1Score2;
 
-    private String mMatchSummary;
-
-    private String mTeam1Score2;
-
-    private String mTeam2Score2;
+    private static String mTeam2Score2;
 
 
     //WHEN MATCH IS IN PROGRESS
@@ -55,6 +51,8 @@ public class MatchCardItem {
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
         mMatchSummary=MatchSummary;
+        mTeam1Score2=getmTeam1Score2();
+        mTeam2Score2=getmTeam2Score2();
     }
 
     //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
@@ -72,39 +70,104 @@ public class MatchCardItem {
         mTeam2Score1=Team2Score1;
         mMatchStatusResult=MatchStatusResult;
         mMatchSummary=MatchSummary;
+        mTeam1Score2=getmTeam1Score2();
+        mTeam2Score2=getmTeam2Score2();
 
     }
 
     //For 2nd innings
-    public MatchCardItem(String MatchName,String SeriesName,String TempTeamLogo1,String Team1Score2,String TempTeamLogo2,String Team2Score2,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
+    public MatchCardItem(String Team1Score2,String Team2Score2,String MatchStatusResult,String TargetLeadBy,String MatchSummary)
     {
-        mMatchName=MatchName;
-        mSeriesName=SeriesName;
-        mTeam1LogoURL=TempTeamLogo1;
+        mMatchName=getmMatchName();
+        mSeriesName=getmSeriesName();
+        mTeam1LogoURL=getmTeam1LogoURL();
+        mTeam1Overs=null;
+        mTeam1Score1=getmTeam1Score1();
         mTeam1Score2=Team1Score2;
-        mTeam2LogoURL=TempTeamLogo2;
+        mTeam2LogoURL=getmTeam2Overs();
+        mTeam2Overs=null;
+        mTeam2Score1=getmTeam2Score1();
         mTeam2Score2=Team2Score2;
         mMatchStatusResult=MatchStatusResult;
         mTargetLeadBy=TargetLeadBy;
         mMatchSummary=MatchSummary;
+        mTeam1SN = getmTeam1SN();
+        mTeam2SN = getmTeam1SN();
+
     }
 
 
-    public MatchCardItem(String MatchName,String SeriesName,String Team1LogoURL,String Team1Score1,String Team2LogoURL,String Team2Score1,String MatchStatusResult,String TargetLeadBy,String MatchSummary,String Team1SN,String Team2SN)
+    public MatchCardItem(String Team1Score1,String Team2Score1,String MatchStatusResult,String TargetLeadBy,String MatchSummary,String Team1SN,String Team2SN)
     {
-        mMatchName=MatchName;
-        mSeriesName=SeriesName;
-        mTeam1LogoURL=Team1LogoURL;
+
+        mMatchName=getmMatchName();
+        mSeriesName=getmSeriesName();
+        mTeam1LogoURL=getmTeam1LogoURL();
+        mTeam1Overs=null;
         mTeam1Score1=Team1Score1;
-        mTeam2LogoURL=Team2LogoURL;
-        mTeam1SN = Team1SN;
-        mTeam2SN = Team2SN;
+        mTeam1Score2=getmTeam1Score2();
+        mTeam2LogoURL=getmTeam2Overs();
+        mTeam2Overs=null;
         mTeam2Score1=Team2Score1;
+        mTeam2Score2=getmTeam2Score2();
         mTargetLeadBy=TargetLeadBy;
         mMatchStatusResult=MatchStatusResult;
         mMatchSummary=MatchSummary;
+        mTeam1SN = getmTeam1SN();
+        mTeam2SN = getmTeam1SN();
 
     }
+
+    public static void setMatchName() {
+        mMatchName=QueryUtilMatchCard.MatchName;
+
+    }
+
+    public static void setSeriesName() {
+        mSeriesName=QueryUtilMatchCard.SeriesName;
+    }
+
+    public static void setTeam1LogoURL() {
+        mTeam1LogoURL=QueryUtilMatchCard.team1Logo;
+    }
+
+    public static void setTeam1Score1(String Team1Score1) {
+        mTeam1Score1=Team1Score1;
+    }
+
+    public static void setTeam1Score2(String Team1Score2) {
+        mTeam1Score2=Team1Score2;
+    }
+
+    public static void setTeam2Score2(String Team2Score2) {
+        mTeam2Score2=Team2Score2;
+    }
+
+    public static void setTeam1Overs() {
+        mTeam1Overs=QueryUtilMatchCard.Team1Overs;
+    }
+
+    public static void setTeam2LogoURL() {
+        mTeam2LogoURL=QueryUtilMatchCard.team2Logo;
+    }
+
+    public static void setTeam2Score1(String Team2Score1) {
+        mTeam2Score1=Team2Score1;
+    }
+
+    public static void setTeam2Overs() {
+        mTeam2Overs=QueryUtilMatchCard.Team2Overs;
+    }
+
+    public static void setTeam1SN() {
+        mTeam1SN=QueryUtilMatchCard.ShortTeamName1;
+    }
+
+    public static void setTeam2SN() {
+        mTeam2SN=QueryUtilMatchCard.ShortTeamName2;
+    }
+
+
 
 
     public String getmMatchName() {
@@ -128,7 +191,7 @@ public class MatchCardItem {
     }
 
     public String getmTeam2Score2() {
-        return mTeam1Score2;
+        return mTeam2Score2;
     }
 
     public String getmTeam1Overs() {
@@ -143,7 +206,6 @@ public class MatchCardItem {
         return mTeam2Score1;
     }
 
-
     public String getmTeam2Overs() {
         return mTeam2Overs;
     }
@@ -154,14 +216,6 @@ public class MatchCardItem {
 
     public String getmTargetLeadBy() {
         return mTargetLeadBy;
-    }
-
-    public int getMtempTeamLogo1() {
-        return mtempTeamLogo1;
-    }
-
-    public int getMtempTeamLogo2() {
-        return mtempTeamLogo2;
     }
 
     public String getmMatchSummaryPreview() {
@@ -175,5 +229,11 @@ public class MatchCardItem {
     public String getmTeam2SN() {
         return mTeam2SN;
     }
+
+
+
+
+
+
 
 }
