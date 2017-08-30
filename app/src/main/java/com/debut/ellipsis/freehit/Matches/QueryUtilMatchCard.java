@@ -181,27 +181,34 @@ public class QueryUtilMatchCard {
             JSONObject LeadTrailOrTarget = null;
             String Day = null;
             String liveStats=null;
+            String MatchResult=null;
 
             Object intervention = results.get("Scorecard");
             if (intervention instanceof JSONArray) {
                 // It's an array
                 JSONArray scorecardsArray = (JSONArray) intervention;
+
+
             } else if (intervention instanceof JSONObject) {
                 // It's an object
                 JSONObject scorecardsObject = (JSONObject) intervention;
 
 
                 JSONObject Series = scorecardsObject.getJSONObject("series");
-                if (scorecardsObject.get("result") instanceof String) {
-                    String MatchResult = scorecardsObject.getString("result");
-                } else if (scorecardsObject.get("result") instanceof JSONObject) {
-                    JSONObject MatchResult = scorecardsObject.getJSONObject("result");
+                if (scorecardsObject.get("result") instanceof String)
+                {
+                    MatchResult = scorecardsObject.getString("result");
+                } else if (scorecardsObject.get("result") instanceof JSONObject)
+                {
+                    JSONObject Matchresult = scorecardsObject.getJSONObject("result");
                     if (MatchResult.length() == 0) {
-                        String matchWinner = MatchResult.getString("winner");
-                        String byRunsOrWickets = MatchResult.getString("by");
-                        String DrawOrInningsWin = MatchResult.getString("how");
+                        String matchWinner = Matchresult.getString("winner");
+                        String byRunsOrWickets = Matchresult.getString("by");
+                        String DrawOrInningsWin = Matchresult.getString("how");
                     }
                 }
+
+                Log.e(LOG_TAG," MATCH RESULT "+MatchResult);
                 String SeriesID = Series.getString("series_id");
 
                 SeriesName = Series.getString("series_name");
@@ -470,8 +477,6 @@ public class QueryUtilMatchCard {
 
                 }
 
-           /* JSONObject scorecards = results.getJSONObject("Scorecard");*/
-
                 MatchCards.add(matchCard);
             }
             return MatchCards;
@@ -481,7 +486,6 @@ public class QueryUtilMatchCard {
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the News JSON results", e);
         }
-
 
         // Return the list of OngoingMatches
         return MatchCards;
