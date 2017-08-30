@@ -84,6 +84,7 @@
                         android:layout_alignEnd="@id/score_team_1"
                         android:layout_below="@id/score_team_1"
                         android:paddingTop="40dp"
+                        android:paddingEnd="30dp"
                         android:textSize="15sp"
                         tools:text="20" />
 
@@ -115,6 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@id/score_team_1"
                         android:paddingTop="22dp"
+                        android:paddingEnd="25dp"
                         android:textSize="20sp"
                         tools:text="SN" />
                 </RelativeLayout>
@@ -140,7 +142,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/score_team_2"
                         android:layout_below="@+id/score_team_2"
-                        android:paddingEnd="15dp"
+                        android:paddingStart="30dp"
                         android:paddingTop="40dp"
                         android:textSize="15sp"
                         tools:text="20" />
@@ -152,7 +154,8 @@
                         android:layout_alignStart="@id/score_team_2"
                         android:layout_centerHorizontal="true"
                         android:paddingTop="22dp"
-                        android:textSize="15sp"
+                        android:paddingStart="25dp"
+                        android:textSize="20sp"
                         tools:text="BAN" />
 
                     <TextView
@@ -206,6 +209,7 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingTop="10dp"
                 tools:text="Day 5"/>
+
 
         </LinearLayout>
 
