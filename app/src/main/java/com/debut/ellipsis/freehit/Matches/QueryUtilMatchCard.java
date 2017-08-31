@@ -175,7 +175,7 @@ public class QueryUtilMatchCard {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(MatchCardsJSON);
-            JSONObject query = basJsonResponse.getJSONObject("query");
+            /*JSONObject query = basJsonResponse.getJSONObject("query");
             JSONObject results = query.getJSONObject("results");
             JSONObject LeadTrailOrTarget = null;
             String Day = null;
@@ -183,7 +183,7 @@ public class QueryUtilMatchCard {
             String MatchResult=null;
 
             Object intervention = results.get("Scorecard");
-          /*  if (intervention instanceof JSONArray) {
+          *//*  if (intervention instanceof JSONArray) {
                 // It's an array
                 JSONArray scorecardsArray = (JSONArray) intervention;
 
@@ -349,10 +349,10 @@ public class QueryUtilMatchCard {
                 }
 
                 String Result = null;
-                *//*if(matchStatus==null)
+                *//**//*if(matchStatus==null)
                {
                     Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
-                }*//*
+                }*//**//*
 
 
                 //For Test Match
@@ -477,8 +477,8 @@ public class QueryUtilMatchCard {
                 }
 
                 MatchCards.add(matchCard);
-            }*/
-            return MatchCards;
+            }*//*
+            return MatchCards;*/
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message

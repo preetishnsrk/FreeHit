@@ -1,43 +1,56 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <FrameLayout
+    <android.support.design.widget.TabLayout
+        android:id="@+id/match_card_tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/match_background"
-        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:layout_height="wrap_content"
+        app:tabGravity="fill">
 
-        android:paddingTop="@dimen/activity_vertical_margin"
-        tools:context="com.debut.ellipsis.freehit.Matches.MatchesFragment">
+    </android.support.design.widget.TabLayout>
 
-        <RelativeLayout
+    <android.support.v4.widget.SwipeRefreshLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/soc_refresh_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:background="@color/match_background"
+            tools:context="com.debut.ellipsis.freehit.Matches.MatchesFragment">
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/viewpager"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="fill_parent"
-                android:scrollbars="none">
+                android:layout_height="match_parent">
 
-            </android.support.v4.view.ViewPager>
+                <android.support.v4.view.ViewPager
+                    android:id="@+id/viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none">
 
-            <me.relex.circleindicator.CircleIndicator
-                android:id="@+id/indicator"
-                android:layout_width="wrap_content"
-                android:layout_height="25dp"
-                android:layout_centerInParent="true"
-                app:ci_drawable="@drawable/circleindicator_round"
-                />
+                </android.support.v4.view.ViewPager>
+
+                <me.relex.circleindicator.CircleIndicator
+                    android:id="@+id/indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:layout_centerInParent="true"
+                    app:ci_drawable="@drawable/circleindicator_round" />
+            </RelativeLayout>
 
 
-        </RelativeLayout>
+        </FrameLayout>
 
+    </android.support.v4.widget.SwipeRefreshLayout>
 
-    </FrameLayout>
 
 </LinearLayout>

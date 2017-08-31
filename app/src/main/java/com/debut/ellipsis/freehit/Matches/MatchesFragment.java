@@ -5,7 +5,10 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
@@ -38,6 +41,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
     public TextView mEmptyStateTextView;
     public ViewPager viewPager;
     public CircleIndicator indicator;
+    private TabLayout tabLayout;
 
     public static final String LOG_TAG = MatchesFragment.class.getSimpleName();
 
@@ -51,10 +55,8 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_matches, container, false);
-        View fragView = inflater.inflate(R.layout.match_cards, container, false);
 
 
-//        data.add(new MatchCardItem("a","a","A","a","a","a","a","a","a","a"));
 //  // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
@@ -73,13 +75,75 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         }
 
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
+        setupViewPager(viewPager);
         mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
         viewPager.setAdapter(mAdapter);
+
+
+        tabLayout = (TabLayout)rootView.findViewById(R.id.match_card_tabs);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
+
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
         return rootView;
     }
+
+
+    private void setupViewPager(ViewPager viewPager) {
+        MatchesFragment.ViewPagerAdapter adapter = new MatchesFragment.ViewPagerAdapter(getFragmentManager());
+        adapter.addFrag(new LiveMatchCard(), "LIVE");
+        adapter.addFrag(new UpcomingMatchCard(), "UPCOMING");
+        adapter.addFrag(new PastMatchCard(), "PAST");
+        viewPager.setAdapter(adapter);
+    }
+
+    class ViewPagerAdapter extends FragmentPagerAdapter {
+        private final List<Fragment> mFragmentList = new ArrayList<>();
+        private final List<String> mFragmentTitleList = new ArrayList<>();
+
+        public ViewPagerAdapter(FragmentManager manager) {
+            super(manager);
+        }
+
+        @Override
+        public Fragment getItem(int position) {
+            return mFragmentList.get(position);
+        }
+
+        @Override
+        public int getCount() {
+            return mFragmentList.size();
+        }
+
+        public void addFrag(Fragment fragment, String title) {
+            mFragmentList.add(fragment);
+            mFragmentTitleList.add(title);
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return mFragmentTitleList.get(position);
+        }
+    }
+
 
     @Override
     public Loader<List<MatchCardItem>> onCreateLoader(int i, Bundle bundle) {

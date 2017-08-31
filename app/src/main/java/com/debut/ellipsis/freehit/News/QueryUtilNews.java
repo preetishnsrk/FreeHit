@@ -191,7 +191,6 @@ public class QueryUtilNews {
 //                Newss.add(news);
 //                news = new NewsItem(headlines,description,bimage);
                 Newss.add(news);
-                Log.e(LOG_TAG, String.valueOf(i));
             }
             return Newss;
         } catch (JSONException e) {
