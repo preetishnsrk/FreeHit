@@ -1,16 +1,11 @@
 package com.debut.ellipsis.freehit.Matches;
 
 
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.LoaderManager;
-import android.support.v4.content.Loader;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +23,7 @@ import me.relex.circleindicator.CircleIndicator;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MatchesFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<MatchCardItem>> {
+public class MatchesFragment extends Fragment  {
 
     private static ArrayList<MatchCardItem> data;
 
@@ -58,7 +53,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
 //  // Get a reference to the ConnectivityManager to check state of network connectivity
-        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        /*ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -72,8 +67,8 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
             loaderManager.initLoader(MATCH_LOADER_ID, null, this);
 
 
-        }
-//GITPUSH
+        }*/
+
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 //        mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
@@ -108,10 +103,10 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFrag(new LiveMatchCard(), "LIVE");
-        adapter.addFrag(new UpcomingMatchCard(), "UPCOMING");
-        adapter.addFrag(new PastMatchCard(), "PAST");
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
+        adapter.addFrag(new LiveMatchCard(), "LIVE",0);
+        adapter.addFrag(new UpcomingMatchCard(), "UPCOMING",1);
+        adapter.addFrag(new PastMatchCard(), "PAST",2);
         viewPager.setAdapter(adapter);
     }
 
@@ -133,9 +128,9 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
             return mFragmentList.size();
         }
 
-        public void addFrag(Fragment fragment, String title) {
+        public void addFrag(Fragment fragment, String title,int i) {
             mFragmentList.add(fragment);
-            mFragmentTitleList.add(title);
+            mFragmentTitleList.add(i,title);
         }
 
         @Override
@@ -145,7 +140,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
     }
 
 
-    @Override
+ /*   @Override
     public Loader<List<MatchCardItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
         return new MatchCardLoader(getActivity(), URL);
@@ -176,7 +171,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
         // Loader reset, so we can clear out our existing data.
 
-    }
+    }*/
 
 
 }
