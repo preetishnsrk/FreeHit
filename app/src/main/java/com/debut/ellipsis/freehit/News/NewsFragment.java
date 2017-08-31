@@ -52,11 +52,13 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View rootView = inflater.inflate(R.layout.item, container, false);
+        View rootView = inflater.inflate(R.layout.item, container, false);
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
 
         // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
@@ -101,7 +103,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // so the list can be populated in the user interface
         NewsListView.setAdapter(mAdapter);
 
-        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
+        mProgressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar);
         int colorCodeDark = Color.parseColor("#F44336");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
@@ -127,10 +129,12 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             // First, hide loading indicator so error message will be visible
             mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
             return rootView;
+
         }
 
         // Finding a reference to the refresh layout
         final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
+        refLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
         refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
                                            @Override
                                            public void onRefresh() {
