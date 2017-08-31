@@ -73,7 +73,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
         }
-
+//GITPUSH
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
 //        mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
