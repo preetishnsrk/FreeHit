@@ -45,17 +45,18 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@+id/match_series_separator"
-                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
+                android:gravity="center_horizontal"
                 android:paddingTop="10dp"
                 android:textSize="12sp"
-
                 tools:text="India Tour of SriLanka,5 ODIs,2010" />
         </RelativeLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:paddingTop="20dp">
 
             <RelativeLayout
                 android:layout_width="wrap_content"
@@ -84,6 +85,7 @@
                         android:layout_alignEnd="@id/score_team_1"
                         android:layout_below="@id/score_team_1"
                         android:paddingTop="40dp"
+                        android:paddingEnd="30dp"
                         android:textSize="15sp"
                         tools:text="20" />
 
@@ -104,7 +106,8 @@
                         android:layout_height="100dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:paddingTop="20dp"
+                        android:paddingTop="40dp"
+                        android:paddingStart="5dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
@@ -115,6 +118,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignEnd="@id/score_team_1"
                         android:paddingTop="22dp"
+                        android:paddingEnd="25dp"
                         android:textSize="20sp"
                         tools:text="SN" />
                 </RelativeLayout>
@@ -130,7 +134,9 @@
                         android:layout_width="65dp"
                         android:layout_height="100dp"
                         android:layout_alignParentEnd="true"
-                        android:paddingTop="20dp"
+                        android:layout_centerVertical="true"
+                        android:paddingTop="40dp"
+                        android:paddingEnd="5dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
@@ -140,7 +146,7 @@
                         android:layout_height="wrap_content"
                         android:layout_alignStart="@+id/score_team_2"
                         android:layout_below="@+id/score_team_2"
-                        android:paddingEnd="15dp"
+                        android:paddingStart="30dp"
                         android:paddingTop="40dp"
                         android:textSize="15sp"
                         tools:text="20" />
@@ -152,7 +158,8 @@
                         android:layout_alignStart="@id/score_team_2"
                         android:layout_centerHorizontal="true"
                         android:paddingTop="22dp"
-                        android:textSize="15sp"
+                        android:paddingStart="25dp"
+                        android:textSize="20sp"
                         tools:text="BAN" />
 
                     <TextView
@@ -206,6 +213,7 @@
                 android:layout_gravity="center_horizontal"
                 android:paddingTop="10dp"
                 tools:text="Day 5"/>
+
 
         </LinearLayout>
 

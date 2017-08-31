@@ -35,16 +35,15 @@ public class MatchCardItem {
 
     private static String mDay;
 
+//FOR TEST MATCHES
 
-    //WHEN MATCH IS IN PROGRESS
-    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Score2, String Team1Overs, String Team2LogoURL, String Team2Score1,String Team2Score2, String Team2Overs, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN,String Day) {
+    //WHEN TEST MATCH IN 4TH INNINGS IS IN PROGRESS
+    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Score2,  String Team2LogoURL, String Team2Score1,String Team2Score2, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN,String Day) {
         mMatchName = MatchName;
         mSeriesName = SeriesName;
         mTeam1LogoURL = Team1LogoURL;
         mTeam1Score1 = Team1Score1;
-        mTeam1Overs = Team1Overs;
         mTeam2LogoURL = Team2LogoURL;
-        mTeam2Overs = Team2Overs;
         mTeam2Score1 = Team2Score1;
         mTeam1SN = Team1SN;
         mTeam2SN = Team2SN;
@@ -56,65 +55,68 @@ public class MatchCardItem {
         mDay = Day;
     }
 
-   /* //WHEN MATCH IS OVER AND NO TARGET OR LEADY BY FIELD
-    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1, String Team1Overs, String Team2LogoURL, String Team2Score1, String Team2Overs, String MatchStatusResult, String MatchSummary, String Team1SN, String Team2SN) {
+    //WHEN TEST MATCH IN 3rd INNINGS IS IN PROGRESS
+    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Score2, String Team1Overs, String Team2LogoURL, String Team2Score1,String Team2Score2, String Team2Overs, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN,String Day) {
         mMatchName = MatchName;
         mSeriesName = SeriesName;
         mTeam1LogoURL = Team1LogoURL;
         mTeam1Score1 = Team1Score1;
-        mTeam1Overs = Team1Overs;
         mTeam2LogoURL = Team2LogoURL;
-        mTeam2Overs = Team2Overs;
+        mTeam2Score1 = Team2Score1;
         mTeam1SN = Team1SN;
         mTeam2SN = Team2SN;
-        mTeam2Score1 = Team2Score1;
         mMatchStatusResult = MatchStatusResult;
+        mTargetLeadBy = TargetLeadBy;
         mMatchSummary = MatchSummary;
-        mTeam1Score2 = getmTeam1Score2();
-        mTeam2Score2 = getmTeam2Score2();
-
-    }
-
-    //For 2nd innings
-    public MatchCardItem(String Team1Score2, String Team2Score2, String MatchStatusResult, String TargetLeadBy, String MatchSummary) {
-        mMatchName = getmMatchName();
-        mSeriesName = getmSeriesName();
-        mTeam1LogoURL = getmTeam1LogoURL();
-        mTeam1Overs = null;
-        mTeam1Score1 = getmTeam1Score1();
         mTeam1Score2 = Team1Score2;
-        mTeam2LogoURL = getmTeam2Overs();
-        mTeam2Overs = null;
-        mTeam2Score1 = getmTeam2Score1();
         mTeam2Score2 = Team2Score2;
+        mDay = Day;
+    }
+
+//FOR ODI MATCHES OR TEST MATCHES WITH 2 Innings going on or less
+
+    //WHEN ODI MATCH OR TEST MATCH IN 1st INNINGS  IN PROGRESS
+    public MatchCardItem(String MatchName, String SeriesName, String Team1LogoURL, String Team1Score1,String Team1Overs,  String Team2LogoURL, String Team2Score1,String Team2Overs, String MatchStatusResult, String MatchSummary, String Team1SN, String Team2SN,String Day) {
+        mMatchName = MatchName;
+        mSeriesName = SeriesName;
+        mTeam1LogoURL = Team1LogoURL;
+        mTeam1Score1 = Team1Score1;
+        mTeam2LogoURL = Team2LogoURL;
+        mTeam2Score1 = Team2Score1;
+        mTeam1SN = Team1SN;
+        mTeam2SN = Team2SN;
+        mMatchStatusResult = MatchStatusResult;
+        mTeam1Overs=Team1Overs;
+        mTeam2Overs=Team2Overs;
+        mMatchSummary = MatchSummary;
+        mDay = Day;
+    }
+
+    //WHEN 2nd Innings is going on
+    //Team2Score 2 given cause it was matching with the first constructor
+    public  MatchCardItem(String MatchName,String  SeriesName,String  Team1LogoURL, String Team1Score1,String Team1Overs, String Team2LogoURL,  String Team2Score1,String Team2Overs,  String MatchStatusResult,  String MatchSummary, String TargetLeadBy, String Team1SN, String Team2SN, String Day,String Team2Score2)
+    {
+        mMatchName = MatchName;
+        mSeriesName = SeriesName;
+        mTeam1LogoURL = Team1LogoURL;
+        mTeam1Score1 = Team1Score1;
+        mTeam2LogoURL = Team2LogoURL;
+        mTeam2Score1 = Team2Score1;
+        mTeam1SN = Team1SN;
+        mTeam2SN = Team2SN;
         mMatchStatusResult = MatchStatusResult;
         mTargetLeadBy = TargetLeadBy;
         mMatchSummary = MatchSummary;
-        mTeam1SN = getmTeam1SN();
-        mTeam2SN = getmTeam1SN();
+        mTeam1Overs=Team1Overs;
+        mTeam2Overs=Team2Overs;
+        mDay = Day;
+        mTeam2Score2=Team2Score2;
 
     }
 
 
-    public MatchCardItem(String Team1Score1, String Team2Score1, String MatchStatusResult, String TargetLeadBy, String MatchSummary, String Team1SN, String Team2SN) {
 
-        mMatchName = getmMatchName();
-        mSeriesName = getmSeriesName();
-        mTeam1LogoURL = getmTeam1LogoURL();
-        mTeam1Overs = null;
-        mTeam1Score1 = Team1Score1;
-        mTeam1Score2 = getmTeam1Score2();
-        mTeam2LogoURL = getmTeam2Overs();
-        mTeam2Overs = null;
-        mTeam2Score1 = Team2Score1;
-        mTeam2Score2 = getmTeam2Score2();
-        mTargetLeadBy = TargetLeadBy;
-        mMatchStatusResult = MatchStatusResult;
-        mMatchSummary = MatchSummary;
-        mTeam1SN = getmTeam1SN();
-        mTeam2SN = getmTeam1SN();
 
-    }*/
 
     public static void setMatchName() {
         mMatchName = QueryUtilMatchCard.MatchName;

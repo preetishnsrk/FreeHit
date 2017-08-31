@@ -15,4 +15,6 @@
     <string name="rankings">Rankings</string>
     <string name="records">Records</string>
 
+    <string name="EmptyNews">NO NEWS FOUND</string>
+
 </resources>

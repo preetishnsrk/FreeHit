@@ -2,6 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="com.debut.ellipsis.freehit.Social.SocialFragment">
 
 
@@ -14,14 +15,17 @@
             android:id="@+id/poll_pager"
             android:layout_width="match_parent"
             android:layout_height="250dp"
-            android:scrollbars="none"></android.support.v4.view.ViewPager>
+            android:scrollbars="none">
+
+        </android.support.v4.view.ViewPager>
 
         <me.relex.circleindicator.CircleIndicator
             android:id="@+id/poll_indicator"
             android:layout_width="wrap_content"
             android:layout_height="25dp"
             android:layout_below="@id/poll_pager"
-            android:layout_centerHorizontal="true" />
+            android:layout_centerHorizontal="true"
+            app:ci_drawable="@drawable/circleindicator_round"/>
 
 
         <android.support.design.widget.TabLayout
@@ -29,7 +33,9 @@
             android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/poll_indicator"
-            android:layout_centerHorizontal="true"></android.support.design.widget.TabLayout>
+            android:layout_centerHorizontal="true">
+
+        </android.support.design.widget.TabLayout>
 
         <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/soc_refresh_layout"

@@ -22,7 +22,8 @@ import java.util.ArrayList;
 public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
     //    public View listItemView;
-    public ArrayList<Bitmap> Images = new ArrayList<Bitmap>();
+    // Was used for AsyncTask , not used anymore
+   /* public ArrayList<Bitmap> Images = new ArrayList<Bitmap>();*/
 
     public NewsItemAdapter(Context context, ArrayList<NewsItem> items) {
 
@@ -127,7 +128,6 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
 
         protected void onPostExecute(Bitmap result) {
-//
         }
 
 

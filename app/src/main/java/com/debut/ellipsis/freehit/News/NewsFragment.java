@@ -3,9 +3,12 @@ package com.debut.ellipsis.freehit.News;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -17,6 +20,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
@@ -41,7 +45,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private NewsItemAdapter mAdapter;
     public TextView mEmptyStateTextView;
-    public String status;
+    private ProgressBar mProgressBar;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -97,6 +101,11 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // so the list can be populated in the user interface
         NewsListView.setAdapter(mAdapter);
 
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
+        int colorCodeDark = Color.parseColor("#F44336");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
+        }
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
         final ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -170,8 +179,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 //        Log.d(this,"Dead");
 //        loadingIndicator.setVisibility(View.GONE);
 //         Set empty state text to display "No News found."
+
+        mProgressBar.setVisibility(View.GONE);
         if (mEmptyStateTextView.getText() == null) {
-            mEmptyStateTextView.setText("NEWS NOT FOUND");
+            mEmptyStateTextView.setText(R.string.EmptyNews);
         }
         //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
