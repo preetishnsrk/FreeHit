@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
@@ -41,7 +42,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
     private NewsItemAdapter mAdapter;
     public TextView mEmptyStateTextView;
-    public String status;
+    private ProgressBar mProgressBar;
 
     public NewsFragment() {
         // Required empty public constructor
@@ -97,6 +98,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // so the list can be populated in the user interface
         NewsListView.setAdapter(mAdapter);
 
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
         final ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -170,8 +172,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 //        Log.d(this,"Dead");
 //        loadingIndicator.setVisibility(View.GONE);
 //         Set empty state text to display "No News found."
+
+        mProgressBar.setVisibility(View.GONE);
         if (mEmptyStateTextView.getText() == null) {
-            mEmptyStateTextView.setText("NEWS NOT FOUND");
+            mEmptyStateTextView.setText(R.string.EmptyNews);
         }
         //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
