@@ -25,7 +25,7 @@ public class PollItemAdapter extends PagerAdapter {
 
     PollItemAdapter(Context context, List<PollCardItem> dataObjectList) {
         this.context = context;
-        this.layoutInflater = (LayoutInflater) this.context.getSystemService(this.context.LAYOUT_INFLATER_SERVICE);
+        this.layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         this.dataObjectList = dataObjectList;
     }
@@ -37,7 +37,7 @@ public class PollItemAdapter extends PagerAdapter {
 
     @Override
     public boolean isViewFromObject(View view, Object object) {
-        return view == ((View) object);
+        return view == object;
     }
 
     @Override
@@ -54,6 +54,8 @@ public class PollItemAdapter extends PagerAdapter {
         option3.setText(this.dataObjectList.get(position).getpOption(2));
         RadioButton option4 = (RadioButton) view.findViewById(R.id.option_4);
         option4.setText(this.dataObjectList.get(position).getpOption(3));
+//        RadioGroup rGroup = (RadioGroup) view.findViewById(R.id.poll_group);
+
 
         Button submit = (Button) view.findViewById(R.id.poll_submit);
         container.addView(view);
