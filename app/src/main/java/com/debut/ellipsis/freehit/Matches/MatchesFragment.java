@@ -76,7 +76,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
-        mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
+//        mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
 //        viewPager.setAdapter(mAdapter);
 
         tabLayout = (TabLayout)rootView.findViewById(R.id.match_card_tabs);
