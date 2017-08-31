@@ -77,11 +77,11 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         setupViewPager(viewPager);
         mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
-        viewPager.setAdapter(mAdapter);
+//        viewPager.setAdapter(mAdapter);
 
         tabLayout = (TabLayout)rootView.findViewById(R.id.match_card_tabs);
-        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-        setupTabs();
+//        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.setupWithViewPager(viewPager);
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -100,15 +100,15 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
             }
         });
 
-        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
-        indicator.setViewPager(viewPager);
+//        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
+//        indicator.setViewPager(viewPager);
 
         return rootView;
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
-        MatchesFragment.ViewPagerAdapter adapter = new MatchesFragment.ViewPagerAdapter(getFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         adapter.addFrag(new LiveMatchCard(), "LIVE");
         adapter.addFrag(new UpcomingMatchCard(), "UPCOMING");
         adapter.addFrag(new PastMatchCard(), "PAST");
@@ -162,9 +162,11 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty() && mAdapter.getCount() <= 1) {
+
             mAdapter = new MatchesItemAdapter(getContext(), data);
-            viewPager.setAdapter(mAdapter);
-            indicator.setViewPager(viewPager);
+            // This is the inner viewPager so commenting it out for now
+//            viewPager.setAdapter(mAdapter);
+//            indicator.setViewPager(viewPager);
         }
     }
 
@@ -176,10 +178,5 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
     }
 
-    void setupTabs(){
-        tabLayout.addTab(tabLayout.newTab().setText("Live"));
-        tabLayout.addTab(tabLayout.newTab().setText("Upcoming"));
-        tabLayout.addTab(tabLayout.newTab().setText("Past"));
 
-    }
 }
