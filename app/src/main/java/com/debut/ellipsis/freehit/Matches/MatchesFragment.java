@@ -79,9 +79,9 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         mAdapter = new MatchesItemAdapter(getActivity(), new ArrayList<MatchCardItem>());
         viewPager.setAdapter(mAdapter);
 
-
         tabLayout = (TabLayout)rootView.findViewById(R.id.match_card_tabs);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        setupTabs();
 
         tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
@@ -176,4 +176,10 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
     }
 
+    void setupTabs(){
+        tabLayout.addTab(tabLayout.newTab().setText("Live"));
+        tabLayout.addTab(tabLayout.newTab().setText("Upcoming"));
+        tabLayout.addTab(tabLayout.newTab().setText("Past"));
+
+    }
 }
