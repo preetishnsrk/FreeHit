@@ -119,7 +119,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
             return rootView;
         }
-
+//Commit push
         // Finding a reference to the refresh layout
         final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
