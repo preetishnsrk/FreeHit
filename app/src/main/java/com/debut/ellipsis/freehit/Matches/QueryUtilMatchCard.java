@@ -4,7 +4,6 @@ package com.debut.ellipsis.freehit.Matches;
 import android.text.TextUtils;
 import android.util.Log;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -184,7 +183,7 @@ public class QueryUtilMatchCard {
             String MatchResult=null;
 
             Object intervention = results.get("Scorecard");
-            if (intervention instanceof JSONArray) {
+          /*  if (intervention instanceof JSONArray) {
                 // It's an array
                 JSONArray scorecardsArray = (JSONArray) intervention;
 
@@ -350,10 +349,10 @@ public class QueryUtilMatchCard {
                 }
 
                 String Result = null;
-                /*if(matchStatus==null)
+                *//*if(matchStatus==null)
                {
                     Result=matchWinner+byRunsOrWickets+DrawOrInningsWin;
-                }*/
+                }*//*
 
 
                 //For Test Match
@@ -478,7 +477,7 @@ public class QueryUtilMatchCard {
                 }
 
                 MatchCards.add(matchCard);
-            }
+            }*/
             return MatchCards;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
