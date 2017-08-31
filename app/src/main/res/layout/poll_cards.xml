@@ -32,52 +32,55 @@
                 android:textSize="20sp" />
 
 
-            <RadioButton
-                android:id="@+id/option_1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/poll_title"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="10dp"
-                android:text="Option 1" />
+            <RadioGroup
+                android:id="@+id/poll_group"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/poll_title"
+                android:layout_marginLeft="12dp"
+                android:layout_marginRight="12dp"
+                android:orientation="horizontal"
+                >
 
-            <RadioButton
-                android:id="@+id/option_2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/option_1"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="30dp"
-                android:layout="@id/poll_title"
-                android:text="Option 2" />
+                <RadioButton
+                    android:id="@+id/option_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <RadioButton
-                android:id="@+id/option_3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Option 1" />
 
-                android:layout_alignStart="@id/option_1"
-                android:layout_below="@id/option_1"
-                android:layout_marginTop="10dp"
-                android:text="Option 1" />
+                <RadioButton
+                    android:id="@+id/option_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
 
-            <RadioButton
-                android:id="@+id/option_4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@id/option_3"
-                android:layout_alignStart="@id/option_2"
-                android:layout_below="@id/option_2"
-                android:layout_marginRight="30dp"
-                android:layout_marginTop="10dp"
-                android:layout="@id/poll_title"
-                android:text="Option 2" />
+                    android:padding="2dp"
+                    android:text="Option 2" />
+
+                <RadioButton
+                    android:id="@+id/option_3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="2dp"
+                    android:text="Option 1" />
+
+                <RadioButton
+                    android:id="@+id/option_4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:padding="2dp"
+                    android:text="Option 2" />
+
+            </RadioGroup>
 
             <Button
                 android:id="@+id/poll_submit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/option_4"
+                android:layout_below="@id/poll_group"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15dp"
                 android:background="@color/color_white"

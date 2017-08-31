@@ -43,7 +43,7 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         //Initializing the AVLoadingIndicator
         final AVLoadingIndicatorView loader = (AVLoadingIndicatorView) listItemView.findViewById(R.id.avi);
 
-        NewsItem currentnews = (NewsItem) getItem(position);
+        NewsItem currentnews = getItem(position);
         System.out.println(currentnews);
         String imageurl = currentnews.getMurlofimage();
         TextView studentName = (TextView) listItemView.findViewById(R.id.header_text_view);
