@@ -175,7 +175,7 @@ public class QueryUtilPastMatchCard {
 
                 // Extract the value for the key called "stadium"
                 String stadium_name = currentPastMatch.getString("stadium");
-                stadium_name="("+stadium_name+")";
+                stadium_name = "(" + stadium_name + ")";
 
                 JSONObject date = currentPastMatch.getJSONObject("date");
 
@@ -193,11 +193,10 @@ public class QueryUtilPastMatchCard {
                 // Extract the value for the key called "inn1"
                 String team1_innings1 = team1info.getString("inn1");
 
-                String team1_innings2 = null;
-                if (team1info.getString("inn2") != null) {
-                    // Extract the value for the key called "inn2"
-                    team1_innings2 = team1info.getString("inn2");
-                }
+
+                // Extract the value for the key called "inn2"
+                String team1_innings2 = team1info.getString("inn2");
+
                 JSONObject team2info = currentPastMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn"
@@ -209,11 +208,9 @@ public class QueryUtilPastMatchCard {
                 // Extract the value for the key called "inn1"
                 String team2_innings1 = team2info.getString("inn1");
 
-                String team2_innings2 = null ;
-                if (team1info.getString("inn2") != null) {
-                    // Extract the value for the key called "inn2"
-                    team2_innings2 = team2info.getString("inn2");
-                }
+                // Extract the value for the key called "inn2"
+                String team2_innings2 = team2info.getString("inn2");
+
                 // Extract the value for the key called "mresult"
                 String match_result = currentPastMatch.getString("mresult");
 
