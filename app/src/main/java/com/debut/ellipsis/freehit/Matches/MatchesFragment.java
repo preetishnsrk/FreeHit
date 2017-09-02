@@ -111,6 +111,7 @@ public class MatchesFragment extends Fragment {
         adapter.addFrag(new UpcomingMatchCard(), "UPCOMING",1);
         adapter.addFrag(new PastMatchCard(), "PAST",2);
         viewPager.setAdapter(adapter);
+
     }
 
     class ViewPagerAdapter extends FragmentPagerAdapter {

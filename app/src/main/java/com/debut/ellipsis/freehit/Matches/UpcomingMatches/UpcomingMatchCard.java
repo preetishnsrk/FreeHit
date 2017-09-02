@@ -80,9 +80,6 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
-
-
-
         return rootView;
     }
 
@@ -111,7 +108,12 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             viewPager.setAdapter(mAdapter);
             indicator.setViewPager(viewPager);
         }
+
+
+
+
     }
+
 
 
     @Override
