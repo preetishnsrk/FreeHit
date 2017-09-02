@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 
 import android.os.Bundle;
@@ -11,10 +11,10 @@ import android.widget.TextView;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class UpcomingMatchCard extends Fragment {
+public class LiveMatchCard extends Fragment {
 
 
-    public UpcomingMatchCard() {
+    public LiveMatchCard() {
         // Required empty public constructor
     }
 
@@ -23,7 +23,7 @@ public class UpcomingMatchCard extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         TextView textView = new TextView(getActivity());
-        textView.setText("Upcoming Match Card");
+        textView.setText("Live Match Card");
         return textView;
     }
 

@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.PastMatches;
 
 
 import android.os.Bundle;
