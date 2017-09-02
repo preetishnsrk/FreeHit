@@ -193,7 +193,7 @@ public class QueryUtilPastMatchCard {
                 // Extract the value for the key called "inn1"
                 String team1_innings1 = team1info.getString("inn1");
 
-                String team1_innings2 = "";
+                String team1_innings2 = null;
                 if (team1info.getString("inn2") != null) {
                     // Extract the value for the key called "inn2"
                     team1_innings2 = team1info.getString("inn2");
@@ -209,7 +209,7 @@ public class QueryUtilPastMatchCard {
                 // Extract the value for the key called "inn1"
                 String team2_innings1 = team2info.getString("inn1");
 
-                String team2_innings2 = "";
+                String team2_innings2 = null ;
                 if (team1info.getString("inn2") != null) {
                     // Extract the value for the key called "inn2"
                     team2_innings2 = team2info.getString("inn2");

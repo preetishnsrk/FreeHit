@@ -16,7 +16,7 @@ public class PastMatchCardItem {
 
     private String mTeam1Innings1;
 
-    private String mTeam1Innings2 = "";
+    private String mTeam1Innings2;
 
     private String mTeam2LogoURL;
 
@@ -24,7 +24,7 @@ public class PastMatchCardItem {
 
     private String mTeam2Innings1;
 
-    private String mTeam2Innings2 = "";
+    private String mTeam2Innings2;
 
     private String mMatchDate;
 
