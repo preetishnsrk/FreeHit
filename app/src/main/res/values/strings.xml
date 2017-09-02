@@ -17,6 +17,8 @@
 
     <string name="EmptyNews">NO NEWS FOUND</string>
 
+    <string name="Upcoming_matches_view_more">Click to view more</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 

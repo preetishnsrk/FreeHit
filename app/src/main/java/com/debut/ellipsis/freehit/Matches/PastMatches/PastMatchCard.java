@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.PastMatches;
 
 
 import android.os.Bundle;
@@ -13,10 +13,10 @@ import com.debut.ellipsis.freehit.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class LiveMatchCard extends Fragment {
+public class PastMatchCard extends Fragment {
 
 
-    public LiveMatchCard() {
+    public PastMatchCard() {
         // Required empty public constructor
     }
 
