@@ -108,7 +108,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
 
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
         adapter.addFrag(new LiveMatchCard(), "LIVE");
         adapter.addFrag(new UpcomingMatchCard(), "UPCOMING");
         adapter.addFrag(new PastMatchCard(), "PAST");
@@ -163,7 +163,7 @@ public class MatchesFragment extends Fragment implements LoaderManager.LoaderCal
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty() && mAdapter.getCount() <= 1) {
 
-            mAdapter = new MatchesItemAdapter(getContext(), data);
+//            mAdapter = new MatchesItemAdapter(getContext(), data);
             // This is the inner viewPager so commenting it out for now
 //            viewPager.setAdapter(mAdapter);
 //            indicator.setViewPager(viewPager);
