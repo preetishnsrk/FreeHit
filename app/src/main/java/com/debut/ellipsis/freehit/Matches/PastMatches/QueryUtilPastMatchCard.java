@@ -194,10 +194,9 @@ public class QueryUtilPastMatchCard {
                 String team1_innings1 = team1info.getString("inn1");
 
                 String team1_innings2 = "";
-                if (team1info.getString("inn2") != null) {
-                    // Extract the value for the key called "inn2"
+
                     team1_innings2 = team1info.getString("inn2");
-                }
+
                 JSONObject team2info = currentPastMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn"
