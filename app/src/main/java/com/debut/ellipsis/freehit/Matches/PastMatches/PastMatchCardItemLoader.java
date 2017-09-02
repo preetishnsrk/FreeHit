@@ -1,17 +1,18 @@
-package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
+package com.debut.ellipsis.freehit.Matches.PastMatches;
+
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
 import android.util.Log;
 
+
 import java.util.List;
 
-
-public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchCardItem>> {
+public class PastMatchCardItemLoader extends AsyncTaskLoader<List<PastMatchCardItem>> {
     /**
      * Tag for log messages
      */
-    private static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.UpcomingMatches.UpcomingMatchCardLoader.class.getName();
+    private static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.PastMatches.PastMatchCardItemLoader.class.getName();
 
     /**
      * Query URL
@@ -24,7 +25,7 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
      * @param context of the activity
      * @param url     to load data from
      */
-    public UpcomingMatchCardLoader(Context context, String url) {
+    public PastMatchCardItemLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -40,7 +41,7 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
      * This is on a background thread.
      */
     @Override
-    public List<UpcomingMatchCardItem> loadInBackground() {
+    public List<PastMatchCardItem> loadInBackground() {
 
         Log.i(LOG_TAG, "TEST: loadInBackground() called");
         if (mUrl == null) {
@@ -48,6 +49,6 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
             return null;
         }
         // Perform the network request, parse the response, and extract a list of Matches.
-        return QueryUtilUpcomingMatchCard.fetchUpcomingMatchData(mUrl);
+        return QueryUtilPastMatchCard.fetchPastMatchData(mUrl);
     }
 }
