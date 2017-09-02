@@ -193,7 +193,6 @@ public class QueryUtilPastMatchCard {
                 // Extract the value for the key called "inn1"
                 String team1_innings1 = team1info.getString("inn1");
 
-
                 // Extract the value for the key called "inn2"
                 String team1_innings2 = team1info.getString("inn2");
 
