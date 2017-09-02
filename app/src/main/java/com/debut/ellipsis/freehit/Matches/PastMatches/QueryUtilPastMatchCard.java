@@ -1,10 +1,7 @@
-package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
-
+package com.debut.ellipsis.freehit.Matches.PastMatches;
 
 import android.text.TextUtils;
 import android.util.Log;
-
-import com.debut.ellipsis.freehit.News.NewsItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -21,26 +18,26 @@ import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryUtilUpcomingMatchCard {
+public class QueryUtilPastMatchCard {
 
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.UpcomingMatches.QueryUtilUpcomingMatchCard.class.getSimpleName();
+    public static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.PastMatches.QueryUtilPastMatchCard.class.getSimpleName();
 
     /**
      * Create a private constructor because no one should ever create a {@link com.debut.ellipsis.freehit.Social.QueryUtilPolls} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
-    private QueryUtilUpcomingMatchCard() {
+    private QueryUtilPastMatchCard() {
     }
 
     /**
-     * Query the USGS dataset and return an {@link NewsItem} object to represent a list of earthquakes.
+     * Query the USGS dataset and return an {@link PastMatchCardItem} object to represent a list of earthquakes.
      */
 
-    public static List<UpcomingMatchCardItem> fetchUpcomingMatchData(String requestUrl) {
+    public static List<PastMatchCardItem> fetchPastMatchData(String requestUrl) {
 
 
         Log.i(LOG_TAG, "TEST: fetchPollData() called");
@@ -138,19 +135,18 @@ public class QueryUtilUpcomingMatchCard {
 
 
     /**
-     * Return a list of {@link NewsItem} objects that has been built up from
+     * Return a list of {@link PastMatchCardItem} objects that has been built up from
      * parsing the given JSON response.
      */
-    public static List<UpcomingMatchCardItem> extractFeatureFromJson(String UpcomingMatchesJSON) {
+    public static List<PastMatchCardItem> extractFeatureFromJson(String PastMatchesJSON) {
 
         //if the JSON string is empty or null then return early
-        if (TextUtils.isEmpty(UpcomingMatchesJSON)) {
+        if (TextUtils.isEmpty(PastMatchesJSON)) {
             return null;
         }
-//        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
-        List<UpcomingMatchCardItem> UpcomingMatches = new ArrayList<>();
+        List<PastMatchCardItem> PastMatches = new ArrayList<>();
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -161,28 +157,32 @@ public class QueryUtilUpcomingMatchCard {
             // build up a list of News Articles objects with the corresponding data.
 
             //create a JSONObject from  the JSON response string
-            JSONObject basJsonResponse = new JSONObject(UpcomingMatchesJSON);
-            JSONArray result=basJsonResponse.getJSONArray("result");
+            JSONObject basJsonResponse = new JSONObject(PastMatchesJSON);
+            JSONArray result = basJsonResponse.getJSONArray("result");
 
             for (int i = 0; i < 5; i++) {
 
-                JSONObject currentUpcomingMatch=result.getJSONObject(i);
+                JSONObject currentPastMatch = result.getJSONObject(i);
+
+                // Extract the value for the key called "ndid"
+                String match_id = currentPastMatch.getString("ndid");
 
                 // Extract the value for the key called "tour"
-                String series_name = currentUpcomingMatch.getString("tour");
+                String series_name = currentPastMatch.getString("tour");
 
-                // Extract the value for the key called "match"
-                String match_name = currentUpcomingMatch.getString("match");
+                // Extract the value for the key called "title"
+                String match_name = currentPastMatch.getString("title");
 
                 // Extract the value for the key called "stadium"
-                String stadium_name = currentUpcomingMatch.getString("stadium");
+                String stadium_name = currentPastMatch.getString("stadium");
+                stadium_name="("+stadium_name+")";
 
-                JSONObject date=currentUpcomingMatch.getJSONObject("date");
+                JSONObject date = currentPastMatch.getJSONObject("date");
 
                 // Extract the value for the key called "final"(for match date)
-                String match_date=date.getString("final");
+                String match_date = date.getString("final");
 
-                JSONObject team1info=currentUpcomingMatch.getJSONObject("team1info");
+                JSONObject team1info = currentPastMatch.getJSONObject("team1info");
 
                 // Extract the value for the key called "sn"
                 String team1_short_name = team1info.getString("sn");
@@ -190,7 +190,15 @@ public class QueryUtilUpcomingMatchCard {
                 // Extract the value for the key called "image"
                 String team1_logo_URL = team1info.getString("image");
 
-                JSONObject team2info=currentUpcomingMatch.getJSONObject("team2info");
+                // Extract the value for the key called "inn1"
+                String team1_innings1 = team1info.getString("inn1");
+
+                String team1_innings2 = "";
+                if (team1info.getString("inn2") != null) {
+                    // Extract the value for the key called "inn2"
+                    team1_innings2 = team1info.getString("inn2");
+                }
+                JSONObject team2info = currentPastMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn"
                 String team2_short_name = team2info.getString("sn");
@@ -198,23 +206,34 @@ public class QueryUtilUpcomingMatchCard {
                 // Extract the value for the key called "image"
                 String team2_logo_URL = team2info.getString("image");
 
+                // Extract the value for the key called "inn1"
+                String team2_innings1 = team2info.getString("inn1");
+
+                String team2_innings2 = "";
+                if (team1info.getString("inn2") != null) {
+                    // Extract the value for the key called "inn2"
+                    team2_innings2 = team2info.getString("inn2");
+                }
+                // Extract the value for the key called "mresult"
+                String match_result = currentPastMatch.getString("mresult");
 
 
-                // Create a new {@link UpcomingMatches} object
+                // Create a new {@link PastMatches} object
                 // and url from the JSON response.
-                UpcomingMatchCardItem upcoming_match = new UpcomingMatchCardItem(match_name,series_name,stadium_name,team1_logo_URL,team1_short_name,team2_logo_URL,team2_short_name,match_date,"-");
-                UpcomingMatches.add(upcoming_match);
+                PastMatchCardItem past_match = new PastMatchCardItem(match_name, match_id, series_name, stadium_name, team1_logo_URL, team1_short_name, team1_innings1, team1_innings2, team2_logo_URL, team2_short_name, team2_innings1, team2_innings2, match_date, match_result);
+                PastMatches.add(past_match);
 
             }
-                    UpcomingMatches.add(new UpcomingMatchCardItem("Click to view more"));
+            PastMatches.add(new PastMatchCardItem("Click to view more"));
 //                Log.e(LOG_TAG, String.valueOf(j));
-            return UpcomingMatches;
+            return PastMatches;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
-            Log.e("QueryUtils", "Problem parsing the UpcomingMatches JSON results", e);
+            Log.e("QueryUtils", "Problem parsing the PastMatches JSON results", e);
         }
-        return UpcomingMatches;
+        return PastMatches;
     }
 }
+
