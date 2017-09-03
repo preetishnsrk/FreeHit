@@ -84,6 +84,7 @@ public class UpcomingMatchesItemAdapter extends PagerAdapter {
         final CardView cardView = (CardView) view.findViewById(R.id.card_view);
 //GITPUSH
 //GITPUSH
+//GITPUSH
 
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override

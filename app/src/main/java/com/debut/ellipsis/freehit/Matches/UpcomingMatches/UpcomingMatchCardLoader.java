@@ -18,6 +18,7 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
      */
     private String mUrl;
 //GITPUSH
+//GITPUSH
 
     /**
      * Constructs a new {@link com.debut.ellipsis.freehit.News.NewsLoader}.

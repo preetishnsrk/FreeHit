@@ -89,10 +89,11 @@ public class UpcomingMatchesActivity extends FragmentActivity implements LoaderM
             rv.setAdapter(MatchListAdapter);
         }
 
-    }
+    }//GITPUSH
 
 
-//GITPUSH
+
+    //GITPUSH
     @Override
     public void onLoaderReset(Loader<List<UpcomingMatchCardItem>> loader) {
 

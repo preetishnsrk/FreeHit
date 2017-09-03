@@ -35,7 +35,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
     }
 
     private static final String URL =
-            "https://freehit-api.herokuapp.com/past";
+            "https://freehit-api.herokuapp.com/past?max=5";
 
     private static final int UPCOMING_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;

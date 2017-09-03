@@ -146,6 +146,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
 
             }
 //GITPUSH
+//GITPUSH
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
