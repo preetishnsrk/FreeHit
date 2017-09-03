@@ -35,6 +35,7 @@ public class QueryUtilUpcomingMatchCard {
      */
     private QueryUtilUpcomingMatchCard() {
     }
+//GITPUSH
 
     /**
      * Query the USGS dataset and return an {@link NewsItem} object to represent a list of earthquakes.

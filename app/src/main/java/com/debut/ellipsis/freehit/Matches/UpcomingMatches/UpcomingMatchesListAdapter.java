@@ -145,6 +145,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 
             }
+//GITPUSH
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
