@@ -1,4 +1,5 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.LiveMatches;
+
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -17,18 +18,17 @@ import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.util.List;
 
-
-public class MatchesItemAdapter extends PagerAdapter {
+public class LiveMatchCardAdapter  extends PagerAdapter {
 
     private Context context;
-    private List<MatchCardItem> dataObjectList;
+    private List<LiveMatchCardItem> dataObjectList;
     private LayoutInflater layoutInflater;
     public String logo_string1;
     public String logo_string2;
     public ImageView imageViewTeam1Logo;
     public ImageView imageViewTeam2Logo;
 
-    public MatchesItemAdapter(Context context, List<MatchCardItem> dataObjectList) {
+    public LiveMatchCardAdapter(Context context, List<LiveMatchCardItem> dataObjectList) {
         this.context = context;
         this.layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.dataObjectList = dataObjectList;
@@ -46,51 +46,61 @@ public class MatchesItemAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View view = this.layoutInflater.inflate(R.layout.match_cards, container, false);
+        View view = this.layoutInflater.inflate(R.layout.live_match_card, container, false);
 
-        TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name);
+        TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name_live);
         textViewMatchName.setText(this.dataObjectList.get(position).getmMatchName());
-        TextView textViewSeriesName = (TextView) view.findViewById(R.id.series_name);
+
+        TextView textViewSeriesName = (TextView) view.findViewById(R.id.series_name_live);
         textViewSeriesName.setText(this.dataObjectList.get(position).getmSeriesName());
-        imageViewTeam1Logo = (ImageView) view.findViewById(R.id.team_logo_1);
 
-        TextView textViewSeriesTeam1Score = (TextView) view.findViewById(R.id.score_team_1);
-        textViewSeriesTeam1Score.setText(this.dataObjectList.get(position).getmTeam1Score1());
+        TextView Separator = (TextView) view.findViewById(R.id.match_series_separator_live);
+        Separator.setText(this.dataObjectList.get(position).getmSeparator());
 
-        TextView textViewSeriesTeam1Score2 = (TextView) view.findViewById(R.id.score2_team_1);
-        textViewSeriesTeam1Score2.setText(this.dataObjectList.get(position).getmTeam1Score2());
+        TextView textViewStadiumName = (TextView) view.findViewById(R.id.stadium_live);
+        textViewStadiumName.setText(this.dataObjectList.get(position).getmStadiumName());
 
-        TextView textViewSeriesTeam1Overs = (TextView) view.findViewById(R.id.overs_team_1);
-        textViewSeriesTeam1Overs.setText(this.dataObjectList.get(position).getmTeam1Overs());
-        imageViewTeam2Logo = (ImageView) view.findViewById(R.id.team_logo_2);
+        imageViewTeam1Logo = (ImageView) view.findViewById(R.id.team_logo_1_live);
 
-        TextView textViewSeriesTeam2Score = (TextView) view.findViewById(R.id.score_team_2);
-        textViewSeriesTeam2Score.setText(this.dataObjectList.get(position).getmTeam2Score1());
 
-        TextView textViewSeriesTeam2Score2 = (TextView) view.findViewById(R.id.score2_team_2);
-        textViewSeriesTeam2Score2.setText(this.dataObjectList.get(position).getmTeam2Score2());
+        imageViewTeam2Logo = (ImageView) view.findViewById(R.id.team_logo_2_live);
 
-        TextView textViewSeriesTeam2Overs = (TextView) view.findViewById(R.id.overs_team_2);
-        textViewSeriesTeam2Overs.setText(this.dataObjectList.get(position).getmTeam2Overs());
-        TextView textViewMatchStatusResult = (TextView) view.findViewById(R.id.match_status_result);
-        textViewMatchStatusResult.setText(this.dataObjectList.get(position).getmMatchStatusResult());
-        TextView textViewSeriesTargetLeadBy = (TextView) view.findViewById(R.id.target_leadby);
-        textViewSeriesTargetLeadBy.setText(this.dataObjectList.get(position).getmTargetLeadBy());
 
-        TextView textMatchSummaryPreview = (TextView) view.findViewById(R.id.match_preview_summary);
-        textMatchSummaryPreview.setText(this.dataObjectList.get(position).getmMatchSummaryPreview());
-
-        TextView shortName1 = (TextView) view.findViewById(R.id.shortname_team_1);
+        TextView shortName1 = (TextView) view.findViewById(R.id.sn_team_1_live);
         shortName1.setText(this.dataObjectList.get(position).getmTeam1SN());
-        TextView shortName2 = (TextView) view.findViewById(R.id.shortname_team_2);
+
+        TextView team1Innings1 = (TextView) view.findViewById(R.id.innings1_team1_live);
+        team1Innings1.setText(this.dataObjectList.get(position).getmTeam1Innings1());
+
+        TextView team1Innings2 = (TextView) view.findViewById(R.id.innings2_team1_live);
+        team1Innings2.setText(this.dataObjectList.get(position).getmTeam1Innings2());
+
+
+        TextView shortName2 = (TextView) view.findViewById(R.id.sn_team_2_live);
         shortName2.setText(this.dataObjectList.get(position).getmTeam2SN());
 
-        TextView Day = (TextView) view.findViewById(R.id.day);
-        Day.setText(this.dataObjectList.get(position).getmDay());
+        TextView team2Innings1 = (TextView) view.findViewById(R.id.innings1_team2_live);
+        team2Innings1.setText(this.dataObjectList.get(position).getmTeam2Innings1());
+
+        TextView team2Innings2 = (TextView) view.findViewById(R.id.innings2_team2_live);
+        team2Innings2.setText(this.dataObjectList.get(position).getmTeam2Innings2());
+
+        TextView ViewMore = (TextView) view.findViewById(R.id.live_view_more);
+        ViewMore.setText(this.dataObjectList.get(position).getmViewMore());
+
+        TextView MatchResult = (TextView) view.findViewById(R.id.match_target_trail_leadBy_live);
+        MatchResult.setText(this.dataObjectList.get(position).getmResultOrTargetOrTrailByOrLeadBy());
+
+        TextView MatchDate = (TextView) view.findViewById(R.id.match_date_live);
+        MatchDate.setText(this.dataObjectList.get(position).getmMatchDate());
+
+        TextView MatchDay = (TextView) view.findViewById(R.id.Day_for_test_match_live);
+        MatchDay.setText(this.dataObjectList.get(position).getmDayForTestMatch());
 
         // Initializing Logo URLS
         logo_string1 = this.dataObjectList.get(position).getmTeam1LogoURL();
         logo_string2 = this.dataObjectList.get(position).getmTeam2LogoURL();
+
         setImage(logo_string1, imageViewTeam1Logo);
         setImage(logo_string2, imageViewTeam2Logo);
         container.addView(view);

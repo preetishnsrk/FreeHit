@@ -201,10 +201,9 @@
         android:maxLines="10"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
-        android:paddingTop="40dp"
+        android:paddingTop="50dp"
         android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
         android:textColor="@android:color/black"
         android:textSize="13sp" />
 
 </RelativeLayout>
-

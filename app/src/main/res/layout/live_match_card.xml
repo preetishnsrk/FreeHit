@@ -21,36 +21,56 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
-
             <TextView
-                android:id="@+id/match_name"
+                android:id="@+id/match_name_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
                 android:paddingTop="10dp"
-                android:textSize="12sp"
-                tools:text="2nd ODI" />
+                android:textSize="15sp"
+                tools:text="4th ODI" />
 
             <TextView
-                android:id="@+id/match_series_separator"
+                android:id="@+id/match_series_separator_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/match_name"
+                android:layout_toEndOf="@+id/match_name_live"
                 android:paddingStart="5dp"
                 android:paddingTop="10dp"
-                android:text="-"
-                android:textSize="12sp" />
+                tools:text="-"
+                android:textSize="15sp" />
 
             <TextView
-                android:id="@+id/series_name"
+                android:id="@+id/series_name_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/match_series_separator"
-                android:paddingEnd="10dp"
+                android:layout_toEndOf="@+id/match_series_separator_live"
                 android:gravity="center_horizontal"
+                android:paddingStart="5dp"
+                android:paddingEnd="10dp"
                 android:paddingTop="10dp"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 tools:text="India Tour of SriLanka,5 ODIs,2010" />
+
+            <TextView
+                android:id="@+id/stadium_live"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/series_name_live"
+                android:layout_centerHorizontal="true"
+                android:paddingTop="10dp"
+                tools:text="M Chinnaswamy ,Bangalore , India" />
+
+            <TextView
+                android:id="@+id/live_view_more"
+                android:layout_below="@+id/stadium_live"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                android:textSize="30sp"
+                android:textColor="@android:color/black"
+                tools:text="@string/Upcoming_matches_view_more"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -62,158 +82,127 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp">
+                android:layout_marginTop="25dp">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp">
 
-                    <TextView
-                        android:id="@+id/score_team_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toEndOf="@+id/team_logo_1"
-                        android:textSize="20sp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        tools:text="100/3" />
-
-                    <TextView
-                        android:id="@+id/overs_team_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/score_team_1"
-                        android:layout_below="@id/score_team_1"
-                        android:paddingTop="40dp"
-                        android:paddingEnd="30dp"
-                        android:textSize="15sp"
-                        tools:text="20" />
-
-                    <TextView
-                        android:id="@+id/score2_team_1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/overs_team_1"
-                        android:layout_toEndOf="@+id/team_logo_1"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:textSize="20sp"
-                        tools:text="100/3" />
 
                     <ImageView
-                        android:id="@+id/team_logo_1"
+                        android:id="@+id/team_logo_1_live"
                         android:layout_width="65dp"
                         android:layout_height="100dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:paddingTop="40dp"
                         android:paddingStart="5dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
                     <TextView
-                        android:id="@+id/shortname_team_1"
-                        android:layout_centerHorizontal="true"
+                        android:id="@+id/sn_team_1_live"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignEnd="@id/score_team_1"
-                        android:paddingTop="22dp"
-                        android:paddingEnd="25dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toEndOf="@+id/team_logo_1_live"
+                        android:layout_marginStart="20dp"
                         android:textSize="20sp"
                         tools:text="SN" />
+
+                    <TextView
+                        android:id="@+id/innings1_team1_live"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:layout_toEndOf="@+id/team_logo_1_live"
+                        android:textSize="15sp"
+                        tools:text="207 (42.4)"/>
+
+                    <TextView
+                        android:id="@+id/innings2_team1_live"
+                        android:layout_below="@+id/innings1_team1_live"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/team_logo_1_live"
+                        android:textSize="15sp"
+                        tools:text="207 (42.4)"/>
+
+
                 </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_alignParentTop="true">
+                    android:layout_marginTop="15dp">
+
+
 
                     <ImageView
-                        android:id="@+id/team_logo_2"
+                        android:id="@+id/team_logo_2_live"
                         android:layout_width="65dp"
                         android:layout_height="100dp"
                         android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:paddingTop="40dp"
-                        android:paddingEnd="5dp"
+                        android:paddingStart="5dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
                     <TextView
-                        android:id="@+id/overs_team_2"
+                        android:id="@+id/sn_team_2_live"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignStart="@+id/score_team_2"
-                        android:layout_below="@+id/score_team_2"
-                        android:paddingStart="30dp"
-                        android:paddingTop="40dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_toStartOf="@+id/team_logo_2_live"
+                        android:textSize="20sp"
+                        android:layout_marginEnd="20dp"
+                        tools:text="IND" />
+
+                    <TextView
+                        android:id="@+id/innings1_team2_live"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="45dp"
+                        android:layout_toStartOf="@+id/team_logo_2_live"
                         android:textSize="15sp"
-                        tools:text="20" />
+                        tools:text="375/5 (50.0)"/>
 
                     <TextView
-                        android:id="@+id/shortname_team_2"
+                        android:id="@+id/innings2_team2_live"
+                        android:layout_below="@+id/innings1_team2_live"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_alignStart="@id/score_team_2"
-                        android:layout_centerHorizontal="true"
-                        android:paddingTop="22dp"
-                        android:paddingStart="25dp"
-                        android:textSize="20sp"
-                        tools:text="BAN" />
+                        android:layout_toStartOf="@+id/team_logo_2_live"
+                        android:textSize="15sp"
+                        tools:text="375/5 (50.0)"/>
 
-                    <TextView
-                        android:id="@+id/score_team_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_toStartOf="@+id/team_logo_2"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:textSize="20sp"
-                        tools:text="100/3" />
 
-                    <TextView
-                        android:id="@+id/score2_team_2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/overs_team_2"
-                        android:layout_toStartOf="@+id/team_logo_2"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:textSize="20sp"
-                        tools:text="100/3" />
                 </RelativeLayout>
 
 
             </RelativeLayout>
 
             <TextView
-                android:id="@+id/match_status_result"
+                android:id="@+id/match_target_trail_leadBy_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:textAllCaps="true"
-                tools:text="Match in progress/ India won by 3 wickets" />
+                tools:text="India beat Sri Lanka by 168 runs/Australia trail or lead by" />
 
             <TextView
-                android:id="@+id/target_leadby"
-                android:textAllCaps="true"
+                android:id="@+id/Day_for_test_match_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
-                android:paddingTop="10dp"
-                tools:text="Target 189/lead by 100" />
+                tools:text="Day1"/>
 
             <TextView
-                android:id="@+id/day"
-                android:textAllCaps="true"
+                android:id="@+id/match_date_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
-                android:paddingTop="10dp"
-                tools:text="Day 5"/>
+                tools:text="Sep 03 2017, Sun" />
 
 
         </LinearLayout>
@@ -222,7 +211,7 @@
     </android.support.v7.widget.CardView>
 
     <TextView
-        android:id="@+id/match_preview_summary"
+        android:id="@+id/match_preview_past"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/card_view"
@@ -230,11 +219,10 @@
         android:maxLines="10"
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
-        android:paddingTop="40dp"
+        android:paddingTop="50dp"
         android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
         android:textColor="@android:color/black"
         android:textSize="13sp" />
 
 </RelativeLayout>
-
 

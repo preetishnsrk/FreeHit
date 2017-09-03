@@ -1,6 +1,7 @@
 package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.CardView;
@@ -11,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
+import com.debut.ellipsis.freehit.UpcomingMatchesActivity;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
@@ -87,6 +89,11 @@ public class UpcomingMatchesItemAdapter extends PagerAdapter {
             public void onClick(View v) {
                 if(position==5){
                     // Intent to move to list view for Click to view more
+                    // Create a new intent to open the {@link UpcomingMatchesActivity}
+                    Intent UpcomingIntent = new Intent(context, UpcomingMatchesActivity.class);
+
+                    // Start the new activity
+                    context.startActivity(UpcomingIntent);
                 }
             }
         });

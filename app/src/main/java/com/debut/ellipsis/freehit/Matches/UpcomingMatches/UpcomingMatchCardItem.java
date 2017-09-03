@@ -76,6 +76,7 @@ public class UpcomingMatchCardItem {
     public String getmViewMore(){
         return mViewMore;
     }
+
     public String getmSeparator()
     {
         return mSeparator;

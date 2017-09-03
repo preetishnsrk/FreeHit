@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
@@ -6,11 +6,11 @@ import android.util.Log;
 
 import java.util.List;
 
-public class MatchCardLoader extends AsyncTaskLoader<List<MatchCardItem>> {
+public class LiveMatchCardLoader extends AsyncTaskLoader<List<LiveMatchCardItem>> {
     /**
      * Tag for log messages
      */
-    private static final String LOG_TAG = com.debut.ellipsis.freehit.News.NewsLoader.class.getName();
+    private static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.LiveMatches.LiveMatchCardLoader.class.getName();
 
     /**
      * Query URL
@@ -18,12 +18,12 @@ public class MatchCardLoader extends AsyncTaskLoader<List<MatchCardItem>> {
     private String mUrl;
 
     /**
-     * Constructs a new {@link com.debut.ellipsis.freehit.News.NewsLoader}.
+     * Constructs a new {@link com.debut.ellipsis.freehit.Matches.LiveMatches.LiveMatchCardLoader}.
      *
      * @param context of the activity
      * @param url     to load data from
      */
-    public MatchCardLoader(Context context, String url) {
+    public LiveMatchCardLoader(Context context, String url) {
         super(context);
         mUrl = url;
     }
@@ -39,7 +39,7 @@ public class MatchCardLoader extends AsyncTaskLoader<List<MatchCardItem>> {
      * This is on a background thread.
      */
     @Override
-    public List<MatchCardItem> loadInBackground() {
+    public List<LiveMatchCardItem> loadInBackground() {
 
         Log.i(LOG_TAG, "TEST: loadInBackground() called");
         if (mUrl == null) {
@@ -47,6 +47,6 @@ public class MatchCardLoader extends AsyncTaskLoader<List<MatchCardItem>> {
             return null;
         }
         // Perform the network request, parse the response, and extract a list of Matches.
-        return QueryUtilMatchCard.fetchLiveMatchData(mUrl);
+        return QueryUtilLiveMatchCard.fetchLiveMatchData(mUrl);
     }
 }
