@@ -18,17 +18,16 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
      */
     private String mUrl;
 
-    private int max_count;
     /**
      * Constructs a new {@link com.debut.ellipsis.freehit.News.NewsLoader}.
      *
      * @param context of the activity
      * @param url     to load data from
      */
-    public UpcomingMatchCardLoader(Context context, String url, int count) {
+    public UpcomingMatchCardLoader(Context context, String url) {
         super(context);
         mUrl = url;
-        max_count = count;
+
     }
 
     @Override
@@ -50,6 +49,6 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
             return null;
         }
         // Perform the network request, parse the response, and extract a list of Matches.
-        return QueryUtilUpcomingMatchCard.fetchUpcomingMatchData(mUrl,max_count);
+        return QueryUtilUpcomingMatchCard.fetchUpcomingMatchData(mUrl);
     }
 }

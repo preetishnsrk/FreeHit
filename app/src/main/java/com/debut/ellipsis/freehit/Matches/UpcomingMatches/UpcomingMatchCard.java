@@ -35,7 +35,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     }
 
     private static final String URL =
-            "https://freehit-api.herokuapp.com/upcoming";
+            "https://freehit-api.herokuapp.com/upcoming?max=5";
 
     private static final int UPCOMING_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
@@ -86,7 +86,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     @Override
     public Loader<List<UpcomingMatchCardItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new UpcomingMatchCardLoader(getActivity(), URL, 5);
+        return new UpcomingMatchCardLoader(getActivity(), URL);
 
     }
 

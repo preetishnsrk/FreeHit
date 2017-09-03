@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
 
 //import android.app.LoaderManager;
 
@@ -14,9 +14,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ProgressBar;
 
-import com.debut.ellipsis.freehit.Matches.UpcomingMatches.UpcomingMatchCardItem;
-import com.debut.ellipsis.freehit.Matches.UpcomingMatches.UpcomingMatchCardLoader;
-import com.debut.ellipsis.freehit.Matches.UpcomingMatchesListAdapter;
+import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +28,7 @@ public class UpcomingMatchesActivity extends FragmentActivity implements LoaderM
     private final static int UPCOMING_LOADER_ID=5;
     private RecyclerView rv;
     private static final String URL =
-            "https://freehit-api.herokuapp.com/upcoming";
+            "https://freehit-api.herokuapp.com/upcoming?max=100";
 
     private ProgressBar mProgressBar;
 
@@ -69,7 +67,7 @@ public class UpcomingMatchesActivity extends FragmentActivity implements LoaderM
     @Override
     public Loader<List<UpcomingMatchCardItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new UpcomingMatchCardLoader(getApplicationContext(), URL, 300);
+        return new UpcomingMatchCardLoader(getApplicationContext(), URL);
 
     }
 

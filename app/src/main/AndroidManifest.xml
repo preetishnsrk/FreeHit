@@ -28,7 +28,7 @@
 
         </activity>
         <activity
-            android:name=".UpcomingMatchesActivity"
+            android:name=".Matches.UpcomingMatches.UpcomingMatchesActivity"
             android:label="Upcoming_Matches"/>
     </application>
 

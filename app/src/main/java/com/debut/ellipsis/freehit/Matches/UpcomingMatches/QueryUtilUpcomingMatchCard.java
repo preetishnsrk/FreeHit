@@ -40,7 +40,7 @@ public class QueryUtilUpcomingMatchCard {
      * Query the USGS dataset and return an {@link NewsItem} object to represent a list of earthquakes.
      */
 
-    public static List<UpcomingMatchCardItem> fetchUpcomingMatchData(String requestUrl, int max_count) {
+    public static List<UpcomingMatchCardItem> fetchUpcomingMatchData(String requestUrl) {
 
 
         Log.i(LOG_TAG, "TEST: fetchPollData() called");
@@ -58,7 +58,7 @@ public class QueryUtilUpcomingMatchCard {
         // Extract relevant fields from the JSON response and create an {@link news}s object
 
         // Return the {@link news}
-        return extractFeatureFromJson(jsonResponse,max_count);
+        return extractFeatureFromJson(jsonResponse);
     }
 
 
@@ -141,7 +141,7 @@ public class QueryUtilUpcomingMatchCard {
      * Return a list of {@link NewsItem} objects that has been built up from
      * parsing the given JSON response.
      */
-    public static List<UpcomingMatchCardItem> extractFeatureFromJson(String UpcomingMatchesJSON, int max_count) {
+    public static List<UpcomingMatchCardItem> extractFeatureFromJson(String UpcomingMatchesJSON) {
 
         //if the JSON string is empty or null then return early
         if (TextUtils.isEmpty(UpcomingMatchesJSON)) {
@@ -164,7 +164,7 @@ public class QueryUtilUpcomingMatchCard {
             JSONObject basJsonResponse = new JSONObject(UpcomingMatchesJSON);
             JSONArray result=basJsonResponse.getJSONArray("result");
 
-            for (int i = 0; i < max_count; i++) {
+            for (int i = 0; i < result.length(); i++) {
 
                 JSONObject currentUpcomingMatch=result.getJSONObject(i);
 
