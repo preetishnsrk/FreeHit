@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <!-- THE MANIFEST CODE FOR SPLASH SCREEN -->
-        <activity android:name=".SplashScreen"
+        <activity android:name=".SplashScreen.SplashScreen"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@android:style/Theme.Black.NoTitleBar"
@@ -30,6 +30,9 @@
         <activity
             android:name=".Matches.UpcomingMatches.UpcomingMatchesActivity"
             android:label="Upcoming_Matches"/>
+        <activity
+            android:name=".Matches.PastMatches.PastMatchesActivity"
+            android:label="Past_Matches"/>
     </application>
 
 </manifest>

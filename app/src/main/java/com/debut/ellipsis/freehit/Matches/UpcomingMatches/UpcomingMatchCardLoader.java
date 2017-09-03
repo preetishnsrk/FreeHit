@@ -21,7 +21,7 @@ public class UpcomingMatchCardLoader extends AsyncTaskLoader<List<UpcomingMatchC
 //GITPUSH
 
     /**
-     * Constructs a new {@link com.debut.ellipsis.freehit.News.NewsLoader}.
+     * Constructs a new {@link com.debut.ellipsis.freehit.Matches.UpcomingMatches.UpcomingMatchCardLoader}.
      *
      * @param context of the activity
      * @param url     to load data from

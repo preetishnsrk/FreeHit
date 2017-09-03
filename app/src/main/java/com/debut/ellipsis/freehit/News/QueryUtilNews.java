@@ -35,7 +35,7 @@ public class QueryUtilNews {
     }
 
     /**
-     * Query the News Dataset and return an {@link NewsItem} object to represent a list of earthquakes.
+     * Query the News Dataset and return an {@link NewsItem} object to represent a list of News.
      */
 
     public static List<NewsItem> fetchNewsData(String requestUrl) {

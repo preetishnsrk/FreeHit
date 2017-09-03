@@ -2,8 +2,10 @@ package com.debut.ellipsis.freehit.Matches.PastMatches;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -45,7 +47,7 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container,final int position) {
         View view = this.layoutInflater.inflate(R.layout.past_match_card, container, false);
 
         TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name_past);
@@ -91,6 +93,22 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
 
         TextView MatchDate = (TextView) view.findViewById(R.id.match_date_past);
         MatchDate.setText(this.dataObjectList.get(position).getmMatchDate());
+
+        final CardView cardView = (CardView) view.findViewById(R.id.card_view);
+
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(position==5){
+                    // Intent to move to list view for Click to view more
+                    // Create a new intent to open the {@link UpcomingMatchesActivity}
+                    Intent PastIntent = new Intent(context, PastMatchesActivity.class);
+
+                    // Start the new activity
+                    context.startActivity(PastIntent);
+                }
+            }
+        });
 
         // Initializing Logo URLS
         logo_string1 = this.dataObjectList.get(position).getmTeam1LogoURL();

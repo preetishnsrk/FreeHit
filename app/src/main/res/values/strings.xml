@@ -12,7 +12,9 @@
     <string name="search_player">Player</string>
     <string name="search_team">Team</string>
     <string name="search_series">Series</string>
-    <string name="upcoming_list"><b><u>Upcoming Matches</u></b></string>
+    <string name="upcoming_list"><b><u>UPCOMING MATCHES</u></b></string>
+    <string name="past_list"><b><u>PAST MATCHES</u></b></string>
+    <string name="live_list"><b><u>LIVE MATCHES</u></b></string>
     <string name="rankings">Rankings</string>
     <string name="records">Records</string>
 

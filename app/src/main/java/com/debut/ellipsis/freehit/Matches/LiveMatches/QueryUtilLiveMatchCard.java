@@ -35,13 +35,13 @@ public class QueryUtilLiveMatchCard {
     }
 
     /**
-     * Query the USGS dataset and return an {@link LiveMatchCardItem} object to represent a list of Live Matches.
+     * Query the LiveMatchesAPI and return an {@link LiveMatchCardItem} object to represent a list of Live Matches.
      */
 
     public static List<LiveMatchCardItem> fetchLiveMatchData(String requestUrl) {
 
 
-        Log.i(LOG_TAG, "TEST: fetchPollData() called");
+        Log.i(LOG_TAG, "TEST: fetchLiveMatchData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -53,9 +53,9 @@ public class QueryUtilLiveMatchCard {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        // Extract relevant fields from the JSON response and create an {@link news}s object
+        // Extract relevant fields from the JSON response and create an {@link LiveMatch}es object
 
-        // Return the {@link news}
+        // Return the {@link LiveMatch}es
         return extractFeatureFromJson(jsonResponse);
     }
 
@@ -89,8 +89,8 @@ public class QueryUtilLiveMatchCard {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(50000 /* milliseconds */);
-            urlConnection.setConnectTimeout(50000  /* milliseconds */);
+            urlConnection.setReadTimeout(60000 /* milliseconds */);
+            urlConnection.setConnectTimeout(60000  /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -145,9 +145,8 @@ public class QueryUtilLiveMatchCard {
         if (TextUtils.isEmpty(UpcomingMatchesJSON)) {
             return null;
         }
-//        NewsItem news = null;
 
-        // Create an empty ArrayList that we can start adding News to
+        // Create an empty ArrayList that we can start adding LiveMatches to
         List<LiveMatchCardItem> LiveMatches = new ArrayList<>();
 
         // Try to parse the JSON response string If there's a problem with the way the JSON

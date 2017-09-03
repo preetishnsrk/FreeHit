@@ -92,14 +92,10 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
     @Override
     public void onLoadFinished(Loader<List<LiveMatchCardItem>> loader, List<LiveMatchCardItem> data) {
-//        Log.d(this,"Dead");
-//        loadingIndicator.setVisibility(View.GONE);
-//         Set empty state text to display "No News found."
-        //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
         mProgressBar.setVisibility(View.GONE);
 
-        // If there is a valid list of {@link UpcomingMatches}s, then add them to the adapter's
+        // If there is a valid list of {@link LiveMatch}es, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (data != null && !data.isEmpty() ) {
 

@@ -131,7 +131,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
             return rootView;
 
         }
-//Commit push
+
         // Finding a reference to the refresh layout
         final SwipeRefreshLayout refLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.swipe_refresh_layout);
         refLayout.setColorSchemeResources(R.color.orange, R.color.green, R.color.blue);
@@ -180,15 +180,11 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
     @Override
     public void onLoadFinished(Loader<List<NewsItem>> loader, List<NewsItem> News) {
-//        Log.d(this,"Dead");
-//        loadingIndicator.setVisibility(View.GONE);
-//         Set empty state text to display "No News found."
 
         mProgressBar.setVisibility(View.GONE);
         if (mEmptyStateTextView.getText() == null) {
             mEmptyStateTextView.setText(R.string.EmptyNews);
         }
-        //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
         // If there is a valid list of {@link News}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.

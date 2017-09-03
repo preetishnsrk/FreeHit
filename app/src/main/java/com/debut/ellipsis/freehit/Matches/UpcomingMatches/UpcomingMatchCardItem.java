@@ -34,9 +34,6 @@ public class UpcomingMatchCardItem {
         mMatchDate=MatchDate;
         mSeparator=Separator;
     }
-//GITPUSH//GITPUSH
-
-
 
 
     public UpcomingMatchCardItem(String ViewMore){

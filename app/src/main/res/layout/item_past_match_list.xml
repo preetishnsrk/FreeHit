@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:tag="cards main container"
+    android:paddingTop="10dp"
+    android:paddingBottom="10dp"
+    android:background="@drawable/upcoming_list_border"
+    android:layout_marginBottom="5dp">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/match_name_past"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingStart="15dp"
+            android:paddingTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:textSize="15sp"
+            tools:text="Sri Lanka Vs India, 4th ODI" />
+
+
+        <TextView
+            android:id="@+id/series_name_past"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/match_name_past"
+            android:layout_centerHorizontal="true"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:textSize="15sp"
+            tools:text="India Tour of Sri Lanka, 2017" />
+
+        <TextView
+            android:id="@+id/stadium_past"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/series_name_past"
+            android:layout_centerHorizontal="true"
+            tools:text="M Chinnaswamy ,Bangalore , India" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="30dp">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+
+                <ImageView
+                    android:id="@+id/team_logo_1_past"
+                    android:layout_width="65dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="5dp"
+                    android:src="@drawable/matches"
+                    android:tag="image_tag" />
+
+                <TextView
+                    android:id="@+id/sn_team_1_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_toEndOf="@+id/team_logo_1_past"
+                    android:layout_marginStart="20dp"
+                    android:textSize="20sp"
+                    tools:text="SN" />
+
+                <TextView
+                    android:id="@+id/innings1_team1_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:layout_toEndOf="@+id/team_logo_1_past"
+                    android:textSize="15sp"
+                    tools:text="207 (42.4)"/>
+
+                <TextView
+                    android:id="@+id/innings2_team1_past"
+                    android:layout_below="@+id/innings1_team1_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toEndOf="@+id/team_logo_1_past"
+                    android:textSize="15sp"
+                    tools:text="207 (42.4)"/>
+
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp">
+
+
+
+                <ImageView
+                    android:id="@+id/team_logo_2_past"
+                    android:layout_width="65dp"
+                    android:layout_height="100dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:paddingStart="5dp"
+                    android:src="@drawable/matches"
+                    android:tag="image_tag" />
+
+                <TextView
+                    android:id="@+id/sn_team_2_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:layout_toStartOf="@+id/team_logo_2_past"
+                    android:textSize="20sp"
+                    android:layout_marginEnd="20dp"
+                    tools:text="IND" />
+
+                <TextView
+                    android:id="@+id/innings1_team2_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="45dp"
+                    android:layout_toStartOf="@+id/team_logo_2_past"
+                    android:textSize="15sp"
+                    tools:text="375/5 (50.0)"/>
+
+                <TextView
+                    android:id="@+id/innings2_team2_past"
+                    android:layout_below="@+id/innings1_team2_past"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toStartOf="@+id/team_logo_2_past"
+                    android:textSize="15sp"
+                    tools:text="375/5 (50.0)"/>
+
+
+            </RelativeLayout>
+
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/match_result_past"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            tools:text="India beat Sri Lanka by 168 runs" />
+
+        <TextView
+            android:id="@+id/match_date_past"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:paddingTop="15dp"
+            tools:text="Sep 03 2017, Sun" />
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>
+
+

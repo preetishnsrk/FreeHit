@@ -1,10 +1,13 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.SplashScreen;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+
+import com.debut.ellipsis.freehit.MainActivity;
+import com.debut.ellipsis.freehit.R;
 
 
 public class SplashScreen extends Activity {

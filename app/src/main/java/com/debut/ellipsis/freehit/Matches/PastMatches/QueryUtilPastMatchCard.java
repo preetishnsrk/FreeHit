@@ -26,7 +26,7 @@ public class QueryUtilPastMatchCard {
     public static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.PastMatches.QueryUtilPastMatchCard.class.getSimpleName();
 
     /**
-     * Create a private constructor because no one should ever create a {@link com.debut.ellipsis.freehit.Social.QueryUtilPolls} object.
+     * Create a private constructor because no one should ever create a {@link com.debut.ellipsis.freehit.Matches.PastMatches.QueryUtilPastMatchCard} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
@@ -34,13 +34,13 @@ public class QueryUtilPastMatchCard {
     }
 
     /**
-     * Query the USGS dataset and return an {@link PastMatchCardItem} object to represent a list of earthquakes.
+     * Query the PastMatchesAPI and return an {@link PastMatchCardItem} object to represent a list of PastMatches.
      */
 
     public static List<PastMatchCardItem> fetchPastMatchData(String requestUrl) {
 
 
-        Log.i(LOG_TAG, "TEST: fetchPollData() called");
+        Log.i(LOG_TAG, "TEST: fetchPastMatchData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 
@@ -88,8 +88,8 @@ public class QueryUtilPastMatchCard {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(50000 /* milliseconds */);
-            urlConnection.setConnectTimeout(50000  /* milliseconds */);
+            urlConnection.setReadTimeout(60000 /* milliseconds */);
+            urlConnection.setConnectTimeout(60000  /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -145,7 +145,7 @@ public class QueryUtilPastMatchCard {
             return null;
         }
 
-        // Create an empty ArrayList that we can start adding News to
+        // Create an empty ArrayList that we can start adding PastMatches to
         List<PastMatchCardItem> PastMatches = new ArrayList<>();
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
@@ -160,7 +160,7 @@ public class QueryUtilPastMatchCard {
             JSONObject basJsonResponse = new JSONObject(PastMatchesJSON);
             JSONArray result = basJsonResponse.getJSONArray("result");
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i <result.length(); i++) {
 
                 JSONObject currentPastMatch = result.getJSONObject(i);
 
@@ -221,7 +221,6 @@ public class QueryUtilPastMatchCard {
 
             }
             PastMatches.add(new PastMatchCardItem("Click to view more"));
-//                Log.e(LOG_TAG, String.valueOf(j));
             return PastMatches;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,

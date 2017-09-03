@@ -4,8 +4,6 @@ package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.debut.ellipsis.freehit.News.NewsItem;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -29,17 +27,15 @@ public class QueryUtilUpcomingMatchCard {
     public static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.UpcomingMatches.QueryUtilUpcomingMatchCard.class.getSimpleName();
 
     /**
-     * Create a private constructor because no one should ever create a {@link com.debut.ellipsis.freehit.Social.QueryUtilPolls} object.
+     * Create a private constructor because no one should ever create a {@link com.debut.ellipsis.freehit.Matches.UpcomingMatches.QueryUtilUpcomingMatchCard} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
     private QueryUtilUpcomingMatchCard() {
     }
-//GITPUSH
-//GITPUSH
 
     /**
-     * Query the USGS dataset and return an {@link NewsItem} object to represent a list of earthquakes.
+     * Query the UpcomingMatchesAPI and return an {@link UpcomingMatchCardItem} object to represent a list of UpcomingMatches.
      */
 
     public static List<UpcomingMatchCardItem> fetchUpcomingMatchData(String requestUrl) {
@@ -57,7 +53,7 @@ public class QueryUtilUpcomingMatchCard {
             Log.e(LOG_TAG, "Error closing input stream", e);
         }
 
-        // Extract relevant fields from the JSON response and create an {@link news}s object
+        // Extract relevant fields from the JSON response and create an {@link UpcomingMatch}es object
 
         // Return the {@link news}
         return extractFeatureFromJson(jsonResponse);
@@ -93,8 +89,8 @@ public class QueryUtilUpcomingMatchCard {
         InputStream inputStream = null;
         try {
             urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setReadTimeout(50000 /* milliseconds */);
-            urlConnection.setConnectTimeout(50000  /* milliseconds */);
+            urlConnection.setReadTimeout(60000 /* milliseconds */);
+            urlConnection.setConnectTimeout(60000  /* milliseconds */);
             urlConnection.setRequestMethod("GET");
             urlConnection.connect();
 
@@ -140,7 +136,7 @@ public class QueryUtilUpcomingMatchCard {
 
 
     /**
-     * Return a list of {@link NewsItem} objects that has been built up from
+     * Return a list of {@link UpcomingMatchCardItem} objects that has been built up from
      * parsing the given JSON response.
      */
     public static List<UpcomingMatchCardItem> extractFeatureFromJson(String UpcomingMatchesJSON) {
@@ -149,7 +145,6 @@ public class QueryUtilUpcomingMatchCard {
         if (TextUtils.isEmpty(UpcomingMatchesJSON)) {
             return null;
         }
-//        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
         List<UpcomingMatchCardItem> UpcomingMatches = new ArrayList<>();
@@ -164,11 +159,11 @@ public class QueryUtilUpcomingMatchCard {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(UpcomingMatchesJSON);
-            JSONArray result=basJsonResponse.getJSONArray("result");
+            JSONArray result = basJsonResponse.getJSONArray("result");
 
             for (int i = 0; i < result.length(); i++) {
 
-                JSONObject currentUpcomingMatch=result.getJSONObject(i);
+                JSONObject currentUpcomingMatch = result.getJSONObject(i);
 
                 // Extract the value for the key called "tour"
                 String series_name = currentUpcomingMatch.getString("tour");
@@ -179,12 +174,12 @@ public class QueryUtilUpcomingMatchCard {
                 // Extract the value for the key called "stadium"
                 String stadium_name = currentUpcomingMatch.getString("stadium");
 
-                JSONObject date=currentUpcomingMatch.getJSONObject("date");
+                JSONObject date = currentUpcomingMatch.getJSONObject("date");
 
                 // Extract the value for the key called "final"(for match date)
-                String match_date=date.getString("final");
+                String match_date = date.getString("final");
 
-                JSONObject team1info=currentUpcomingMatch.getJSONObject("team1info");
+                JSONObject team1info = currentUpcomingMatch.getJSONObject("team1info");
 
                 // Extract the value for the key called "sn"
                 String team1_short_name = team1info.getString("sn");
@@ -192,7 +187,7 @@ public class QueryUtilUpcomingMatchCard {
                 // Extract the value for the key called "image"
                 String team1_logo_URL = team1info.getString("image");
 
-                JSONObject team2info=currentUpcomingMatch.getJSONObject("team2info");
+                JSONObject team2info = currentUpcomingMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn"
                 String team2_short_name = team2info.getString("sn");
@@ -201,15 +196,13 @@ public class QueryUtilUpcomingMatchCard {
                 String team2_logo_URL = team2info.getString("image");
 
 
-
                 // Create a new {@link UpcomingMatches} object
                 // and url from the JSON response.
-                UpcomingMatchCardItem upcoming_match = new UpcomingMatchCardItem(match_name,series_name,stadium_name,team1_logo_URL,team1_short_name,team2_logo_URL,team2_short_name,match_date,"-");
+                UpcomingMatchCardItem upcoming_match = new UpcomingMatchCardItem(match_name, series_name, stadium_name, team1_logo_URL, team1_short_name, team2_logo_URL, team2_short_name, match_date, "-");
                 UpcomingMatches.add(upcoming_match);
 
             }
-                    UpcomingMatches.add(new UpcomingMatchCardItem("Click to view more"));
-//                Log.e(LOG_TAG, String.valueOf(j));
+            UpcomingMatches.add(new UpcomingMatchCardItem("Click to view more"));
             return UpcomingMatches;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,

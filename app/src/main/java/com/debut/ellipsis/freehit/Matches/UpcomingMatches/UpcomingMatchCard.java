@@ -29,12 +29,9 @@ import me.relex.circleindicator.CircleIndicator;
  */
 public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderCallbacks<List<UpcomingMatchCardItem>> {
 
-//GITPUSH
-
     public UpcomingMatchCard() {
         // Required empty public constructor
     }
-//GITPUSH
 
     private static final String URL =
             "https://freehit-api.herokuapp.com/upcoming?max=5";
@@ -94,10 +91,6 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
 
     @Override
     public void onLoadFinished(Loader<List<UpcomingMatchCardItem>> loader, List<UpcomingMatchCardItem> data) {
-//        Log.d(this,"Dead");
-//        loadingIndicator.setVisibility(View.GONE);
-//         Set empty state text to display "No News found."
-        //ABOVE LINES IF UNCOMMENTED GIVE NULLPOINTER EXCEPTION ERROR  . PLEASE CHECK
 
         mProgressBar.setVisibility(View.GONE);
 

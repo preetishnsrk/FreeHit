@@ -56,14 +56,14 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     }
 
     // Store a member variable for the contacts
-    private List<UpcomingMatchCardItem> mContacts;
+    private List<UpcomingMatchCardItem> mUpcomingMatchCards;
     // Store the context for easy access
     private Context mContext;
 
     // Pass in the contact array into the constructor
-    public UpcomingMatchesListAdapter(Context context, List<UpcomingMatchCardItem> contacts) {
-        System.out.println(contacts);
-        mContacts = contacts;
+    public UpcomingMatchesListAdapter(Context context, List<UpcomingMatchCardItem> UpcomingMatchCards) {
+        System.out.println(UpcomingMatchCards);
+        mUpcomingMatchCards = UpcomingMatchCards;
         mContext = context;
     }
 
@@ -90,35 +90,35 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     @Override
     public void onBindViewHolder(UpcomingMatchesListAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        UpcomingMatchCardItem contact = mContacts.get(position);
+        UpcomingMatchCardItem upcomingMatchCards = mUpcomingMatchCards.get(position);
 
         // Set item views based on your views and data model
 
         TextView textViewMatchName = viewHolder.textViewMatchName;
-        textViewMatchName.setText(contact.getmMatchName());
+        textViewMatchName.setText(upcomingMatchCards.getmMatchName());
 
         TextView textViewSeriesName = viewHolder.textViewSeriesName;
-        textViewSeriesName.setText(contact.getmSeriesName());
+        textViewSeriesName.setText(upcomingMatchCards.getmSeriesName());
 
         TextView textViewStadiumName = viewHolder.textViewStadiumName;
-        textViewStadiumName.setText(contact.getmStadiumName());
+        textViewStadiumName.setText(upcomingMatchCards.getmStadiumName());
 
-        String logo_string1 = contact.getmTeam1LogoURL();
+        String logo_string1 = upcomingMatchCards.getmTeam1LogoURL();
 
-        String logo_string2 = contact.getmTeam2LogoURL();
+        String logo_string2 = upcomingMatchCards.getmTeam2LogoURL();
 
         ImageView imageViewTeam1Logo = viewHolder.imageViewTeam1Logo;
 
         ImageView imageViewTeam2Logo = viewHolder.imageViewTeam2Logo;
 
         TextView shortName1 = viewHolder.shortName1;
-        shortName1.setText(contact.getmTeam1SN());
+        shortName1.setText(upcomingMatchCards.getmTeam1SN());
 
         TextView shortName2 = viewHolder.shortName2;
-        shortName2.setText(contact.getmTeam2SN());
+        shortName2.setText(upcomingMatchCards.getmTeam2SN());
 
         TextView MatchDate = viewHolder.MatchDate;
-        MatchDate.setText(contact.getmMatchDate());
+        MatchDate.setText(upcomingMatchCards.getmMatchDate());
 
         setImage(logo_string1, imageViewTeam1Logo);
         setImage(logo_string2, imageViewTeam2Logo);
@@ -145,8 +145,6 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
             public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
 
             }
-//GITPUSH
-//GITPUSH
 
             @Override
             public void onLoadingCancelled(String imageUri, View view) {
@@ -159,6 +157,6 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return mContacts.size();
+        return mUpcomingMatchCards.size();
     }
 }
