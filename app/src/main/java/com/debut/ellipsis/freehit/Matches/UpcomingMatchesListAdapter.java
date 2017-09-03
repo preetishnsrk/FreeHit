@@ -63,6 +63,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
 
     // Pass in the contact array into the constructor
     public UpcomingMatchesListAdapter(Context context, List<UpcomingMatchCardItem> contacts) {
+        System.out.println(contacts);
         mContacts = contacts;
         mContext = context;
     }

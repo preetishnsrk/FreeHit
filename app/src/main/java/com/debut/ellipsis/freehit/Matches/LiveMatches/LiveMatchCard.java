@@ -37,7 +37,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
     private static final String URL =
             "https://freehit-api.herokuapp.com/live";
 
-    private static final int UPCOMING_MATCH_LOADER_ID = 1;
+    private static final int LIVE_MATCH_LOADER_ID = 6;
     public ViewPager viewPager;
     public CircleIndicator indicator;
     private LiveMatchCardAdapter mAdapter;
@@ -62,7 +62,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
-            loaderManager.initLoader(UPCOMING_MATCH_LOADER_ID, null, this);
+            loaderManager.initLoader(LIVE_MATCH_LOADER_ID, null, this);
 
 
         }
@@ -101,7 +101,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
         // If there is a valid list of {@link UpcomingMatches}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (data != null && !data.isEmpty() && mAdapter.getCount() <= 1) {
+        if (data != null && !data.isEmpty() ) {
 
             mAdapter = new LiveMatchCardAdapter(getContext(), data);
             // This is the inner viewPager so commenting it out for now

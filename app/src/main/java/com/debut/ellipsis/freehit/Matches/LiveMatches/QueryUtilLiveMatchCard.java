@@ -178,7 +178,7 @@ public class QueryUtilLiveMatchCard {
                 // Extract the value for the key called "stadium"
                 String stadium_name = currentLiveMatch.getString("stadium");
 
-                String match_date=currentLiveMatch.getString("date");
+//                String match_date=currentLiveMatch.getString("date");
 
 
                 JSONObject team1info=currentLiveMatch.getJSONObject("team1info");
@@ -197,7 +197,7 @@ public class QueryUtilLiveMatchCard {
 
                 JSONObject team2info=currentLiveMatch.getJSONObject("team2info");
 
-                // Extract the value for the key called "sn"
+                // Extract the value for the key called "sn" (
                 String team2_short_name = team2info.getString("sn");
 
                 // Extract the value for the key called "image"
@@ -213,7 +213,9 @@ public class QueryUtilLiveMatchCard {
                 String match_result_target_trailBy_leadBy = currentLiveMatch.getString("mresult");
 
                 // Extract the value for the key called "day"
-                String match_day = currentLiveMatch.getString("day");
+//                String match_day = currentLiveMatch.getString("day");
+                String match_day = "";
+                String match_date = "";
 
 
 

@@ -86,7 +86,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     @Override
     public Loader<List<UpcomingMatchCardItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new UpcomingMatchCardLoader(getActivity(), URL);
+        return new UpcomingMatchCardLoader(getActivity(), URL, 5);
 
     }
 
