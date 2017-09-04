@@ -180,6 +180,6 @@ public class ViewHolder extends RecyclerView.ViewHolder {
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return mPastMatchCards.size();
+        return mPastMatchCards.size()-1;
     }
 }

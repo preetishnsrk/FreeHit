@@ -157,6 +157,6 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     // Returns the total count of items in the list
     @Override
     public int getItemCount() {
-        return mUpcomingMatchCards.size();
+        return mUpcomingMatchCards.size()-1;
     }
 }
