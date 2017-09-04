@@ -26,31 +26,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="15dp"
-                android:paddingTop="10dp"
+                android:paddingTop="5dp"
+                android:layout_centerHorizontal="true"
                 android:textSize="15sp"
-                tools:text="4th ODI" />
+                tools:text="Sri Lanka Vs India, 4th ODI" />
 
-            <TextView
-                android:id="@+id/match_series_separator_live"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/match_name_live"
-                android:paddingStart="5dp"
-                android:paddingTop="10dp"
-                tools:text="-"
-                android:textSize="15sp" />
 
             <TextView
                 android:id="@+id/series_name_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/match_series_separator_live"
-                android:gravity="center_horizontal"
+                android:layout_below="@+id/match_name_live"
+                android:layout_centerHorizontal="true"
                 android:paddingStart="5dp"
                 android:paddingEnd="10dp"
-                android:paddingTop="10dp"
                 android:textSize="15sp"
-                tools:text="India Tour of SriLanka,5 ODIs,2010" />
+                tools:text="India Tour of Sri Lanka, 2017" />
 
             <TextView
                 android:id="@+id/stadium_live"
@@ -58,19 +49,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/series_name_live"
                 android:layout_centerHorizontal="true"
-                android:paddingTop="10dp"
                 tools:text="M Chinnaswamy ,Bangalore , India" />
 
-            <TextView
-                android:id="@+id/live_view_more"
-                android:layout_below="@+id/stadium_live"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:layout_centerHorizontal="true"
-                android:textSize="30sp"
-                android:textColor="@android:color/black"
-                tools:text="@string/Upcoming_matches_view_more"/>
         </RelativeLayout>
 
         <LinearLayout
@@ -82,7 +62,7 @@
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="25dp">
+                android:layout_marginTop="30dp">
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -96,7 +76,6 @@
                         android:layout_height="100dp"
                         android:layout_alignParentStart="true"
                         android:layout_centerVertical="true"
-                        android:paddingStart="5dp"
                         android:src="@drawable/matches"
                         android:tag="image_tag" />
 
@@ -106,7 +85,6 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_toEndOf="@+id/team_logo_1_live"
-                        android:layout_marginStart="20dp"
                         android:textSize="20sp"
                         tools:text="SN" />
 
@@ -154,7 +132,6 @@
                         android:layout_marginTop="20dp"
                         android:layout_toStartOf="@+id/team_logo_2_live"
                         android:textSize="20sp"
-                        android:layout_marginEnd="20dp"
                         tools:text="IND" />
 
                     <TextView
@@ -189,14 +166,6 @@
                 tools:text="India beat Sri Lanka by 168 runs/Australia trail or lead by" />
 
             <TextView
-                android:id="@+id/Day_for_test_match_live"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:layout_gravity="center_horizontal"
-                tools:text="Day1"/>
-
-            <TextView
                 android:id="@+id/match_date_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -220,7 +189,7 @@
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:paddingTop="50dp"
-        android:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
+        tools:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
         android:textColor="@android:color/black"
         android:textSize="13sp" />
 

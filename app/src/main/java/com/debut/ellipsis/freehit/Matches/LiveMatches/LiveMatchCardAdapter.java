@@ -4,11 +4,13 @@ package com.debut.ellipsis.freehit.Matches.LiveMatches;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.debut.ellipsis.freehit.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -16,9 +18,19 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
+import java.text.ParseException;
 import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class LiveMatchCardAdapter  extends PagerAdapter {
+
+    private static final String DATE_SEPARATOR = "T";
+
+    private static final String MATCH_SERIES_SEPARATOR = ",";
+
+    public static final String LOG_TAG = com.debut.ellipsis.freehit.Matches.LiveMatches.LiveMatchCardAdapter.class.getSimpleName();
+
 
     private Context context;
     private List<LiveMatchCardItem> dataObjectList;
@@ -48,14 +60,30 @@ public class LiveMatchCardAdapter  extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View view = this.layoutInflater.inflate(R.layout.live_match_card, container, false);
 
+        String originalMatchName = this.dataObjectList.get(position).getmMatchSeriesName();
+
+        String match_name = null;
+        String series_name = null;
+        // Check whether the originalLocation string contains the " of " text
+        if (originalMatchName.contains(MATCH_SERIES_SEPARATOR)) {
+            // Split the string into different parts (as an array of Strings)
+            // based on the "," text. We expect an array of 4 Strings, where
+            // the first String will be "2nd Test" , second String will be " Australia in Bangladesh", third String will be " 2 Test Series", fourth String will be " 2017".
+            String[] parts = originalMatchName.split(MATCH_SERIES_SEPARATOR);
+            // match_name should be "2nd Test"
+            // series_name should be " Australia in Bangladesh, 2 Test Series, 2017"
+            match_name = parts[0];
+            series_name=parts[1]+MATCH_SERIES_SEPARATOR+parts[2]+parts[3];
+        }
+
+        Log.e(LOG_TAG,match_name);
+        Log.e(LOG_TAG,series_name);
+
         TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name_live);
-        textViewMatchName.setText(this.dataObjectList.get(position).getmMatchName());
+        textViewMatchName.setText(match_name);
 
         TextView textViewSeriesName = (TextView) view.findViewById(R.id.series_name_live);
-        textViewSeriesName.setText(this.dataObjectList.get(position).getmSeriesName());
-
-        TextView Separator = (TextView) view.findViewById(R.id.match_series_separator_live);
-        Separator.setText(this.dataObjectList.get(position).getmSeparator());
+        textViewSeriesName.setText(series_name);
 
         TextView textViewStadiumName = (TextView) view.findViewById(R.id.stadium_live);
         textViewStadiumName.setText(this.dataObjectList.get(position).getmStadiumName());
@@ -85,17 +113,40 @@ public class LiveMatchCardAdapter  extends PagerAdapter {
         TextView team2Innings2 = (TextView) view.findViewById(R.id.innings2_team2_live);
         team2Innings2.setText(this.dataObjectList.get(position).getmTeam2Innings2());
 
-        TextView ViewMore = (TextView) view.findViewById(R.id.live_view_more);
-        ViewMore.setText(this.dataObjectList.get(position).getmViewMore());
 
         TextView MatchResult = (TextView) view.findViewById(R.id.match_target_trail_leadBy_live);
         MatchResult.setText(this.dataObjectList.get(position).getmResultOrTargetOrTrailByOrLeadBy());
 
-        TextView MatchDate = (TextView) view.findViewById(R.id.match_date_live);
-        MatchDate.setText(this.dataObjectList.get(position).getmMatchDate());
 
-        TextView MatchDay = (TextView) view.findViewById(R.id.Day_for_test_match_live);
-        MatchDay.setText(this.dataObjectList.get(position).getmDayForTestMatch());
+
+        String originalMatchDate = this.dataObjectList.get(position).getmMatchDate();
+
+        // Check whether the originalLocation string contains the " of " text
+        if (originalMatchDate.contains(DATE_SEPARATOR)) {
+            // Split the string into different parts (as an array of Strings)
+            // based on the "T" text. We expect an array of 2 Strings, where
+            // the first String will be "2017-09-04" and the second String will be "04:00:00.000Z".
+            String[] parts = originalMatchDate.split(DATE_SEPARATOR);
+            // originalMatchDate should be "2017-09-04"--> "04 Sep 2017"
+            originalMatchDate = parts[0];
+
+        }
+
+        //converting "2017-09-04" to "04 Sep 2017"
+        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
+        Date date = null;
+        try {
+            date = inputFormat.parse(originalMatchDate);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        String outputDateStr = outputFormat.format(date);
+
+
+        TextView MatchDate = (TextView) view.findViewById(R.id.match_date_live);
+        MatchDate.setText(outputDateStr);
+
 
         // Initializing Logo URLS
         logo_string1 = this.dataObjectList.get(position).getmTeam1LogoURL();

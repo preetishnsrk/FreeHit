@@ -161,7 +161,7 @@ public class QueryUtilLiveMatchCard {
             JSONObject basJsonResponse = new JSONObject(UpcomingMatchesJSON);
             JSONArray result=basJsonResponse.getJSONArray("result");
 
-            for (int i = 0; i < 5; i++) {
+            for (int i = 0; i < result.length(); i++) {
 
                 JSONObject currentLiveMatch=result.getJSONObject(i);
 
@@ -169,21 +169,26 @@ public class QueryUtilLiveMatchCard {
                 String match_id = currentLiveMatch.getString("ndid");
 
                 // Extract the value for the key called "tour"
-                String series_name = currentLiveMatch.getString("tour");
+                String match_series_name = currentLiveMatch.getString("title");
 
-                // Extract the value for the key called "match"
-                String match_name = currentLiveMatch.getString("title");
 
                 // Extract the value for the key called "stadium"
-                String stadium_name = currentLiveMatch.getString("stadium");
+                String stadium_name = "("+currentLiveMatch.getString("stadium")+")";
 
-//                String match_date=currentLiveMatch.getString("date");
+               JSONObject date=currentLiveMatch.getJSONObject("date");
 
+                String match_day=date.getString("day");
+
+                String match_month=date.getString("month");
+
+                String match_year=date.getString("year");
+
+                String match_date=date.getString("final");
 
                 JSONObject team1info=currentLiveMatch.getJSONObject("team1info");
 
                 // Extract the value for the key called "sn"
-                String team1_short_name = team1info.getString("sn");
+                String team1_short_name = team1info.getString("name");
 
                 // Extract the value for the key called "image"
                 String team1_logo_URL = team1info.getString("image");
@@ -197,34 +202,29 @@ public class QueryUtilLiveMatchCard {
                 JSONObject team2info=currentLiveMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn" (
-                String team2_short_name = team2info.getString("sn");
+                String team2_short_name = team2info.getString("name");
 
                 // Extract the value for the key called "image"
                 String team2_logo_URL = team2info.getString("image");
 
                 // Extract the value for the key called "inn1"
-                String team2_innings1 = team1info.getString("inn1");
+                String team2_innings1 = team2info.getString("inn1");
 
                 // Extract the value for the key called "inn2"
-                String team2_innings2 = team1info.getString("inn2");
+                String team2_innings2 = team2info.getString("inn2");
 
                 // Extract the value for the key called "mresult"
                 String match_result_target_trailBy_leadBy = currentLiveMatch.getString("mresult");
-
-                // Extract the value for the key called "day"
-//                String match_day = currentLiveMatch.getString("day");
-                String match_day = "";
-                String match_date = "";
 
 
 
                 // Create a new {@link UpcomingMatches} object
                 // and url from the JSON response.
-                LiveMatchCardItem live_match = new LiveMatchCardItem(match_name,match_id,series_name,stadium_name,team1_logo_URL,team1_short_name,team1_innings1,team1_innings2,team2_logo_URL,team2_short_name,team2_innings1,team2_innings2,match_date,match_result_target_trailBy_leadBy,match_day,"-");
+                LiveMatchCardItem live_match = new LiveMatchCardItem(match_series_name,match_id,stadium_name,team1_logo_URL,team1_short_name,team1_innings1,team1_innings2,team2_logo_URL,team2_short_name,team2_innings1,team2_innings2,match_date,match_result_target_trailBy_leadBy);
                 LiveMatches.add(live_match);
 
             }
-            LiveMatches.add(new LiveMatchCardItem("Click to view more"));
+            /*LiveMatches.add(new LiveMatchCardItem("Click to view more"));*/
 //                Log.e(LOG_TAG, String.valueOf(j));
             return LiveMatches;
         } catch (JSONException e) {

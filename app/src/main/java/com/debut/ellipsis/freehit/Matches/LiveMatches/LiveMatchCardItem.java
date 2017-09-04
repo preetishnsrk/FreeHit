@@ -1,11 +1,9 @@
 package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 public class LiveMatchCardItem {
-    private String mMatchName;
+    private String mMatchSeriesName;
 
     private String mMatchID;
-
-    private String mSeriesName;
 
     private String mStadiumName;
 
@@ -27,18 +25,13 @@ public class LiveMatchCardItem {
 
     private String mMatchDate;
 
-    private String mViewMore;
 
     private String mResultOrTargetOrTrailByOrLeadBy;;
 
-    private String mDayForTestMatch;
 
-    private String mSeparator;
-
-    public LiveMatchCardItem(String MatchName, String MatchID, String SeriesName, String StadiumName, String Team1LogoURL, String Team1SN, String Team1Innings1, String Team1Innings2, String Team2LogoURL, String Team2SN, String Team2Innings1, String Team2Innings2, String MatchDate, String ResultOrTargetOrTrailByOrLeadBy,String Separator,String DayForTestMatch) {
-        mMatchName = MatchName;
+    public LiveMatchCardItem(String MatchSeriesName, String MatchID, String StadiumName, String Team1LogoURL, String Team1SN, String Team1Innings1, String Team1Innings2, String Team2LogoURL, String Team2SN, String Team2Innings1, String Team2Innings2, String MatchDate, String ResultOrTargetOrTrailByOrLeadBy) {
+        mMatchSeriesName = MatchSeriesName;
         mMatchID = MatchID;
-        mSeriesName = SeriesName;
         mStadiumName = StadiumName;
         mTeam1LogoURL = Team1LogoURL;
         mTeam1SN = Team1SN;
@@ -50,25 +43,15 @@ public class LiveMatchCardItem {
         mTeam2Innings2 = Team2Innings2;
         mMatchDate = MatchDate;
         mResultOrTargetOrTrailByOrLeadBy = ResultOrTargetOrTrailByOrLeadBy;
-        mSeparator=Separator;
-        mDayForTestMatch=DayForTestMatch;
     }
 
 
-    public LiveMatchCardItem(String ViewMore) {
-        mViewMore = ViewMore;
-    }
-
-    public String getmMatchName() {
-        return mMatchName;
+    public String getmMatchSeriesName() {
+        return mMatchSeriesName;
     }
 
     public String getmMatchID() {
         return mMatchID;
-    }
-
-    public String getmSeriesName() {
-        return mSeriesName;
     }
 
     public String getmStadiumName() {
@@ -111,20 +94,8 @@ public class LiveMatchCardItem {
         return mMatchDate;
     }
 
-    public String getmViewMore() {
-        return mViewMore;
-    }
-
     public String getmResultOrTargetOrTrailByOrLeadBy() {
         return mResultOrTargetOrTrailByOrLeadBy;
     }
 
-    public String getmDayForTestMatch() {
-        return mDayForTestMatch;
-    }
-
-    public String getmSeparator()
-    {
-        return mSeparator;
-    }
 }

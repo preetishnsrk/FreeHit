@@ -6,7 +6,7 @@
     android:tag="cards main container"
     android:paddingTop="10dp"
     android:paddingBottom="10dp"
-    android:background="@drawable/upcoming_list_border"
+    android:background="@drawable/list_border"
     android:layout_marginBottom="5dp">
 
 
