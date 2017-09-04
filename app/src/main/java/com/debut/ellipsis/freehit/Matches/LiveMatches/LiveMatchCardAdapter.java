@@ -134,7 +134,7 @@ public class LiveMatchCardAdapter  extends PagerAdapter {
 
         //converting "2017-09-04" to "04 Sep 2017"
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy");
+        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy , E");
         Date date = null;
         try {
             date = inputFormat.parse(originalMatchDate);
