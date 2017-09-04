@@ -41,7 +41,7 @@ public class QueryUtilUpcomingMatchCard {
     public static List<UpcomingMatchCardItem> fetchUpcomingMatchData(String requestUrl) {
 
 
-        Log.i(LOG_TAG, "TEST: fetchPollData() called");
+        Log.i(LOG_TAG, "TEST: fetchUpcomingMatchData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
 

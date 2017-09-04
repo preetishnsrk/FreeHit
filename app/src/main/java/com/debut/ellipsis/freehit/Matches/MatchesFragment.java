@@ -66,17 +66,15 @@ public class MatchesFragment extends Fragment {
 
             }
         });
-
-
         return rootView;
     }
 
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager());
-        adapter.addFrag(new LiveMatchCard(), "LIVE", 0);
-        adapter.addFrag(new UpcomingMatchCard(), "UPCOMING", 1);
-        adapter.addFrag(new PastMatchCard(), "PAST", 2);
+        adapter.addFrag(new LiveMatchCard(), "LIVE");
+        adapter.addFrag(new UpcomingMatchCard(), "UPCOMING");
+        adapter.addFrag(new PastMatchCard(), "PAST");
         viewPager.setAdapter(adapter);
 
     }
@@ -99,9 +97,9 @@ public class MatchesFragment extends Fragment {
             return mFragmentList.size();
         }
 
-        public void addFrag(Fragment fragment, String title, int i) {
+        public void addFrag(Fragment fragment, String title) {
             mFragmentList.add(fragment);
-            mFragmentTitleList.add(i, title);
+            mFragmentTitleList.add(title);
         }
 
         @Override

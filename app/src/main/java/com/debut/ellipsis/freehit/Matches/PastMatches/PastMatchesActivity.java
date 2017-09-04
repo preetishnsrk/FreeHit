@@ -25,7 +25,7 @@ public class PastMatchesActivity extends FragmentActivity implements LoaderManag
     private final static int PAST_LOADER_ID = 5;
     private RecyclerView rv;
     private static final String URL =
-            "https://freehit-api.herokuapp.com/past?max=20";
+            "https://freehit-api.herokuapp.com/past?max=100";
 
     private ProgressBar mProgressBar;
 

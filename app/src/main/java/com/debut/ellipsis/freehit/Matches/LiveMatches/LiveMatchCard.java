@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
 
@@ -37,11 +38,12 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
     private static final String URL =
             "https://freehit-api.herokuapp.com/live";
 
-    private static final int LIVE_MATCH_LOADER_ID = 6;
+    private static final int LIVE_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
     public CircleIndicator indicator;
     private LiveMatchCardAdapter mAdapter;
     private ProgressBar mProgressBar;
+    public TextView mEmptyStateTextView;
 
 
     @Override
@@ -51,7 +53,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
-        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        final ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -62,12 +64,13 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
-            loaderManager.initLoader(LIVE_MATCH_LOADER_ID, null, this);
+            loaderManager.initLoader(LIVE_MATCH_LOADER_ID, null, this).forceLoad();
 
 
         }
 
-        mProgressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar);
+
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
         int colorCodeDark = Color.parseColor("#F44336");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
@@ -79,6 +82,8 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
+
+
 
         return rootView;
     }
@@ -95,9 +100,9 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
         mProgressBar.setVisibility(View.GONE);
 
-        // If there is a valid list of {@link LiveMatch}es, then add them to the adapter's
+        //If there is a valid list of {@link LiveMatch}es, then add them to the adapter's
         // data set. This will trigger the ListView to update.
-        if (data != null && !data.isEmpty() ) {
+        if (data != null && !data.isEmpty()) {
 
             mAdapter = new LiveMatchCardAdapter(getContext(), data);
             // This is the inner viewPager so commenting it out for now
@@ -106,10 +111,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
         }
 
 
-
-
     }
-
 
 
     @Override

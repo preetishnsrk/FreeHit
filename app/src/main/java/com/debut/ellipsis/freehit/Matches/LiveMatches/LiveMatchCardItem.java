@@ -25,6 +25,7 @@ public class LiveMatchCardItem {
 
     private String mMatchDate;
 
+    private String mViewMore;
 
     private String mResultOrTargetOrTrailByOrLeadBy;;
 
@@ -45,6 +46,10 @@ public class LiveMatchCardItem {
         mResultOrTargetOrTrailByOrLeadBy = ResultOrTargetOrTrailByOrLeadBy;
     }
 
+
+    public LiveMatchCardItem(String ViewMore) {
+        mViewMore = ViewMore;
+    }
 
     public String getmMatchSeriesName() {
         return mMatchSeriesName;
@@ -92,6 +97,10 @@ public class LiveMatchCardItem {
 
     public String getmMatchDate() {
         return mMatchDate;
+    }
+
+    public String getmViewMore() {
+        return mViewMore;
     }
 
     public String getmResultOrTargetOrTrailByOrLeadBy() {

@@ -61,7 +61,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             // Initialize the loader. Pass in the int ID constant defined above and pass in null for
             // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
             // because this activity implements the LoaderCallbacks interface).
-            loaderManager.initLoader(UPCOMING_MATCH_LOADER_ID, null, this);
+            loaderManager.initLoader(UPCOMING_MATCH_LOADER_ID, null, this).forceLoad();
 
 
         }

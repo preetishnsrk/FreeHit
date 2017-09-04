@@ -159,11 +159,11 @@ public class QueryUtilLiveMatchCard {
 
             //create a JSONObject from  the JSON response string
             JSONObject basJsonResponse = new JSONObject(UpcomingMatchesJSON);
-            JSONArray result=basJsonResponse.getJSONArray("result");
+            JSONArray result = basJsonResponse.getJSONArray("result");
 
             for (int i = 0; i < result.length(); i++) {
 
-                JSONObject currentLiveMatch=result.getJSONObject(i);
+                JSONObject currentLiveMatch = result.getJSONObject(i);
 
                 // Extract the value for the key called "ndid"
                 String match_id = currentLiveMatch.getString("ndid");
@@ -173,19 +173,19 @@ public class QueryUtilLiveMatchCard {
 
 
                 // Extract the value for the key called "stadium"
-                String stadium_name = "("+currentLiveMatch.getString("stadium")+")";
+                String stadium_name = "(" + currentLiveMatch.getString("stadium") + ")";
 
-               JSONObject date=currentLiveMatch.getJSONObject("date");
+                JSONObject date = currentLiveMatch.getJSONObject("date");
 
-                String match_day=date.getString("day");
+                String match_day = date.getString("day");
 
-                String match_month=date.getString("month");
+                String match_month = date.getString("month");
 
-                String match_year=date.getString("year");
+                String match_year = date.getString("year");
 
-                String match_date=date.getString("final");
+                String match_date = date.getString("final");
 
-                JSONObject team1info=currentLiveMatch.getJSONObject("team1info");
+                JSONObject team1info = currentLiveMatch.getJSONObject("team1info");
 
                 // Extract the value for the key called "sn"
                 String team1_short_name = team1info.getString("name");
@@ -199,7 +199,7 @@ public class QueryUtilLiveMatchCard {
                 // Extract the value for the key called "inn2"
                 String team1_innings2 = team1info.getString("inn2");
 
-                JSONObject team2info=currentLiveMatch.getJSONObject("team2info");
+                JSONObject team2info = currentLiveMatch.getJSONObject("team2info");
 
                 // Extract the value for the key called "sn" (
                 String team2_short_name = team2info.getString("name");
@@ -217,10 +217,9 @@ public class QueryUtilLiveMatchCard {
                 String match_result_target_trailBy_leadBy = currentLiveMatch.getString("mresult");
 
 
-
                 // Create a new {@link UpcomingMatches} object
                 // and url from the JSON response.
-                LiveMatchCardItem live_match = new LiveMatchCardItem(match_series_name,match_id,stadium_name,team1_logo_URL,team1_short_name,team1_innings1,team1_innings2,team2_logo_URL,team2_short_name,team2_innings1,team2_innings2,match_date,match_result_target_trailBy_leadBy);
+                LiveMatchCardItem live_match = new LiveMatchCardItem(match_series_name, match_id, stadium_name, team1_logo_URL, team1_short_name, team1_innings1, team1_innings2, team2_logo_URL, team2_short_name, team2_innings1, team2_innings2, match_date, match_result_target_trailBy_leadBy);
                 LiveMatches.add(live_match);
 
             }

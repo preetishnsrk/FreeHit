@@ -41,7 +41,7 @@ public class LiveMatchCardLoader extends AsyncTaskLoader<List<LiveMatchCardItem>
     @Override
     public List<LiveMatchCardItem> loadInBackground() {
 
-        Log.i(LOG_TAG, "TEST: loadInBackground() called");
+        Log.e(LOG_TAG, "TEST: loadInBackground() called");
         if (mUrl == null) {
             Log.i(LOG_TAG, "NULL");
             return null;

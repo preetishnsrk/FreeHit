@@ -4,13 +4,11 @@ package com.debut.ellipsis.freehit.Matches.LiveMatches;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 
 import com.debut.ellipsis.freehit.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -19,11 +17,11 @@ import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
 import java.text.ParseException;
-import java.util.List;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
-public class LiveMatchCardAdapter  extends PagerAdapter {
+public class LiveMatchCardAdapter extends PagerAdapter {
 
     private static final String DATE_SEPARATOR = "T";
 
@@ -73,11 +71,8 @@ public class LiveMatchCardAdapter  extends PagerAdapter {
             // match_name should be "2nd Test"
             // series_name should be " Australia in Bangladesh, 2 Test Series, 2017"
             match_name = parts[0];
-            series_name=parts[1]+MATCH_SERIES_SEPARATOR+parts[2]+parts[3];
+            series_name = parts[1] + MATCH_SERIES_SEPARATOR + parts[2] + parts[3];
         }
-
-        Log.e(LOG_TAG,match_name);
-        Log.e(LOG_TAG,series_name);
 
         TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name_live);
         textViewMatchName.setText(match_name);
@@ -116,7 +111,6 @@ public class LiveMatchCardAdapter  extends PagerAdapter {
 
         TextView MatchResult = (TextView) view.findViewById(R.id.match_target_trail_leadBy_live);
         MatchResult.setText(this.dataObjectList.get(position).getmResultOrTargetOrTrailByOrLeadBy());
-
 
 
         String originalMatchDate = this.dataObjectList.get(position).getmMatchDate();
