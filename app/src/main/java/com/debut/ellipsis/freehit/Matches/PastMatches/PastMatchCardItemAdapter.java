@@ -18,9 +18,6 @@ import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.assist.FailReason;
 import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 public class PastMatchCardItemAdapter extends PagerAdapter {
@@ -96,35 +93,26 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
 
         String originalMatchDate = this.dataObjectList.get(position).getmMatchDate();
 
-        // Check whether the originalLocation string contains the " of " text
-        if (originalMatchDate.contains(DATE_SEPARATOR)) {
-            // Split the string into different parts (as an array of Strings)
-            // based on the "T" text. We expect an array of 2 Strings, where
-            // the first String will be "2017-09-04" and the second String will be "04:00:00.000Z".
-            String[] parts = originalMatchDate.split(DATE_SEPARATOR);
-            // originalMatchDate should be "2017-09-04"--> "04 Sep 2017"
-            originalMatchDate = parts[0];
+//        // Check whether the originalLocation string contains the " of " text
+//        if (originalMatchDate.contains(DATE_SEPARATOR)) {
+//            // Split the string into different parts (as an array of Strings)
+//            // based on the "T" text. We expect an array of 2 Strings, where
+//            // the first String will be "2017-09-04" and the second String will be "04:00:00.000Z".
+//            String[] parts = originalMatchDate.split(DATE_SEPARATOR);
+//            // originalMatchDate should be "2017-09-04"--> "04 Sep 2017"
+//            originalMatchDate = parts[0];
+//
+//        }
 
-        }
 
 
 
-        //converting "2017-09-04" to "04 Sep 2017"
-        SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
-        SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy , E");
-        Date date = null;
-        try {
-            date = inputFormat.parse(originalMatchDate);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        String outputDateStr = outputFormat.format(date);
 
         TextView ViewMore = (TextView) view.findViewById(R.id.past_view_more);
         ViewMore.setText(this.dataObjectList.get(position).getmViewMore());
 
         TextView MatchDate = (TextView) view.findViewById(R.id.match_date_past);
-        MatchDate.setText(outputDateStr);
+        MatchDate.setText(this.dataObjectList.get(position).getmMatchDate());
 
         final CardView cardView = (CardView) view.findViewById(R.id.card_view);
 
