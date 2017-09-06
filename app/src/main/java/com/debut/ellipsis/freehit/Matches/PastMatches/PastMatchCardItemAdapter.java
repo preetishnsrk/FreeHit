@@ -119,10 +119,6 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                    Intent PastMatchScoreCardIntent=new Intent(context,PastMatchScoreCard.class);
-                    PastMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
-                    PastMatchScoreCardIntent.putExtra("match_name",dataObjectList.get(position).getmMatchName());
-                    context.startActivity(PastMatchScoreCardIntent);
                 if(position==5){
                     // Intent to move to list view for Click to view more
                     // Create a new intent to open the {@link UpcomingMatchesActivity}
@@ -130,6 +126,12 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
 
                     // Start the new activity
                     context.startActivity(PastIntent);
+                }
+                else {
+                    Intent PastMatchScoreCardIntent = new Intent(context, PastMatchScoreCard.class);
+                    PastMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
+                    PastMatchScoreCardIntent.putExtra("match_name", dataObjectList.get(position).getmMatchName());
+                    context.startActivity(PastMatchScoreCardIntent);
                 }
             }
         });

@@ -75,7 +75,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     // Usually involves inflating a layout from XML and returning the holder
     @Override
     public UpcomingMatchesListAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        final Context context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
         // Inflate the custom layout
@@ -83,6 +83,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
 
         // Return a new holder instance
         ViewHolder viewHolder = new ViewHolder(contactView);
+
         return viewHolder;
     }
 
@@ -122,7 +123,6 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
 
         setImage(logo_string1, imageViewTeam1Logo);
         setImage(logo_string2, imageViewTeam2Logo);
-
 
     }
 
