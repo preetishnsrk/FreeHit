@@ -37,6 +37,9 @@
         <activity
             android:name=".Matches.PastMatches.PastMatchScoreCard"
             android:label="SCORE CARD" />
+        <activity
+            android:name=".Matches.PastMatches."
+            android:label="SCORE CARD" />
     </application>
 
 </manifest>
