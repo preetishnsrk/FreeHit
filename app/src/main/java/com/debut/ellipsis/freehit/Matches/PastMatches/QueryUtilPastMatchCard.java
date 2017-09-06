@@ -180,7 +180,8 @@ public class QueryUtilPastMatchCard {
                 JSONObject date = currentPastMatch.getJSONObject("date");
 
                 // Extract the value for the key called "final"(for match date)
-                String match_date = date.getString("final");
+
+                String match_date = date.getString("day");
 
                 JSONObject team1info = currentPastMatch.getJSONObject("team1info");
 
