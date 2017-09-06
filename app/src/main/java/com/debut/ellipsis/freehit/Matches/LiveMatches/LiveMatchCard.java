@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
@@ -68,6 +69,20 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
 
         }
+        PullRefreshLayout layout = (PullRefreshLayout)rootView.findViewById(R.id.swipeRefreshLayout);
+
+// listen refresh event
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+
+
+            }
+        });
+
+// refresh complete
+        layout.setRefreshing(false);
 
 
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
@@ -82,8 +97,6 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
-
-
 
         return rootView;
     }
