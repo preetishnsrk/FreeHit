@@ -6,6 +6,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/match_background"
     xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.baoyz.widget.PullRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:refreshType="ring">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -44,5 +49,5 @@
             android:textSize="32sp" />
 
     </RelativeLayout>
-
+    </com.baoyz.widget.PullRefreshLayout>
 </FrameLayout>
