@@ -86,13 +86,10 @@ public class UpcomingMatchesItemAdapter extends PagerAdapter {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (int i = 0; i < dataObjectList.size() ; i++) {
-                    String match_id=dataObjectList.get(position).getmMatchID();
-                    Intent UpcomingScorecardIntent=new Intent(context,UpcomingScorecardFragment.class);
-                    UpcomingScorecardIntent.putExtra("match_id",match_id);
-                }
-
-
+                Intent UpcomingMatchScoreCardIntent=new Intent(context,UpcomingMatchScoreCard.class);
+                UpcomingMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
+                UpcomingMatchScoreCardIntent.putExtra("match_name",dataObjectList.get(position).getmMatchName()+"("+dataObjectList.get(position).getmTeam1SN()+" vs "+dataObjectList.get(position).getmTeam2SN()+")");
+                context.startActivity(UpcomingMatchScoreCardIntent);
                 if(position==5){
                     // Intent to move to list view for Click to view more
                     // Create a new intent to open the {@link UpcomingMatchesActivity}

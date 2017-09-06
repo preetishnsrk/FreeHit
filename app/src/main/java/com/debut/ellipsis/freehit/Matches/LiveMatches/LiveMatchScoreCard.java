@@ -1,4 +1,5 @@
-package com.debut.ellipsis.freehit.Matches.PastMatches;
+package com.debut.ellipsis.freehit.Matches.LiveMatches;
+
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -10,18 +11,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.debut.ellipsis.freehit.Matches.ChanceToWinFragment;
 import com.debut.ellipsis.freehit.Matches.CommentaryFragment;
 import com.debut.ellipsis.freehit.Matches.HeadToHeadFragment;
 import com.debut.ellipsis.freehit.Matches.HeatMapFragment;
 import com.debut.ellipsis.freehit.Matches.InfoFragment;
 import com.debut.ellipsis.freehit.Matches.ScoreCardFragment;
 import com.debut.ellipsis.freehit.Matches.SpiderFragment;
+import com.debut.ellipsis.freehit.Matches.SummaryFragment;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PastMatchScoreCard extends AppCompatActivity {
+public class LiveMatchScoreCard extends AppCompatActivity {
 
     private String match_id;
     private String match_name;
@@ -32,21 +35,20 @@ public class PastMatchScoreCard extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.past_match_scorecard);
+        setContentView(R.layout.live_match_scorecard);
 
         match_id=getIntent().getStringExtra("match_id");
         match_name=getIntent().getStringExtra("match_name");
-
         setTitle(match_name);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar_past);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_live);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager_past);
+        viewPager = (ViewPager) findViewById(R.id.viewpager_live);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs_past);
+        tabLayout = (TabLayout) findViewById(R.id.tabs_live);
         tabLayout.setupWithViewPager(viewPager);
 
 
@@ -65,16 +67,18 @@ public class PastMatchScoreCard extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        PastMatchScoreCard.super.onBackPressed();
+        LiveMatchScoreCard.super.onBackPressed();
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        LiveMatchScoreCard.ViewPagerAdapter adapter = new LiveMatchScoreCard.ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new InfoFragment(), "INFO");
+        adapter.addFrag(new SummaryFragment(), "SUMMARY");
         adapter.addFrag(new ScoreCardFragment(), "SCORE CARD");
         adapter.addFrag(new CommentaryFragment(), "COMMENTARY");
         adapter.addFrag(new HeadToHeadFragment(), "HEAD-TO-HEAD");
         adapter.addFrag(new SpiderFragment(), "SPIDER");
+        adapter.addFrag(new ChanceToWinFragment(), "WIN %");
         adapter.addFrag(new HeatMapFragment(), "HEAT MAP");
         viewPager.setAdapter(adapter);
     }

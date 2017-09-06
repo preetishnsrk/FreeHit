@@ -2,8 +2,10 @@ package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v4.view.PagerAdapter;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,7 +57,7 @@ public class LiveMatchCardAdapter extends PagerAdapter {
     }
 
     @Override
-    public Object instantiateItem(ViewGroup container, int position) {
+    public Object instantiateItem(ViewGroup container, final int position) {
         View view = this.layoutInflater.inflate(R.layout.live_match_card, container, false);
 
         String originalMatchName = this.dataObjectList.get(position).getmMatchSeriesName();
@@ -125,6 +127,20 @@ public class LiveMatchCardAdapter extends PagerAdapter {
             originalMatchDate = parts[0];
 
         }
+
+        final CardView cardView = (CardView) view.findViewById(R.id.card_view);
+
+        final String finalMatch_name = match_name;
+        cardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent LiveMatchScoreCardIntent=new Intent(context,LiveMatchScoreCard.class);
+                LiveMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
+                LiveMatchScoreCardIntent.putExtra("match_name", finalMatch_name +"("+dataObjectList.get(position).getmTeam1SN()+" vs "+dataObjectList.get(position).getmTeam2SN()+")");
+                context.startActivity(LiveMatchScoreCardIntent);
+
+            }
+        });
 
         //converting "2017-09-04" to "04 Sep 2017"
         SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");

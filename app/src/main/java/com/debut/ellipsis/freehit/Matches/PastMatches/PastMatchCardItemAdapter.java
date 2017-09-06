@@ -121,6 +121,7 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
             public void onClick(View v) {
                     Intent PastMatchScoreCardIntent=new Intent(context,PastMatchScoreCard.class);
                     PastMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
+                    PastMatchScoreCardIntent.putExtra("match_name",dataObjectList.get(position).getmMatchName());
                     context.startActivity(PastMatchScoreCardIntent);
                 if(position==5){
                     // Intent to move to list view for Click to view more
