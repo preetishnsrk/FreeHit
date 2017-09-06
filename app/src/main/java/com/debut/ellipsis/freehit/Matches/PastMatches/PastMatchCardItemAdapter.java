@@ -22,6 +22,8 @@ import java.util.List;
 
 public class PastMatchCardItemAdapter extends PagerAdapter {
 
+    private static final String DATE_SEPARATOR = "T";
+
     private Context context;
     private List<PastMatchCardItem> dataObjectList;
     private LayoutInflater layoutInflater;
@@ -85,11 +87,29 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
         TextView team2Innings2 = (TextView) view.findViewById(R.id.innings2_team2_past);
         team2Innings2.setText(this.dataObjectList.get(position).getmTeam2Innings2());
 
-        TextView ViewMore = (TextView) view.findViewById(R.id.past_view_more);
-        ViewMore.setText(this.dataObjectList.get(position).getmViewMore());
 
         TextView MatchResult = (TextView) view.findViewById(R.id.match_result_past);
         MatchResult.setText(this.dataObjectList.get(position).getmMatchResult());
+
+        String originalMatchDate = this.dataObjectList.get(position).getmMatchDate();
+
+//        // Check whether the originalLocation string contains the " of " text
+//        if (originalMatchDate.contains(DATE_SEPARATOR)) {
+//            // Split the string into different parts (as an array of Strings)
+//            // based on the "T" text. We expect an array of 2 Strings, where
+//            // the first String will be "2017-09-04" and the second String will be "04:00:00.000Z".
+//            String[] parts = originalMatchDate.split(DATE_SEPARATOR);
+//            // originalMatchDate should be "2017-09-04"--> "04 Sep 2017"
+//            originalMatchDate = parts[0];
+//
+//        }
+
+
+
+
+
+        TextView ViewMore = (TextView) view.findViewById(R.id.past_view_more);
+        ViewMore.setText(this.dataObjectList.get(position).getmViewMore());
 
         TextView MatchDate = (TextView) view.findViewById(R.id.match_date_past);
         MatchDate.setText(this.dataObjectList.get(position).getmMatchDate());

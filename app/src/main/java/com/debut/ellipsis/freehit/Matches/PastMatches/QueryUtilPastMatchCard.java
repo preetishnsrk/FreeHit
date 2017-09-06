@@ -15,7 +15,10 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class QueryUtilPastMatchCard {
@@ -177,11 +180,19 @@ public class QueryUtilPastMatchCard {
                 String stadium_name = currentPastMatch.getString("stadium");
                 stadium_name = "(" + stadium_name + ")";
 
-                JSONObject date = currentPastMatch.getJSONObject("date");
+                String  time_day = currentPastMatch.getString("time");
 
-                // Extract the value for the key called "final"(for match date)
+                //converting "2017-09-04" to "04 Sep 2017"
+                SimpleDateFormat inputFormat = new SimpleDateFormat("yyyy-MM-dd");
+                SimpleDateFormat outputFormat = new SimpleDateFormat("dd MMM yyyy , E");
+                Date date = null;
+                try {
+                    date = inputFormat.parse(time_day);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                String outputDateStr = outputFormat.format(date);
 
-                String match_date = date.getString("day");
 
                 JSONObject team1info = currentPastMatch.getJSONObject("team1info");
 
@@ -217,11 +228,12 @@ public class QueryUtilPastMatchCard {
 
                 // Create a new {@link PastMatches} object
                 // and url from the JSON response.
-                PastMatchCardItem past_match = new PastMatchCardItem(match_name, match_id, series_name, stadium_name, team1_logo_URL, team1_short_name, team1_innings1, team1_innings2, team2_logo_URL, team2_short_name, team2_innings1, team2_innings2, match_date, match_result);
+                PastMatchCardItem past_match = new PastMatchCardItem(match_name, match_id, series_name, stadium_name, team1_logo_URL, team1_short_name, team1_innings1, team1_innings2, team2_logo_URL, team2_short_name, team2_innings1, team2_innings2,outputDateStr, match_result);
                 PastMatches.add(past_match);
 
             }
-            PastMatches.add(new PastMatchCardItem("Click to view more"));
+            String viewMore="Click To View More";
+            PastMatches.add(new PastMatchCardItem(viewMore));
             return PastMatches;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
