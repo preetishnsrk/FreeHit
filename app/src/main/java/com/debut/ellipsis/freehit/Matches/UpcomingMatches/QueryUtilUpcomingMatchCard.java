@@ -165,6 +165,9 @@ public class QueryUtilUpcomingMatchCard {
 
                 JSONObject currentUpcomingMatch = result.getJSONObject(i);
 
+                // Extract the value for the key called "ndid"
+                String match_ID = currentUpcomingMatch.getString("ndid");
+
                 // Extract the value for the key called "tour"
                 String series_name = currentUpcomingMatch.getString("tour");
 
@@ -198,7 +201,7 @@ public class QueryUtilUpcomingMatchCard {
 
                 // Create a new {@link UpcomingMatches} object
                 // and url from the JSON response.
-                UpcomingMatchCardItem upcoming_match = new UpcomingMatchCardItem(match_name, series_name, stadium_name, team1_logo_URL, team1_short_name, team2_logo_URL, team2_short_name, match_date, "-");
+                UpcomingMatchCardItem upcoming_match = new UpcomingMatchCardItem(match_ID,match_name, series_name, stadium_name, team1_logo_URL, team1_short_name, team2_logo_URL, team2_short_name, match_date, "-");
                 UpcomingMatches.add(upcoming_match);
 
             }
