@@ -28,33 +28,39 @@
             app:ci_drawable="@drawable/circleindicator_round"/>
 
 
-        <android.support.design.widget.TabLayout
-            android:id="@+id/soc_tabs"
-            android:layout_width="200dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/poll_indicator"
-            android:layout_centerHorizontal="true">
-
-        </android.support.design.widget.TabLayout>
-
-        <android.support.v4.widget.SwipeRefreshLayout
-            xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/soc_refresh_layout"
+        <RelativeLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/soc_tabs">
+            android:layout_below="@id/poll_indicator"
+            android:id="@+id/twit_layout">
 
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/twit_feed"
-                android:layout_width="match_parent"
+            <android.support.design.widget.TabLayout
+                android:id="@+id/soc_tabs"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:paddingBottom="5dp"
-                android:paddingEnd="10dp"
-                android:paddingStart="10dp"
-                android:paddingTop="10dp" />
+                android:layout_below="@id/poll_indicator"
+                android:layout_centerHorizontal="true">
 
-        </android.support.v4.widget.SwipeRefreshLayout>
+            </android.support.design.widget.TabLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/soc_refresh_layout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/soc_tabs">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/twit_feed"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:paddingBottom="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:paddingTop="10dp" />
+
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </RelativeLayout>
 
 
     </RelativeLayout>

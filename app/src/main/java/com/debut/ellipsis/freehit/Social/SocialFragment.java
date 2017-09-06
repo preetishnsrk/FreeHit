@@ -17,6 +17,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.R;
@@ -75,28 +76,40 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
         //  Initializing the RecyclerView for Twitter feed
         rv = (RecyclerView) socView.findViewById(R.id.twit_feed);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        final RelativeLayout twitrel = (RelativeLayout) socView.findViewById(R.id.twit_layout);
         //  Using a SearchTimeline to search for a given query, can be changed with (UserTimeline, CollectionTimeline, TwitterListTimeline, or FixedTweetTimeline)
         //  Defining a recyclerView adapter for the given Timeline, Twitter builds all the icons and intents and all that shit. I love twitter.
         tabCall("#cricket", SearchTimeline.ResultType.POPULAR);
 
-
-        refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+        container.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onRefresh() {
-                refLayout.setRefreshing(true);
-                adapter.refresh(new Callback<TimelineResult<Tweet>>() {
-                    @Override
-                    public void success(Result<TimelineResult<Tweet>> result) {
-                        refLayout.setRefreshing(false);
-                    }
-
-                    @Override
-                    public void failure(TwitterException exception) {
-                        Toast.makeText(getContext(), "Fetching Twitter Feed failed.", Toast.LENGTH_SHORT).show();
-                    }
-                });
+            public void onClick(View v) {
+                RelativeLayout.LayoutParams params = (RelativeLayout.LayoutParams) twitrel.getLayoutParams();
+                params.height = (int)v.getX();
+                params.width = (int)v.getY();
+                twitrel.setLayoutParams(params);
             }
         });
+
+
+                refLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+                    @Override
+                    public void onRefresh() {
+                        refLayout.setRefreshing(true);
+                        adapter.refresh(new Callback<TimelineResult<Tweet>>() {
+                            @Override
+                            public void success(Result<TimelineResult<Tweet>> result) {
+                                refLayout.setRefreshing(false);
+                            }
+
+                            @Override
+                            public void failure(TwitterException exception) {
+                                Toast.makeText(getContext(), "Fetching Twitter Feed failed.", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
+                });
 
         socTabs.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override

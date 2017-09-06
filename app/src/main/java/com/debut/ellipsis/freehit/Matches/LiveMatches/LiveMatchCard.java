@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -69,17 +70,10 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
 
         }
-        PullRefreshLayout layout = (PullRefreshLayout)rootView.findViewById(R.id.swipeRefreshLayout);
+        final PullRefreshLayout layout = (PullRefreshLayout)rootView.findViewById(R.id.swipeRefreshLayout);
 
 // listen refresh event
-        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-                // start refresh
 
-
-            }
-        });
 
 // refresh complete
         layout.setRefreshing(false);
@@ -98,7 +92,38 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+
+                layout.setRefreshing(true);
+                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+//                LoaderManager loaderManager = getLoaderManager();
+//                mAdapter.clear();
+                    getLoaderManager().restartLoader(LIVE_MATCH_LOADER_ID, null, LiveMatchCard.this);
+                    mAdapter.notifyDataSetChanged();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            layout.setRefreshing(false);
+                        }
+                    }, 1000);
+
+                } else {
+                    // Otherwise, display error
+                    // First, hide loading indicator so error message will be visible
+
+//                    mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+                    mAdapter.notifyDataSetChanged();
+
+                }
+                layout.setRefreshing(false);
+            }
+        });
         return rootView;
+
     }
 
     @Override

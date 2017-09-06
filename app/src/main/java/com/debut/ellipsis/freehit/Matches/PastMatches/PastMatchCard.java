@@ -8,6 +8,7 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
@@ -17,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
@@ -51,7 +53,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
-        ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        final ConnectivityManager connMgr = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
 
         // Get details on the currently active default data network
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
@@ -79,6 +81,40 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
         indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
+
+        final PullRefreshLayout layout = (PullRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
+        layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                // start refresh
+
+                layout.setRefreshing(true);
+                NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+                if (networkInfo != null && networkInfo.isConnected()) {
+//                LoaderManager loaderManager = getLoaderManager();
+//                mAdapter.clear();
+                    getLoaderManager().restartLoader(UPCOMING_MATCH_LOADER_ID, null, PastMatchCard.this);
+                    mAdapter.notifyDataSetChanged();
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            layout.setRefreshing(false);
+                        }
+                    }, 1000);
+
+                } else {
+                    // Otherwise, display error
+                    // First, hide loading indicator so error message will be visible
+
+//                    mAdapter.add(new NewsItem("No connection", "Looks like you have no connection, switch on your internet connection and try refreshing to see the latest news."));
+                    mAdapter.notifyDataSetChanged();
+
+                }
+                layout.setRefreshing(false);
+            }
+        });
+
+
 
         return rootView;
     }
