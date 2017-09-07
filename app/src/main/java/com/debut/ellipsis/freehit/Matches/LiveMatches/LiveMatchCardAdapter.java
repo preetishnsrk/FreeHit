@@ -74,7 +74,10 @@ public class LiveMatchCardAdapter extends PagerAdapter {
             // match_name should be "2nd Test"
             // series_name should be " Australia in Bangladesh, 2 Test Series, 2017"
             match_name = parts[0];
-            series_name = parts[1] + MATCH_SERIES_SEPARATOR + parts[2] + parts[3];
+            series_name = parts[1] + MATCH_SERIES_SEPARATOR;
+            for (int i = 2; i < parts.length; i++) {
+                series_name += parts[i];
+            }
         }
 
         TextView textViewMatchName = (TextView) view.findViewById(R.id.match_name_live);
@@ -135,10 +138,10 @@ public class LiveMatchCardAdapter extends PagerAdapter {
         cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent LiveMatchScoreCardIntent=new Intent(context,LiveMatchScoreCard.class);
-                LiveMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
-                LiveMatchScoreCardIntent.putExtra("match_name", finalMatch_name +"("+dataObjectList.get(position).getmTeam1SN()+" vs "+dataObjectList.get(position).getmTeam2SN()+")");
-                ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);
+                Intent LiveMatchScoreCardIntent = new Intent(context, LiveMatchScoreCard.class);
+                LiveMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
+                LiveMatchScoreCardIntent.putExtra("match_name", finalMatch_name + "(" + dataObjectList.get(position).getmTeam1SN() + " vs " + dataObjectList.get(position).getmTeam2SN() + ")");
+                ActivityOptions.makeCustomAnimation(context, R.anim.animation_entry, R.anim.animation_exit);
                 context.startActivity(LiveMatchScoreCardIntent);
 
             }
