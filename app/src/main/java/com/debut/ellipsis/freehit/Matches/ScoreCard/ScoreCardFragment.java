@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Matches;
+package com.debut.ellipsis.freehit.Matches.ScoreCard;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.debut.ellipsis.freehit.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class SpiderFragment extends Fragment {
+public class ScoreCardFragment extends Fragment {
 
 
-    public SpiderFragment() {
+    public ScoreCardFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class SpiderFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spider, container, false);
+        return inflater.inflate(R.layout.fragment_score_card, container, false);
     }
 
 }

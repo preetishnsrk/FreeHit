@@ -1,6 +1,7 @@
 package com.debut.ellipsis.freehit.Matches.PastMatches;
 
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -131,6 +132,7 @@ public class PastMatchCardItemAdapter extends PagerAdapter {
                     Intent PastMatchScoreCardIntent = new Intent(context, PastMatchScoreCard.class);
                     PastMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
                     PastMatchScoreCardIntent.putExtra("match_name", dataObjectList.get(position).getmMatchName());
+                    ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);
                     context.startActivity(PastMatchScoreCardIntent);
                 }
             }

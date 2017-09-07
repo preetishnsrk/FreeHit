@@ -10,12 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.debut.ellipsis.freehit.Matches.CommentaryFragment;
-import com.debut.ellipsis.freehit.Matches.HeadToHeadFragment;
-import com.debut.ellipsis.freehit.Matches.HeatMapFragment;
-import com.debut.ellipsis.freehit.Matches.InfoFragment;
-import com.debut.ellipsis.freehit.Matches.ScoreCardFragment;
-import com.debut.ellipsis.freehit.Matches.SpiderFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.CommentaryFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.HeadToHeadFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.HeatMapFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.InfoFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.ScoreCardFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.SpiderFragment;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;

@@ -1,5 +1,6 @@
 package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -97,6 +98,7 @@ public class UpcomingMatchesItemAdapter extends PagerAdapter {
                     Intent UpcomingMatchScoreCardIntent = new Intent(context, UpcomingMatchScoreCard.class);
                     UpcomingMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
                     UpcomingMatchScoreCardIntent.putExtra("match_name", dataObjectList.get(position).getmMatchName() + "(" + dataObjectList.get(position).getmTeam1SN() + " vs " + dataObjectList.get(position).getmTeam2SN() + ")");
+                    ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);
                     context.startActivity(UpcomingMatchScoreCardIntent);
                 }
             }

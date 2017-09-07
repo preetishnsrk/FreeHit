@@ -1,6 +1,7 @@
 package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 
+import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -137,6 +138,7 @@ public class LiveMatchCardAdapter extends PagerAdapter {
                 Intent LiveMatchScoreCardIntent=new Intent(context,LiveMatchScoreCard.class);
                 LiveMatchScoreCardIntent.putExtra("match_id",dataObjectList.get(position).getmMatchID());
                 LiveMatchScoreCardIntent.putExtra("match_name", finalMatch_name +"("+dataObjectList.get(position).getmTeam1SN()+" vs "+dataObjectList.get(position).getmTeam2SN()+")");
+                ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);
                 context.startActivity(LiveMatchScoreCardIntent);
 
             }

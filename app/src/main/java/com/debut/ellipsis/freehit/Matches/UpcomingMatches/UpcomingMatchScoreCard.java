@@ -11,11 +11,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.debut.ellipsis.freehit.Matches.CommentaryFragment;
-import com.debut.ellipsis.freehit.Matches.CountDownAndFormFragment;
-import com.debut.ellipsis.freehit.Matches.HeadToHeadFragment;
-import com.debut.ellipsis.freehit.Matches.InfoFragment;
-import com.debut.ellipsis.freehit.Matches.SquadsFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.CommentaryFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.CountDownAndFormFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.HeadToHeadFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.InfoFragment;
+import com.debut.ellipsis.freehit.Matches.ScoreCard.SquadsFragment;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
