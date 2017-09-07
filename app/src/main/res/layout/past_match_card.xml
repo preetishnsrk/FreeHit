@@ -26,7 +26,6 @@
                 android:id="@+id/match_name_past"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="15dp"
                 android:paddingTop="10dp"
                 android:layout_centerHorizontal="true"
                 android:textSize="15sp"
