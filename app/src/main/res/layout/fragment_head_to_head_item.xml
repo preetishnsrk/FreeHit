@@ -1,0 +1,75 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.debut.ellipsis.freehit.Matches.ScoreCard.HeadToHeadFragment">
+<TextView
+    android:id="@+id/compare_type_name"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_centerHorizontal="true"
+    android:fontFamily="sans-serif-medium"
+    android:textSize="25sp"
+    tools:text="MATCHES WON"/>
+
+
+    <LinearLayout
+        android:id="@+id/LinearLayout"
+        android:layout_below="@+id/compare_type_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <!--.....Team A...... -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/team1_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:textSize="30sp"
+                tools:text="47" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray" />
+        <!--......Team B...... -->
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/team2_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:fontFamily="sans-serif-light"
+                android:gravity="center_horizontal"
+                android:padding="5dp"
+                android:textSize="30sp"
+                tools:text="55" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+    <TextView
+        android:layout_below="@+id/LinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"/>
+
+</RelativeLayout>

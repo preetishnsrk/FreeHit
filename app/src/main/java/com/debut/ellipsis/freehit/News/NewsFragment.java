@@ -83,11 +83,11 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
                 NewsItem currentNewsArticle = mAdapter.getItem(position);
 
                 // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri earthquakeUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
+                Uri NewsUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
 
                 if (currentNewsArticle.getMurlofwebsite() != null) {
                     // Create a new intent to view the earthquake URI
-                    Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
+                    Intent websiteIntent = new Intent(Intent.ACTION_VIEW, NewsUri);
 
                     // Send the intent to launch a new activity
                     startActivity(websiteIntent);
