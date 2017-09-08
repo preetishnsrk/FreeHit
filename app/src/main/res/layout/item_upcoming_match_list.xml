@@ -10,18 +10,16 @@
     android:paddingRight="4dp"
     android:background="@drawable/list_border"
     android:layout_marginBottom="5dp">
-
-
+    
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal">
+            android:gravity="center_horizontal">
 
             <TextView
                 android:id="@+id/match_name_upcoming"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="15dp"
                 android:paddingTop="10dp"
                 android:textSize="15sp"
                 tools:text="4th ODI" />
@@ -33,7 +31,7 @@
                 android:layout_toEndOf="@+id/match_name_upcoming"
                 android:paddingStart="5dp"
                 android:paddingTop="10dp"
-                android:text="-"
+                tools:text="-"
                 android:textSize="15sp" />
 
             <TextView
