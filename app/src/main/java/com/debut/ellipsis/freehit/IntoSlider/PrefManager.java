@@ -1,4 +1,5 @@
 package com.debut.ellipsis.freehit.IntoSlider;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
