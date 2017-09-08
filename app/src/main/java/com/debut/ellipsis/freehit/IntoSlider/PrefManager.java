@@ -2,7 +2,6 @@ package com.debut.ellipsis.freehit.IntoSlider;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-
 public class PrefManager {
     SharedPreferences pref;
     SharedPreferences.Editor editor;
