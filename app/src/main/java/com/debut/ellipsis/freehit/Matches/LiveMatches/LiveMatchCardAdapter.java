@@ -1,7 +1,6 @@
 package com.debut.ellipsis.freehit.Matches.LiveMatches;
 
 
-import android.app.ActivityOptions;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -60,7 +59,6 @@ public class LiveMatchCardAdapter extends PagerAdapter {
     @Override
     public Object instantiateItem(ViewGroup container, final int position) {
         View view = this.layoutInflater.inflate(R.layout.live_match_card, container, false);
-
         String originalMatchName = this.dataObjectList.get(position).getmMatchSeriesName();
 
         String match_name = null;
@@ -141,7 +139,7 @@ public class LiveMatchCardAdapter extends PagerAdapter {
                 Intent LiveMatchScoreCardIntent = new Intent(context, LiveMatchScoreCard.class);
                 LiveMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
                 LiveMatchScoreCardIntent.putExtra("match_name", finalMatch_name + "(" + dataObjectList.get(position).getmTeam1SN() + " vs " + dataObjectList.get(position).getmTeam2SN() + ")");
-                ActivityOptions.makeCustomAnimation(context, R.anim.animation_entry, R.anim.animation_exit);
+                /*ActivityOptions.makeCustomAnimation(context,R.anim.enter_from_right,R.anim.exit_to_right);*/
                 context.startActivity(LiveMatchScoreCardIntent);
 
             }
@@ -171,7 +169,9 @@ public class LiveMatchCardAdapter extends PagerAdapter {
         setImage(logo_string2, imageViewTeam2Logo);
         container.addView(view);
         return view;
+
     }
+
 
     @Override
     public void destroyItem(ViewGroup container, int position, Object object) {
@@ -205,4 +205,5 @@ public class LiveMatchCardAdapter extends PagerAdapter {
         });
 
     }
+
 }

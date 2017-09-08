@@ -33,7 +33,7 @@ public class PastMatchScoreCard extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.past_match_scorecard);
-
+        overridePendingTransition(R.anim.enter_from_right,R.anim.exit_to_left);
         match_id=getIntent().getStringExtra("match_id");
         match_name=getIntent().getStringExtra("match_name");
 
@@ -58,6 +58,7 @@ public class PastMatchScoreCard extends AppCompatActivity {
         switch(item.getItemId()){
             case android.R.id.home:
                 onBackPressed();
+                overridePendingTransition(0,R.anim.exit_to_right);
                 return true;
         }
         return super.onOptionsItemSelected(item);

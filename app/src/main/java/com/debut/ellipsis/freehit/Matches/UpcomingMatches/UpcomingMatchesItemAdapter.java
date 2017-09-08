@@ -98,7 +98,7 @@ public class UpcomingMatchesItemAdapter extends PagerAdapter {
                     Intent UpcomingMatchScoreCardIntent = new Intent(context, UpcomingMatchScoreCard.class);
                     UpcomingMatchScoreCardIntent.putExtra("match_id", dataObjectList.get(position).getmMatchID());
                     UpcomingMatchScoreCardIntent.putExtra("match_name", dataObjectList.get(position).getmMatchName() + "(" + dataObjectList.get(position).getmTeam1SN() + " vs " + dataObjectList.get(position).getmTeam2SN() + ")");
-                    ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);
+                    /*ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);*/
                     context.startActivity(UpcomingMatchScoreCardIntent);
                 }
             }
