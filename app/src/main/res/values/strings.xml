@@ -29,8 +29,25 @@
     <!--FOR TOOLS IN LIVE,UPCOMING,PAST MATCHES-->
     <string name="matches_view_more">Click To View More</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- for intro slide -->
+    <string name="next">NEXT</string>
+    <string name="skip">SKIP</string>
+    <string name="start">GOT IT</string>
+
+    <string name="slide_1_title">SCORES ON THE GO!</string>
+    <string name="slide_1_desc">It couldn\'t have been easier to check scores!</string>
+
+    <string name="slide_2_title">NEWS</string>
+    <string name="slide_2_desc">Get the best and the latest!</string>
+
+    <string name="slide_3_title">POLLS AND SOCIAL</string>
+    <string name="slide_3_desc">Keep yourself updated with the latest tweets and make your voice heard with POLLs!</string>
+
+    <string name="slide_4_title">STATS</string>
+    <string name="slide_4_desc">Get answers to all your cricket queries!</string>
+
+    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
+    <string name="play_again">Play Again</string>
 
 
 </resources>

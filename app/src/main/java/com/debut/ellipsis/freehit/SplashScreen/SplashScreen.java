@@ -6,8 +6,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 
-import com.debut.ellipsis.freehit.MainActivity;
 import com.debut.ellipsis.freehit.R;
+import com.debut.ellipsis.freehit.IntoSlider.WelcomeActivity;
 
 
 public class SplashScreen extends Activity {
@@ -22,7 +22,7 @@ public class SplashScreen extends Activity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent i = new Intent(SplashScreen.this, MainActivity.class);
+                Intent i = new Intent(SplashScreen.this, WelcomeActivity.class);
                 startActivity(i);
                 finish();
             }
