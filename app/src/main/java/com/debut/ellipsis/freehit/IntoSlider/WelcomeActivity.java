@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.MainActivity;
 import com.debut.ellipsis.freehit.R;
@@ -30,8 +31,9 @@ public class WelcomeActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext;
+    private Button btnSkip, btnNext ,btnCountrySelect;
     private PrefManager prefManager;
+    private boolean clicked=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +57,7 @@ public class WelcomeActivity extends AppCompatActivity {
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
+        btnCountrySelect = (Button) findViewById(R.id.country_select);
 
 
         // layouts of all welcome sliders
@@ -93,7 +96,26 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    launchHomeScreen();
+
+                    btnCountrySelect.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v)
+                        {
+                            //change boolean value
+                            clicked=true;
+                        }
+                    });
+
+                    //then on another method or where you want
+                    if(clicked)
+                    {
+                        launchHomeScreen();
+                    }
+                    else
+                    {
+                        Toast.makeText(WelcomeActivity.this,"PLEASE SELECT A TEAM",Toast.LENGTH_SHORT).show();
+                    }
+
                 }
             }
         });
@@ -232,9 +254,6 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         });
         picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
-
-
-
 
     }
 }
