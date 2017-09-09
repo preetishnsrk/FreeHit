@@ -53,11 +53,12 @@ public class WelcomeActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_welcome);
 
+
+
         viewPager = (ViewPager) findViewById(R.id.view_pager_intro);
         dotsLayout = (LinearLayout) findViewById(R.id.layoutDots);
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
-        btnCountrySelect = (Button) findViewById(R.id.country_select);
 
 
         // layouts of all welcome sliders
@@ -68,6 +69,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_slide3,
                 R.layout.welcome_slide4,
                 R.layout.welcome_slide5_country_picker};
+//        btnCountrySelect = (Button) findViewById(R.id.country_select);
 
         // adding bottom dots
         addBottomDots(0);
@@ -78,6 +80,7 @@ public class WelcomeActivity extends AppCompatActivity {
         myViewPagerAdapter = new MyViewPagerAdapter();
         viewPager.setAdapter(myViewPagerAdapter);
         viewPager.addOnPageChangeListener(viewPagerPageChangeListener);
+
 
         btnSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,17 +99,6 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-
-                    btnCountrySelect.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View v)
-                        {
-                            //change boolean value
-                            clicked=true;
-                        }
-                    });
-
-                    //then on another method or where you want
                     if(clicked)
                     {
                         launchHomeScreen();
@@ -116,9 +108,13 @@ public class WelcomeActivity extends AppCompatActivity {
                         Toast.makeText(WelcomeActivity.this,"PLEASE SELECT A TEAM",Toast.LENGTH_SHORT).show();
                     }
 
+                    //then on another method or where you want
+
                 }
             }
         });
+
+
     }
 
     private void addBottomDots(int currentPage) {
@@ -248,7 +244,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("country_name", name);
                 editor.apply();
-
+                clicked=true;
                 picker.dismiss();
 
             }
