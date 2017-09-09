@@ -2,6 +2,7 @@ package com.debut.ellipsis.freehit.IntoSlider;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +24,7 @@ import com.debut.ellipsis.freehit.MainActivity;
 import com.debut.ellipsis.freehit.R;
 
 public class WelcomeActivity extends AppCompatActivity {
-
+    public static final String MY_PREFS_NAME = "MyPrefsFile";
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
@@ -61,7 +63,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 R.layout.welcome_slide1,
                 R.layout.welcome_slide2,
                 R.layout.welcome_slide3,
-                R.layout.welcome_slide4};
+                R.layout.welcome_slide4,
+                R.layout.welcome_slide5_country_picker};
 
         // adding bottom dots
         addBottomDots(0);
@@ -137,6 +140,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 // last page. make button text to GOT IT
                 btnNext.setText(getString(R.string.start));
                 btnSkip.setVisibility(View.GONE);
+
             } else {
                 // still pages are left
                 btnNext.setText(getString(R.string.next));
@@ -201,5 +205,36 @@ public class WelcomeActivity extends AppCompatActivity {
             View view = (View) object;
             container.removeView(view);
         }
+    }
+
+    public void select_country(View view) {
+
+        final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
+        picker.setListener(new CountryPickerListener() {
+            @Override
+            public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
+                // Implement your code here
+                TextView country_name=(TextView)findViewById(R.id.country_name);
+                country_name.setText(name);
+
+                ImageView before=(ImageView)findViewById(R.id.country_flag);
+                before.setImageResource(flagDrawableResID);
+
+                TextView description=(TextView)findViewById(R.id.slide5description);
+                description.setVisibility(View.GONE);
+
+                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                editor.putString("country_name", name);
+                editor.apply();
+
+                picker.dismiss();
+
+            }
+        });
+        picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
+
+
+
+
     }
 }

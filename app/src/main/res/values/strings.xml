@@ -46,8 +46,10 @@
     <string name="slide_4_title">STATS</string>
     <string name="slide_4_desc">Get answers to all your cricket queries!</string>
 
-    <string name="play_again_desc">To see the welcome slider again, goto Settings -> apps -> welcome slider -> clear data</string>
-    <string name="play_again">Play Again</string>
+    <string name="slide_5_title">PICK YOUR FAVOURITE COUNTRY</string>
+    <string name="slide_5_desc">Select the country that you want to follow!</string>
+
+    <string name="search">Search&#8230;</string>
 
 
 </resources>

@@ -35,6 +35,7 @@ import java.util.List;
  */
 public class NewsFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<NewsItem>> {
 
+    public static final String LOG_TAG = NewsFragment.class.getSimpleName();
 
     public View loadingIndicator;
     //the website url of the api

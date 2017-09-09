@@ -10,7 +10,7 @@
     android:paddingRight="4dp"
     android:background="@drawable/list_border"
     android:layout_marginBottom="5dp">
-    
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
