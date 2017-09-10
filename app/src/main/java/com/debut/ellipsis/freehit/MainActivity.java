@@ -55,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
                 .memoryCache(new LRULimitedMemoryCache(2 * 1024 * 1024)).
                         build();
         ImageLoader.getInstance().init(config);
-       /* toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        /*getSupportActionBar().setDisplayHomeAsUpEnabled(true);*/
 
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         setupViewPager(viewPager);
@@ -139,4 +139,5 @@ public class MainActivity extends AppCompatActivity {
             return mFragmentTitleList.get(position);
         }
     }
+
 }

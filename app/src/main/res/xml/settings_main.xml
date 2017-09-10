@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:title="@string/settings_title"
+    android:key="team_selection">
+
+        <Preference
+            android:title="SELECT YOUR TEAM"
+            android:layout="@layout/selectedteam"
+            android:key="loginButtons">
+
+        </Preference>
+
+</PreferenceScreen>
+
