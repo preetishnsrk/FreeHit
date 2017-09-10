@@ -1,15 +1,12 @@
 package com.debut.ellipsis.freehit;
 
 
+import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceFragment;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.IntoSlider.CountryPicker;
 import com.debut.ellipsis.freehit.IntoSlider.CountryPickerListener;
@@ -26,7 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
 
     }
 
-    public static class FreeHitPreferenceFragment extends PreferenceFragment {
+    @SuppressLint("ValidFragment")
+    public class FreeHitPreferenceFragment extends PreferenceFragment {
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
