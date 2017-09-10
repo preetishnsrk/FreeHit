@@ -155,9 +155,16 @@ public class MainActivity extends AppCompatActivity {
         if (id == R.id.action_settings) {
             Intent settingsIntent = new Intent(this, CustomSettings.class);
             startActivity(settingsIntent);
+
             return true;
         }
         return super.onOptionsItemSelected(item);
+
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
+    }
 }

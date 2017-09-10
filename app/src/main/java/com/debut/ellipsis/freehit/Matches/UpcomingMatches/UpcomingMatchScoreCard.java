@@ -60,13 +60,17 @@ public class UpcomingMatchScoreCard extends AppCompatActivity {
                 onBackPressed();
                 overridePendingTransition(0,R.anim.exit_to_right);
                 return true;
+
         }
+
         return super.onOptionsItemSelected(item);
     }
 
     @Override
     public void onBackPressed() {
         UpcomingMatchScoreCard.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
