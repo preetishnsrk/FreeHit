@@ -151,7 +151,6 @@ public class Country {
     /*
      * COMPARATORS
      */
-
     public static class ISOCodeComparator implements Comparator<Country> {
         @Override
         public int compare(Country country, Country t1) {

@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Stats.Stats.Playerpackage;
+package com.debut.ellipsis.freehit.Stats.Playerpackage;
 
 
 import android.support.v4.app.Fragment;

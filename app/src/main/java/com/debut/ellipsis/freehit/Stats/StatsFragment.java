@@ -1,14 +1,21 @@
 package com.debut.ellipsis.freehit.Stats;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.debut.ellipsis.freehit.R;
+import com.debut.ellipsis.freehit.Stats.Playerpackage.PlayerActivity;
+import com.debut.ellipsis.freehit.Stats.Playerpackage.RankingActivity;
+import com.debut.ellipsis.freehit.Stats.Playerpackage.RecordsActivity;
+import com.debut.ellipsis.freehit.Stats.Playerpackage.SeriesActivity;
+import com.debut.ellipsis.freehit.Stats.Playerpackage.TeamActivity;
 
 import java.util.ArrayList;
 
@@ -41,10 +48,45 @@ StatsFragment extends Fragment {
 
 
         StatsAdapter adapter = new StatsAdapter(getActivity(), statsItem);
-        ListView listView = (ListView) rootView.findViewById(R.id.stats_list);
+        final ListView listView = (ListView) rootView.findViewById(R.id.stats_list);
         listView.setAdapter(adapter);
+        listView.setClickable(true);
+        listView.setOnItemClickListener(new ListView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if(position==0) {
+                    Intent PlayerIntent = new Intent(getActivity(), PlayerActivity.class);
+                    startActivity(PlayerIntent);
+                    getActivity().overridePendingTransition(0,0);
 
-        //ABOVE LINE CREATES NULL POINTER EXCEPTION listView.setAdapter(adapter)
+                }
+                else if (position==1){
+                    Intent TeamIntent = new Intent(getActivity(), TeamActivity.class);
+                    startActivity(TeamIntent);
+                    getActivity().overridePendingTransition(0,0);
+
+                }
+                else if (position==2){
+                    Intent SeriesIntent = new Intent(getActivity(), SeriesActivity.class);
+                    startActivity(SeriesIntent);
+                    getActivity().overridePendingTransition(0,0);
+
+                }
+                else if (position==3){
+                    Intent RankingIntent = new Intent(getActivity(), RankingActivity.class);
+                    startActivity(RankingIntent);
+                    getActivity().overridePendingTransition(0,0);
+
+                }
+                else if (position==4){
+                    Intent RecordsIntent = new Intent(getActivity(), RecordsActivity.class);
+                    startActivity(RecordsIntent);
+                    getActivity().overridePendingTransition(0,0);
+
+                }
+            }
+        });
+        
 
         return rootView;
 
