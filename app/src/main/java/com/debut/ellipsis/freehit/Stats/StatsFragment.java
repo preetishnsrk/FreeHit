@@ -86,7 +86,7 @@ StatsFragment extends Fragment {
                 }
             }
         });
-        
+
 
         return rootView;
 
