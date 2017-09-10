@@ -56,6 +56,8 @@ public class PlayerActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         PlayerActivity.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

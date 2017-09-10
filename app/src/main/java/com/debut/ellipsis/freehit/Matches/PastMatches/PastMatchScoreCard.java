@@ -60,6 +60,8 @@ public class PastMatchScoreCard extends AppCompatActivity {
                 onBackPressed();
                 overridePendingTransition(0,R.anim.exit_to_right);
                 return true;
+
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -67,6 +69,8 @@ public class PastMatchScoreCard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         PastMatchScoreCard.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {

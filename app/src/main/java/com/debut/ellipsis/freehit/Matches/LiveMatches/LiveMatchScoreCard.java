@@ -63,6 +63,7 @@ public class LiveMatchScoreCard extends AppCompatActivity {
                 overridePendingTransition(0,R.anim.exit_to_right);
                 return true;
 
+
         }
         return super.onOptionsItemSelected(item);
     }
@@ -70,6 +71,7 @@ public class LiveMatchScoreCard extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         LiveMatchScoreCard.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
     }
 
     private void setupViewPager(ViewPager viewPager) {
