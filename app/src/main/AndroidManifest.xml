@@ -63,7 +63,8 @@
                 android:value="com.debut.ellipsis.freehit.MainActivity"/>
         </activity>
 
-        <activity android:name=".Stats.Playerpackage.PlayerActivity"/>
+        <activity android:name=".Stats.Playerpackage.PlayerActivity"
+            android:label="Player Info"/>
         <activity android:name=".Stats.Playerpackage.TeamActivity"/>
         <activity android:name=".Stats.Playerpackage.SeriesActivity"/>
         <activity android:name=".Stats.Playerpackage.RankingActivity"/>

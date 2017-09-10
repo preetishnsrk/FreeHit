@@ -27,14 +27,14 @@ public class PlayerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         overridePendingTransition(R.anim.enter_from_right,R.anim.exit_to_left);
         setContentView(R.layout.player_activity);
-        toolbar = (Toolbar) findViewById(R.id.toolbar_live);
+        toolbar = (Toolbar) findViewById(R.id.toolbar_player);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        viewPager = (ViewPager) findViewById(R.id.viewpager_live);
+        viewPager = (ViewPager) findViewById(R.id.viewpager_player);
         setupViewPager(viewPager);
 
-        tabLayout = (TabLayout) findViewById(R.id.tabs_live);
+        tabLayout = (TabLayout) findViewById(R.id.tabs_player);
         tabLayout.setupWithViewPager(viewPager);
 
 
