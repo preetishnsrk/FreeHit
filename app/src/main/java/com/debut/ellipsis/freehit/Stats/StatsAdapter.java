@@ -13,9 +13,9 @@ import com.debut.ellipsis.freehit.R;
 import java.util.ArrayList;
 
 
-public class StatsAdapter extends ArrayAdapter<StatsItem> {
+public class StatsAdapter extends ArrayAdapter<com.debut.ellipsis.freehit.Stats.StatsItem> {
 
-    public StatsAdapter(Context context, ArrayList<StatsItem> items) {
+    public StatsAdapter(Context context, ArrayList<com.debut.ellipsis.freehit.Stats.StatsItem> items) {
 
         super(context, 0, items);
     }
@@ -28,6 +28,7 @@ public class StatsAdapter extends ArrayAdapter<StatsItem> {
         }
 
         final StatsItem currentItem = getItem(position);
+
 
         TextView statsNameTextView = (TextView) listItemView.findViewById(R.id.stats_name);
         statsNameTextView.setText(currentItem.getmStatsName());
