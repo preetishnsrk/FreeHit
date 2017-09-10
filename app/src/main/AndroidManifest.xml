@@ -39,6 +39,16 @@
         <activity android:name=".Matches.LiveMatches.LiveMatchScoreCard" />
         <activity android:name=".Matches.UpcomingMatches.UpcomingMatchScoreCard" />
         <activity android:name=".IntoSlider.WelcomeActivity"/>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:label="@string/settings_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.debut.ellipsis.freehit.MainActivity"/>
+        </activity>
+
+
     </application>
 
 </manifest>
