@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_order_by_teams">
+        <item>@string/settings_team_Afghanistan_label</item>
+        <item>@string/settings_team_Australia_label</item>
+        <item>@string/settings_team_Bangladesh_label</item>
+        <item>@string/settings_team_England_label</item>
+        <item>@string/settings_team_Ireland_label</item>
+        <item>@string/settings_team_India_label</item>
+        <item>@string/settings_team_NewZealand_label</item>
+        <item>@string/settings_team_Pakistan_label</item>
+        <item>@string/settings_team_SouthAfrica_label</item>
+        <item>@string/settings_team_SriLanka_label</item>
+        <item>@string/settings_team_WestIndies_label</item>
+        <item>@string/settings_team_Zimbabwe_label</item>
+    </string-array>
+</resources>

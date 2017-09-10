@@ -58,4 +58,24 @@
     <string name="settings_title">FreeHit Settings</string>
 
 
+    <string name="settings_team_Afghanistan_label">Afghanistan</string>
+    <string name="settings_team_Australia_label">Australia</string>
+    <string name="settings_team_Bangladesh_label">Bangladesh</string>
+    <string name="settings_team_England_label">England</string>
+    <string name="settings_team_Ireland_label">Ireland</string>
+    <string name="settings_team_India_label">India</string>
+    <string name="settings_team_NewZealand_label">New Zealand</string>
+    <string name="settings_team_Pakistan_label">Pakistan</string>
+    <string name="settings_team_SouthAfrica_label">SouthAfrica</string>
+    <string name="settings_team_SriLanka_label">Sri Lanka</string>
+    <string name="settings_team_WestIndies_label">West Indies</string>
+    <string name="settings_team_Zimbabwe_label">Zimbabwe</string>
+
+    <string name="settings_select_team">Select Team</string>
+
+    <string name="settings_select_team_label">Select Team</string>
+
+
+
+
 </resources>

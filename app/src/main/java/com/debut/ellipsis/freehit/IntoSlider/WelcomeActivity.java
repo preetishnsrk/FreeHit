@@ -34,6 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip, btnNext ,btnCountrySelect;
     private PrefManager prefManager;
     private boolean clicked=false;
+    public String Selected_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,6 +235,8 @@ public class WelcomeActivity extends AppCompatActivity {
                 // Implement your code here
                 TextView country_name=(TextView)findViewById(R.id.country_name);
                 country_name.setText(name);
+
+                Selected_country=name;
 
                 ImageView before=(ImageView)findViewById(R.id.country_flag);
                 before.setImageResource(flagDrawableResID);
