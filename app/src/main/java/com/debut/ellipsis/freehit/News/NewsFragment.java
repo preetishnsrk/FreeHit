@@ -7,7 +7,6 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -83,16 +82,14 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
                 // Find the current earthquake that was clicked on
                 NewsItem currentNewsArticle = mAdapter.getItem(position);
 
-                // Convert the String URL into a URI object (to pass into the Intent constructor)
-                Uri NewsUri = Uri.parse(currentNewsArticle.getMurlofwebsite());
+                //will be replaced with id later on
+                String news_article_id=currentNewsArticle.getMurlofwebsite();
 
-                if (currentNewsArticle.getMurlofwebsite() != null) {
-                    // Create a new intent to view the earthquake URI
-                    Intent websiteIntent = new Intent(Intent.ACTION_VIEW, NewsUri);
-
+                    Intent newsArticleIntent = new Intent(getContext(), NewsArticle.class);
+                    newsArticleIntent.putExtra("news_article_id",position);
                     // Send the intent to launch a new activity
-                    startActivity(websiteIntent);
-                }
+                    startActivity(newsArticleIntent);
+
             }
         });
 

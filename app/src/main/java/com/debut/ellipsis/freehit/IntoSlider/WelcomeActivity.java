@@ -3,6 +3,7 @@ package com.debut.ellipsis.freehit.IntoSlider;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Html;
+import android.util.Base64;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +27,8 @@ import android.widget.Toast;
 import com.debut.ellipsis.freehit.MainActivity;
 import com.debut.ellipsis.freehit.R;
 
+import java.io.ByteArrayOutputStream;
+
 public class WelcomeActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     private ViewPager viewPager;
@@ -34,6 +39,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private Button btnSkip, btnNext ,btnCountrySelect;
     private PrefManager prefManager;
     private boolean clicked=false;
+    public String Selected_country;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -241,9 +247,14 @@ public class WelcomeActivity extends AppCompatActivity {
                 TextView description=(TextView)findViewById(R.id.slide5description);
                 description.setVisibility(View.GONE);
 
+
+                before.buildDrawingCache();
+                Bitmap bmap = before.getDrawingCache();
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("country_name", name);
+                editor.putString("country_flag", encodeToBase64(bmap));
                 editor.apply();
+
                 clicked=true;
                 picker.dismiss();
 
@@ -251,5 +262,15 @@ public class WelcomeActivity extends AppCompatActivity {
         });
         picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
 
+    }
+    public static String encodeToBase64(Bitmap image) {
+        Bitmap immage = image;
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        immage.compress(Bitmap.CompressFormat.PNG, 100, baos);
+        byte[] b = baos.toByteArray();
+        String imageEncoded = Base64.encodeToString(b, Base64.DEFAULT);
+
+        Log.d("Image Log:", imageEncoded);
+        return imageEncoded;
     }
 }
