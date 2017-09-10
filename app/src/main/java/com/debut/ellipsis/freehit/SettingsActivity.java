@@ -1,7 +1,7 @@
 package com.debut.ellipsis.freehit;
 
 
-import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -20,14 +20,14 @@ public class SettingsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.settings_activity);
 
-
     }
 
-    @SuppressLint("ValidFragment")
-    public class FreeHitPreferenceFragment extends PreferenceFragment {
+    public static class FreeHitPreferenceFragment extends PreferenceFragment {
 
         @Override
         public void onCreate(Bundle savedInstanceState) {
+           final Activity a = this.getActivity();
+
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
@@ -35,6 +35,7 @@ public class SettingsActivity extends AppCompatActivity {
             button.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
                 @Override
                 public boolean onPreferenceClick(Preference preference) {
+
                     //code for what you want it to do
 
                     final CountryPicker picker = CountryPicker.newInstance("Select Country");  // dialog title
@@ -44,15 +45,14 @@ public class SettingsActivity extends AppCompatActivity {
                             // Implement your code here
 
                             //NOTE: have to set image view in settings but trying to resolve this first
-
-                            SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
+                            SharedPreferences.Editor editor = a.getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                             editor.putString("country_name", name);
                             editor.apply();
                             picker.dismiss();
 
                         }
                     });
-                    picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
+                    picker.show(getFragmentManager(), "COUNTRY_PICKER");
 
 
 
