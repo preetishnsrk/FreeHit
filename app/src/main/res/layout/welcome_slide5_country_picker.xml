@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
             android:textColor="@android:color/white"
-            android:text="SELECT COUNTRY"
+            android:text="@string/select_team_button"
             style="@style/Widget.AppCompat.Button.Borderless"
             android:onClick="select_country"/>
     </LinearLayout>

@@ -55,6 +55,14 @@
                 android:value="com.debut.ellipsis.freehit.MainActivity"/>
         </activity>
 
+        <activity
+            android:name=".CustomSettings"
+            android:label="Settings">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.debut.ellipsis.freehit.MainActivity"/>
+        </activity>
+
 
 
     </application>
