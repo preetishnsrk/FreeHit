@@ -64,6 +64,7 @@ StatsFragment extends Fragment {
                     ((Activity) getActivity()).overridePendingTransition(0,0);
 
                 }
+                //github
                 else if (position==2){
                     Intent i = new Intent(getActivity(), SeriesActivity.class);
                     startActivity(i);
