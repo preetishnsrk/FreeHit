@@ -39,7 +39,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     public View loadingIndicator;
     //the website url of the api
     private static final String URL =
-            "https://newsapi.org/v1/articles?source=espn-cric-info&sortBy=latest&apiKey=df0d40507d0548308c737ded0b6f8a82";
+            "http://freehit-api.herokuapp.com/news";
 
     private static final int NEWS_LOADER_ID = 1;
 
@@ -83,10 +83,10 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
                 NewsItem currentNewsArticle = mAdapter.getItem(position);
 
                 //will be replaced with id later on
-                String news_article_id=currentNewsArticle.getMurlofwebsite();
+                int news_article_id=currentNewsArticle.getMnewsID();
 
                     Intent newsArticleIntent = new Intent(getContext(), NewsArticle.class);
-                    newsArticleIntent.putExtra("news_article_id",position);
+                    newsArticleIntent.putExtra("news_article_id",news_article_id);
                     // Send the intent to launch a new activity
                     startActivity(newsArticleIntent);
 

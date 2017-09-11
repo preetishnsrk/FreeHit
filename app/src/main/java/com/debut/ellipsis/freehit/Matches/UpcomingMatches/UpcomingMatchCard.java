@@ -144,7 +144,6 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             // This is the inner viewPager so commenting it out for now
             viewPager.setAdapter(mAdapter);
             indicator.setViewPager(viewPager);
-            indicator.setVisibility(View.INVISIBLE);
             IndicatorConfig();
 
         }
