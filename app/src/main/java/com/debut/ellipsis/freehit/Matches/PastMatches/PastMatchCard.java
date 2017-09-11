@@ -20,11 +20,10 @@ import android.widget.ProgressBar;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
+import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.relex.circleindicator.CircleIndicator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,7 +40,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
     private static final int UPCOMING_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
-    public CircleIndicator indicator;
+    public PageIndicatorView indicator;
     private PastMatchCardItemAdapter mAdapter;
     private ProgressBar mProgressBar;
 
@@ -79,7 +78,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
         mAdapter = new PastMatchCardItemAdapter(getActivity(), new ArrayList<PastMatchCardItem>());
         viewPager.setAdapter(mAdapter);
 
-        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
+        indicator = (PageIndicatorView) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
         final PullRefreshLayout layout = (PullRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);

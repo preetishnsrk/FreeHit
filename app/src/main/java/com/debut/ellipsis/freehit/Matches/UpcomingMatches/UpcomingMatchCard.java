@@ -20,11 +20,11 @@ import android.widget.ProgressBar;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
+import com.rd.PageIndicatorView;
+import com.rd.animation.type.AnimationType;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.relex.circleindicator.CircleIndicator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,7 +40,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
 
     private static final int UPCOMING_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
-    public CircleIndicator indicator;
+    public PageIndicatorView indicator;
     private UpcomingMatchesItemAdapter mAdapter;
     private ProgressBar mProgressBar;
 
@@ -81,7 +81,8 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
         final PullRefreshLayout layout = (PullRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
 
 
-        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
+        indicator = (PageIndicatorView) rootView.findViewById(R.id.indicator);
+
         indicator.setViewPager(viewPager);
 
         layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {
@@ -137,6 +138,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             mAdapter = new UpcomingMatchesItemAdapter(getContext(), data);
             // This is the inner viewPager so commenting it out for now
             viewPager.setAdapter(mAdapter);
+            IndicatorConfig();
             indicator.setViewPager(viewPager);
         }
 
@@ -145,6 +147,14 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
 
     }
 
+    private void IndicatorConfig(){
+
+        indicator.setSelectedColor(Color.BLACK);
+        indicator.setUnselectedColor(Color.WHITE);
+        indicator.setInteractiveAnimation(true);
+        indicator.setAnimationType(AnimationType.DROP);
+        indicator.setAnimationDuration(500);
+    }
 
 
     @Override

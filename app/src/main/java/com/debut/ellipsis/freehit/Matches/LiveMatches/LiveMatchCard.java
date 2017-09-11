@@ -21,11 +21,10 @@ import android.widget.TextView;
 
 import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
+import com.rd.PageIndicatorView;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import me.relex.circleindicator.CircleIndicator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -42,7 +41,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
 
     private static final int LIVE_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
-    public CircleIndicator indicator;
+    public PageIndicatorView indicator;
     private LiveMatchCardAdapter mAdapter;
     private ProgressBar mProgressBar;
     public TextView mEmptyStateTextView;
@@ -89,7 +88,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
         mAdapter = new LiveMatchCardAdapter(getActivity(), new ArrayList<LiveMatchCardItem>());
         viewPager.setAdapter(mAdapter);
 
-        indicator = (CircleIndicator) rootView.findViewById(R.id.indicator);
+        indicator = (PageIndicatorView) rootView.findViewById(R.id.indicator);
         indicator.setViewPager(viewPager);
 
         layout.setOnRefreshListener(new PullRefreshLayout.OnRefreshListener() {

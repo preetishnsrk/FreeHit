@@ -5,6 +5,16 @@
     android:layout_height="match_parent">
 
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
     <ImageView
         android:id="@+id/Player_image"
         android:layout_width="100dp"
@@ -129,12 +139,14 @@
 
     <GridView
         android:id="@+id/grid_view_rankings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ICC"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ICC
+"
         android:columnWidth="90dp"
         android:fastScrollEnabled="false"
         android:numColumns="auto_fit"
         android:scrollbars="vertical"
         android:verticalSpacing="10dp" />
+
 </RelativeLayout>
