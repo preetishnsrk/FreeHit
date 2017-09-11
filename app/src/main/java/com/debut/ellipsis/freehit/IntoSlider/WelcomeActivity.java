@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -38,11 +39,10 @@ public class WelcomeActivity extends AppCompatActivity {
     private LinearLayout dotsLayout;
     private TextView[] dots;
     private int[] layouts;
-    private Button btnSkip, btnNext ,btnCountrySelect;
+    private Button btnSkip, btnNext, btnCountrySelect;
     private PrefManager prefManager;
-    private boolean clicked=false;
+    private boolean clicked = false;
     public String Selected_country;
-
 
 
     @Override
@@ -62,7 +62,6 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         setContentView(R.layout.activity_welcome);
-
 
 
         viewPager = (ViewPager) findViewById(R.id.view_pager_intro);
@@ -109,13 +108,10 @@ public class WelcomeActivity extends AppCompatActivity {
                     // move to next screen
                     viewPager.setCurrentItem(current);
                 } else {
-                    if(clicked)
-                    {
+                    if (clicked) {
                         launchHomeScreen();
-                    }
-                    else
-                    {
-                        Toast.makeText(WelcomeActivity.this,"PLEASE SELECT A TEAM",Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(WelcomeActivity.this, "PLEASE SELECT A TEAM", Toast.LENGTH_SHORT).show();
                     }
 
                     //then on another method or where you want
@@ -123,8 +119,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
-
-
 
 
 
@@ -217,7 +211,30 @@ public class WelcomeActivity extends AppCompatActivity {
 
             View view = layoutInflater.inflate(layouts[position], container, false);
             container.addView(view);
+            if(position==4){
+//                ImageView flag =(ImageView) view.findViewById(R.id.country_flag);
+                ImageView country_flag=(ImageView)findViewById(R.id.country_flag);
 
+                SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+                String name = prefs.getString("country_name", "SELECT COUNTRY");
+
+
+
+                TextView country_name=(TextView)findViewById(R.id.country_name);
+                country_name.setText(name);
+
+                String flagID=prefs.getString("country_flag","");
+                Log.e("test",flagID);
+
+
+                Bitmap imageB = BitmapFactory.decodeResource(getBaseContext().getResources(), R.drawable.matches);
+                if(!flagID.equals("")) {
+                    imageB = decodeToBase64(flagID);
+                    TextView empty=(TextView)findViewById(R.id.slide5description);
+                    empty.setVisibility(View.INVISIBLE);
+                }
+                country_flag.setImageBitmap(imageB);
+             }
             return view;
         }
 
@@ -246,13 +263,13 @@ public class WelcomeActivity extends AppCompatActivity {
             @Override
             public void onSelectCountry(String name, String code, String dialCode, int flagDrawableResID) {
                 // Implement your code here
-                TextView country_name=(TextView)findViewById(R.id.country_name);
+                TextView country_name = (TextView) findViewById(R.id.country_name);
                 country_name.setText(name);
 
-                ImageView before=(ImageView)findViewById(R.id.country_flag);
+                ImageView before = (ImageView) findViewById(R.id.country_flag);
                 before.setImageResource(flagDrawableResID);
 
-                TextView description=(TextView)findViewById(R.id.slide5description);
+                TextView description = (TextView) findViewById(R.id.slide5description);
                 description.setVisibility(View.GONE);
 
 
@@ -263,7 +280,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 editor.putString("country_flag", encodeToBase64(bmap));
                 editor.apply();
 
-                clicked=true;
+                clicked = true;
                 picker.dismiss();
 
             }
@@ -271,6 +288,7 @@ public class WelcomeActivity extends AppCompatActivity {
         picker.show(getSupportFragmentManager(), "COUNTRY_PICKER");
 
     }
+
     public static String encodeToBase64(Bitmap image) {
         Bitmap immage = image;
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
