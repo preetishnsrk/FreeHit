@@ -231,7 +231,7 @@ public class WelcomeActivity extends AppCompatActivity {
                 if(!flagID.equals("")) {
                     imageB = decodeToBase64(flagID);
                     TextView empty=(TextView)findViewById(R.id.slide5description);
-                    empty.setVisibility(View.INVISIBLE);
+                    empty.setVisibility(View.GONE);
                 }
                 country_flag.setImageBitmap(imageB);
              }

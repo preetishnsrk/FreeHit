@@ -9,16 +9,15 @@ import android.widget.GridView;
 
 import com.debut.ellipsis.freehit.R;
 
-/**
- * Created by Jayanth on 10-09-2017.
- */
 
-public class Info_Fragment extends Fragment {GridView androidGridView;
+public class Info_Fragment extends Fragment
+{
+    GridView androidGridView;
 
     String[] gridViewString = {
             "   ","TEST","ODI","T20I","Bat","1","1","1",
-            "2","2","2",
-            "1","1","1",
+            "Bowl","2","2","2",
+            "All Round","3","3","3"
 
     } ;
 
@@ -26,9 +25,12 @@ public class Info_Fragment extends Fragment {GridView androidGridView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
+
         View rootView = inflater.inflate(R.layout.fragment_stats_info, container, false);
         CustomGridView adapterViewAndroid = new CustomGridView(getContext(), gridViewString );
-        androidGridView=(GridView)rootView.findViewById(R.id.grid_view_image_text);
+
+        androidGridView=(GridView)rootView.findViewById(R.id.grid_view_rankings);
+
         androidGridView.setAdapter(adapterViewAndroid);
 
         return rootView;

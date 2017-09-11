@@ -5,7 +5,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
@@ -50,9 +49,7 @@ public class CustomGridView extends BaseAdapter {
 
             gridViewAndroid = inflater.inflate(R.layout.grid_view_player_adapter, null);
             TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.android_gridview_text);
-            //ImageView imageViewAndroid = (ImageView) gridViewAndroid.findViewById(R.id.android_gridview_image);
             textViewAndroid.setText(gridViewString[i]);
-            // imageViewAndroid.setImageResource(gridViewImageId[i]);
         } else {
             gridViewAndroid = (View) convertView;
         }
