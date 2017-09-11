@@ -29,6 +29,8 @@ import com.debut.ellipsis.freehit.R;
 
 import java.io.ByteArrayOutputStream;
 
+import static com.debut.ellipsis.freehit.CustomSettings.decodeToBase64;
+
 public class WelcomeActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "MyPrefsFile";
     private ViewPager viewPager;
@@ -40,6 +42,8 @@ public class WelcomeActivity extends AppCompatActivity {
     private PrefManager prefManager;
     private boolean clicked=false;
     public String Selected_country;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -121,7 +125,11 @@ public class WelcomeActivity extends AppCompatActivity {
         });
 
 
+
+
+
     }
+
 
     private void addBottomDots(int currentPage) {
         dots = new TextView[layouts.length];

@@ -27,8 +27,8 @@ public class Info_Fragment extends Fragment {GridView androidGridView;
                              Bundle savedInstanceState) {
 
         View rootView = inflater.inflate(R.layout.fragment_stats_info, container, false);
-        CustomGridView adapterViewAndroid = new CustomGridView(Info_Fragment.this, gridViewString );
-        androidGridView=(GridView)findViewById(R.id.grid_view_image_text);
+        CustomGridView adapterViewAndroid = new CustomGridView(getContext(), gridViewString );
+        androidGridView=(GridView)rootView.findViewById(R.id.grid_view_image_text);
         androidGridView.setAdapter(adapterViewAndroid);
 
         return rootView;

@@ -10,9 +10,7 @@ import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
 
-/**
- * Created by Jayanth on 11-09-2017.
- */
+
 
 public class CustomGridView extends BaseAdapter {
     private Context mContext;
