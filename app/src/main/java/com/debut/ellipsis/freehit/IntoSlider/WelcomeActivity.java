@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.text.Html;
 import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -37,7 +36,7 @@ public class WelcomeActivity extends AppCompatActivity {
     private ViewPager viewPager;
     private MyViewPagerAdapter myViewPagerAdapter;
     private LinearLayout dotsLayout;
-    private TextView[] dots;
+    private ImageView[] dots;
     private int[] layouts;
     private Button btnSkip, btnNext, btnCountrySelect;
     private PrefManager prefManager;
@@ -126,22 +125,23 @@ public class WelcomeActivity extends AppCompatActivity {
 
 
     private void addBottomDots(int currentPage) {
-        dots = new TextView[layouts.length];
+        dots = new ImageView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
 
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
-            dots[i] = new TextView(this);
-            dots[i].setText(Html.fromHtml("&#8226;"));
-            dots[i].setTextSize(35);
-            dots[i].setTextColor(colorsInactive[currentPage]);
+            dots[i] = new ImageView(this);
+            /*dots[i].setText(Html.fromHtml("&#8226;"));
+            dots[i].setTextSize(35);*/
+            dots[i].setImageResource(R.drawable.matches);
+            dots[i].setColorFilter(colorsInactive[currentPage]);
             dotsLayout.addView(dots[i]);
         }
 
         if (dots.length > 0)
-            dots[currentPage].setTextColor(colorsActive[currentPage]);
+            dots[currentPage].setColorFilter(colorsActive[currentPage]);
     }
 
     private int getItem(int i) {
