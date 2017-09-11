@@ -12,7 +12,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -130,21 +129,30 @@ public class WelcomeActivity extends AppCompatActivity {
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-        DisplayMetrics displayMetrics = new DisplayMetrics();
-        getWindowManager().getDefaultDisplay().getMetrics(displayMetrics);
+        int width = 60;
+        int height = 60;
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new ImageView(this);
-
             /*dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);*/
-            dots[i].setImageResource(R.drawable.matches);
+            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width-20,height-20);
+            dots[i].setLayoutParams(parms);
+            parms.setMargins(15,15,0,0);
+            //parms.setMargins(left, top, right, bottom);
+            dots[i].setImageResource(R.drawable.circle);
             dots[i].setColorFilter(colorsInactive[currentPage]);
             dotsLayout.addView(dots[i]);
         }
 
-        if (dots.length > 0)
+        if (dots.length > 0) {
+            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width,height);
+            dots[currentPage].setLayoutParams(parms);
+            parms.setMargins(15,15,0,0);
+            //parms.setMargins(left, top, right, bottom);
+            dots[currentPage].setImageResource(R.drawable.ball);
             dots[currentPage].setColorFilter(colorsActive[currentPage]);
+        }
     }
 
     private int getItem(int i) {

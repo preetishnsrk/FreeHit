@@ -25,6 +25,9 @@ import com.rd.animation.type.AnimationType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
+import static android.R.style.Animation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -41,6 +44,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     private static final int UPCOMING_MATCH_LOADER_ID = 1;
     public ViewPager viewPager;
     public PageIndicatorView indicator;
+    public Random rand;
     private UpcomingMatchesItemAdapter mAdapter;
     private ProgressBar mProgressBar;
 
@@ -77,6 +81,9 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
         viewPager = (ViewPager) rootView.findViewById(R.id.viewpager);
         mAdapter = new UpcomingMatchesItemAdapter(getActivity(), new ArrayList<UpcomingMatchCardItem>());
         viewPager.setAdapter(mAdapter);
+
+
+
 
         final PullRefreshLayout layout = (PullRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
 
@@ -140,6 +147,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             viewPager.setAdapter(mAdapter);
             IndicatorConfig();
             indicator.setViewPager(viewPager);
+
         }
 
 
@@ -148,11 +156,10 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     }
 
     private void IndicatorConfig(){
-
         indicator.setSelectedColor(Color.BLACK);
         indicator.setUnselectedColor(Color.WHITE);
         indicator.setInteractiveAnimation(true);
-        indicator.setAnimationType(AnimationType.DROP);
+        indicator.setAnimationType(AnimationType.SWAP);
         indicator.setAnimationDuration(500);
     }
 
