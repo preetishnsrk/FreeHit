@@ -16,6 +16,8 @@ import android.widget.TextView;
 import com.debut.ellipsis.freehit.IntoSlider.CountryPicker;
 import com.debut.ellipsis.freehit.IntoSlider.CountryPickerListener;
 
+import java.io.ByteArrayOutputStream;
+
 import static com.debut.ellipsis.freehit.IntoSlider.WelcomeActivity.MY_PREFS_NAME;
 import static com.debut.ellipsis.freehit.IntoSlider.WelcomeActivity.encodeToBase64;
 
@@ -85,5 +87,7 @@ public class CustomSettings extends AppCompatActivity {
         byte[] decodedByte = Base64.decode(input, 0);
         return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
     }
+
+
 
 }

@@ -1,16 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    >
+    android:layout_height="match_parent">
 
-    <TextView android:layout_width="fill_parent"
+
+    <ImageView
+        android:id="@+id/Player_image"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/flag_ind" />
+
+    <TextView
+        android:id="@+id/Player_name_stats_info"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Player info"
-        android:textSize="20dp"
-        android:layout_centerInParent="true"/>
+        android:layout_below="@+id/Player_image"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:text="PlayerName"
+        android:textSize="15dp" />
+
+    <TextView
+        android:id="@+id/player_country"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Player_name_stats_info"
+        android:layout_centerHorizontal="true"
+        android:text="country"
+        android:textSize="15dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player_country"
+        android:background="@color/divider"
+        android:textSize="2dp" />
+
+    <TextView
+        android:id="@+id/Player_personal_information"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/player_country"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:text="PERSONAL INFORMATION"
+        android:textColor="@android:color/black"
+        android:textSize="20dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Player_personal_information"
+        android:background="@color/divider"
+        android:textSize="2dp" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Player_personal_information"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/born"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="DOB : "
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/Role"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Role : "
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/battingStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Batting Style : "
+            android:textSize="15dp" />
+
+        <TextView
+            android:id="@+id/BowlingStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Bowling Style : "
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:background="@color/divider"
+        android:textSize="2dp" />
+
+    <TextView
+        android:id="@+id/ICC"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/linearLayout2"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center_horizontal"
+        android:text="ICC RANKING"
+        android:textColor="@android:color/black"
+        android:textSize="25dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ICC"
+        android:background="@color/divider"
+        android:textSize="2dp" />
 
 
+    <GridView
+        android:id="@+id/grid_view_rankings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ICC"
+        android:columnWidth="90dp"
+        android:fastScrollEnabled="false"
+        android:numColumns="auto_fit"
+        android:scrollbars="vertical"
+        android:verticalSpacing="10dp" />
 </RelativeLayout>
