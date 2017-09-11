@@ -21,6 +21,7 @@ import android.widget.ProgressBar;
 import com.baoyz.widget.PullRefreshLayout;
 import com.debut.ellipsis.freehit.R;
 import com.rd.PageIndicatorView;
+import com.rd.animation.type.AnimationType;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -79,6 +80,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
         viewPager.setAdapter(mAdapter);
 
         indicator = (PageIndicatorView) rootView.findViewById(R.id.indicator);
+        indicator.setVisibility(View.INVISIBLE);
         indicator.setViewPager(viewPager);
 
         final PullRefreshLayout layout = (PullRefreshLayout) rootView.findViewById(R.id.swipeRefreshLayout);
@@ -139,8 +141,21 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
             // This is the inner viewPager so commenting it out for now
             viewPager.setAdapter(mAdapter);
             indicator.setViewPager(viewPager);
+            indicator.setVisibility(View.INVISIBLE);
+            IndicatorConfig();
+
+
         }
 
+
+    }
+    private void IndicatorConfig(){
+        indicator.setVisibility(View.VISIBLE);
+        indicator.setAnimationType(AnimationType.DROP);
+        indicator.setUnselectedColor(R.color.dot_light_screen2);
+        indicator.setSelectedColor(R.color.dot_dark_screen2);
+        indicator.setInteractiveAnimation(true);
+        indicator.setAnimationDuration(500);
 
     }
 

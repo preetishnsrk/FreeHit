@@ -141,8 +141,7 @@
         android:id="@+id/grid_view_rankings"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ICC
-"
+        android:layout_below="@+id/ICC"
         android:columnWidth="90dp"
         android:fastScrollEnabled="false"
         android:numColumns="auto_fit"
