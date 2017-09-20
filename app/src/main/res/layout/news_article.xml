@@ -12,41 +12,47 @@
         android:background="@color/colorPrimary"
         android:minHeight="?attr/actionBarSize" />
 
-    <ImageView
-        android:id="@+id/news_article_image"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
-        android:layout_centerHorizontal="true"
-        android:scaleType="centerCrop"
-        tools:background="@drawable/matches" />
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/news_article_heading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/news_article_image"
-        android:layout_marginTop="10dp"
-        android:textAllCaps="true"
-        android:textColor="@android:color/black"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        tools:text="THIS THE HEADING FOR THE NEWS ARTICLE" />
 
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/news_article_heading">
+        <ImageView
+            android:id="@+id/news_article_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:paddingTop="50dp"
+            android:scaleType="centerCrop"
+            tools:src="@drawable/matches" />
 
         <TextView
-            android:id="@+id/news_article_description"
-            android:layout_width="match_parent"
+            android:id="@+id/news_article_heading"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:textSize="15dp"
-            tools:text="aasfdfdfdafd" />
+            android:textAllCaps="true"
+            android:textColor="@android:color/black"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            tools:text="THIS THE HEADING FOR THE NEWS ARTICLE" />
 
-    </ScrollView>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/news_article_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingBottom="10dip"
+                android:textSize="15dp"
+                tools:text="aasfdfdfdafd" />
+
+        </ScrollView>
+    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progress_bar"

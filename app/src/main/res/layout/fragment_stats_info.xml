@@ -21,8 +21,8 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/flag_ind" />
+        android:layout_marginTop="10dp"
+        app:srcCompat="@drawable/matches" />
 
     <TextView
         android:id="@+id/Player_name_stats_info"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Player_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:text="PlayerName"
         android:textSize="15dp" />
 
@@ -56,8 +56,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/player_country"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:text="PERSONAL INFORMATION"
         android:textColor="@android:color/black"
         android:textSize="20dp" />
@@ -122,12 +122,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="5dp"
         android:gravity="center_horizontal"
         android:text="ICC RANKING"
         android:textColor="@android:color/black"
-        android:textSize="25dp" />
+        android:textSize="20dp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -137,15 +137,17 @@
         android:textSize="2dp" />
 
 
-    <GridView
-        android:id="@+id/grid_view_rankings"
+
+    <ListView
+        android:id="@+id/player_ranking_list"
+        android:layout_below="@+id/ICC"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ICC"
-        android:columnWidth="90dp"
-        android:fastScrollEnabled="false"
-        android:numColumns="auto_fit"
-        android:scrollbars="vertical"
-        android:verticalSpacing="10dp" />
+        android:divider="@color/divider"
+        android:dividerHeight="1px"
+        android:drawSelectorOnTop="true"
+        android:orientation="vertical"
+        android:layout_marginBottom="10dp"
+        />
 
 </RelativeLayout>
