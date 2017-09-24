@@ -23,6 +23,7 @@ public class StatsAdapter extends ArrayAdapter<com.debut.ellipsis.freehit.Stats.
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
+        //github
         if (listItemView == null) {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.fragment_stats, parent, false);
         }
