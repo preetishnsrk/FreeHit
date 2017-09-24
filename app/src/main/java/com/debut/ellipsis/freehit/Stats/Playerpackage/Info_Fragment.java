@@ -20,7 +20,7 @@ public class Info_Fragment extends Fragment {
 
 
         View rootView = inflater.inflate(R.layout.fragment_stats_info, container, false);
-        final ArrayList<PlayerRankingItem> playerRankingItems = new ArrayList<PlayerRankingItem>();
+        /*final ArrayList<PlayerRankingItem> playerRankingItems = new ArrayList<PlayerRankingItem>();
         playerRankingItems.add(new PlayerRankingItem("", "TEST", "ODI", "T20I"));
         playerRankingItems.add(new PlayerRankingItem("Bat", "1", "1", "1"));
         playerRankingItems.add(new PlayerRankingItem("Bowl", "2", "2", "2"));
@@ -31,7 +31,7 @@ public class Info_Fragment extends Fragment {
         final ListView listView = (ListView) rootView.findViewById(R.id.player_ranking_list);
 
 
-        listView.setAdapter(adapter);
+        listView.setAdapter(adapter);*/
 
 
         return rootView;

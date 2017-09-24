@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -21,8 +24,8 @@
         android:layout_height="100dp"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/matches" />
+        android:layout_marginTop="20dp"
+        app:srcCompat="@drawable/flag_ind" />
 
     <TextView
         android:id="@+id/Player_name_stats_info"
@@ -30,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/Player_image"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:text="PlayerName"
         android:textSize="15dp" />
 
@@ -56,8 +59,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/player_country"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:text="PERSONAL INFORMATION"
         android:textColor="@android:color/black"
         android:textSize="20dp" />
@@ -107,6 +110,14 @@
             android:layout_marginTop="10dp"
             android:text="Bowling Style : "
             android:textSize="15dp" />
+        <TextView
+            android:id="@+id/Teams_Played"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Teams Played For : "
+            android:textSize="15dp" />
+
 
     </LinearLayout>
 
@@ -122,32 +133,185 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/linearLayout2"
-        android:layout_marginBottom="5dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center_horizontal"
         android:text="ICC RANKING"
         android:textColor="@android:color/black"
-        android:textSize="20dp" />
+        android:textSize="25dp" />
 
     <TextView
         android:layout_width="match_parent"
+        android:id="@+id/belowicc"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ICC"
         android:background="@color/divider"
         android:textSize="2dp" />
 
 
-
-    <ListView
-        android:id="@+id/player_ranking_list"
-        android:layout_below="@+id/ICC"
+    <TableLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/divider"
-        android:dividerHeight="1px"
-        android:drawSelectorOnTop="true"
-        android:orientation="vertical"
-        android:layout_marginBottom="10dp"
-        />
+        android:id="@+id/table"
+        android:layout_below="@+id/belowicc"
+        android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff">
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:text=" "
+            android:layout_weight="1"
+
+            android:textColor="#000000"
+            android:textAlignment="center"
+            android:layout_height="56dp"
+            android:padding="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/TextView02"
+            android:text="TEST"
+
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+
+
+            android:textColor="#000000"
+            android:padding="20dp"
+            android:gravity="center"/>
+
+        <TextView
+            android:id="@+id/TextView03"
+            android:text="ODI"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+
+            android:textColor="#000000"
+            android:padding="20dp"
+            android:gravity="center"/>
+        <TextView
+            android:id="@+id/TextView04"
+            android:text="T20I"
+            android:layout_weight="1"
+            android:textAlignment="center"
+            android:layout_height="wrap_content"
+
+            android:textColor="#000000"
+            android:padding="20dp"
+            android:gravity="center"/>
+
+
+    </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/TextView05"
+                android:text="Batting"
+                android:layout_weight="1"
+
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/Testbatting"
+                android:text="01"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/OdiBatting"
+                android:text="02"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/T20Batting"
+                android:text="T20I"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent">
+
+            <TextView
+                android:id="@+id/TextView08"
+                android:text="Bowling"
+                android:layout_weight="1"
+
+                android:textColor="#000000"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/TestBowling"
+                android:text="--"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+            <TextView
+                android:id="@+id/OdiBowling"
+                android:text="--"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+            <TextView
+                android:id="@+id/T20Bowling"
+                android:text="779"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:layout_height="wrap_content"
+
+                android:textColor="#000000"
+                android:padding="20dp"
+                android:gravity="center"/>
+
+
+        </TableRow>
+</TableLayout>
+
 
 </RelativeLayout>
+    </ScrollView>
