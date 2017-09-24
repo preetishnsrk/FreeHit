@@ -11,7 +11,10 @@ public class NewsItem {
 
     private String murlofwebsite;
 
-    public NewsItem(String headline, String description, String urlofimage, String urlofwebsite) {
+    private int mnewsID;
+
+    public NewsItem(int newsID,String headline, String description, String urlofimage, String urlofwebsite) {
+        mnewsID=newsID;
         mheadline = headline;
         mdescription = description;
         murlofimage = urlofimage;
@@ -41,5 +44,9 @@ public class NewsItem {
 
     public String getMurlofwebsite() {
         return murlofwebsite;
+    }
+
+    public int getMnewsID(){
+        return mnewsID;
     }
 }

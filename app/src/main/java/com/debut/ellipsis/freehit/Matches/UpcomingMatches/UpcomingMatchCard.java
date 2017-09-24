@@ -143,8 +143,8 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             mAdapter = new UpcomingMatchesItemAdapter(getContext(), data);
             // This is the inner viewPager so commenting it out for now
             viewPager.setAdapter(mAdapter);
-            IndicatorConfig();
             indicator.setViewPager(viewPager);
+            IndicatorConfig();
 
         }
 
@@ -154,11 +154,12 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
     }
 
     private void IndicatorConfig(){
-        indicator.setSelectedColor(Color.BLACK);
-        indicator.setUnselectedColor(Color.WHITE);
+        indicator.setAnimationType(AnimationType.DROP);
+        indicator.setUnselectedColor(R.color.dot_light_screen1);
+        indicator.setSelectedColor(R.color.dot_dark_screen1);
         indicator.setInteractiveAnimation(true);
-        indicator.setAnimationType(AnimationType.SWAP);
         indicator.setAnimationDuration(500);
+
     }
 
 

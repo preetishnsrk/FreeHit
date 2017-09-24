@@ -1,24 +1,179 @@
 package com.debut.ellipsis.freehit.News;
 
 
+import android.app.LoaderManager;
+import android.content.Context;
+import android.content.Loader;
+import android.content.res.ColorStateList;
+import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.assist.FailReason;
+import com.nostra13.universalimageloader.core.listener.ImageLoadingListener;
 
-public class NewsArticle extends AppCompatActivity {
+import static com.debut.ellipsis.freehit.News.NewsArticleLoader.news;
+
+public class NewsArticle extends AppCompatActivity implements LoaderManager.LoaderCallbacks<NewsArticleItem> {
 
     private Toolbar toolbar;
-    private String news_article_id;
+    private int news_article_id;
+    public static final String LOG_TAG = NewsArticle.class.getSimpleName();
+
+    public View loadingIndicator;
+    //the website url of the api
+    private static String URL =
+            "http://freehit-api.herokuapp.com/news?id=";
+
+    private static final int NEWS_ARTICLE_LOADER_ID = 1;
+
+    private NewsArticleItem newsItem;
+    public TextView mEmptyStateTextView;
+    private ProgressBar mProgressBar;
+
+    public NewsArticle() {
+        // Required empty public constructor
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_article);
-        news_article_id=getIntent().getStringExtra("news_article_id");
+        overridePendingTransition(R.anim.enter_from_right,R.anim.exit_to_left);
+        news_article_id = getIntent().getIntExtra("news_article_id", 0);
+        URL =
+                "http://freehit-api.herokuapp.com/news?id=";
+        URL += news_article_id;
+
+        Log.e(LOG_TAG, URL);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        // Get a reference to the ConnectivityManager to check state of network connectivity
+        ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+
+        // Get details on the currently active default data network
+        NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
+
+        // If there is a network connection, fetch data
+        if (networkInfo != null && networkInfo.isConnected()) {
+            // Get a reference to the LoaderManager, in order to interact with loaders.
+            LoaderManager loaderManager = getLoaderManager();
+            // Initialize the loader. Pass in the int ID constant defined above and pass in null for
+            // the bundle. Pass in this activity for the LoaderCallbacks parameter (which is valid
+            // because this activity implements the LoaderCallbacks interface).
+
+            loaderManager.initLoader(NEWS_ARTICLE_LOADER_ID, null, this).forceLoad();
+            Log.i(LOG_TAG, "TEST:Calling initLoader() ....");
+        }
+
+        mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
+        int colorCodeDark = Color.parseColor("#F44336");
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
+        }
+
+
+    }
+
+    @Override
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                overridePendingTransition(0,R.anim.exit_to_right);
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        NewsArticle.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
+
+    }
+
+    @Override
+    public Loader<NewsArticleItem> onCreateLoader(int i, Bundle bundle) {
+        // Create a new loader for the given URL
+        return new NewsArticleLoader(getApplicationContext(), URL);
+
+    }
+
+    @Override
+    public void onLoadFinished(final Loader<NewsArticleItem> loader, NewsArticleItem News) {
+
+        mProgressBar.setVisibility(View.GONE);
+        /*if (mEmptyStateTextView.getText() == null) {
+            mEmptyStateTextView.setText(R.string.EmptyNews);
+        }*/
+
+        TextView headline = (TextView) findViewById(R.id.news_article_heading);
+        headline.setText(news.getMheadline());
+
+        TextView article_description = (TextView) findViewById(R.id.news_article_description);
+        article_description.setText(news.getMnewsArticle());
+
+
+        final ImageView articleImage = (ImageView) findViewById(R.id.news_article_image);
+
+        final String imageurl = news.getMurlofimage();
+
+        ImageLoader imageloader = ImageLoader.getInstance();
+        //Defining options for the display, cache is set to false by default so this is necessary.
+
+        DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
+
+        //Straight forward abstract classes, loader is optional
+        imageloader.displayImage(imageurl, articleImage, options, new ImageLoadingListener() {
+            @Override
+            public void onLoadingStarted(String imageUri, View view) {
+                articleImage.setImageResource(R.drawable.matches);
+            }
+
+            @Override
+            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                articleImage.setImageResource(R.drawable.matches);
+            }
+
+            @Override
+            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+            }
+
+            @Override
+            public void onLoadingCancelled(String imageUri, View view) {
+
+            }
+        });
+
+
+    }
+
+
+    @Override
+    public void onLoaderReset(Loader<NewsArticleItem> loader) {
+        loader = null;
+
     }
 }

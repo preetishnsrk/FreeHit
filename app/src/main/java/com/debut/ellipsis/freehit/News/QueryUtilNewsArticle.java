@@ -1,6 +1,7 @@
 package com.debut.ellipsis.freehit.News;
 
 
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -16,29 +17,27 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
 
-public class QueryUtilNews {
+public class QueryUtilNewsArticle extends AppCompatActivity{
 
     /**
      * Tag for the log messages
      */
-    public static final String LOG_TAG = QueryUtilNews.class.getSimpleName();
+    public static final String LOG_TAG = QueryUtilNewsArticle.class.getSimpleName();
 
     /**
      * Create a private constructor because no one should ever create a {@link QueryUtilNews} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
-    private QueryUtilNews() {
+    private QueryUtilNewsArticle() {
     }
 
     /**
      * Query the News Dataset and return an {@link NewsItem} object to represent a list of News.
      */
 
-    public static List<NewsItem> fetchNewsData(String requestUrl) {
+    public static NewsArticleItem fetchNewsData(String requestUrl) {
         //Adding delay in fetching the data from the server so that the progressBar is displayed for 0.5 seconds
 //        try {
 //            Thread.sleep(500);
@@ -144,7 +143,7 @@ public class QueryUtilNews {
      * Return a list of {@link NewsItem} objects that has been built up from
      * parsing the given JSON response.
      */
-    public static List<NewsItem> extractFeatureFromJson(String NewsJSON) {
+    public static NewsArticleItem extractFeatureFromJson(String NewsJSON) {
 
         //if the JSON string is empty or null then return early
         if (TextUtils.isEmpty(NewsJSON)) {
@@ -153,7 +152,7 @@ public class QueryUtilNews {
 //        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
-        List<NewsItem> Newss = new ArrayList<>();
+        NewsArticleItem news = null;
 
         // Try to parse the JSON response string If there's a problem with the way the JSON
         // is formatted, a JSONException exception object will be thrown.
@@ -168,11 +167,12 @@ public class QueryUtilNews {
             JSONArray articles = basJsonResponse.getJSONArray("result");
 
 
-            for (int i = 0; i < articles.length(); i++) {
-                JSONObject currentArticle = articles.getJSONObject(i);
+                JSONObject currentArticle = articles.getJSONObject(0);
 //                Bitmap bimage = null;
 
-                int news_id = currentArticle.getInt("id");
+                String id = currentArticle.getString("id");
+
+                int news_id=Integer.parseInt(id);
 
                 String title = currentArticle.getString("title");
 
@@ -182,20 +182,16 @@ public class QueryUtilNews {
 
                 String urlofwebsite = currentArticle.getString("link");
 
-                NewsItem news = new NewsItem(news_id, title, description, urlofimage, urlofwebsite);
-//                try {
-//                    InputStream in = new java.net.URL(urlofimage).openStream();
-//                    bimage = BitmapFactory.decodeStream(in);
-//
-//                } catch (Exception e) {
-//                    Log.e("Error Message", e.getMessage());
-//                    e.printStackTrace();
-//                }
-//                Newss.add(news);
-//                news = new NewsItem(headlines,description,bimage);
-                Newss.add(news);
-            }
-            return Newss;
+                String article =currentArticle.getString("article");
+
+                String date=currentArticle.getString("date");
+
+                news = new NewsArticleItem(news_id, title, date, urlofimage, urlofwebsite,article);
+
+            return news;
+
+
+
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
@@ -205,6 +201,6 @@ public class QueryUtilNews {
 
 
         // Return the list of news Articles
-        return Newss;
+        return news;
     }
 }
