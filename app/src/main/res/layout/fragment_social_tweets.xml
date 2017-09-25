@@ -13,7 +13,7 @@
         <ImageView
             android:id="@+id/twitter_banner"
             android:layout_width="wrap_content"
-            android:layout_height="75dp"
+            android:layout_height="50dip"
             android:src="@drawable/twitterbanner" />
 
         <android.support.design.widget.TabLayout
