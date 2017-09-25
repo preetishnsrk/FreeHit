@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Social;
+/*package com.debut.ellipsis.freehit.Social;
 
 
 import android.content.Context;
@@ -21,6 +21,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.R;
+import com.debut.ellipsis.freehit.Social.Polls.PollCardItem;
+import com.debut.ellipsis.freehit.Social.Polls.PollItemAdapter;
+import com.debut.ellipsis.freehit.Social.Polls.PollsLoader;
 import com.twitter.sdk.android.core.Callback;
 import com.twitter.sdk.android.core.Result;
 import com.twitter.sdk.android.core.TwitterException;
@@ -35,9 +38,9 @@ import java.util.List;
 import me.relex.circleindicator.CircleIndicator;
 
 
-/**
+*//**
  * A simple {@link Fragment} subclass.
- */
+ *//*
 public class SocialFragment extends Fragment implements LoaderManager.LoaderCallbacks<List<PollCardItem>> {
     public TabLayout socTabs;
     private PollItemAdapter pollAdapter;
@@ -223,4 +226,4 @@ public class SocialFragment extends Fragment implements LoaderManager.LoaderCall
 
     }
 
-}
+}*/

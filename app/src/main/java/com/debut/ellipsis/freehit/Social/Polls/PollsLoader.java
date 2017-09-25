@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Social;
+package com.debut.ellipsis.freehit.Social.Polls;
 
 import android.content.Context;
 import android.support.v4.content.AsyncTaskLoader;
