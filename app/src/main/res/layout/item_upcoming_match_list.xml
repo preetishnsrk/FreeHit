@@ -12,53 +12,47 @@
     android:tag="cards main container">
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal">
+        android:layout_centerHorizontal="true">
 
-        <RelativeLayout
-            android:id="@+id/match_name_series"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/match_name_upcoming"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal">
+            android:paddingTop="10dp"
+            android:textSize="15sp"
+            tools:text="4th ODI" />
 
-            <TextView
-                android:id="@+id/match_name_upcoming"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:paddingTop="10dp"
-                android:textSize="15sp"
-                tools:text="4th ODI" />
+        <TextView
+            android:id="@+id/match_series_separator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/match_name_upcoming"
+            android:paddingStart="5dp"
+            android:paddingTop="10dp"
+            android:text="-"
+            android:textSize="15sp" />
 
-            <TextView
-                android:id="@+id/match_series_separator"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/match_name_upcoming"
-                android:paddingStart="5dp"
-                android:paddingTop="10dp"
-                android:text="-"
-                android:textSize="15sp" />
-
-            <TextView
-                android:id="@+id/series_name_upcoming"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toEndOf="@+id/match_series_separator"
-                android:paddingEnd="10dp"
-                android:paddingStart="5dp"
-                android:paddingTop="10dp"
-                android:textSize="15sp"
-                tools:text="India Tour of SriLanka,5 ODIs,2010" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/series_name_upcoming"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/match_series_separator"
+            android:gravity="center_horizontal"
+            android:paddingStart="5dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="10dp"
+            android:textSize="15sp"
+            tools:text="India Tour of SriLanka,5 ODIs,2010" />
 
         <TextView
             android:id="@+id/stadium_upcoming"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/match_name_series"
+            android:layout_below="@+id/series_name_upcoming"
             android:layout_centerHorizontal="true"
-            android:paddingTop="10dp"
+            android:paddingTop="15dp"
             tools:text="M Chinnaswamy ,Bangalore , India" />
 
 
@@ -96,8 +90,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginStart="20dp"
                     android:layout_toEndOf="@+id/team_logo_1_upcoming"
+                    android:layout_marginStart="20dp"
                     android:textSize="20sp"
                     tools:text="SN" />
 
@@ -108,6 +102,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp">
+
 
 
                 <ImageView
@@ -125,9 +120,9 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="20dp"
                     android:layout_toStartOf="@+id/team_logo_2_upcoming"
                     android:textSize="20sp"
+                    android:layout_marginEnd="20dp"
                     tools:text="IND" />
 
 
