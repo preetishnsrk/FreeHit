@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit;
+package com.debut.ellipsis.freehit.Settings;
 
 
 import android.content.SharedPreferences;
@@ -15,14 +15,13 @@ import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.IntoSlider.CountryPicker;
 import com.debut.ellipsis.freehit.IntoSlider.CountryPickerListener;
-
-import java.io.ByteArrayOutputStream;
+import com.debut.ellipsis.freehit.R;
 
 import static com.debut.ellipsis.freehit.IntoSlider.WelcomeActivity.MY_PREFS_NAME;
 import static com.debut.ellipsis.freehit.IntoSlider.WelcomeActivity.encodeToBase64;
 
 public class CustomSettings extends AppCompatActivity {
-    public static final String LOG_TAG = com.debut.ellipsis.freehit.CustomSettings.class.getSimpleName();
+    public static final String LOG_TAG = CustomSettings.class.getSimpleName();
     private Toolbar toolbar;
 
     @Override

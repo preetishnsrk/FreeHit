@@ -18,8 +18,9 @@ import android.view.MenuItem;
 
 import com.debut.ellipsis.freehit.Matches.MatchesFragment;
 import com.debut.ellipsis.freehit.News.NewsFragment;
+import com.debut.ellipsis.freehit.Settings.CustomSettings;
 import com.debut.ellipsis.freehit.Social.SocialMainFragment;
-import com.debut.ellipsis.freehit.Stats.StatsFragment;
+import com.debut.ellipsis.freehit.Stats.StatsMain.StatsFragment;
 import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;

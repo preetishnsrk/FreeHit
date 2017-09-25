@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Stats;
+package com.debut.ellipsis.freehit.Stats.StatsMain;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -13,9 +13,9 @@ import com.debut.ellipsis.freehit.R;
 import java.util.ArrayList;
 
 
-public class StatsAdapter extends ArrayAdapter<com.debut.ellipsis.freehit.Stats.StatsItem> {
+public class StatsAdapter extends ArrayAdapter<StatsItem> {
 
-    public StatsAdapter(Context context, ArrayList<com.debut.ellipsis.freehit.Stats.StatsItem> items) {
+    public StatsAdapter(Context context, ArrayList<StatsItem> items) {
 
         super(context, 0, items);
     }

@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Stats;
+package com.debut.ellipsis.freehit.Stats.StatsMain;
 
 
 public class StatsItem {
