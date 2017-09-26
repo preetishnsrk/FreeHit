@@ -1,7 +1,7 @@
 package com.debut.ellipsis.freehit.News;
 
-import android.content.Context;
 import android.content.AsyncTaskLoader;
+import android.content.Context;
 import android.util.Log;
 
 

@@ -15,10 +15,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -55,12 +58,11 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         setContentView(R.layout.news_article);
         overridePendingTransition(R.anim.enter_from_right,R.anim.exit_to_left);
         news_article_id = getIntent().getIntExtra("news_article_id", 0);
-        URL =
-                "http://freehit-api.herokuapp.com/news?id=";
+        URL = "http://freehit-api.herokuapp.com/news?id=";
         URL += news_article_id;
 
         Log.e(LOG_TAG, URL);
-
+        LinearLayout ll = (LinearLayout)findViewById(R.id.article_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -90,6 +92,19 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
         }
 
+        ll.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+//                Toast.makeText(NewsArticle.this, "TEXT ", Toast.LENGTH_SHORT).show();
+                if(event.getAction() == MotionEvent.ACTION_UP)
+                {
+                    Toast.makeText(NewsArticle.this, "TEXT ", Toast.LENGTH_SHORT).show();
+
+                }
+                return false;
+
+            }
+        });
 
     }
 
@@ -140,6 +155,9 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
 
         final String imageurl = news.getMurlofimage();
 
+
+
+
         ImageLoader imageloader = ImageLoader.getInstance();
         //Defining options for the display, cache is set to false by default so this is necessary.
 
@@ -167,7 +185,6 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
             }
         });
 
-
     }
 
 
@@ -176,4 +193,6 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         loader = null;
 
     }
+
+
 }
