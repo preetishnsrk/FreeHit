@@ -2,14 +2,17 @@ package com.debut.ellipsis.freehit.Matches.UpcomingMatches;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.debut.ellipsis.freehit.Matches.PastMatches.PastMatchScoreCard;
 import com.debut.ellipsis.freehit.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
 import com.nostra13.universalimageloader.core.ImageLoader;
@@ -33,6 +36,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
         public TextView shortName1;
         public TextView shortName2;
         public TextView MatchDate;
+        public RelativeLayout rlcontainer;
 
 
         // We also create a constructor that accepts the entire item row
@@ -50,6 +54,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
             shortName1 = (TextView) itemView.findViewById(R.id.sn_team_1_upcoming);
             shortName2 = (TextView) itemView.findViewById(R.id.sn_team_2_upcoming);
             MatchDate = (TextView) itemView.findViewById(R.id.match_date_upcoming);
+            rlcontainer = (RelativeLayout) itemView.findViewById(R.id.rlcontainer);
 
 
         }
@@ -91,7 +96,7 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
     @Override
     public void onBindViewHolder(UpcomingMatchesListAdapter.ViewHolder viewHolder, int position) {
         // Get the data model based on position
-        UpcomingMatchCardItem upcomingMatchCards = mUpcomingMatchCards.get(position);
+        final UpcomingMatchCardItem upcomingMatchCards = mUpcomingMatchCards.get(position);
 
         // Set item views based on your views and data model
 
@@ -123,6 +128,26 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
 
         setImage(logo_string1, imageViewTeam1Logo);
         setImage(logo_string2, imageViewTeam2Logo);
+
+        RelativeLayout RLcontainer = viewHolder.rlcontainer;
+
+        View.OnClickListener mClickListener;
+
+
+        mClickListener = new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent UpcomingMatchScoreCardIntent = new Intent(getContext(), UpcomingMatchScoreCard.class);
+                UpcomingMatchScoreCardIntent.putExtra("match_id", upcomingMatchCards.getmMatchID());
+                UpcomingMatchScoreCardIntent.putExtra("match_name", upcomingMatchCards.getmMatchName());
+                    /*ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);*/
+                getContext().startActivity(UpcomingMatchScoreCardIntent);
+
+            }
+        };
+        RLcontainer.setOnClickListener(mClickListener);
+
 
     }
 

@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Social;
+package com.debut.ellipsis.freehit.Social.Polls;
 
 
 import android.text.TextUtils;

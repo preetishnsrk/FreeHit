@@ -29,7 +29,7 @@ import com.debut.ellipsis.freehit.R;
 
 import java.io.ByteArrayOutputStream;
 
-import static com.debut.ellipsis.freehit.CustomSettings.decodeToBase64;
+import static com.debut.ellipsis.freehit.Settings.CustomSettings.decodeToBase64;
 
 public class WelcomeActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "MyPrefsFile";

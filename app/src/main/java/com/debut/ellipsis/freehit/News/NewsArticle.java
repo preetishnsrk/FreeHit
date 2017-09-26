@@ -11,6 +11,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -56,7 +58,7 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_article);
-        overridePendingTransition(R.anim.enter_from_right,R.anim.exit_to_left);
+        overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
         news_article_id = getIntent().getIntExtra("news_article_id", 0);
         URL = "http://freehit-api.herokuapp.com/news?id=";
         URL += news_article_id;
@@ -66,6 +68,9 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //removing text from collapsing toolbar
+        setTitle(" ");
 
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
@@ -111,10 +116,10 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
     @Override
 
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()){
+        switch (item.getItemId()) {
             case android.R.id.home:
                 onBackPressed();
-                overridePendingTransition(0,R.anim.exit_to_right);
+                overridePendingTransition(0, R.anim.exit_to_right);
                 return true;
 
 
@@ -125,7 +130,7 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
     @Override
     public void onBackPressed() {
         NewsArticle.super.onBackPressed();
-        overridePendingTransition(0,R.anim.exit_to_right);
+        overridePendingTransition(0, R.anim.exit_to_right);
 
     }
 

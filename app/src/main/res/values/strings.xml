@@ -18,9 +18,9 @@
 
 
     <!--COMPLETE LIST OF MATCHES-->
-    <string name="upcoming_list"><b><u>UPCOMING MATCHES</u></b></string>
-    <string name="past_list"><b><u>PAST MATCHES</u></b></string>
-    <string name="live_list"><b><u>LIVE MATCHES</u></b></string>
+    <string name="upcoming_list">UPCOMING MATCHES</string>
+    <string name="past_list">PAST MATCHES</string>
+    <string name="live_list">LIVE MATCHES</string>
 
 
     <!--FOR EMPTY VIEWS-->
@@ -78,8 +78,5 @@
     <string name="team_select_title">PICK YOUR FAVOURITE TEAM</string>
 
     <string name="select_team_button">SELECT COUNTRY</string>
-
-
-
 
 </resources>
