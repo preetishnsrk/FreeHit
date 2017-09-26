@@ -7,20 +7,24 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.debut.ellipsis.freehit.Matches.UpcomingMatches.UpcomingMatchesActivity;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.List;
 
 
-public class PastMatchesActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<List<PastMatchCardItem>> {
+public class PastMatchesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<PastMatchCardItem>> {
 
-
+    private Toolbar toolbar;
     public PastMatchesListAdapter MatchListAdapter;
     private final static int PAST_LOADER_ID = 5;
     private RecyclerView rv;
@@ -34,8 +38,11 @@ public class PastMatchesActivity extends FragmentActivity implements LoaderManag
         super.onCreate(savedInstanceState);
         setContentView(R.layout.complete_match_list);
 
-        TextView PageHeader = (TextView) findViewById(R.id.page_heading);
-        PageHeader.setText(R.string.past_list);
+        setTitle(R.string.past_list);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar_for_match_list);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         // Lookup the recyclerview in activity layout
         rv = (RecyclerView) findViewById(R.id.match_list);
@@ -59,6 +66,26 @@ public class PastMatchesActivity extends FragmentActivity implements LoaderManag
 
 
         }
+    }
+
+    @Override
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                overridePendingTransition(0, R.anim.exit_to_right);
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        PastMatchesActivity.super.onBackPressed();
+        overridePendingTransition(0, R.anim.exit_to_right);
     }
 
     @Override

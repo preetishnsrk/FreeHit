@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Stats;
+package com.debut.ellipsis.freehit.Stats.StatsMain;
 
 
 import android.content.Intent;
@@ -11,11 +11,11 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.debut.ellipsis.freehit.R;
-import com.debut.ellipsis.freehit.Stats.Playerpackage.PlayerActivity;
-import com.debut.ellipsis.freehit.Stats.Playerpackage.RankingActivity;
-import com.debut.ellipsis.freehit.Stats.Playerpackage.RecordsActivity;
-import com.debut.ellipsis.freehit.Stats.Playerpackage.SeriesActivity;
-import com.debut.ellipsis.freehit.Stats.Playerpackage.TeamActivity;
+import com.debut.ellipsis.freehit.Stats.Player.PlayerActivity;
+import com.debut.ellipsis.freehit.Stats.Rankings.RankingActivity;
+import com.debut.ellipsis.freehit.Stats.Records.RecordsActivity;
+import com.debut.ellipsis.freehit.Stats.Series.SeriesActivity;
+import com.debut.ellipsis.freehit.Stats.Team.TeamActivity;
 
 import java.util.ArrayList;
 

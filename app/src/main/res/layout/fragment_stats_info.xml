@@ -1,317 +1,515 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-<RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-
-    <ScrollView
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical" />
-    </ScrollView>
+            android:orientation="vertical"
+            android:visibility="visible">
 
-    <ImageView
-        android:id="@+id/Player_image"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        app:srcCompat="@drawable/flag_ind" />
-
-    <TextView
-        android:id="@+id/Player_name_stats_info"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Player_image"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        android:text="PlayerName"
-        android:textSize="15dp" />
-
-    <TextView
-        android:id="@+id/player_country"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Player_name_stats_info"
-        android:layout_centerHorizontal="true"
-        android:text="country"
-        android:textSize="15dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player_country"
-        android:background="@color/divider"
-        android:textSize="2dp" />
-
-    <TextView
-        android:id="@+id/Player_personal_information"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/player_country"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:text="PERSONAL INFORMATION"
-        android:textColor="@android:color/black"
-        android:textSize="20dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Player_personal_information"
-        android:background="@color/divider"
-        android:textSize="2dp" />
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Player_personal_information"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/born"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="DOB : "
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/Role"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Role : "
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/battingStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Batting Style : "
-            android:textSize="15dp" />
-
-        <TextView
-            android:id="@+id/BowlingStyle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Bowling Style : "
-            android:textSize="15dp" />
-        <TextView
-            android:id="@+id/Teams_Played"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Teams Played For : "
-            android:textSize="15dp" />
-
-
-    </LinearLayout>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:background="@color/divider"
-        android:textSize="2dp" />
-
-    <TextView
-        android:id="@+id/ICC"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/linearLayout2"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="10dp"
-        android:gravity="center_horizontal"
-        android:text="ICC RANKING"
-        android:textColor="@android:color/black"
-        android:textSize="25dp" />
-
-    <TextView
-        android:layout_width="match_parent"
-        android:id="@+id/belowicc"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ICC"
-        android:background="@color/divider"
-        android:textSize="2dp" />
-
-
-    <TableLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/table"
-        android:layout_below="@+id/belowicc"
-        android:shrinkColumns="*"  android:stretchColumns="*" android:background="#ffffff">
-    <TableRow
-        android:id="@+id/tableRow1"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent">
-
-        <TextView
-            android:id="@+id/TextView01"
-            android:text=" "
-            android:layout_weight="1"
-
-            android:textColor="#000000"
-            android:textAlignment="center"
-            android:layout_height="56dp"
-            android:padding="20dp"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/TextView02"
-            android:text="TEST"
-
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-
-
-            android:textColor="#000000"
-            android:padding="20dp"
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/TextView03"
-            android:text="ODI"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-
-            android:textColor="#000000"
-            android:padding="20dp"
-            android:gravity="center"/>
-        <TextView
-            android:id="@+id/TextView04"
-            android:text="T20I"
-            android:layout_weight="1"
-            android:textAlignment="center"
-            android:layout_height="wrap_content"
-
-            android:textColor="#000000"
-            android:padding="20dp"
-            android:gravity="center"/>
-
-
-    </TableRow>
-        <TableRow
-            android:id="@+id/tableRow2"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+            <ImageView
+                android:id="@+id/Player_image"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                app:srcCompat="@drawable/flag_ind" />
 
             <TextView
-                android:id="@+id/TextView05"
-                android:text="Batting"
-                android:layout_weight="1"
-
-                android:textColor="#000000"
-                android:textAlignment="center"
+                android:id="@+id/Player_name_stats_info"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:gravity="center"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:text="PlayerName"
+                android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/Testbatting"
-                android:text="01"
-                android:layout_weight="1"
-                android:textAlignment="center"
+                android:id="@+id/player_country"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
-
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
+                android:layout_gravity="center_horizontal"
+                android:text="country"
+                android:textSize="15dp" />
 
             <TextView
-                android:id="@+id/OdiBatting"
-                android:text="02"
-                android:layout_weight="1"
-                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
-            <TextView
-                android:id="@+id/T20Batting"
-                android:text="T20I"
-                android:layout_weight="1"
-                android:textAlignment="center"
-                android:layout_height="wrap_content"
-
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
-
-
-        </TableRow>
-
-        <TableRow
-            android:id="@+id/tableRow3"
-            android:layout_height="wrap_content"
-            android:layout_width="match_parent">
+                android:background="@color/divider"
+                android:textSize="2dp" />
 
             <TextView
-                android:id="@+id/TextView08"
-                android:text="Bowling"
-                android:layout_weight="1"
-
-                android:textColor="#000000"
-                android:textAlignment="center"
+                android:id="@+id/Player_personal_information"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="20dp"
-                android:gravity="center"/>
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:text="PERSONAL INFORMATION"
+                android:textColor="@android:color/black"
+                android:textSize="20dp" />
 
             <TextView
-                android:id="@+id/TestBowling"
-                android:text="--"
-                android:layout_weight="1"
-                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:textSize="2dp" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/DOB"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="DOB : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/Age"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Age : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/battingStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Batting Style : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/BowlingStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Bowling Style : "
+                    android:textSize="15dp" />
+
+                <TextView
+                    android:id="@+id/Teams_Played"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Teams Played For : "
+                    android:textSize="15dp" />
 
 
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
+            </LinearLayout>
 
             <TextView
-                android:id="@+id/OdiBowling"
-                android:text="--"
-                android:layout_weight="1"
-                android:textAlignment="center"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:textSize="2dp" />
 
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
             <TextView
-                android:id="@+id/T20Bowling"
-                android:text="779"
-                android:layout_weight="1"
-                android:textAlignment="center"
+                android:id="@+id/ICC"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="ICC RANKING"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
 
-                android:textColor="#000000"
-                android:padding="20dp"
-                android:gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ICC"
+                android:background="@color/divider"
+                android:textSize="2dp" />
 
 
-        </TableRow>
-</TableLayout>
+            <TableLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/Ranking_Table"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:layout_weight="1"
+                android:background="#ffffff"
+                android:shrinkColumns="*"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/Ranking_lablels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/initial_blank"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text=" "
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/Label_TEST"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="TEST"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/Label_ODI"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="ODI"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/Label_T20"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="T20I"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
 
 
-</RelativeLayout>
-    </ScrollView>
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Batting_Ranking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/Batting_Label"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="Batting"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/Testbatting"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="01"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/OdiBatting"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="02"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/T20Batting"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="T20I"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/Bowling_Ranking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/Bowling_Label"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="Bowling"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/TestBowling"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="--"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/OdiBowling"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="--"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/T20Bowling"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="--"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/divider"
+                android:textSize="2dp" />
+
+            <TextView
+                android:id="@+id/MOTM"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:gravity="center_horizontal"
+                android:text="MAN OF THE MATCH"
+                android:textColor="@android:color/black"
+                android:textSize="25dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/ICC"
+                android:background="@color/divider"
+                android:textSize="2dp" />
+
+            <ScrollView
+                android:id="@+id/layout"
+                android:layout_height="match_parent"
+                android:scrollbars="horizontal|vertical"
+                android:layout_width="match_parent"
+                android:layout_marginTop="5dip"
+                android:scrollbarStyle="outsideInset"
+                android:fillViewport="true">
+
+            <HorizontalScrollView
+                android:id="@+id/horizontalView"
+                android:layout_height="wrap_content"
+                android:scrollbars="horizontal|vertical"
+                android:layout_width="wrap_content"
+                android:layout_marginTop="5dip">
+
+            <TableLayout
+                xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/MOTM_Table"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp"
+                android:background="#ffffff"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:id="@+id/MOTM_Lablels"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_TEST"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="TEST"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_ODI"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="ODI"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_T20"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="T20I"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_WorldCup"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="WORLD CUP"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_IPL"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="IPL"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Label_CL"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="CL"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/MOTM_Values"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/MOTM_Test"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="3"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_Odi"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="6"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_T20"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_WorldCup"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_IPL"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="2"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+                    <TextView
+                        android:id="@+id/MOTM_CL"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:padding="20dp"
+                        android:background="@drawable/cell_shape"
+                        android:text="0"
+                        android:textAlignment="center"
+                        android:textColor="#000000" />
+
+
+                </TableRow>
+
+
+            </TableLayout>
+
+            </HorizontalScrollView>
+            </ScrollView>
+
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</android.support.design.widget.CoordinatorLayout>

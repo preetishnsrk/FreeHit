@@ -40,14 +40,6 @@
         <activity android:name=".IntoSlider.WelcomeActivity"/>
 
         <activity
-            android:name=".SettingsActivity"
-            android:label="@string/settings_title">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.debut.ellipsis.freehit.MainActivity"/>
-        </activity>
-
-        <activity
             android:name=".News.NewsArticle"
             android:label="News ">
             <meta-data
@@ -56,19 +48,19 @@
         </activity>
 
         <activity
-            android:name=".CustomSettings"
+            android:name=".Settings.CustomSettings"
             android:label="Settings">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.debut.ellipsis.freehit.MainActivity"/>
         </activity>
 
-        <activity android:name=".Stats.Playerpackage.PlayerActivity"
+        <activity android:name=".Stats.Player.PlayerActivity"
             android:label="Player Info"/>
-        <activity android:name=".Stats.Playerpackage.TeamActivity"/>
-        <activity android:name=".Stats.Playerpackage.SeriesActivity"/>
-        <activity android:name=".Stats.Playerpackage.RankingActivity"/>
-        <activity android:name=".Stats.Playerpackage.RecordsActivity"/>
+        <activity android:name=".Stats.Team.TeamActivity"/>
+        <activity android:name=".Stats.Series.SeriesActivity"/>
+        <activity android:name=".Stats.Rankings.RankingActivity"/>
+        <activity android:name=".Stats.Records.RecordsActivity"/>
 
 
 

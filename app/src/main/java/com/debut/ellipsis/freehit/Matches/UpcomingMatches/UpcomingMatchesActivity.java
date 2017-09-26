@@ -5,24 +5,30 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.LoaderManager;
 import android.support.v4.content.Loader;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.debut.ellipsis.freehit.Matches.LiveMatches.LiveMatchScoreCard;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class UpcomingMatchesActivity extends FragmentActivity implements LoaderManager.LoaderCallbacks<List<UpcomingMatchCardItem>> {
+public class UpcomingMatchesActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<List<UpcomingMatchCardItem>> {
 
 
+    private Toolbar toolbar;
     ArrayList<UpcomingMatchCardItem> upcomingMatches;
     public UpcomingMatchesListAdapter MatchListAdapter;
     private final static int UPCOMING_LOADER_ID = 5;
@@ -37,8 +43,12 @@ public class UpcomingMatchesActivity extends FragmentActivity implements LoaderM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.complete_match_list);
 
-        TextView PageHeader=(TextView)findViewById(R.id.page_heading);
-        PageHeader.setText(R.string.upcoming_list);
+        setTitle(R.string.upcoming_list);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar_for_match_list);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Lookup the recyclerview in activity layout
         rv = (RecyclerView) findViewById(R.id.match_list);
         mProgressBar = (ProgressBar) findViewById(R.id.progress_bar);
@@ -61,6 +71,25 @@ public class UpcomingMatchesActivity extends FragmentActivity implements LoaderM
 
 
         }
+    }
+    @Override
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch(item.getItemId()){
+            case android.R.id.home:
+                onBackPressed();
+                overridePendingTransition(0,R.anim.exit_to_right);
+                return true;
+
+
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        UpcomingMatchesActivity.super.onBackPressed();
+        overridePendingTransition(0,R.anim.exit_to_right);
     }
 
     @Override

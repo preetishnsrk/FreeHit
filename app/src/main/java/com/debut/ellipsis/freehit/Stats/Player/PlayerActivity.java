@@ -1,4 +1,4 @@
-package com.debut.ellipsis.freehit.Stats.Playerpackage;
+package com.debut.ellipsis.freehit.Stats.Player;
 
 
 import android.os.Bundle;

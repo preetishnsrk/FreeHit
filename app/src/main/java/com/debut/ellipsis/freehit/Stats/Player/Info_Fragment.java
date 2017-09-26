@@ -1,23 +1,28 @@
-package com.debut.ellipsis.freehit.Stats.Playerpackage;
+package com.debut.ellipsis.freehit.Stats.Player;
 
+import android.graphics.Point;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 
 import com.debut.ellipsis.freehit.R;
 
-/**
- * Created by Jayanth on 10-09-2017.
- */
+import java.util.ArrayList;
 
-public class CareerFragment extends Fragment {
+
+public class Info_Fragment extends Fragment {
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_stats_career, container, false);
+
+        View rootView = inflater.inflate(R.layout.fragment_stats_info, container, false);
+
 
         return rootView;
     }

@@ -18,8 +18,9 @@ import android.view.MenuItem;
 
 import com.debut.ellipsis.freehit.Matches.MatchesFragment;
 import com.debut.ellipsis.freehit.News.NewsFragment;
-import com.debut.ellipsis.freehit.Social.SocialFragment;
-import com.debut.ellipsis.freehit.Stats.StatsFragment;
+import com.debut.ellipsis.freehit.Settings.CustomSettings;
+import com.debut.ellipsis.freehit.Social.SocialMainFragment;
+import com.debut.ellipsis.freehit.Stats.StatsMain.StatsFragment;
 import com.nostra13.universalimageloader.cache.memory.impl.LRULimitedMemoryCache;
 import com.nostra13.universalimageloader.core.ImageLoader;
 import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new MatchesFragment(), "MATCHES");
         adapter.addFrag(new NewsFragment(), "NEWS");
-        adapter.addFrag(new SocialFragment(), "SOCIAL");
+        adapter.addFrag(new SocialMainFragment(), "SOCIAL");
         adapter.addFrag(new StatsFragment(), "STATS");
         viewPager.setAdapter(adapter);
     }
