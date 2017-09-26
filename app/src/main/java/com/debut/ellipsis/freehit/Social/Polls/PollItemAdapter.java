@@ -1,12 +1,15 @@
 package com.debut.ellipsis.freehit.Social.Polls;
 
 import android.content.Context;
+import android.support.annotation.IdRes;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.R;
 
@@ -46,9 +49,20 @@ public class PollItemAdapter extends ArrayAdapter {
         option3.setText(currentPoll.getpOption(2));
         RadioButton option4 = (RadioButton) listItemView.findViewById(R.id.option_4);
         option4.setText(currentPoll.getpOption(3));
-//        RadioGroup rGroup = (RadioGroup) view.findViewById(R.id.poll_group);
+        final RadioGroup rGroup = (RadioGroup) listItemView.findViewById(R.id.poll_group);
+        rGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, @IdRes int checkedId) {
+                Toast.makeText(context, rGroup.getCheckedRadioButtonId();, Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
 
     return listItemView;
+
     }
+
 }
 
