@@ -34,7 +34,7 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
     public static final String LOG_TAG = SocialPolls.class.getSimpleName();
 
     private static final String URL =
-            "http://www.strawpoll.me/api/v2/polls/2";
+            "https://freehit-api.herokuapp.com/polls";
 
     private static final int NEWS_LOADER_ID = 1;
 

@@ -166,32 +166,34 @@ public class QueryUtilPolls {
             // build up a list of News Articles objects with the corresponding data.
 
             //create a JSONObject from  the JSON response string
-            JSONObject currentArticle = new JSONObject(PollsJSON);
 
-            String title = currentArticle.getString("title");
-
-            int id = currentArticle.getInt("id");
-
-            JSONArray Jsonoptions = currentArticle.getJSONArray("options");
-            String[] options = new String[Jsonoptions.length()];
-            for (int j = 0; j < Jsonoptions.length(); j++) {
-                options[j] = Jsonoptions.getString(j);
-            }
-
-            JSONArray Jsonvalues = currentArticle.getJSONArray("votes");
-            int[] values = new int[Jsonvalues.length()];
-            for (int j = 0; j < Jsonvalues.length(); j++) {
-                values[j] = Jsonvalues.getInt(j);
-            }
-
-            PollCardItem poll = new PollCardItem(title, id, options, values);
-            Polls.add(poll);
-            Polls.add(poll);
-            Polls.add(poll);
+            JSONObject basJsonResponse = new JSONObject(PollsJSON);
+            JSONArray results = basJsonResponse.getJSONArray("result");
 
 
+            for (int i = 0; i < results.length(); i++) {
+                JSONObject currentPoll = results.getJSONObject(i);
+                int polls_id = currentPoll.getInt("id");
+
+                String question = currentPoll.getString("question");
+
+                JSONArray choices = currentPoll.getJSONArray("ctitle");
+                String[] options = new String[choices.length()];
+                for (int j = 0; j < choices.length(); j++) {
+                    options[j] = choices.getString(j);
+                }
+
+                JSONArray votes = currentPoll.getJSONArray("cvotes");
+                int[] cvotes = new int[votes.length()];
+                for (int j = 0; j < votes.length(); j++) {
+                    cvotes[j] = votes.getInt(j);
+                }
+
+                PollCardItem poll = new PollCardItem(question, polls_id, options,cvotes);
+                Polls.add(poll);
 //                Log.e(LOG_TAG, String.valueOf(j));
-            return Polls;
+                return Polls;
+            }
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
