@@ -20,10 +20,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.debut.ellipsis.freehit.News.NewsFragment;
 import com.debut.ellipsis.freehit.News.NewsItem;
-import com.debut.ellipsis.freehit.News.NewsItemAdapter;
-import com.debut.ellipsis.freehit.News.NewsLoader;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.ArrayList;
