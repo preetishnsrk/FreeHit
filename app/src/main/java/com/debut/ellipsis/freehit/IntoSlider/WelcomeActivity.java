@@ -118,27 +118,23 @@ public class WelcomeActivity extends AppCompatActivity {
                 }
             }
         });
-
-
-
     }
-
 
     private void addBottomDots(int currentPage) {
         dots = new ImageView[layouts.length];
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-        int width = 60;
-        int height = 60;
+        int width = 50;
+        int height = 50;
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new ImageView(this);
             /*dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);*/
-            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width-20,height-20);
-            dots[i].setLayoutParams(parms);
-            parms.setMargins(15,15,0,0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width-20,height-20);
+            dots[i].setLayoutParams(params);
+            params.setMargins(15,15,0,0);
             //parms.setMargins(left, top, right, bottom);
             dots[i].setImageResource(R.drawable.circle);
             dots[i].setColorFilter(colorsInactive[currentPage]);
@@ -146,9 +142,9 @@ public class WelcomeActivity extends AppCompatActivity {
         }
 
         if (dots.length > 0) {
-            LinearLayout.LayoutParams parms = new LinearLayout.LayoutParams(width,height);
-            dots[currentPage].setLayoutParams(parms);
-            parms.setMargins(15,15,0,0);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width,height);
+            dots[currentPage].setLayoutParams(params);
+            params.setMargins(15,15,0,0);
             //parms.setMargins(left, top, right, bottom);
             dots[currentPage].setImageResource(R.drawable.ball);
             dots[currentPage].setColorFilter(colorsActive[currentPage]);
