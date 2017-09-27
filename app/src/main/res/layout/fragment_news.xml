@@ -34,7 +34,6 @@
             android:paddingTop="50dp"
             android:scaleType="centerCrop"
             tools:src="@drawable/matches"
-            android:visibility="invisible"
             />
 
 

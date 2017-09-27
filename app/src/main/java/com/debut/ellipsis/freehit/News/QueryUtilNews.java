@@ -169,13 +169,13 @@ public class QueryUtilNews {
 
                 String description = currentArticle.getString("desc");
 
-                String urlofimage = currentArticle.getString("image");
+                String URLOfImage = currentArticle.getString("image");
 
                 String date = currentArticle.getString("date");
 
                 String tag = currentArticle.getString("tag");
 
-                NewsItem news = new NewsItem(news_id, title, description, urlofimage,date,tag);
+                NewsItem news = new NewsItem(news_id, title, description, URLOfImage,date,tag);
                 Newss.add(news);
             }
             return Newss;
