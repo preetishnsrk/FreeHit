@@ -142,7 +142,8 @@ public class UpcomingMatchesListAdapter extends RecyclerView.Adapter<UpcomingMat
                 UpcomingMatchScoreCardIntent.putExtra("match_id", upcomingMatchCards.getmMatchID());
                 UpcomingMatchScoreCardIntent.putExtra("match_name", upcomingMatchCards.getmMatchName());
                     /*ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);*/
-                getContext().startActivity(UpcomingMatchScoreCardIntent);
+                UpcomingMatchScoreCardIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    getContext().startActivity(UpcomingMatchScoreCardIntent);
 
             }
         };
