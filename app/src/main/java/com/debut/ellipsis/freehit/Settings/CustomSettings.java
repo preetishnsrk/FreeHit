@@ -37,7 +37,7 @@ public class CustomSettings extends AppCompatActivity {
         ImageView country_flag=(ImageView)findViewById(R.id.country_flag);
 
         SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String name = prefs.getString("country_name", "No name defined");
+        String name = prefs.getString("country_name", "Please Choose Your Favourite Country");
 
         TextView country_name=(TextView)findViewById(R.id.country_name);
         country_name.setText(name);
