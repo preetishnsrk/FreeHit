@@ -110,7 +110,16 @@ public class WelcomeActivity extends AppCompatActivity {
                     if (clicked) {
                         launchHomeScreen();
                     } else {
-                        Toast.makeText(WelcomeActivity.this, "PLEASE SELECT A TEAM", Toast.LENGTH_SHORT).show();
+
+                        LayoutInflater inflater = getLayoutInflater();
+                        View layouttoast = inflater.inflate(R.layout.custom_toast, (ViewGroup)findViewById(R.id.toastcustom));
+                        ((TextView) layouttoast.findViewById(R.id.texttoast)).setText("PLEASE SELECT A TEAM");
+
+                        Toast mytoast = new Toast(getBaseContext());
+                        mytoast.setView(layouttoast);
+                        mytoast.setDuration(Toast.LENGTH_SHORT);
+                        mytoast.show();
+
                     }
 
                     //then on another method or where you want
@@ -125,14 +134,14 @@ public class WelcomeActivity extends AppCompatActivity {
 
         int[] colorsActive = getResources().getIntArray(R.array.array_dot_active);
         int[] colorsInactive = getResources().getIntArray(R.array.array_dot_inactive);
-        int width = 50;
-        int height = 50;
+        int width = 25;
+        int height = 25;
         dotsLayout.removeAllViews();
         for (int i = 0; i < dots.length; i++) {
             dots[i] = new ImageView(this);
             /*dots[i].setText(Html.fromHtml("&#8226;"));
             dots[i].setTextSize(35);*/
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width-20,height-20);
+            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(width,height);
             dots[i].setLayoutParams(params);
             params.setMargins(15,15,0,0);
             //parms.setMargins(left, top, right, bottom);

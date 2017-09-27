@@ -33,9 +33,7 @@
             android:layout_marginTop="10dp"
             android:paddingTop="50dp"
             android:scaleType="centerCrop"
-            tools:src="@drawable/matches"
-            />
-
+            tools:src="@drawable/matches" />
 
         <TextView
             android:id="@+id/news_date"
