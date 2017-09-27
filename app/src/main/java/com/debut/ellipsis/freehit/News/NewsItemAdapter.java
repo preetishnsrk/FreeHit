@@ -52,6 +52,8 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         TextView newsTag = (TextView) listItemView.findViewById(R.id.news_tag);
         newsTag.setText(currentnews.getMtag());
 
+        ImageView news_tag = (ImageView) listItemView.findViewById(R.id.news_tag_image);
+        news_tag.setVisibility(View.VISIBLE);
 
         TextView subjectTextView = (TextView) listItemView.findViewById(R.id.summary_text_view);
         subjectTextView.setText(currentnews.getMdescription());
