@@ -26,7 +26,7 @@ public class QueryUtilNewsArticle extends AppCompatActivity{
     public static final String LOG_TAG = QueryUtilNewsArticle.class.getSimpleName();
 
     /**
-     * Create a private constructor because no one should ever create a {@link QueryUtilNews} object.
+     * Create a private constructor because no one should ever create a {@link QueryUtilNewsArticle} object.
      * This class is only meant to hold static variables and methods, which can be accessed
      * directly from the class name QueryUtils (and an object instance of QueryUtils is not needed).
      */
@@ -34,17 +34,10 @@ public class QueryUtilNewsArticle extends AppCompatActivity{
     }
 
     /**
-     * Query the News Dataset and return an {@link NewsItem} object to represent a list of News.
+     * Query the News Dataset and return an {@link NewsArticleItem} object to represent a list of News.
      */
 
     public static NewsArticleItem fetchNewsData(String requestUrl) {
-        //Adding delay in fetching the data from the server so that the progressBar is displayed for 0.5 seconds
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         Log.i(LOG_TAG, "TEST: fetchNewsData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
@@ -140,7 +133,7 @@ public class QueryUtilNewsArticle extends AppCompatActivity{
 
 
     /**
-     * Return a list of {@link NewsItem} objects that has been built up from
+     * Return a list of {@link NewsArticleItem} objects that has been built up from
      * parsing the given JSON response.
      */
     public static NewsArticleItem extractFeatureFromJson(String NewsJSON) {
@@ -149,7 +142,6 @@ public class QueryUtilNewsArticle extends AppCompatActivity{
         if (TextUtils.isEmpty(NewsJSON)) {
             return null;
         }
-//        NewsItem news = null;
 
         // Create an empty ArrayList that we can start adding News to
         NewsArticleItem news = null;
@@ -168,38 +160,31 @@ public class QueryUtilNewsArticle extends AppCompatActivity{
 
 
                 JSONObject currentArticle = articles.getJSONObject(0);
-//                Bitmap bimage = null;
-
-                String id = currentArticle.getString("id");
-
-                int news_id=Integer.parseInt(id);
 
                 String title = currentArticle.getString("title");
 
-                String description = currentArticle.getString("desc");
-
-                String urlofimage = currentArticle.getString("image");
-
-                String urlofwebsite = currentArticle.getString("link");
+                String URLOfImage = currentArticle.getString("image");
 
                 String article =currentArticle.getString("article");
 
                 String date=currentArticle.getString("date");
 
-                news = new NewsArticleItem(news_id, title, date, urlofimage, urlofwebsite,article);
+                String tag1=currentArticle.getString("tag1");
+
+                String tag2=currentArticle.getString("tag2");
+
+                String tag3=currentArticle.getString("tag3");
+
+                news = new NewsArticleItem(title, date, URLOfImage,article,tag1,tag2,tag3);
 
             return news;
-
-
-
+            
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
             // with the message from the exception.
             Log.e("QueryUtils", "Problem parsing the News JSON results", e);
         }
-
-
         // Return the list of news Articles
         return news;
     }

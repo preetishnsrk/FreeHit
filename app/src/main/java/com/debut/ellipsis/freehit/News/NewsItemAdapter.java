@@ -21,10 +21,6 @@ import java.util.ArrayList;
 
 public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
-    //    public View listItemView;
-    // Was used for AsyncTask , not used anymore
-   /* public ArrayList<Bitmap> Images = new ArrayList<Bitmap>();*/
-
     public NewsItemAdapter(Context context, ArrayList<NewsItem> items) {
 
 
@@ -46,10 +42,20 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
         NewsItem currentnews = getItem(position);
         System.out.println(currentnews);
         String imageurl = currentnews.getMurlofimage();
+
         TextView studentName = (TextView) listItemView.findViewById(R.id.header_text_view);
         studentName.setText(currentnews.getMheadline());
+
+        TextView date = (TextView) listItemView.findViewById(R.id.news_date);
+        date.setText(currentnews.getMdate());
+
+        TextView newsTag = (TextView) listItemView.findViewById(R.id.news_tag);
+        newsTag.setText(currentnews.getMtag());
+
+
         TextView subjectTextView = (TextView) listItemView.findViewById(R.id.summary_text_view);
         subjectTextView.setText(currentnews.getMdescription());
+
         final ImageView imageToShow = (ImageView) listItemView.findViewById(R.id.image_view);
 
         //Getting an instance of the ImageLoader (Initialized with global configs in MainActivity)
@@ -87,52 +93,3 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
     }
 }
-
-
-//  CODE TO LOAD IMAGES USING ASYNC LOADER, NOT USED ANYMORE
-
-/*
-
-    private class DownloadImageFromInternet extends AsyncTask<String, Void, Bitmap> {
-        ImageView imageView;
-        int position;
-
-        AVLoadingIndicatorView loader;
-        public DownloadImageFromInternet(ImageView imageView, int position, AVLoadingIndicatorView loader) {
-            System.out.println("Downloading image");
-            this.imageView = imageView;
-            this.position = position;
-            this.loader=loader;
-        }
-
-        @Override
-        protected void onPreExecute() {
-            loader.show();
-        }
-
-        protected Bitmap doInBackground(String... urls) {
-
-            String imageURL = urls[0];
-            Bitmap bimage = null;
-
-            try {
-                InputStream in = new java.net.URL(imageURL).openStream();
-                bimage = BitmapFactory.decodeStream(in);
-
-            } catch (Exception e) {
-                Log.e("Error Message", e.getMessage());
-                e.printStackTrace();
-            }
-            return bimage;
-        }
-
-
-        protected void onPostExecute(Bitmap result) {
-        }
-
-
-
-    }
-
-
-}*/

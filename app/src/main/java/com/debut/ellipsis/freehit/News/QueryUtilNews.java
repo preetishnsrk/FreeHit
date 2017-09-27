@@ -39,13 +39,6 @@ public class QueryUtilNews {
      */
 
     public static List<NewsItem> fetchNewsData(String requestUrl) {
-        //Adding delay in fetching the data from the server so that the progressBar is displayed for 0.5 seconds
-//        try {
-//            Thread.sleep(500);
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
         Log.i(LOG_TAG, "TEST: fetchNewsData() called");
         // Create URL object
         URL url = createUrl(requestUrl);
@@ -150,8 +143,6 @@ public class QueryUtilNews {
         if (TextUtils.isEmpty(NewsJSON)) {
             return null;
         }
-//        NewsItem news = null;
-
         // Create an empty ArrayList that we can start adding News to
         List<NewsItem> Newss = new ArrayList<>();
 
@@ -180,19 +171,11 @@ public class QueryUtilNews {
 
                 String urlofimage = currentArticle.getString("image");
 
-                String urlofwebsite = currentArticle.getString("link");
+                String date = currentArticle.getString("date");
 
-                NewsItem news = new NewsItem(news_id, title, description, urlofimage, urlofwebsite);
-//                try {
-//                    InputStream in = new java.net.URL(urlofimage).openStream();
-//                    bimage = BitmapFactory.decodeStream(in);
-//
-//                } catch (Exception e) {
-//                    Log.e("Error Message", e.getMessage());
-//                    e.printStackTrace();
-//                }
-//                Newss.add(news);
-//                news = new NewsItem(headlines,description,bimage);
+                String tag = currentArticle.getString("tag");
+
+                NewsItem news = new NewsItem(news_id, title, description, urlofimage,date,tag);
                 Newss.add(news);
             }
             return Newss;

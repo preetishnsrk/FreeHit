@@ -52,18 +52,12 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
     }
 
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.item, container, false);
         View fragView = inflater.inflate(R.layout.fragment_news, container, false);
-
-        // NOTE : UNCOMMENTING THE 2 LINESS BELOW WILL MAKE THE LOADINBACKGROUND() TO BE CALLED TWICE
-        /*getLoaderManager().initLoader(0, null, this);
-        getLoaderManager().getLoader(0).startLoading();*/
 
 
         //Finding a reference to the AVLoading bar
@@ -83,12 +77,12 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
                 NewsItem currentNewsArticle = mAdapter.getItem(position);
 
                 //will be replaced with id later on
-                int news_article_id=currentNewsArticle.getMnewsID();
+                int news_article_id = currentNewsArticle.getMnewsID();
 
-                    Intent newsArticleIntent = new Intent(getContext(), NewsArticle.class);
-                    newsArticleIntent.putExtra("news_article_id",news_article_id);
-                    // Send the intent to launch a new activity
-                    startActivity(newsArticleIntent);
+                Intent newsArticleIntent = new Intent(getContext(), NewsArticle.class);
+                newsArticleIntent.putExtra("news_article_id", news_article_id);
+                // Send the intent to launch a new activity
+                startActivity(newsArticleIntent);
 
             }
         });
@@ -101,7 +95,7 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         // so the list can be populated in the user interface
         NewsListView.setAdapter(mAdapter);
 
-        mProgressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar);
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
         int colorCodeDark = Color.parseColor("#F44336");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
@@ -168,7 +162,6 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         return rootView;
     }
 
-
     @Override
     public Loader<List<NewsItem>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
@@ -192,7 +185,6 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
         }
 
     }
-
 
     @Override
     public void onLoaderReset(Loader<List<NewsItem>> loader) {
