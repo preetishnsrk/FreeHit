@@ -77,6 +77,7 @@ public class UpcomingMatchCard extends Fragment implements LoaderManager.LoaderC
             mProgressBar= (ProgressBar) rootView.findViewById(R.id.progress_bar);
             mProgressBar.setVisibility(View.GONE);
 
+            mEmptyStateTextView = (ImageView)rootView.findViewById(R.id.empty_view);
             // Update empty state with no connection error message
             mEmptyStateTextView.setVisibility(View.VISIBLE);
         }

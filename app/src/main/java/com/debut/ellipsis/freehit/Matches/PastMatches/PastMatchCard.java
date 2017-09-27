@@ -76,6 +76,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
             View progressBar = rootView.findViewById(R.id.progress_bar);
             progressBar.setVisibility(View.GONE);
 
+            mEmptyStateTextView = (ImageView)rootView.findViewById(R.id.empty_view);
             // Update empty state with no connection error message
             mEmptyStateTextView.setVisibility(View.VISIBLE);
         }
