@@ -1,9 +1,15 @@
 package com.debut.ellipsis.freehit.Social.Polls;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +38,8 @@ public class PollItemAdapter extends ArrayAdapter {
 
     }
 
+
+
     @Override
     public View getView(final int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
@@ -39,6 +47,8 @@ public class PollItemAdapter extends ArrayAdapter {
             listItemView = LayoutInflater.from(getContext()).inflate(
                     R.layout.social_polls_list_item, parent, false);
         }
+
+
 
         final SharedPreferences.Editor editor = getContext().getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
 
@@ -69,7 +79,6 @@ public class PollItemAdapter extends ArrayAdapter {
         }
         final RadioGroup rGroup = (RadioGroup) listItemView.findViewById(R.id.poll_group);
         final View finalListItemView = listItemView;
-        final View finalListItemView1 = listItemView;
 
 
         // POLL RESULT
@@ -171,6 +180,7 @@ public class PollItemAdapter extends ArrayAdapter {
 
 
         final int finalTotalVotes = totalVotes;
+        final View finalListItemView2 = listItemView;
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -189,6 +199,8 @@ public class PollItemAdapter extends ArrayAdapter {
                             QueryUtilPolls.fetchPollData(url);
                         }
                     }.start();
+
+
 
                     option1.setVisibility(View.GONE);
                     option2.setVisibility(View.GONE);
@@ -247,7 +259,7 @@ public class PollItemAdapter extends ArrayAdapter {
 
                 } else {
                     LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(getContext().LAYOUT_INFLATER_SERVICE);
-                    View layouttoast = inflater.inflate(R.layout.custom_toast, (ViewGroup) finalListItemView1.findViewById(R.id.toastcustom));
+                    View layouttoast = inflater.inflate(R.layout.custom_toast, (ViewGroup) finalListItemView.findViewById(R.id.toastcustom));
                     ((TextView) layouttoast.findViewById(R.id.texttoast)).setText("PLEASE SELECT AN OPTION FOR POLL " + (position + 1));
 
                     Toast mytoast = new Toast(getContext());

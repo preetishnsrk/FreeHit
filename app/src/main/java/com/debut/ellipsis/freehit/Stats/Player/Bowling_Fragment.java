@@ -38,7 +38,7 @@ public class Bowling_Fragment extends Fragment {
 
 
         androidGridView.setAdapter(adapterViewAndroid);
-        setGridViewHeightBasedOnChildren(androidGridView,3);
+        setGridViewHeightBasedOnChildren(androidGridView,5);
 
         return rootView;
     }

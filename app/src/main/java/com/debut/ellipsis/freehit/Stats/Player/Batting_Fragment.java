@@ -20,7 +20,7 @@ import java.util.HashMap;
 public class Batting_Fragment extends Fragment{
     String[] gridViewString = {
             "Batting", "Test", "Odi", "T20", "IPL",
-            "Matches", "10" ,  "10",  "10",  "10",
+            "Matches", "99,999" ,  "10",  "10",  "10",
             "Innings", "10" ,  "10",  "10",  "10",
             "N/0" , "10" ,  "10",  "10",  "10",
             "Runs", "10" ,  "10",  "10",  "10",
@@ -30,7 +30,7 @@ public class Batting_Fragment extends Fragment{
             "4s","10" ,  "10",  "10",  "10",
             "6s","10" ,  "10",  "10",  "10",
             "Avg","10" ,  "10",  "10",  "10",
-            "Strike Rate","10" ,  "10",  "10",  "10",
+            "Strike \nRate","10" ,  "10",  "10",  "10",
 
 
     } ;
@@ -44,10 +44,8 @@ public class Batting_Fragment extends Fragment{
         Batting_Item_adapter adapterViewAndroid = new Batting_Item_adapter(getContext(), gridViewString );
         androidGridView=(GridView)rootView.findViewById(R.id.grid_view_image_text);
 
-
-
         androidGridView.setAdapter(adapterViewAndroid);
-        setGridViewHeightBasedOnChildren(androidGridView,3);
+        setGridViewHeightBasedOnChildren(androidGridView,5);
 
         return rootView;
     }
@@ -78,6 +76,4 @@ public class Batting_Fragment extends Fragment{
         gridView.setLayoutParams(params);
 
     }
-
-
 }

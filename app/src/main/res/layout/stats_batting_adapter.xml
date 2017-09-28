@@ -1,16 +1,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/android_custom_gridview_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/android_gridView_text"
         android:layout_width="70dp"
-        android:layout_height="39dp"
+        android:layout_height="50dp"
         android:layout_marginTop="5dp"
-        android:textAlignment="center"
         android:textColor="@color/black"
+        android:gravity="center"
         android:textSize="15dp" />
 </LinearLayout>

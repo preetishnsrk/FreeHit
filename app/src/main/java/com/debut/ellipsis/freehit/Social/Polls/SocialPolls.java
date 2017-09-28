@@ -16,6 +16,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
@@ -43,6 +44,7 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
     public TextView mEmptyStateTextView;
     private PollItemAdapter mAdapter;
     private ProgressBar mProgressBar;
+    View fragView;
 
     public SocialPolls() {
         // Required empty public constructor
@@ -56,7 +58,7 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.item, container, false);
         ListView PollsListView = (ListView) rootView.findViewById(R.id.list);
-        final View fragView = inflater.inflate(R.layout.social_polls_list_item, container, false);
+        fragView = inflater.inflate(R.layout.social_polls_list_item, container, false);
         final RadioGroup rGroup =(RadioGroup) fragView.findViewById(R.id.poll_group);
         mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
         PollsListView.setEmptyView(mEmptyStateTextView);
@@ -176,6 +178,7 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
             mAdapter.addAll(Polls);
         }
 
+
     }
 
 
@@ -185,6 +188,7 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
         // Loader reset, so we can clear out our existing data.
         mAdapter.clear();
     }
+
 
 }
 
