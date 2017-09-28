@@ -1,28 +1,25 @@
 package com.debut.ellipsis.freehit.Stats.Player;
 
-import android.app.Fragment;
 import android.content.Context;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
 
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.GridView;
+/**
+ * Created by Jayanth on 29-09-2017.
+ */
 
-public class Batting_Item_adapter extends BaseAdapter {
+public class Bowling_item_adapter extends BaseAdapter {
     private Context mContext;
     private final String[] gridViewString;
     //private final int[] gridViewImageId;
 
-    public Batting_Item_adapter(Context context, String[] gridViewString) {
+    public Bowling_item_adapter(Context context, String[] gridViewString) {
         mContext = context;
         // this.gridViewImageId = gridViewImageId;
         this.gridViewString = gridViewString;
@@ -52,8 +49,8 @@ public class Batting_Item_adapter extends BaseAdapter {
         if (convertView == null) {
 
             gridViewAndroid = new View(mContext);
-            gridViewAndroid = inflater.inflate(R.layout.stats_batting_adapter, null);
-            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.android_gridView_text);
+            gridViewAndroid = inflater.inflate(R.layout.stats_bowling_adapter, null);
+            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.bowling_text);
             textViewAndroid.setText(gridViewString[i]);
             textViewAndroid.setBackgroundColor(Color.parseColor("#d9d5dc"));
 

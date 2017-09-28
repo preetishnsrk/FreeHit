@@ -19,9 +19,19 @@ android:orientation="vertical">
         android:id="@+id/grid_view_image_text"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingRight="5dp"
         android:columnWidth="55dp"
+        android:background="#8c898f"
+
+        android:horizontalSpacing="2dp"
+        android:stretchMode="columnWidth"
+
+
         android:gravity="center"
-        android:numColumns="4" />
+        android:numColumns="5"
+
+
+        />
 
   </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -19,9 +19,19 @@ import java.util.HashMap;
 
 public class Batting_Fragment extends Fragment{
     String[] gridViewString = {
-            "Alram", "Android", "Mobile", "Website", "Profile", "WordPress",
-            "Alram", "Android", "Mobile", "Website", "Profile", "WordPress",
-            "Alram", "Android", "Mobile", "Website", "Profile", "WordPress",
+            "Batting", "Test", "Odi", "T20", "IPL",
+            "Matches", "10" ,  "10",  "10",  "10",
+            "Innings", "10" ,  "10",  "10",  "10",
+            "N/0" , "10" ,  "10",  "10",  "10",
+            "Runs", "10" ,  "10",  "10",  "10",
+            "Highest","10" ,  "10",  "10",  "10",
+            "100s","10" ,  "10",  "10",  "10",
+            "50s","10" ,  "10",  "10",  "10",
+            "4s","10" ,  "10",  "10",  "10",
+            "6s","10" ,  "10",  "10",  "10",
+            "Avg","10" ,  "10",  "10",  "10",
+            "Strike Rate","10" ,  "10",  "10",  "10",
+
 
     } ;
 
@@ -32,10 +42,9 @@ public class Batting_Fragment extends Fragment{
         View rootView = inflater.inflate(R.layout.fragment_stats_batting, container, false);
         GridView androidGridView;
         Batting_Item_adapter adapterViewAndroid = new Batting_Item_adapter(getContext(), gridViewString );
-        androidGridView=(GridView)rootView.findViewById(R.id.grid_view_player_batting);
-        androidGridView.setBackgroundColor(Color.WHITE);
-        androidGridView.setVerticalSpacing(1);
-        androidGridView.setHorizontalSpacing(1);
+        androidGridView=(GridView)rootView.findViewById(R.id.grid_view_image_text);
+
+
 
         androidGridView.setAdapter(adapterViewAndroid);
         setGridViewHeightBasedOnChildren(androidGridView,3);
