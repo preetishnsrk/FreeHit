@@ -9,26 +9,26 @@ public class NewsItem {
 
     private String murlofimage;
 
-    private String murlofwebsite;
-
     private int mnewsID;
 
-    public NewsItem(int newsID,String headline, String description, String urlofimage, String urlofwebsite) {
-        mnewsID=newsID;
+    private String mdate;
+
+    private String mTag;
+
+    public NewsItem(int newsID, String headline, String description, String urlofimage, String Date, String Tag) {
+        mnewsID = newsID;
         mheadline = headline;
         mdescription = description;
         murlofimage = urlofimage;
-        murlofwebsite = urlofwebsite;
+        mdate = Date;
+        mTag = Tag;
     }
 
     // Constructor in case of no connection, passing google so app doens't crash (Alternative is to check every time we pass a item, too much work)
     public NewsItem(String headline, String description) {
         mheadline = headline;
         mdescription = description;
-        murlofwebsite = "http://www.google.com";
-
     }
-
 
     public String getMheadline() {
         return mheadline;
@@ -42,11 +42,15 @@ public class NewsItem {
         return murlofimage;
     }
 
-    public String getMurlofwebsite() {
-        return murlofwebsite;
+    public int getMnewsID() {
+        return mnewsID;
     }
 
-    public int getMnewsID(){
-        return mnewsID;
+    public String getMdate() {
+        return mdate;
+    }
+
+    public String getMtag() {
+        return mTag;
     }
 }

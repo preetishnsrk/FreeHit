@@ -11,6 +11,8 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -55,17 +57,18 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         setContentView(R.layout.news_article);
         overridePendingTransition(R.anim.enter_from_right, R.anim.exit_to_left);
         news_article_id = getIntent().getIntExtra("news_article_id", 0);
-        URL = "http://freehit-api.herokuapp.com/news?id=";
+        URL =
+                "http://freehit-api.herokuapp.com/news?id=";
         URL += news_article_id;
 
         Log.e(LOG_TAG, URL);
+
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //removing text from collapsing toolbar
         setTitle(" ");
-
 
         // Get a reference to the ConnectivityManager to check state of network connectivity
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -90,7 +93,6 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
         }
-
 
 
     }
@@ -127,9 +129,6 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
     public void onLoadFinished(final Loader<NewsArticleItem> loader, NewsArticleItem News) {
 
         mProgressBar.setVisibility(View.GONE);
-        /*if (mEmptyStateTextView.getText() == null) {
-            mEmptyStateTextView.setText(R.string.EmptyNews);
-        }*/
 
         TextView headline = (TextView) findViewById(R.id.news_article_heading);
         headline.setText(news.getMheadline());
@@ -137,13 +136,30 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         TextView article_description = (TextView) findViewById(R.id.news_article_description);
         article_description.setText(news.getMnewsArticle());
 
+        TextView date = (TextView) findViewById(R.id.news_date);
+        date.setText(news.getMdate());
+
+        TextView news_tag_1 = (TextView) findViewById(R.id.news_tag);
+        news_tag_1.setText(news.getmTag1());
+
+        TextView news_tag_2 = (TextView) findViewById(R.id.news_tag_1);
+        news_tag_2.setText(news.getmTag2());
+
+        TextView news_tag_3 = (TextView) findViewById(R.id.news_tag_2);
+        news_tag_3.setText(news.getmTag3());
+
+        ImageView tag_1 = (ImageView) findViewById(R.id.news_tag_image);
+        tag_1.setVisibility(View.VISIBLE);
+
+        ImageView tag_2 = (ImageView) findViewById(R.id.news_tag_image_1);
+        tag_2.setVisibility(View.VISIBLE);
+
+        ImageView tag_3 = (ImageView) findViewById(R.id.news_tag_image_2);
+        tag_3.setVisibility(View.VISIBLE);
 
         final ImageView articleImage = (ImageView) findViewById(R.id.news_article_image);
 
-        final String imageurl = news.getMurlofimage();
-
-
-
+        final String ImageURL = news.getMurlofimage();
 
         ImageLoader imageloader = ImageLoader.getInstance();
         //Defining options for the display, cache is set to false by default so this is necessary.
@@ -151,7 +167,7 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
 
         //Straight forward abstract classes, loader is optional
-        imageloader.displayImage(imageurl, articleImage, options, new ImageLoadingListener() {
+        imageloader.displayImage(ImageURL, articleImage, options, new ImageLoadingListener() {
             @Override
             public void onLoadingStarted(String imageUri, View view) {
                 articleImage.setImageResource(R.drawable.matches);
@@ -171,15 +187,11 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
 
             }
         });
-
     }
-
 
     @Override
     public void onLoaderReset(Loader<NewsArticleItem> loader) {
         loader = null;
 
     }
-
-
 }

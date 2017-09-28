@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 
 import com.baoyz.widget.PullRefreshLayout;
@@ -44,6 +45,7 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
     public PageIndicatorView indicator;
     private PastMatchCardItemAdapter mAdapter;
     private ProgressBar mProgressBar;
+    public ImageView mEmptyStateTextView;
 
 
     @Override
@@ -67,6 +69,16 @@ public class PastMatchCard extends Fragment implements LoaderManager.LoaderCallb
             loaderManager.initLoader(UPCOMING_MATCH_LOADER_ID, null, this).forceLoad();
 
 
+        }
+        else {
+            // Otherwise, display error
+            // First, hide loading indicator so error message will be visible
+            View progressBar = rootView.findViewById(R.id.progress_bar);
+            progressBar.setVisibility(View.GONE);
+
+            mEmptyStateTextView = (ImageView)rootView.findViewById(R.id.empty_view);
+            // Update empty state with no connection error message
+            mEmptyStateTextView.setVisibility(View.VISIBLE);
         }
 
         mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);

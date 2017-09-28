@@ -4,12 +4,8 @@ import android.content.AsyncTaskLoader;
 import android.content.Context;
 import android.util.Log;
 
-
-
-public class NewsArticleLoader  extends AsyncTaskLoader<NewsArticleItem> {
-    /**
-     * Tag for log messages
-     */
+public class NewsArticleLoader extends AsyncTaskLoader<NewsArticleItem> {
+    /*Tag for log messages*/
     private static final String LOG_TAG = NewsArticleLoader.class.getName();
 
     public static NewsArticleItem news;
@@ -19,10 +15,7 @@ public class NewsArticleLoader  extends AsyncTaskLoader<NewsArticleItem> {
      */
     private String mUrl;
 
-
-    /**
-     * Constructs a new {@link NewsLoader}.
-     *
+    /*** Constructs a new {@link NewsLoader}.
      * @param context of the activity
      * @param url     to load data from
      */
@@ -38,9 +31,7 @@ public class NewsArticleLoader  extends AsyncTaskLoader<NewsArticleItem> {
         forceLoad();
     }
 
-    /**
-     * This is on a background thread.
-     */
+    /* This is on a background thread.*/
     @Override
     public NewsArticleItem loadInBackground() {
 
@@ -49,9 +40,9 @@ public class NewsArticleLoader  extends AsyncTaskLoader<NewsArticleItem> {
             Log.i(LOG_TAG, "NULL");
             return null;
         }
-        // Perform the network request, parse the response, and extract a list of subjects.
+        // Perform the network request, parse the response, and extract a list of NewsArticles.
         news = QueryUtilNewsArticle.fetchNewsData(mUrl);
-        Log.e(LOG_TAG,news.getMheadline());
+        Log.e(LOG_TAG, news.getMheadline());
         return news;
     }
 }

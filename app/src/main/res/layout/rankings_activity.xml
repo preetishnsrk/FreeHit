@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_rankings"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs_rankings"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:tabMode="scrollable"
+            app:tabGravity="fill"/>
+    </android.support.design.widget.AppBarLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior">
+    <RelativeLayout
+        android:gravity="center_horizontal"
+        android:id="@+id/inningsNumBtnLayout"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingBottom="@dimen/activity_horizontal_margin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textColor="@android:color/black"
+            android:id="@+id/test"
+            android:background="@drawable/btn_bg_color"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:onClick="gameTypeBtnClick"
+            android:textAllCaps="true" />
+        <Button
+            android:textColor="@android:color/black"
+            android:id="@+id/odi"
+            android:background="@drawable/btn_bg_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="odi"
+            android:layout_toRightOf="@+id/test"
+            android:onClick="gameTypeBtnClick" />
+        <Button
+            android:textColor="@android:color/black"
+            android:id="@+id/t20"
+            android:background="@drawable/btn_bg_color"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="t20"
+            android:layout_toRightOf="@id/odi"
+            android:onClick="gameTypeBtnClick" />
+    </RelativeLayout>
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager_rankings"
+            android:layout_below="@+id/inningsNumBtnLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"  />
+</RelativeLayout>
+    </android.support.design.widget.CoordinatorLayout>

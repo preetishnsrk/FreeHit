@@ -9,19 +9,22 @@ public class NewsArticleItem {
 
     private String murlofimage;
 
-    private String murlofwebsite;
-
-    private int mnewsID;
-
     private String mnewsArticle;
 
-    public NewsArticleItem(int newsID, String headline, String date, String urlofimage, String urlofwebsite, String newsArticle) {
-        mnewsID = newsID;
+    private String mTag1;
+
+    private String mTag2;
+
+    private String mTag3;
+
+    public NewsArticleItem(String headline, String date, String urlofimage, String newsArticle, String Tag1, String Tag2, String Tag3) {
         mheadline = headline;
         mdate = date;
         murlofimage = urlofimage;
-        murlofwebsite = urlofwebsite;
         mnewsArticle = newsArticle;
+        mTag1 = Tag1;
+        mTag2 = Tag2;
+        mTag3 = Tag3;
     }
 
 
@@ -37,16 +40,20 @@ public class NewsArticleItem {
         return murlofimage;
     }
 
-    public String getMurlofwebsite() {
-        return murlofwebsite;
-    }
-
-    public int getMnewsID() {
-        return mnewsID;
-    }
-
     public String getMnewsArticle() {
         return mnewsArticle;
+    }
+
+    public String getmTag1() {
+        return mTag1;
+    }
+
+    public String getmTag2() {
+        return mTag2;
+    }
+
+    public String getmTag3() {
+        return mTag3;
     }
 
 }

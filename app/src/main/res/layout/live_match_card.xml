@@ -21,12 +21,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal">
+
             <TextView
                 android:id="@+id/match_name_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingTop="5dp"
                 android:layout_centerHorizontal="true"
+                android:paddingTop="5dp"
+                android:textColor="@android:color/black"
                 android:textSize="15sp"
                 tools:text="Sri Lanka Vs India, 4th ODI" />
 
@@ -37,8 +39,8 @@
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/match_name_live"
                 android:layout_centerHorizontal="true"
-                android:paddingStart="5dp"
                 android:paddingEnd="10dp"
+                android:paddingStart="5dp"
                 android:textSize="15sp"
                 tools:text="India Tour of Sri Lanka, 2017" />
 
@@ -84,6 +86,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_toEndOf="@+id/team_logo_1_live"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         tools:text="SN" />
 
@@ -94,16 +97,16 @@
                         android:layout_marginTop="45dp"
                         android:layout_toEndOf="@+id/team_logo_1_live"
                         android:textSize="15sp"
-                        tools:text="207 (42.4)"/>
+                        tools:text="207 (42.4)" />
 
                     <TextView
                         android:id="@+id/innings2_team1_live"
-                        android:layout_below="@+id/innings1_team1_live"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/innings1_team1_live"
                         android:layout_toEndOf="@+id/team_logo_1_live"
                         android:textSize="15sp"
-                        tools:text="207 (42.4)"/>
+                        tools:text="207 (42.4)" />
 
 
                 </RelativeLayout>
@@ -112,7 +115,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp">
-
 
 
                     <ImageView
@@ -130,6 +132,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
                         android:layout_toStartOf="@+id/team_logo_2_live"
+                        android:textColor="@android:color/black"
                         android:textSize="20sp"
                         tools:text="IND" />
 
@@ -140,16 +143,16 @@
                         android:layout_marginTop="45dp"
                         android:layout_toStartOf="@+id/team_logo_2_live"
                         android:textSize="15sp"
-                        tools:text="375/5 (50.0)"/>
+                        tools:text="375/5 (50.0)" />
 
                     <TextView
                         android:id="@+id/innings2_team2_live"
-                        android:layout_below="@+id/innings1_team2_live"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_below="@+id/innings1_team2_live"
                         android:layout_toStartOf="@+id/team_logo_2_live"
                         android:textSize="15sp"
-                        tools:text="375/5 (50.0)"/>
+                        tools:text="375/5 (50.0)" />
 
 
                 </RelativeLayout>
@@ -168,8 +171,8 @@
                 android:id="@+id/match_date_live"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
                 tools:text="Sep 03 2017, Sun" />
 
 
@@ -188,9 +191,9 @@
         android:paddingEnd="10dp"
         android:paddingStart="10dp"
         android:paddingTop="50dp"
-        tools:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING"
         android:textColor="@android:color/black"
-        android:textSize="13sp" />
+        android:textSize="13sp"
+        tools:text="Description of the match thats about to start cause people love to read . its a cricket match what the hell do you want to read , check the score watch the match ,sulk if your team lost or celebrate if your team and sleep . and yet you are still reading this . humans sure are weird creatures . stop reading now . Theres nothing of any use to you here just go sleep.STOP READING STOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READINGSTOP READING" />
 
 </RelativeLayout>
 

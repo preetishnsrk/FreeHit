@@ -41,7 +41,6 @@ public class NewsLoader extends AsyncTaskLoader<List<NewsItem>> {
      */
     @Override
     public List<NewsItem> loadInBackground() {
-
         Log.i(LOG_TAG, "TEST: loadInBackground() called");
         if (mUrl == null) {
             Log.i(LOG_TAG, "NULL");
@@ -49,7 +48,6 @@ public class NewsLoader extends AsyncTaskLoader<List<NewsItem>> {
         }
         // Perform the network request, parse the response, and extract a list of subjects.
         List<NewsItem> news = QueryUtilNews.fetchNewsData(mUrl);
-
         return news;
     }
 }

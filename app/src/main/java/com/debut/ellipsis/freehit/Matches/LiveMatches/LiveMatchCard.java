@@ -16,6 +16,7 @@ import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -45,7 +46,7 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
     public PageIndicatorView indicator;
     private LiveMatchCardAdapter mAdapter;
     private ProgressBar mProgressBar;
-    public TextView mEmptyStateTextView;
+    public ImageView mEmptyStateTextView;
 
 
     @Override
@@ -69,6 +70,16 @@ public class LiveMatchCard extends Fragment implements LoaderManager.LoaderCallb
             loaderManager.initLoader(LIVE_MATCH_LOADER_ID, null, this).forceLoad();
 
 
+        }
+        else {
+            // Otherwise, display error
+            // First, hide loading indicator so error message will be visible
+            View progressBar = rootView.findViewById(R.id.progress_bar);
+            progressBar.setVisibility(View.GONE);
+
+            mEmptyStateTextView = (ImageView)rootView.findViewById(R.id.empty_view);
+            // Update empty state with no connection error message
+            mEmptyStateTextView.setVisibility(View.VISIBLE);
         }
         final PullRefreshLayout layout = (PullRefreshLayout)rootView.findViewById(R.id.swipeRefreshLayout);
 
