@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.News.NewsItem;
@@ -37,9 +38,8 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
             "https://freehit-api.herokuapp.com/polls";
 
     private static final int NEWS_LOADER_ID = 1;
-
-    private PollItemAdapter mAdapter;
     public TextView mEmptyStateTextView;
+    private PollItemAdapter mAdapter;
     private ProgressBar mProgressBar;
 
     public SocialPolls() {
@@ -52,12 +52,26 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.item, container, false);
-        View fragView = inflater.inflate(R.layout.social_polls_list_item, container, false);
-
         ListView PollsListView = (ListView) rootView.findViewById(R.id.list);
-
+        final View fragView = inflater.inflate(R.layout.social_polls_list_item, container, false);
+        final RadioGroup rGroup =(RadioGroup) fragView.findViewById(R.id.poll_group);
         mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
         PollsListView.setEmptyView(mEmptyStateTextView);
+//
+//        PollsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//                PollCardItem currentItem = (PollCardItem) mAdapter.getItem(position);
+//                int selectedRadio =rGroup.getCheckedRadioButtonId();
+//                RadioButton rButton = (RadioButton)fragView.findViewById(selectedRadio);
+//                int pId = currentItem.getpId();
+//                int cId = currentItem.getcId(rButton.getText().toString());
+//                String tempURL = URL;
+//                URL.concat("?id=" + pId + "&cid=" + cId);
+//                System.out.println(URL);
+//                getLoaderManager().restartLoader(NEWS_LOADER_ID, null, SocialPolls.this);
+//            }
+//        });
 
         // Create a new adapter that takes an empty list of subjects as input
         mAdapter = new PollItemAdapter(getActivity(), new ArrayList<PollCardItem>());
@@ -66,7 +80,8 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
         // so the list can be populated in the user interface
         PollsListView.setAdapter(mAdapter);
 
-        mProgressBar = (ProgressBar)rootView.findViewById(R.id.progress_bar);
+
+        mProgressBar = (ProgressBar) rootView.findViewById(R.id.progress_bar);
         int colorCodeDark = Color.parseColor("#F44336");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
@@ -130,8 +145,10 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
                                        }
         );
 
+
         return rootView;
     }
+
 
 
     @Override

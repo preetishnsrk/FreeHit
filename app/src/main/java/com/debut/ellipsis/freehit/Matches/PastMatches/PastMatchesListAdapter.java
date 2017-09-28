@@ -164,6 +164,7 @@ public class PastMatchesListAdapter extends RecyclerView.Adapter<PastMatchesList
                 Intent PastMatchScoreCardIntent = new Intent(getContext(), PastMatchScoreCard.class);
                 PastMatchScoreCardIntent.putExtra("match_id", pastMatchCard.getmMatchID());
                 PastMatchScoreCardIntent.putExtra("match_name", pastMatchCard.getmMatchName());
+
                     /*ActivityOptions.makeCustomAnimation(context,R.anim.animation_entry,R.anim.animation_exit);*/
                 getContext().startActivity(PastMatchScoreCardIntent);
 

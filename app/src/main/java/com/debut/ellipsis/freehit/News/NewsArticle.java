@@ -15,13 +15,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.debut.ellipsis.freehit.R;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -62,7 +59,6 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
         URL += news_article_id;
 
         Log.e(LOG_TAG, URL);
-        LinearLayout ll = (LinearLayout)findViewById(R.id.article_layout);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -95,19 +91,7 @@ public class NewsArticle extends AppCompatActivity implements LoaderManager.Load
             mProgressBar.setIndeterminateTintList(ColorStateList.valueOf(colorCodeDark));
         }
 
-        ll.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-//                Toast.makeText(NewsArticle.this, "TEXT ", Toast.LENGTH_SHORT).show();
-                if(event.getAction() == MotionEvent.ACTION_UP)
-                {
-                    Toast.makeText(NewsArticle.this, "TEXT ", Toast.LENGTH_SHORT).show();
 
-                }
-                return false;
-
-            }
-        });
 
     }
 

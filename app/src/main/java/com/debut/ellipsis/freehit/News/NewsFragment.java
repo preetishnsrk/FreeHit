@@ -74,8 +74,6 @@ public class NewsFragment extends Fragment implements LoaderManager.LoaderCallba
 
         mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
         NewsListView.setEmptyView(mEmptyStateTextView);
-
-
         NewsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {

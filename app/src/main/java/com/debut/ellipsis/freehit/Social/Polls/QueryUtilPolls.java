@@ -178,8 +178,10 @@ public class QueryUtilPolls {
                 String question = currentPoll.getString("question");
 
                 JSONArray choices = currentPoll.getJSONArray("ctitle");
-                String[] options = new String[choices.length()];
+                String[] options = new String[]{"", "", "", ""};
+
                 for (int j = 0; j < choices.length(); j++) {
+
                     options[j] = choices.getString(j);
                 }
 
@@ -189,11 +191,13 @@ public class QueryUtilPolls {
                     cvotes[j] = votes.getInt(j);
                 }
 
+
                 PollCardItem poll = new PollCardItem(question, polls_id, options,cvotes);
                 Polls.add(poll);
 //                Log.e(LOG_TAG, String.valueOf(j));
-                return Polls;
+
             }
+            return Polls;
         } catch (JSONException e) {
             // If an error is thrown when executing any of the above statements in the "try" block,
             // catch the exception here, so the app doesn't crash. Print a log message
