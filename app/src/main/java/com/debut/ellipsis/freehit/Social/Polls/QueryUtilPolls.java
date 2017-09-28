@@ -186,10 +186,12 @@ public class QueryUtilPolls {
                 }
 
                 JSONArray votes = currentPoll.getJSONArray("cvotes");
-                int[] cvotes = new int[votes.length()];
+                int[] cvotes = new int[]{0,0,0,0};
                 for (int j = 0; j < votes.length(); j++) {
                     cvotes[j] = votes.getInt(j);
                 }
+
+                System.out.println(cvotes);
 
 
                 PollCardItem poll = new PollCardItem(question, polls_id, options,cvotes);

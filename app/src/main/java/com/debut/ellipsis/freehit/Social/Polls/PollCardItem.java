@@ -8,7 +8,7 @@ public class PollCardItem {
     private String pTitle;
     private int pId;
     private String pOptions[]={"","","",""};
-    private int pValues[];
+    private int pValues[]={0,0,0,0};
     private boolean hasVoted = false;
     public PollCardItem(String title, int id, String[] options, int[] values) {
         pTitle = title;
