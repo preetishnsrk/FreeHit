@@ -1,13 +1,9 @@
 package com.debut.ellipsis.freehit.Social.Polls;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +15,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.akexorcist.roundcornerprogressbar.RoundCornerProgressBar;
-import com.debut.ellipsis.freehit.News.NewsArticle;
 import com.debut.ellipsis.freehit.R;
 
 import java.util.List;
@@ -110,7 +105,7 @@ public class PollItemAdapter extends ArrayAdapter {
 
         final TextView option_1_percentage = (TextView) pollresult.findViewById(R.id.percentage_option_1);
         if (totalVotes != 0) {
-            String percentage1 = String.format("%.2f",(currentPoll.getpValue(0) / (float) totalVotes) * 100);
+            String percentage1 = String.format("%.2f", (currentPoll.getpValue(0) / (float) totalVotes) * 100);
             option_1_percentage.setText(percentage1 + "%");
             if (currentPoll.getpOption(0).isEmpty()) {
                 option_1_percentage.setVisibility(View.INVISIBLE);
@@ -128,7 +123,7 @@ public class PollItemAdapter extends ArrayAdapter {
 
         final TextView option_3_percentage = (TextView) pollresult.findViewById(R.id.percentage_option_3);
         if (totalVotes != 0) {
-            String percentage3 = String.format("%.2f",(currentPoll.getpValue(2) / (float) totalVotes) * 100);
+            String percentage3 = String.format("%.2f", (currentPoll.getpValue(2) / (float) totalVotes) * 100);
             option_3_percentage.setText(percentage3 + "%");
             if (currentPoll.getpOption(2).isEmpty()) {
                 option_3_percentage.setVisibility(View.INVISIBLE);
@@ -137,7 +132,7 @@ public class PollItemAdapter extends ArrayAdapter {
 
         final TextView option_4_percentage = (TextView) pollresult.findViewById(R.id.percentage_option_4);
         if (totalVotes != 0) {
-            String percentage4 = String.format("%.2f",(currentPoll.getpValue(3) / (float) totalVotes) * 100);
+            String percentage4 = String.format("%.2f", (currentPoll.getpValue(3) / (float) totalVotes) * 100);
             option_4_percentage.setText(percentage4 + "%");
             if (currentPoll.getpOption(3).isEmpty()) {
                 option_4_percentage.setVisibility(View.INVISIBLE);
@@ -194,7 +189,7 @@ public class PollItemAdapter extends ArrayAdapter {
                             QueryUtilPolls.fetchPollData(url);
                         }
                     }.start();
-                    
+
                     option1.setVisibility(View.GONE);
                     option2.setVisibility(View.GONE);
                     option3.setVisibility(View.GONE);
@@ -212,8 +207,8 @@ public class PollItemAdapter extends ArrayAdapter {
                         option_1_progressBar.setProgressBackgroundColor(Color.parseColor("#D2D0D0"));
                         if (finalTotalVotes != 0) {
 
-                            option_2_progressBar.setMax(100);
-                            option_2_progressBar.setProgress((currentPoll.getpValue(1) / (float) finalTotalVotes) * 100);
+                            option_1_progressBar.setMax(100);
+                            option_1_progressBar.setProgress((currentPoll.getpValue(0) / (float) finalTotalVotes) * 100);
                         }
                     }
                     if (!currentPoll.getpOption(1).isEmpty()) {
@@ -234,8 +229,8 @@ public class PollItemAdapter extends ArrayAdapter {
                         option_3_progressBar.setProgressBackgroundColor(Color.parseColor("#D2D0D0"));
                         if (finalTotalVotes != 0) {
 
-                            option_2_progressBar.setMax(100);
-                            option_2_progressBar.setProgress((currentPoll.getpValue(2) / (float) finalTotalVotes) * 100);
+                            option_3_progressBar.setMax(100);
+                            option_3_progressBar.setProgress((currentPoll.getpValue(2) / (float) finalTotalVotes) * 100);
                         }
                     }
                     if (!currentPoll.getpOption(3).isEmpty()) {
@@ -260,7 +255,6 @@ public class PollItemAdapter extends ArrayAdapter {
                     mytoast.setDuration(Toast.LENGTH_SHORT);
                     mytoast.show();
                 }
-
 
 
             }
@@ -294,9 +288,6 @@ public class PollItemAdapter extends ArrayAdapter {
                 if (totalVotes != 0) {
                     option_1_progressBar.setMax(100);
                     option_1_progressBar.setProgress((currentPoll.getpValue(0) / (float) totalVotes) * 100);
-                    System.out.println("Votes value =" + currentPoll.getpValue(0));
-                    System.out.println("Total votes =" + totalVotes);
-                    System.out.println("percentage value =" + (currentPoll.getpValue(0) / (float) totalVotes) * 100);
                 }
             }
             if (!currentPoll.getpOption(1).isEmpty()) {
@@ -332,7 +323,6 @@ public class PollItemAdapter extends ArrayAdapter {
             }
 
         }
-
 
         return listItemView;
 
