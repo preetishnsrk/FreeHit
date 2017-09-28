@@ -200,7 +200,7 @@ public class PollItemAdapter extends ArrayAdapter {
                         }
                     }.start();
 
-
+                    ((FragmentActivity)getContext()).getSupportFragmentManager().beginTransaction().detach(frg).attach(frg).commit();
 
                     option1.setVisibility(View.GONE);
                     option2.setVisibility(View.GONE);
@@ -281,7 +281,6 @@ public class PollItemAdapter extends ArrayAdapter {
                     QueryUtilPolls.fetchPollData(url);
                 }
             }.start();
-            System.out.println(url);
             option1.setVisibility(View.GONE);
             option2.setVisibility(View.GONE);
             option3.setVisibility(View.GONE);

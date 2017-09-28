@@ -62,21 +62,6 @@ public class SocialPolls extends Fragment implements LoaderManager.LoaderCallbac
         final RadioGroup rGroup =(RadioGroup) fragView.findViewById(R.id.poll_group);
         mEmptyStateTextView = (TextView) (fragView.findViewById(R.id.empty_view));
         PollsListView.setEmptyView(mEmptyStateTextView);
-//
-//        PollsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-//            @Override
-//            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                PollCardItem currentItem = (PollCardItem) mAdapter.getItem(position);
-//                int selectedRadio =rGroup.getCheckedRadioButtonId();
-//                RadioButton rButton = (RadioButton)fragView.findViewById(selectedRadio);
-//                int pId = currentItem.getpId();
-//                int cId = currentItem.getcId(rButton.getText().toString());
-//                String tempURL = URL;
-//                URL.concat("?id=" + pId + "&cid=" + cId);
-//                System.out.println(URL);
-//                getLoaderManager().restartLoader(NEWS_LOADER_ID, null, SocialPolls.this);
-//            }
-//        });
 
         // Create a new adapter that takes an empty list of subjects as input
         mAdapter = new PollItemAdapter(getActivity(), new ArrayList<PollCardItem>());

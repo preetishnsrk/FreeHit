@@ -191,7 +191,6 @@ public class QueryUtilPolls {
                     cvotes[j] = votes.getInt(j);
                 }
 
-                System.out.println(cvotes);
 
 
                 PollCardItem poll = new PollCardItem(question, polls_id, options,cvotes);

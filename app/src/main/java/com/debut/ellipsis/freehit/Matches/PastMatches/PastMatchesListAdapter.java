@@ -75,7 +75,6 @@ public class PastMatchesListAdapter extends RecyclerView.Adapter<PastMatchesList
 
     // Pass in the contact array into the constructor
     public PastMatchesListAdapter(Context context, List<PastMatchCardItem> PastMatchCards) {
-        System.out.println(PastMatchCards);
         mPastMatchCards = PastMatchCards;
         mContext = context;
     }
