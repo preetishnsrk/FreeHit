@@ -7,17 +7,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import com.debut.ellipsis.freehit.R;
+
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
-/**
- * Created by Jayanth on 27-09-2017.
- */
 
-public class Batting_Item_adapter extends  BaseAdapter {
+public class Batting_Item_adapter extends BaseAdapter {
     private Context mContext;
     private final String[] gridViewString;
     //private final int[] gridViewImageId;
@@ -53,7 +52,7 @@ public class Batting_Item_adapter extends  BaseAdapter {
 
             gridViewAndroid = new View(mContext);
             gridViewAndroid = inflater.inflate(R.layout.stats_batting_adapter, null);
-            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.android_gridview_text);
+            TextView textViewAndroid = (TextView) gridViewAndroid.findViewById(R.id.android_gridView_text);
             textViewAndroid.setText(gridViewString[i]);
 
         } else {
@@ -62,5 +61,6 @@ public class Batting_Item_adapter extends  BaseAdapter {
 
         return gridViewAndroid;
     }
+
 
 }
