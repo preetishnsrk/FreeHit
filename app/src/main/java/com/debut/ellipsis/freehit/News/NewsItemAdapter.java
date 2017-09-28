@@ -68,29 +68,32 @@ public class NewsItemAdapter extends ArrayAdapter<NewsItem> {
 
         DisplayImageOptions options = new DisplayImageOptions.Builder().cacheInMemory(true).cacheOnDisk(true).build();
 
-        //Straight forward abstract classes, loader is optional
-        imageloader.displayImage(imageurl, imageToShow, options, new ImageLoadingListener() {
-            @Override
-            public void onLoadingStarted(String imageUri, View view) {
-                loader.show();
-                imageToShow.setImageResource(R.drawable.matches);
-            }
 
-            @Override
-            public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
-                imageToShow.setImageResource(R.drawable.matches);
-            }
+        if(currentnews.getMurlofimage()!=null) {
+            //Straight forward abstract classes, loader is optional
+            imageloader.displayImage(imageurl, imageToShow, options, new ImageLoadingListener() {
+                @Override
+                public void onLoadingStarted(String imageUri, View view) {
+                    loader.show();
+                    imageToShow.setImageResource(R.drawable.matches);
+                }
 
-            @Override
-            public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
-                loader.hide();
-            }
+                @Override
+                public void onLoadingFailed(String imageUri, View view, FailReason failReason) {
+                    imageToShow.setImageResource(R.drawable.matches);
+                }
 
-            @Override
-            public void onLoadingCancelled(String imageUri, View view) {
+                @Override
+                public void onLoadingComplete(String imageUri, View view, Bitmap loadedImage) {
+                    loader.hide();
+                }
 
-            }
-        });
+                @Override
+                public void onLoadingCancelled(String imageUri, View view) {
+
+                }
+            });
+        }
         loader.hide();
         return listItemView;
 

@@ -169,14 +169,24 @@ public class QueryUtilNews {
 
                 String description = currentArticle.getString("desc");
 
-                String URLOfImage = currentArticle.getString("image");
+                String URLOfImage=null;
+                if (currentArticle.has("image")) {
+                    URLOfImage = currentArticle.getString("image");
+                }
 
                 String date = currentArticle.getString("date");
 
                 String tag = currentArticle.getString("tag");
 
-                NewsItem news = new NewsItem(news_id, title, description, URLOfImage,date,tag);
-                Newss.add(news);
+                if(URLOfImage!=null) {
+                    NewsItem news = new NewsItem(news_id, title, description, URLOfImage, date, tag);
+                    Newss.add(news);
+                }
+                else
+                {
+                    NewsItem news = new NewsItem(news_id, title, description, date, tag);
+                    Newss.add(news);
+                }
             }
             return Newss;
         } catch (JSONException e) {
